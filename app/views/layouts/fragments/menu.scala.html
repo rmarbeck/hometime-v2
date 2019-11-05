@@ -1,0 +1,65 @@
+@()
+
+@import fr.hometime.utils._
+@import java.util._
+@import tags._
+	
+@displayMenu(menu:List[Menu], level:Int) = {
+	@indent(level)<ul>@for(subMenu <- menu) {
+	@indent(level+1)<li class="@subMenu.getCssClass.getOrElse("")">
+	@indent(level+2)<a href="@subMenu.getHref.getOrElse("#")"><div>@if(subMenu.hasImg) {<i class="@subMenu.getImg.get"></i>}@Html(subMenu.getLabel)</div></a>@if(subMenu.hasSubMenus) {@displayMenu(subMenu.getSubMenus.get(), level+2)}
+	@indent(level+1)</li>}
+	@indent(level)</ul>}
+
+@defining(new ArrayList[Menu]) { mainMenu =>
+					
+	@{ 
+		mainMenu.add(
+			Menu.of("Les Services", Optional.of("index.html"), Optional.of("current"), Optional.of("icon-stack"))
+				.addSubMenu("Entretien & Révisions", Optional.of("index-corporate.html"), Optional.empty(), Optional.empty())
+				.getParentIfExists()
+				.addSubMenu("Personnalisation de montres", Optional.of("index-portfolio.html"), Optional.empty(), Optional.empty())
+				.getParentIfExists()
+				.addSubMenu("Les tarifs", Optional.of("index-portfolio.html"), Optional.empty(), Optional.empty())
+				.addSubMenu("Les tarifs", Optional.of("index-portfolio.html"), Optional.empty(), Optional.empty())
+				.getParentIfExists()
+				.getParentIfExists()
+				.addSubMenu("Avis clients", Optional.of("index-portfolio.html"), Optional.empty(), Optional.empty())
+				.getHighestParentIfExists());
+				
+		mainMenu.add(
+			Menu.of("Essai/achat de montres", Optional.of("index.html"), Optional.empty(), Optional.empty())
+				.addSubMenu("Home - Corporate", Optional.of("index-corporate.html"), Optional.empty(), Optional.empty())
+					.addSubMenu("Corporate - Layout 1", Optional.of("index-corporate.html"), Optional.empty(), Optional.empty())
+					.getParentIfExists()
+				.getParentIfExists()
+				.addSubMenu("Home - Portfolio", Optional.of("index-portfolio.html"), Optional.empty(), Optional.empty())
+				.getHighestParentIfExists());
+				
+		mainMenu.add(
+			Menu.of("Entretien", Optional.of("index.html"), Optional.empty(), Optional.empty())
+				.addSubMenu("Home - Corporate", Optional.of("index-corporate.html"), Optional.empty(), Optional.empty())
+					.addSubMenu("Corporate - Layout 1", Optional.of("index-corporate.html"), Optional.empty(), Optional.empty())
+					.getParentIfExists()
+				.getParentIfExists()
+				.addSubMenu("Home - Portfolio", Optional.of("index-portfolio.html"), Optional.empty(), Optional.empty())
+				.getHighestParentIfExists());
+				
+		mainMenu.add(
+			Menu.of("Venir nous voir", Optional.of("index.html"), Optional.empty(), Optional.of("icon-time"))
+				.addSubMenu("Home - Corporate", Optional.of("index-corporate.html"), Optional.empty(), Optional.empty())
+					.addSubMenu("Corporate - Layout 1", Optional.of("index-corporate.html"), Optional.empty(), Optional.empty())
+					.getParentIfExists()
+				.getParentIfExists()
+				.addSubMenu("Home - Portfolio", Optional.of("index-portfolio.html"), Optional.empty(), Optional.empty())
+				.getHighestParentIfExists());
+				
+		
+		print("");
+	}
+					<!-- Primary Navigation
+					============================================= -->
+					<nav id="primary-menu" class="dark">
+						@displayMenu(mainMenu,4)				
+					</nav><!-- #primary-menu end -->
+}
