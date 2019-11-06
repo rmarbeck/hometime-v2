@@ -11,3 +11,6 @@ addSbtPlugin("com.typesafe.sbt" % "sbt-less" % "1.1.2")
 
 // Eclipse Plugin
 addSbtPlugin("com.typesafe.sbteclipse" % "sbteclipse-plugin" % "5.2.2")
+
+// Heroku Plugin
+addSbtPlugin("com.heroku" % "sbt-heroku" % "2.1.2")
