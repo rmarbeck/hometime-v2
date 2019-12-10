@@ -41,6 +41,7 @@
 						<h3>@Html(Messages("global.text.call.us.reasons"))<span>&nbsp;<a href="tel:@Messages("global.href.phone.number")" rel="nofollow">@Html(Messages("global.text.phone.number"))</a></span></h3>
 						<span>@Html(Messages("global.text.footer.conditions.cost")), @Html(Messages("global.text.footer.conditions.when"))</span>
 						<a href="#" class="button button-dark button-xlarge button-rounded">@Html(Messages("global.text.visit.us.action"))</a>
+						<a href="#" class="button button-dark button-xlarge button-rounded">@Html(Messages("global.text.visit.us.action"))</a>
 					</div>
 				</div>
 				
@@ -151,7 +152,7 @@
 				<div id="portfolio" class="portfolio portfolio-nomargin grid-container portfolio-notitle portfolio-full grid-container clearfix">
 				
 					@for(index <- 1 to 8) {
-						<article class="portfolio-item pf-media pf-icons">
+					<article class="portfolio-item pf-media pf-icons">
 						<div class="portfolio-image">
 							<img src="@routes.Assets.versioned("images/home/grid-"+index+".jpg")" alt="@Html(Messages("home.grid"+index+".alt"))">
 						</div>
