@@ -29,4 +29,8 @@ public class HomeController extends Controller {
         return ok(views.html.index.render(messages));
     }
 
+    public Result quotationOptions(Http.Request request) {
+    	Messages messages = messagesApi.preferred(request);
+        return ok(views.html.quotation_options.render(messages));
+    }
 }

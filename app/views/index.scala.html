@@ -4,13 +4,13 @@
 
 
 @promise(icon: String, index: Int) = {
-							<div class="col-lg-4 bottommargin">
+							<div class="col-lg-4 bottommargin center">
 								<i class="i-plain color i-large @icon inline-block" style="margin-bottom: 15px;"></i>
 								<div class="heading-block nobottomborder" style="margin-bottom: 15px;">
 									<span class="before-heading">@Html(Messages("home.promise."+index+".claim"))</span>
 									<h4>@Html(Messages("home.promise."+index+".head"))</h4>
 								</div>
-								<p>@Html(Messages("home.promise."+index+".body"))</p>
+								<p class="text-justify">@Html(Messages("home.promise."+index+".body"))</p>
 							</div>
 }
 
@@ -32,6 +32,18 @@
 					</div>
 }
 
+@quotation(icon: String, url: String, title: String, subTitle: String, index: Int) = {
+					<div class="col_one_third topmargin-lg nobottommargin @if(index == 2) {col_last}">
+						<div class="feature-box fbox-center fbox-dark fbox-dark fbox-bg fbox-effect bottommargin-lg">
+							<div class="fbox-icon">
+								<a href="@url"><i class="i-alt noborder @icon"></i></a>
+							</div>
+							<h3>@title<span class="subtitle">@subTitle</span></h3>
+						</div>
+					</div>
+}
+
+
 
 @layouts.home(Messages("home.html.title"), Messages("home.html.description"), Messages("home.html.keywords")) {
   <div class="content-wrap">
@@ -40,8 +52,7 @@
 					<div class="container clearfix">
 						<h3>@Html(Messages("global.text.call.us.reasons"))<span>&nbsp;<a href="tel:@Messages("global.href.phone.number")" rel="nofollow">@Html(Messages("global.text.phone.number"))</a></span></h3>
 						<span>@Html(Messages("global.text.footer.conditions.cost")), @Html(Messages("global.text.footer.conditions.when"))</span>
-						<a href="#" class="button button-dark button-xlarge button-rounded">@Html(Messages("global.text.visit.us.action"))</a>
-						<a href="#" class="button button-dark button-xlarge button-rounded">@Html(Messages("global.text.visit.us.action"))</a>
+						<a href="@routes.HomeController.quotationOptions()" class="button button-dark button-xlarge button-rounded">@Html(Messages("home.action.text.visit.us.action"))</a>
 					</div>
 				</div>
 				
@@ -78,6 +89,16 @@
 						</div>
 					</div>
 				</div>
+
+				<div class="container clearfix">
+				
+					@List(("icon-line-pie-graph", "#", "Devis interactif", "En 5 étapes, évaluez le coût de l'entretien de votre montre."),
+							("icon-eye", "#", "Devis horloger", "Nos horlogers analysent votre besoin et vous répondent."),
+							("icon-shop", "#", "Devis formel", "Sur place, nous établissons un devis ferme montre en main.")).zipWithIndex.map { case (value,index) => @quotation(value._1, value._2, value._3, value._4, index+1) }
+					
+				</div>				
+				
+
 
 				<div class="container clearfix">
 

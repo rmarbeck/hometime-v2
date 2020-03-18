@@ -1,0 +1,50 @@
+@()(implicit messages: play.i18n.Messages)
+
+@import scala.collection.immutable._
+
+
+
+@quotation(icon: String, url: String, title: String, subTitle: String, index: Int, list: List[String]) = {
+					<div class="col_one_third nobottommargin @if(index == 2) {col_last}">
+						<div class="feature-box fbox-center fbox-dark fbox-dark fbox-bg fbox-effect bottommargin-lg">
+							<div class="fbox-icon">
+								<a href="@url"><i class="i-alt noborder @icon"></i></a>
+							</div>
+							<h3>@title<span class="subtitle">@subTitle</span></h3>
+							<div class="bottommargin-sm topmargin-sm">
+								<ul class="features">
+								@list.map{ case value => <li> @value </li> }
+								</ul>
+							</div>
+						</div>
+					</div>
+}
+
+
+
+@layouts.main(Messages("quotation.options.html.title"), Messages("quotation.options.html.description"), Messages("quotation.options.html.keywords")) {
+
+
+	<div class="content-wrap">
+		<div class="container clearfix">
+		
+			<div class="heading-block topmargin-sm">
+				<h2>Devis</h2>
+				<span>Obtenir un devis d'entretien de votre montre</span>
+			</div>
+
+			<p><span class="dropcap">H</span>ometime vous propose plusieurs façons d'évaluer le prix de la réparation de votre montre. Vous pouvez déterminer vous même en moins d'une minute le tarif d'un entretien ou bien demander l'envoi d'un devis personnalisé à l'un de nos horlogers.<br />
+			Enfin, pour un devis formel et définitif, vous pouvez passer nous voir dans notre atelier à Paris.</p>
+
+				
+					@List(("icon-line-pie-graph", "#", "Devis interactif", "En 5 étapes, évaluez le coût de l'entretien de votre montre.", List("Devis immédiat", "Prix et délais approximatifs", "24h/24")),
+							("icon-eye", "#", "Devis horloger", "Nos horlogers analysent votre besoin et vous répondent.", List("Devis détaillé", "Un horloger vous répond", "Sous 48h maximum")),
+							("icon-shop", "#", "Devis formel", "Sur place, nous établissons un devis ferme montre en main.", List("Nous auscultons votre montre", "Le devis est gratuit", "Il nous engage"))).zipWithIndex.map { case (value,index) => @quotation(value._1, value._2, value._3, value._4, index+1, value._5) }
+				
+					<div class="col_full">
+						Nous essayons de toujours fournir un maximum d'informations à nos clients avant de voir la montre. Cependant, dans certains cas cela n'est pas possible et seule l'auscultation de la montre permet de déterminer précisément le tarif de l'entretien. Nos devis permettent de répondre aux demandes de prix sur les entretiens les plus fréquents que sont les changemenents de pile avec ou sans étanchéité, les révisions complètes ou les réparations plus complexes.
+					</div>
+					
+		</div>	
+	</div>
+}

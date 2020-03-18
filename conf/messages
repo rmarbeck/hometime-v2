@@ -27,7 +27,7 @@ global.navbar.link.text.services.faq=Questions fréquentes (FAQ)
 global.navbar.link.text.services.around=Bons plans et bonnes adresses
 global.navbar.link.text.services.prices=Les tarifs
 global.navbar.link.text.services.feedback=Avis clients <span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star"></span>
-global.navbar.link.text.watches=Essai/achat de montres
+global.navbar.link.text.watches=Achat de montres
 global.navbar.link.text.watch.collection=Les montres disponibles à l''essai
 global.navbar.link.text.buy.request=Nous cherchons votre prochaine montre
 global.navbar.link.text.who.are.we=Mentions légales
@@ -146,6 +146,10 @@ home.stats.3.unit=+
 
 home.stats.4.text=Montres vendues
 home.stats.4.unit=+
+
+#------------------------
+home.action.text.visit.us.action=Venir nous voir
+home.action.text.quotation.action=Demander un devis
 
 #------------------------
 
@@ -268,6 +272,15 @@ home.reason.7.body=Si je suis pressé, hometime me propose une solution en quelq
 home.reason.8.body=Je possède une montre ancienne ou vintage, je peux la faire restaurer&nbsp;!
 
 home.text.feedback=Avis clients
+
+
+#------------------------
+quotation.options.html.title=Evaluation du tarif d''entretien d''une montre
+quotation.options.html.description=Les différentes méthodes pour déterminer le prix de la réparation d''une montre chez Hometime
+quotation.options.html.keywords=Prix, tarif, réparation, révision, entretien, montre, paris
+
+#------------------------
+
 
 # Service page
 service.html.title=Entretenir sa montre
