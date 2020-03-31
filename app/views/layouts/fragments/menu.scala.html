@@ -1,30 +1,34 @@
-@()
+@(key: String)(implicit messages: play.i18n.Messages)
 
 @import fr.hometime.utils._
 @import java.util._
 @import tags._
 	
-@displayMenu(menu:List[Menu], level:Int) = {
+@displayMenu(menu:List[Menu], messageKey: String, level:Int) = {
 	@indent(level)<ul>@for(subMenu <- menu) {
-	@indent(level+1)<li class="@subMenu.getCssClass.getOrElse("")">
-	@indent(level+2)<a href="@subMenu.getHref.getOrElse("#")"><div>@if(subMenu.hasImg) {<i class="@subMenu.getImg.get"></i>}@Html(subMenu.getLabel)</div></a>@if(subMenu.hasSubMenus) {@displayMenu(subMenu.getSubMenus.get(), level+2)}
+	@indent(level+1)<li class="@subMenu.getCssClass.getOrElse("") @if(subMenu.isHighlighted(key)) {current}">
+	@indent(level+2)<a href="@subMenu.getHref.getOrElse("#")"><div>@if(subMenu.hasImg) {<i class="@subMenu.getImg.get"></i>}@h_msg_key(messageKey, subMenu.getLabel)</div></a>@if(subMenu.hasSubMenus) {@displayMenu(subMenu.getSubMenus.get(), messageKey, level+2)}
 	@indent(level+1)</li>}
 	@indent(level)</ul>}
 
-@defining(new ArrayList[Menu]) { mainMenu =>
+@defining(new ArrayList[Menu], "main.menu") { case (mainMenu, messageKey) =>
 					
 	@{ 
 		mainMenu.add(
-			Menu.of("Les Services", Optional.of("index.html"), Optional.of("current"), Optional.of("icon-stack"))
-				.addSubMenu("Entretien & Révisions", Optional.of("index-corporate.html"), Optional.empty(), Optional.empty())
+			Menu.of("offer.main", Optional.empty(), Optional.empty(), Optional.of("icon-stack"))
+				.addSubMenu("offer", Optional.of(routes.HomeController.offers().url), Optional.empty(), Optional.empty())
+				.addSubMenu("offer.service", Optional.of(routes.HomeController.offers().url), Optional.empty(), Optional.empty())
 				.getParentIfExists()
-				.addSubMenu("Personnalisation de montres", Optional.of("index-portfolio.html"), Optional.empty(), Optional.empty())
+				.addSubMenu("offer.restore", Optional.of(routes.HomeController.offers().url+"#offer.restore"), Optional.empty(), Optional.empty())
 				.getParentIfExists()
-				.addSubMenu("Les tarifs", Optional.of("index-portfolio.html"), Optional.empty(), Optional.empty())
-				.addSubMenu("Les tarifs", Optional.of("index-portfolio.html"), Optional.empty(), Optional.empty())
+				.addSubMenu("offer.quartz", Optional.of(routes.HomeController.offers().url+"#offer.quartz"), Optional.empty(), Optional.empty())
 				.getParentIfExists()
 				.getParentIfExists()
-				.addSubMenu("Avis clients", Optional.of("index-portfolio.html"), Optional.empty(), Optional.empty())
+				.addSubMenu("prices", Optional.of("index-portfolio.html"), Optional.empty(), Optional.empty())
+				.getParentIfExists()
+				.addSubMenu("extra", Optional.of("index-portfolio.html"), Optional.empty(), Optional.empty())
+				.getParentIfExists()
+				.addSubMenu("feedbacks", Optional.of("index-portfolio.html"), Optional.empty(), Optional.empty())
 				.getHighestParentIfExists());
 				
 		mainMenu.add(
@@ -37,8 +41,8 @@
 				.getHighestParentIfExists());
 				
 		mainMenu.add(
-			Menu.of("Entretien", Optional.of("index.html"), Optional.empty(), Optional.empty())
-				.addSubMenu("Home - Corporate", Optional.of("index-corporate.html"), Optional.empty(), Optional.empty())
+			Menu.of("service.main", Optional.empty(), Optional.empty(), Optional.empty())
+				.addSubMenu("service.why", Optional.of(routes.HomeController.content("entretien").url), Optional.empty(), Optional.empty())
 					.addSubMenu("Corporate - Layout 1", Optional.of("index-corporate.html"), Optional.empty(), Optional.empty())
 					.getParentIfExists()
 				.getParentIfExists()
@@ -46,7 +50,7 @@
 				.getHighestParentIfExists());
 				
 		mainMenu.add(
-			Menu.of("Venir nous voir", Optional.of("index.html"), Optional.empty(), Optional.of("icon-time"))
+			Menu.of("Venir nous voir", Optional.of("index.html"), Optional.of("d-lg-none d-xl-block"), Optional.of("icon-time"))
 				.addSubMenu("Home - Corporate", Optional.of("index-corporate.html"), Optional.empty(), Optional.empty())
 					.addSubMenu("Corporate - Layout 1", Optional.of("index-corporate.html"), Optional.empty(), Optional.empty())
 					.getParentIfExists()
@@ -60,6 +64,6 @@
 					<!-- Primary Navigation
 					============================================= -->
 					<nav id="primary-menu" class="not-dark">
-						@displayMenu(mainMenu,4)				
+						@displayMenu(mainMenu, messageKey,4)				
 					</nav><!-- #primary-menu end -->
 }

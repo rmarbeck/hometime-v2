@@ -127,6 +127,14 @@ public class Menu {
 		return this.parent.isPresent();
 	}
 	
+	public boolean isHighlighted(String key) {
+		if (label.equals(key))
+			return true;
+		if (hasParent())
+			return this.parent.get().isHighlighted(key);
+		return false;
+	}
+	
 	private boolean hasValueDefined(Optional<String> value) {
 		return value.isPresent();
 	}

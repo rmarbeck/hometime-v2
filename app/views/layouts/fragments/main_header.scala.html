@@ -1,0 +1,29 @@
+@(key: String)(implicit messages: play.i18n.Messages)
+
+@import scala.collection.immutable._
+@import tags._
+
+		<!-- Header
+		============================================= -->
+		<header id="header" class="transparent-header semi-transparent full-header" data-sticky-class="not-dark">
+
+			<div id="header-wrap">
+
+				<div class="container clearfix">
+
+					<div id="primary-menu-trigger"><i class="icon-reorder"></i></div>
+
+					<!-- Logo
+					============================================= -->
+					<div id="logo">
+						<a href="/" class="standard-logo" data-dark-logo="@routes.Assets.versioned("images/url-avec-logo-1500-white-high.png")"><img src="@routes.Assets.versioned("images/url-avec-logo-1500-black-high.png")" alt="Hometime Logo"></a>
+						<a href="/" class="retina-logo" data-dark-logo="@routes.Assets.versioned("images/url-avec-logo-1500-white-high.png")"><img src="@routes.Assets.versioned("images/url-avec-logo-1500-black-high.png")" alt="Hometime Logo"></a>
+					</div><!-- #logo end -->
+					
+					@layouts.fragments.menu(key)(messages)
+
+				</div>
+
+			</div>
+
+		</header><!-- #header end -->

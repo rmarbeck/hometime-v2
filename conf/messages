@@ -1,5 +1,7 @@
 # Messages en francais
 
+offer.repeat.loop=1000
+
 # Glogal high level texts
 global.code.lang.head=fr
 global.text.project.name=hometime
@@ -116,18 +118,71 @@ global.text.store.closed=Nous sommes fermés aujourd''hui
 global.text.store.closed.consequences=Pour cause de manifestations, nous serons fermés ce samedi
 global.text.coming=Venir chez Hometime
 
+# Menu
+main.menu.service=Entretien
+main.menu.service.content=Tout savoir sur l''entretien des montres
+main.menu.service.service.test=Quand faire réviser ma montre ?
+
+main.menu.offer.main=Les services
+main.menu.offer=Les services Horlogers
+main.menu.offer.service=Entretien & révisions
+main.menu.offer.restore=Restauration
+main.menu.offer.quartz=Pile et étanchéité
+main.menu.prices=Les tarifs
+main.menu.extra=Les services complémentaires
+
+main.menu.service.main=Entretien
+main.menu.service.why=Tout savoir sur l''entretien des montres
+
+
+
+
+main.menu.services.loan=Essai de montres
+main.menu.services.at.home=Déplacements à domicile
+main.menu.services.other=Les prestations complémentaires
+main.menu.customization=Personnalisation de montres
+main.menu.services.faq=Questions fréquentes (FAQ)
+main.menu.services.around=Bons plans et bonnes adresses
+main.menu.services.prices=Les tarifs
+main.menu.services.feedback=Avis clients <span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star"></span>
+main.menu.watches=Achat de montres
+main.menu.watch.collection=Les montres disponibles à l''essai
+main.menu.buy.request=Nous cherchons votre prochaine montre
+main.menu.who.are.we=Mentions légales
+main.menu.about=Qui&nbsp;sommes&nbsp;nous&nbsp;?
+main.menu.water.content=Ma montre a pris l''eau
+main.menu.broking=Trouver et acheter une montre
+main.menu.sell=Vendre sa montre
+main.menu.appointment=Venir nous voir
+#   main.menu.contact=Avis, remarques ?
+main.menu.order=Demander un devis
+main.menu.order.detailed=Demander un devis
+main.menu.auto.order=Devis interactif
+
+main.menu.content.paris=Réparation des montres sur Paris
+
+main.menu.rolex.repairing.content=Réparations Rolex
+main.menu.omega.repairing.content=Réparations Omega
+main.menu.authentication.content=Authentification des montres
+
+main.menu.watchmakers.content=Nos horlogers
+
+
+
+
+
 # Home page
 home.html.title=Révision, réparation et essai de montres à domicile sur Paris
 home.html.description=Révision et réparation de montres de marque avec intervention à domicile sur Paris et sa région, avec possibilité d''essai prolongé d''une montre de légende.
 home.html.keywords=entretien, entretien montre, révision, réparation, révision montre, réparation montre, montre mécanique, montre automatique, sav, service après vente, rolex, omega, panerai, tag heuer, paris, région parisienne, 75, yvelines, hauts de seine, devis gratuit, essai, à domicile, devis en ligne, horloger, horlogerie
 
-home.main.header.1.title=Hometime :
+home.main.header.1.title=
 home.main.header.1.text=Entretien|Achat&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;Vente&nbsp;&nbsp;|&nbsp;Conseils&nbsp;&nbsp;|Expertise
 
 home.main.header.2.title=Vous avez une belle montre, entretenez la !
 home.main.header.2.text=Votre montre est faite pour durer, mais pour cela il est nécessaire de l''entretenir régulièrement. Hometime s'occupe de tout.
 
-home.main.header.3.title=Trouvez votre prochaine montre !
+home.main.header.3.title=Trouvez votre prochaine montre&nbsp;!
 home.main.header.3.text=Hometime vous propose de trouver votre prochaine montre. Neuve ou d''occasion nous recherchons pour vous les plus belles pièces, au meilleur prix en garanties 2 ans.
 
 
@@ -177,7 +232,7 @@ home.baseline=<i>Ne perdez plus votre temps, gagnez&#8209;le&nbsp;!</i>
 home.baseline.alt=<i>Ne perdez plus votre temps, gagnez&#8209;le&nbsp;!</i>
 
 home.claim=Ne perdez plus votre temps, gagnez&#8209;le&nbsp;!
-home.claim.more=Hometime propose tous les services horlogers allant de l''entretien à la vente de montres au plus proche de vos attentes.
+home.claim.more=Hometime propose depuis 2014 tous les services horlogers allant de l''<b>entretien de montres récentes ou anciennes</b>, l''<b>expertise</b>, jusqu''à à la <b>vente de montres neuves ou d''occasion</b>.
 
 home.promise.0.alt=Mouvement de montre
 home.promise.0.claim=Votre montre est précieuse
@@ -361,30 +416,39 @@ service.5.default.to.action=En savoir plus...
 service.5.primary.to.action=Entretenir ma montre !
 
 #Rolex Repairing page
+content.rolex.repairing.content.count=4
+content.rolex.repairing.main.title=Réparation des montres Rolex
+content.rolex.repairing.content.head=Réparation des montres Rolex
+content.rolex.repairing.content.head.subtitle=Tout savoir sur l''entretien des montres Rolex
 content.rolex.repairing.html.title=Hometime vous parle de la réparation des montres Rolex
 content.rolex.repairing.html.description=Hometime répare les montres Rolex récentes ou vintage, pour les petits soucis ou les grosses restauration
 content.rolex.repairing.html.keywords=réparation, montre, rolex, entretien, vintage, restauration, submariner, daytona, datejust
 
-content.rolex.repairing.content.1.head=Problème de remontage automatique <span class="text-muted">- axe de masse défectueux</span>
-content.rolex.repairing.content.1.body=<div class="sub-title">Les symptômes :</div>La plupart des mouvements automatiques (pas les dernières générations) présente avec le temps une prise de jeu au niveau de l''axe de masse automatique. \
+content.rolex.repairing.content.3.head=Problème de remontage automatique <span class="text-muted">- axe de masse défectueux</span>
+content.rolex.repairing.content.3.body=<div class="sub-title">Les symptômes :</div>La plupart des mouvements automatiques (pas les dernières générations) présente avec le temps une prise de jeu au niveau de l''axe de masse automatique. \
  <br \><br \>Cela se traduit notamment par un bruit anormal lorsque l''on remue la montre. Il s''agit alors de la masse de remontage automatique qui frotte contre le fond de boite ou le mouvement. Par ailleurs, si la réserve de marche de votre montre semble baisser, cela peut aussi provenir d''un problème d''axe de masse. \
  <div class="sub-title">Que doit faire l''horloger ?</div>Le remplacement de l''axe de masse peut se faire dans le cadre d''un entretien partiel puisque la partie automatique est immédiatement accessible une fois la montre ouverte. Cependant, dans la très grande majorité des cas, la fatigue de l''axe et les frottements que cela génère entrainent l''encrassement du mouvement, justifiant une révision complète de la montre. \
  <br \><br \>Cet entretien est un acte simple et sans danger. \
  <div class="sub-title">Comment prévenir ce problème ?</div>Dans la mesure du possible, il est conseillé d''eviter de faire subir des vibrations à une Rolex automatique de façon prolongée (scooter, golf, tennis, bricolage...). Quoiqu''il en soit, l''usure de l''axe de masse est inévitable à long terme.
 
+content.rolex.repairing.content.3.image.url=https://d1qsyzkyf147s1.cloudfront.net/assets/images/repairing/rolex/movement.jpg
+content.rolex.repairing.content.3.default.to.action.text=Demander un devis
+content.rolex.repairing.content.3.default.to.action.perma=/perma/offre
 
 content.rolex.repairing.content.2.head=Cas d''une montre Rolex rouillée
-content.rolex.repairing.content.2.body=<div class="sub-title">Pourquoi la montre est rouillée</div>L''étanchéité des montres en général, des Rolex en particulier, ne peut être garantie indéfiniment. Les joints s''usent et perdent leurs propriétés avec le temps. Par ailleurs, si la couronne n''est pas refermée après le réglage de la montre, l''eau a plus de chances de rentrer dans la montre. \
+content.rolex.repairing.content.2.body=<div class="sub-title">Pourquoi la montre est rouillée ?</div>L''étanchéité des montres en général, des Rolex en particulier, ne peut être garantie indéfiniment. Les joints s''usent et perdent leurs propriétés avec le temps. Par ailleurs, si la couronne n''est pas refermée après le réglage de la montre, l''eau a plus de chances de rentrer dans la montre. \
  <br \><br \>Si un horloger intervient immédiatement pour sécher la montre (et la plupart du temps la réviser), le cadran et le mouvement n''ont pas le temps de rouiller. En revanche, dès que l''eau passe plusieurs jours dans la montre les dégâts peuvent être importants et certaines pièces rouiller. \
- <div class="sub-title">L''auscultation :</div>Lors de la prise en charge de la montre, si l''eau est encore présente dans le boitier, la première étape consiste à sécher la montre. \
+ <br \><div class="sub-title">L''auscultation :</div>Lors de la prise en charge de la montre, si l''eau est encore présente dans le boitier, la première étape consiste à sécher la montre. \
  <br \><br \>Lorsque la montre est sèche, l''horloger évalue l''étendue des dégâts et détermine si les pièces endommagées sont à remplacer ou si elles peuvent être restaurées. Dans de rares cas, il peut arriver que le mouvement ne puisse pas être sauvé. \
  <div class="sub-title">Cas extrêmes :</div>En fonction du type d''eau (piscine, eau de mer), les aiguilles mais surtout le cadran peuvent être détériorés de façon définitive. Dans ce cas extrême, il peut être conseillé de repeindre le cadran, tout en ayant conscience que cela dénaturera toujours la montre. \
  <div class="sub-title">Bon à savoir :</div>Dès l''apparition de buée sur le verre, n''hésitez pas à aller voir un horloger pour sécher la montre ! En un mot, ne perdez pas de temps !
 
 content.rolex.repairing.2.to.action=En savoir plus...
 
-content.rolex.repairing.content.3.head=La réparation des montres Rolex en général
-content.rolex.repairing.content.3.body= <br />Les montres Rolex représentent une grosse partie des réparations réalisées par Hometime, environ 1 montre sur 3 est une Rolex : Submariner, Daytona, Datejust ou d''autres modèles plus spécifiques. \
+content.rolex.repairing.content.2.image.url=https://d1qsyzkyf147s1.cloudfront.net/assets/images/repairing/rolex/water.jpg
+
+content.rolex.repairing.content.1.head=La réparation des montres Rolex en général
+content.rolex.repairing.content.1.body= <br />Les montres Rolex représentent une grosse partie des réparations réalisées par Hometime, environ 1 montre sur 3 est une Rolex : <b>Submariner, Daytona, Datejust</b> ou d''autres modèles plus spécifiques. \
  <br /><br />Outre les révisions complètes, à faire tous les 10 ans environ, les réparations les plus fréquentes sont : \
  <ul><li>Le changement de verre, </li> \
  <li>La réparation du système de remontage automatique,</li> \
@@ -409,9 +473,6 @@ content.rolex.repairing.4.to.action=Demander un devis
 
 content.rolex.repairing.1.default.to.action=Venir nous voir
 content.rolex.repairing.1.primary.to.action=Demander un devis
-
-
-content.rolex.repairing.main.title=Réparation des montres Rolex
 
 content.rolex.repairing.1.title=Masse automatique Rolex
 content.rolex.repairing.2.title=Mouvement de montre Rolex rouillé
@@ -559,16 +620,20 @@ content.auth.3.to.action=Venir nous voir
 
 
 # Watchmakers page
+watchmakers.content.count=3
+watchmakers.content.head=Les horlogers Hometime
+watchmakers.content.head.subtitle=Qui sont nos horlogers ?
 watchmakers.html.title=Les horlogers Hometime
 watchmakers.html.description=Connaitre les horlogers travaillant chez watch next, leur expérience, leur parcours, leurs spécialités
 watchmakers.html.keywords=horlogers, expérience, diplomes,spécialités 
 
-watchmakers.content.1.head=Simon <span class="text-muted">- chef d''atelier</span>
-watchmakers.content.1.body=<div class="sub-title">Qui est-il ?</div>Simon a 39 ans, il exerce depuis 20 ans, il vit en région parisienne. \
+watchmakers.content.3.head=Simon <span class="text-muted">- chef d''atelier</span>
+watchmakers.content.3.body=<div class="sub-title">Qui est-il ?</div>Simon a 39 ans, il exerce depuis 20 ans, il vit en région parisienne. \
  <div class="sub-title">Son parcours :</div>Après avoir travaillé pour les plus grandes maisons en SAV : Audemars Piguet, Jaeger LeCoultre... Simon a ouvert son propre atelier pendant 2 ans à Saint Germain en Laye. Après quelques expériences chez des horlogers prestigieux dans Paris, il a rejoint l''équipe en 2017. \
  <div class="sub-title">Son rôle chez Hometime :</div>Simon est associé chez Hometime. Il est le chef de l''atelier et à ce titre organise le travail, réalise les devis et se charge des réparations les plus compliquées.\
  <div class="sub-title">Il aime :</div>Tout ce qui est difficile... son surnom, <b>l''horloger de l''extrême</b>.
 
+watchmakers.content.3.image.url=https://d1qsyzkyf147s1.cloudfront.net/assets/images/watchmakers/simon.jpg
 
 watchmakers.content.2.head=Lou
 watchmakers.content.2.body=<div class="sub-title">Qui est-elle ?</div>Lou a 24 ans, elle exerce depuis 6 mois, elle vit à Paris et vient de Bretagne. \
@@ -576,8 +641,15 @@ watchmakers.content.2.body=<div class="sub-title">Qui est-elle ?</div>Lou a 24 a
  <div class="sub-title">Son rôle chez Hometime :</div>Lou travaille chez Hometime depuis Septembre 2018, elle répare les montres équipées de mouvements ETA, Valjoux et se forme aux mouvements plus complexes sous la conduite de Simon.\
  <div class="sub-title">Elle aime :</div>Se lever le matin pour venir travailler et apprendre de ses brillants patrons ;-)
 
-watchmakers.content.3.head=Notre équipe d''horlogers
-watchmakers.content.3.body= <br />Hometime dispose de sa propre équipe d''horlogers dédiés. Ils travaillent sur place et peuvent faire un premier diagnostic lors du dépôt de la montre avant de l''ausculter plus attentivement lorsque cela est nécessaire. \
+watchmakers.content.2.image.url=https://d1qsyzkyf147s1.cloudfront.net/assets/images/watchmakers/lou.jpg
+
+watchmakers.content.3.default.to.action.text=Venir nous voir
+watchmakers.content.3.default.to.action.perma=/perma/venir
+watchmakers.content.3.primary.to.action.text=Demander un devis
+watchmakers.content.3.primary.to.action.perma=/perma/offre
+
+watchmakers.content.1.head=Notre équipe d''horlogers
+watchmakers.content.1.body= <br />Hometime dispose de sa propre équipe d''horlogers dédiés. Ils travaillent sur place et peuvent faire un premier diagnostic lors du dépôt de la montre avant de l''ausculter plus attentivement lorsque cela est nécessaire. \
  <br /><br />Spécialisés dans le Service Après Vente, ils ont les connaissances leur permettant de travailler sur des mouvements récents ou plus anciens, avec ou sans complication.\
  <br /><br />De la réparation d''une montre de grande marque à complications ayant subi de gros dégâts à un simple changement de pile de montre plus ou moins basique, ils sont toujours opérationnels.
  
@@ -742,6 +814,7 @@ offer.menu.text.prices=Les tarifs
 offer.baseline=Les services et les prestations Hometime
 
 offer.service.head=Révision & réparations
+offer.service.head.subtitle=Entretien des montres récentes
 offer.service.body=Hometime prend en charge la révision ou la réparation de votre montre. L''ensemble des opérations sont réalisées soit par <b>l''un de nos horlogers</b>, soit directement par <b>la marque elle-même</b>. Hometime vous conseille, et <b>c''est vous qui choisissez</b>.\
  <br /><br />Hometime se charge pour vous de :\
  <ul><li>Vous apporter toutes les informations et conseils préalables à l''intervention</li>\
@@ -754,10 +827,14 @@ offer.service.body=Hometime prend en charge la révision ou la réparation de vo
  <br /><br />Hometime peut prendre en charge les montres des marques suivantes : <b>Alpina, Audemars Piguet, Baume & Mercier, Blancpain, Bell & Ross, Breguet, Breitling, B.R.M, Bulgari, Cartier, Certina, Chanel, Chopard, Frédérique Constant, Festina, Fortis, Girard Perregaux, Hamilton, Hermès, Hublot, Ice Watch, IWC, Jaeger LeCoultre, Longines, Michel Herbelin, Montblanc, Nomos, Omega, Panerai, Patek Philippe, Rado, Rolex, Seiko, Swatch, Tag Heuer, Tissot, Tudor, Ulysse Nardin, Vacheron Constantin, Victorinox, Zenith</b>.\
  <br /><br />Si la marque de votre montre ne figure pas dans cette liste, vous pouvez nous <a href="mailto:contact@hometime.fr">contacter par mail</a> pour que nous puissions déterminer si nous pouvons intervenir.
 
+offer.service.action.0.text=Pourquoi réviser ?
+offer.service.action.1.text=Demander un devis
+
 offer.service.call.to.action.more=Pourquoi réviser ?
 offer.service.call.to.action.order=Demander un devis
 
 offer.restore.head=Service de restauration
+offer.restore.head.subtitle=Entretien de montres "vintage" ou accidentées
 offer.restore.body=Hometime propose un service de <b>restauration de montres anciennes</b>. Quelque soit l''état de votre montre, il est probable que nos horlogers partenaires puissent lui redonner vie et un aspect proche de l''original.\
  <br /><br />Le service de restauration peut comprendre en fonction des besoins :\
  <ul><li>La remise en état du boitier et des éléments extérieurs en général,</li>\
@@ -770,6 +847,7 @@ offer.restore.body=Hometime propose un service de <b>restauration de montres anc
 offer.restore.call.to.action.order=Demander un devis de restauration
 
 offer.quartz.head=Changement de pile et étanchéité
+offer.quartz.head.subtitle=Entretien des montres à quartz
 offer.quartz.body=Nous proposons un service de changement de vos piles de montres dans nos locaux situés à <b>Paris dans le 1er arrondissement</b>.\
  <br /><br />En fonction du type de montre et de vos attentes notre service de changement de pile intégre ou non le processus assurant <b>l''étanchéité de votre montre</b>, conformément au niveau d''étanchéité défini par son fabriquant.\
  <br /><br />La majeure partie du temps, le changement de pile ne prend que <b>quelques minutes et vous repartez avec votre montre</b>.\
@@ -779,13 +857,14 @@ offer.quartz.call.to.action.order=Voir les tarifs de changement de pile
 
 
 offer.auth.head=Authentification de montres
+offer.auth.head.subtitle=Vérification de l''authenticité et estimation d''une montre
 offer.auth.body=L''authentification des montres de marques de luxe devient un véritable enjeu. De plus en plus de fausses montres très bien faites circulent (principalement des Rolex), alors que de moins en moins de professionnels acceptent de vérifier l''authenticité.\
- <div class="sub-title">Méthode :</div>\
- Afin de certifier l''authenticité nous vérifions systématiquement :\
+ <br /><br />Méthode :\
+ <br />Afin de certifier l''authenticité nous vérifions systématiquement :\
  <ul><li>l''aspect extérieur de la montre (boitier, bracelet, cadran, aiguilles...),</li>\
  <li>son mouvement,</li>\
  <li>éventuellement si fournis, les accesoires (boite, papiers).</li></ul>\
- <div class="sub-title">Différents cas de figure :</div>\
+ <p><br /><br />Différents cas de figure :</p>\
  <ul><li><b>La montre n''est pas authentique : </b>nous rédigeons gratuitement un certificat de non authenticité,</li>\
  <li><b>La montre est 100% authentique et d''origine : </b>en fonction du besoin nous pouvons vous confirmer oralement l''authenticité ou formaliser l''authenticité par le biais d''un certificat,</li>\
  <li><b>La montre est authentique, mais certains éléments ne sont pas cohérents : </b>nous pouvons rédiger un certificat en ce sens.</li></ul>
@@ -804,13 +883,14 @@ offer.loan.body=Parce que vous n''avez qu''une seule montre, ou que vous souhait
 offer.loan.call.to.action.collection=Nos montres !
 
 offer.home.head=Déplacements à domicile
+offer.home.head.subtitle=En cas de difficulté, nous pouvons venir à vous
 offer.home.body=Toutes les prestations ont lieu à votre domicile.\
- <div class="sub-title">Région couverte :</div>\
- Hometime couvre aujourd''hui :\
+ <br/><br/>Région couverte :\
+ <br/>Hometime couvre aujourd''hui :\
  <ul><li>l''ensemble des arrondissements de <b>Paris</b></li>\
  <li>la banlieue parisienne.</li></ul>\
- <div class="sub-title">Horaires :</div>\
- Hometime vous propose des horaires étendus pour votre plus grand confort :\
+ <p>Horaires :\
+ <br/>Hometime vous propose des horaires étendus pour votre plus grand confort :</p>\
  <ul><li><b>Du Lundi au samedi</b>,</li>\
  <li><b>De 7h30 à 23h</b></li></ul>
 
@@ -819,6 +899,7 @@ offer.home.call.to.action.call.request=Etre rappelé
 offer.home.call.to.action.order=Demander un devis
 
 offer.other.head=Achat et vente de montres
+offer.other.head.subtitle=Montres neuves ou d''occasion
 offer.other.body=Vous souhaitez acheter une montre neuve ou d''occasion, vous souhaitez vendre votre montre ou l''expertiser, nous sommes là !
 
 offer.other.call.to.action.broking=Achetez une montre
@@ -1316,6 +1397,28 @@ auto.order.movado.brand.name=Movado
 auto.order.movado.brand.models=Edge, Modern classic, Museum Classic, Ultra slim, Red Label, Circa, Masino, Sapphire, SE Pilot, Series 800, Synergy, Vizio
 quartz.movado.brand.name=Movado
 quartz.movado.brand.models=Edge, Modern classic, Museum Classic, Ultra slim, Red Label, Circa, Masino, Sapphire, SE Pilot, Series 800, Synergy, Vizio
+
+
+
+
+quotation.form.ordertype.label=Type d''entretien <br />(<a href="{0}">quand faire une révision&nbsp;?</a>)
+quotation.form.brand.label=Marque
+quotation.form.brand.default=Sélectionnez la marque de votre montre
+quotation.form.model.label=Modèle
+quotation.form.model.placeholder=Nom du modèle - Année
+quotation.form.method.label=Réseau
+
+quotation.form.nameofcustomer.label=Vos nom et prénom
+quotation.form.nameofcustomer.placeholder=Prénom Nom
+quotation.form.email.label=Votre email
+quotation.form.email.placeholder=exemple@nomdedomaine.fr
+quotation.form.city.label=Votre lieu de résidence
+quotation.form.city.placeholder=Ville
+quotation.form.phonenumber.label=Votre numéro de téléphone
+quotation.form.phonenumber.placeholder=06xxxxxx
+quotation.form.remark.label=Remarques
+quotation.form.remark.placeholder=Vous souhaitez préciser quelque-chose
+
 
 
 

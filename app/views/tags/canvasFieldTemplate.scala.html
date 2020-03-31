@@ -1,0 +1,9 @@
+@(elements: helper.FieldElements)
+<label for="@elements.id" class="@elements.args.get(Symbol("_class"))">@elements.label</label>
+	@elements.input
+    @elements.infos.map { info =>
+        <dd class="info">@info</dd>
+    }
+    @elements.errors.map { error =>
+        <dd class="error">@error</dd>
+    }

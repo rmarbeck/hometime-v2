@@ -1,76 +1,31 @@
 @*
- *
+ * Main template
  *@
-@(title: String, description: String = "", keywords: String = "")(content: Html)
+@(key: String, title: String, description: String = "", keywords: String = "")(content: Html)(implicit messages: play.i18n.Messages)
 
 @import scala.collection.immutable._
 
 <!DOCTYPE html>
 <html dir="ltr" lang="en-US">
 <head>
-
-	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
-	<meta name="author" content="Hometime" />
-
-	<!-- Stylesheets
-	============================================= -->
-	<link href="https://fonts.googleapis.com/css?family=Lato:300,400,400i,700|Raleway:300,400,500,600,700|Crete+Round:400i" rel="stylesheet" type="text/css" />
-
-	@List("css/bootstrap.css",
-			"stylesheets/style.css",
-			"css/swiper.css",
-			"stylesheets/dark-proxy.css",
-			"css/font-icons.css",
-			"css/animate.css",
-			"css/magnific-popup.css",
-			"stylesheets/responsive-proxy.css",
-			"stylesheets/custom.css").map { e =><link rel="stylesheet" href="@routes.Assets.versioned(e)" type="text/css" />
-	}
-
-	<meta name="viewport" content="width=device-width, initial-scale=1" />
-
-	<!-- Document Title
-	============================================= -->
-	<title>@title</title>
-	<meta name="description" content="@description">
-	<meta name="keywords" content="@keywords">
-
+	@layouts.fragments.main_head(title, description, keywords)(Html(""))(Html(""))
 </head>
 
-<body class="stretched">
+<body class="stretched @key">
 
 	<!-- Document Wrapper
 	============================================= -->
 	<div id="wrapper" class="clearfix">
+		
+		@layouts.fragments.main_alert_bar()
 
-		<!-- Header
-		============================================= -->
-		<header id="header" class="transparent-header semi-transparent full-header" data-sticky-class="not-dark">
+		@layouts.fragments.main_top_bar()
 
-			<div id="header-wrap">
+		@layouts.fragments.main_header(key)(messages)
 
-				<div class="container clearfix">
-
-					<div id="primary-menu-trigger"><i class="icon-reorder"></i></div>
-
-					<!-- Logo
-					============================================= -->
-					<div id="logo">
-						<a href="/" class="standard-logo" data-dark-logo="@routes.Assets.versioned("images/url-avec-logo-1500-white-high.png")"><img src="@routes.Assets.versioned("images/url-avec-logo-1500-black-high.png")" alt="Hometime Logo"></a>
-						<a href="/" class="retina-logo" data-dark-logo="@routes.Assets.versioned("images/url-avec-logo-1500-white-high.png")"><img src="@routes.Assets.versioned("images/url-avec-logo-1500-black-high.png")" alt="Hometime Logo"></a>
-					</div><!-- #logo end -->
-					
-					@layouts.fragments.menu()
-
-				</div>
-
-			</div>
-
-		</header><!-- #header end -->
-
-			@content
+		@content
 			
-			@layouts.fragments.footer()
+		@layouts.fragments.footer()
 
 	</div><!-- #wrapper end -->
 

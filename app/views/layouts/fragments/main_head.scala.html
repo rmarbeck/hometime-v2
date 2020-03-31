@@ -1,0 +1,34 @@
+@(title: String, description: String = "", keywords: String = "")(precontent: Html)(postcontent: Html)
+
+@import scala.collection.immutable._
+@import tags._
+
+	@precontent
+	
+	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+	<meta name="author" content="Hometime" />
+
+	<!-- Stylesheets
+	============================================= -->
+	<link href="https://fonts.googleapis.com/css?family=Lato:300,400,400i,700|Raleway:300,400,500,600,700|Crete+Round:400i" rel="stylesheet" type="text/css" />
+
+	@List("css/bootstrap.css",
+			"stylesheets/style.css",
+			"css/swiper.css",
+			"stylesheets/dark-proxy.css",
+			"css/font-icons.css",
+			"css/animate.css",
+			"css/magnific-popup.css",
+			"stylesheets/responsive-proxy.css",
+			"stylesheets/custom.css").map { e =><link rel="stylesheet" href="@routes.Assets.versioned(e)" type="text/css" />
+	}
+
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+	<!-- Document Title
+	============================================= -->
+	<title>@title</title>
+	<meta name="description" content="@description">
+	<meta name="keywords" content="@keywords">
+	
+	@postcontent

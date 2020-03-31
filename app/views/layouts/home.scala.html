@@ -9,7 +9,7 @@
 @import scala.collection.immutable._
 
 
-@layouts.main(Messages("home.html.title"), Messages("home.html.description"), Messages("home.html.keywords")) {
+@layouts.main_helper("home") {
 
 		<section id="slider" class="slider-element slider-parallax swiper_wrapper clearfix">
 
@@ -21,7 +21,7 @@
 							<div class="container clearfix">
 								<div class="slider-caption slider-caption-center">
 									<h2 data-animate="fadeInUp">
-										<span class="text-rotater nocolor" data-separator="|" data-rotate="flipInX" data-speed="3500">@Html(Messages("home.main.header.1.title"))<br />
+										<span class="text-rotater nocolor" data-separator="|" data-rotate="flipInX" data-speed="3500">@Html(Messages("home.main.header.1.title"))
 											<span class="t-rotate">@Html(Messages("home.main.header.1.text"))</span>
 										</span>
 									</h2>

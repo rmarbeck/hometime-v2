@@ -7,7 +7,10 @@ lazy val root = (project in file(".")).enablePlugins(PlayJava)
 
 scalaVersion := "2.13.1"
 
-libraryDependencies += guice
+libraryDependencies ++= Seq(
+  guice,
+  javaWs
+)
 
 includeFilter in (Assets, LessKeys.less) := "style.less" | "responsive-proxy.less" | "dark-proxy.less" | "custom.less"
 

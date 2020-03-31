@@ -32,13 +32,18 @@
 					</div>
 }
 
-@quotation(icon: String, url: String, title: String, subTitle: String, index: Int) = {
-					<div class="col_one_third topmargin-lg nobottommargin @if(index == 2) {col_last}">
+@quotation(icon: String, url: String, title: String, subTitle: String, index: Int, list: List[String]) = {
+					<div class="col_one_third nobottommargin @if(index == 2) {col_last}">
 						<div class="feature-box fbox-center fbox-dark fbox-dark fbox-bg fbox-effect bottommargin-lg">
 							<div class="fbox-icon">
 								<a href="@url"><i class="i-alt noborder @icon"></i></a>
 							</div>
 							<h3>@title<span class="subtitle">@subTitle</span></h3>
+							<div class="bottommargin-sm topmargin-sm">
+								<ul class="features">
+								@list.map{ case value => <li> @value </li> }
+								</ul>
+							</div>
 						</div>
 					</div>
 }
@@ -47,37 +52,15 @@
 
 @layouts.home(Messages("home.html.title"), Messages("home.html.description"), Messages("home.html.keywords")) {
   <div class="content-wrap">
-
-				<div class="promo promo-light promo-full bottommargin-lg header-stick notopborder">
-					<div class="container clearfix">
-						<h3>@Html(Messages("global.text.call.us.reasons"))<span>&nbsp;<a href="tel:@Messages("global.href.phone.number")" rel="nofollow">@Html(Messages("global.text.phone.number"))</a></span></h3>
-						<span>@Html(Messages("global.text.footer.conditions.cost")), @Html(Messages("global.text.footer.conditions.when"))</span>
-						<a href="@routes.HomeController.quotationOptions()" class="button button-dark button-xlarge button-rounded">@Html(Messages("home.action.text.visit.us.action"))</a>
-					</div>
+  				<div class="claim divcenter center clearfix bottommargin-sm" style="max-width: 900px;">
+  					<!--<img class="bottommargin" src="/assets/images/url-avec-logo-375-black-high.png" alt="">-->
+					<h1>@Html(Messages("home.claim"))</h1>
+					<h2>@Html(Messages("home.claim.more"))</h2>
+					<a href="#" class="button button-3d button-dark button-large ">Venir nous voir</a>
+					<a href="#" class="button button-3d button-large">Demander un devis</a>
 				</div>
 				
-				<div class="container clearfix">
-					<div class="row clearfix">
-
-						<div class="col-xl-5">
-							<div class="heading-block topmargin">
-								<h1>@Html(Messages("home.claim"))</h1>
-							</div>
-							<p class="lead">@Html(Messages("home.claim.more"))</p>
-						</div>
-
-						<div class="col-xl-7">
-
-							<div style="position: relative; margin-bottom: -60px;" class="ohidden" data-height-xl="426" data-height-lg="567" data-height-md="470" data-height-md="287" data-height-xs="183">
-								<img src="/assets/images/home/exploded.png" style="position: absolute; top: 0; left: 0;" data-animate="fadeInUp" data-delay="100" alt="Chrome">
-							</div>
-
-						</div>
-
-					</div>
-				</div>
-				
-				<div class="section nobottommargin">
+				<div class="section nobottommargin padding-reduced">
 					<div class="container clear-bottommargin clearfix">
 
 						<div class="row topmargin-sm clearfix">
@@ -88,16 +71,29 @@
 
 						</div>
 					</div>
-				</div>
-
+				</div>		
+  
 				<div class="container clearfix">
+					<div class="heading-block topmargin-lg center">
+						<h2>Devis d'entretien ou de réparation</h2>
+						<span class="divcenter">Choisissez le mode qui vous convient</span>
+					</div>
 				
-					@List(("icon-line-pie-graph", "#", "Devis interactif", "En 5 étapes, évaluez le coût de l'entretien de votre montre."),
-							("icon-eye", "#", "Devis horloger", "Nos horlogers analysent votre besoin et vous répondent."),
-							("icon-shop", "#", "Devis formel", "Sur place, nous établissons un devis ferme montre en main.")).zipWithIndex.map { case (value,index) => @quotation(value._1, value._2, value._3, value._4, index+1) }
-					
+				
+					@List(("icon-line-pie-graph", "#", "Devis interactif", "En 5 étapes, évaluez le coût de l'entretien de votre montre.", List("Devis immédiat", "Prix et délais approximatifs", "24h/24")),
+							("icon-eye", "#", "Devis horloger", "Nos horlogers analysent votre besoin et vous répondent.", List("Devis détaillé", "Un horloger vous répond", "Sous 48h maximum")),
+							("icon-shop", "#", "Devis formel", "Sur place, nous établissons un devis ferme montre en main.", List("Nous auscultons votre montre", "Le devis est gratuit", "Il nous engage"))).zipWithIndex.map { case (value,index) => @quotation(value._1, value._2, value._3, value._4, index+1, value._5) }
+												
+				</div>
+				
+
+				<div class="promo promo-light promo-full bottommargin-sm notopborder padding-reduced">
+					<div class="container clearfix">
+						<h3>@Html(Messages("global.text.call.us.reasons"))<span>&nbsp;<a href="tel:@Messages("global.href.phone.number")" rel="nofollow">@Html(Messages("global.text.phone.number"))</a></span></h3>
+						<span>@Html(Messages("global.text.footer.conditions.cost")), @Html(Messages("global.text.footer.conditions.when"))</span>
+						<a href="@routes.HomeController.quotationOptions()" class="button button-dark button-xlarge button-rounded">@Html(Messages("home.action.text.visit.us.action"))</a>
+					</div>
 				</div>				
-				
 
 
 				<div class="container clearfix">

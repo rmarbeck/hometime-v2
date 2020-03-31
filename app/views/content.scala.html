@@ -1,0 +1,71 @@
+@this(contentProvider: fr.hometime.utils.ContentProvider)
+@(key: String)(implicit messages: play.i18n.Messages)
+
+@import scala.collection.immutable._
+
+@import fr.hometime.utils._
+
+@article(index: Int) = {
+
+			@if(index != 1) {
+			<div class="divider divider-short divider-center"><i class="icon-crop"></i></div>
+			} 
+			
+			<h3>@Html(contentProvider.get("content."+index+".head"))</h3>
+
+			@articleImage(index)
+			
+			@articleSubtitle(index)
+			
+			<span>@Html(contentProvider.get("content."+index+".body"))</span>
+			
+			<div class="clear"></div>
+			
+			@articleActions(index)
+}
+
+@articleSubtitle(index: Int) = {
+	@if(contentProvider.exists("content."+index+".head.subtitle")) {
+			<h4>@Html(contentProvider.get("content."+index+".head.subtitle"))</h4>
+	}
+}
+
+@articleImage(index: Int) = {
+	@if(contentProvider.exists("content."+index+".image.url")) {
+			<img class="@if(index%2==1) {alignleft} else {alignright} img-responsive" src="@contentProvider.get("content."+index+".image.url")" title="@contentProvider.getOrElse("content."+index+".image.title", "")" alt="@contentProvider.getOrElse("content."+index+".image.alt", "")">
+	}
+}
+
+@articleActions(index: Int) = {
+	@if(contentProvider.exists("content."+index+".default.to.action.text") || contentProvider.exists("content."+index+".primary.to.action.text")) {
+			<div class="center">
+				@if(contentProvider.exists("content."+index+".default.to.action.text")) {
+				<a href="@contentProvider.get("content."+index+".default.to.action.perma")" class="button button-border button-dark button-rounded button-large noleftmargin topmargin-sm">@contentProvider.get("content."+index+".default.to.action.text")</a>
+				}
+				@if(contentProvider.exists("content."+index+".primary.to.action.text")) {
+				<a href="@contentProvider.get("content."+index+".primary.to.action.perma")" class="button button-border button-dark button-rounded button-large noleftmargin topmargin-sm">@contentProvider.get("content."+index+".primary.to.action.text")</a>
+				}
+			</div>
+	}
+}
+
+
+@layouts.main_helper(key) {
+
+	@(contentProvider.initialize(key))
+
+	<div class="content-wrap content-template">
+		<div class="container clearfix">
+			<div class="heading-block topmargin-sm">
+				<h2>@contentProvider.get("content.head")</h2>
+				@if(contentProvider.exists("content.head.subtitle")) {<span>@contentProvider.get("content.head.subtitle")</span>}
+			</div>
+		
+		@for(index <- 1 until contentProvider.getIntValue("content.count")+1){
+			@article(index)
+		}
+		
+		<div class="divider divider-center"><a href="#" data-scrollto="#header"><i class="icon-chevron-up"></i></a></div>
+		</div>	
+	</div>
+}

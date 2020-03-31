@@ -1,0 +1,11 @@
+@(elements: helper.FieldElements)
+<label for="@elements.id" class="@elements.args.get(Symbol("_class")) @if(elements.hasErrors) {error}">@elements.label</label><br />
+<div class="btn-group btn-group-toggle flex-wrap" data-toggle="buttons">
+	@elements.input
+</div>
+    @elements.errors.map { error =>
+        <dd class="error">@error</dd>
+    }
+    @elements.infos.map { info =>
+        <dd class="info">@info</dd>
+    }

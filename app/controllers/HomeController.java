@@ -12,10 +12,12 @@ import play.mvc.*;
  */
 public class HomeController extends Controller {
 	private final MessagesApi messagesApi;
+	private final views.html.content contentTemplate;
 	
     @Inject
-    public HomeController(MessagesApi messagesApi) {
+    public HomeController(MessagesApi messagesApi, views.html.content contentTemplate) {
         this.messagesApi = messagesApi;
+        this.contentTemplate = contentTemplate;
     }
 
     /**
@@ -32,5 +34,20 @@ public class HomeController extends Controller {
     public Result quotationOptions(Http.Request request) {
     	Messages messages = messagesApi.preferred(request);
         return ok(views.html.quotation_options.render(messages));
+    }
+    
+    public Result content(Http.Request request, String key) {
+    	Messages messages = messagesApi.preferred(request);
+        return ok(contentTemplate.render(key, messages));
+    }
+    
+    public Result content2(Http.Request request, String page) {
+    	Messages messages = messagesApi.preferred(request);
+        return ok(contentTemplate.render(page, messages));
+    }
+
+    public Result offers(Http.Request request) {
+    	Messages messages = messagesApi.preferred(request);
+        return ok(views.html.offers.render(messages));
     }
 }

@@ -3,7 +3,21 @@
 # ~~~~
 
 # An example controller showing a sample home page
-GET     /                           controllers.HomeController.index
+GET     /																	controllers.HomeController.index(request: Request)
+
+GET     /estimation/prix/devis/reparation/revision/montre					controllers.HomeController.quotationOptions(request: Request)
+
+GET     /demande-de-devis													controllers.HomeController.quotationForm(request: Request)
+
+GET     /les-services/l-offre												controllers.HomeController.offers(request: Request)
+
+GET     /entretien-reparation												controllers.HomeController.content(request: Request, key = "entretien")
+GET     /nos-horlogers														controllers.HomeController.content(request: Request, key = "watchmakers")
+GET     /reparation/montre/rolex											controllers.HomeController.content(request: Request, key = "content.rolex.repairing")
+GET     /content/:page														controllers.HomeController.content(request: Request, page: String)
+
+GET		/perma/offre														controllers.Default.redirect(to = "/les-services/l-offre")
+GET		/perma/venir														controllers.Default.redirect(to = "/venir-nous-voir")
 
 # Map static resources from the /public folder to the /assets URL path
 GET     /assets/*file               controllers.Assets.versioned(path="/public", file: Asset)
