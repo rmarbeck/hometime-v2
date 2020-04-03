@@ -1,0 +1,23 @@
+@()(implicit request: Http.Request, messages: play.i18n.Messages)
+
+@display(typeOfAlert: String, message: String, icon: String) = {
+		<div id="flash-bar-unstyled">
+			<div class="alert alert-@typeOfAlert nobottommargin center">
+				<button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+				<i class="@icon"></i><strong>@Html(Messages(message))</strong>
+			</div>
+		</div><!-- #flash-bar end -->
+}
+
+		<!-- Flash Bar
+		============================================= -->
+		@request.flash.get("success").map { message =>
+			@display("success", message, "icon-thumbs-up21")
+		}
+		@request.flash.get("warning").map { message =>
+			@display("warning", message, "icon-info-sign")
+		}
+		@request.flash.get("error").map { message =>
+			@display("danger", message, "icon-warning-sign")
+		}
+

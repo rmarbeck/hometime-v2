@@ -1,0 +1,17 @@
+@()(implicit request: Http.Request, messages: play.i18n.Messages)
+
+@import scala.collection.immutable._
+@import tags._
+
+@defining("page.visit.us") { case (key) =>
+
+	@layouts.main_helper_with_head_block(key) {
+				<div class="container clearfix">
+					@List.range(1, 5).map{ index => <p>@Html(Messages("page.visit.us.text.part."+index))</p> }
+				</div>	
+
+				<div style="height: 400px; margin-bottom: 20px; position: relative; overflow: hidden" class="gmap">
+					<iframe width="100%" height="400" frameborder="0" style="border:0" src="https://www.google.com/maps/embed/v1/place?key=AIzaSyBILpKrEOIAOcjVBa9-ownlM_oiEQqBTyc&q=322+rue+saint+honoré,Paris" allowfullscreen></iframe>
+				</div>
+	}
+}

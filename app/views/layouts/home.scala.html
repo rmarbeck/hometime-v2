@@ -4,7 +4,7 @@
  * two arguments, a `String` for the title of the page and an `Html`
  * object to insert into the body of the page.
  *@
-@(title: String, description: String = "", keywords: String = "")(content: Html)(implicit messages: play.i18n.Messages)
+@()(content: Html)(implicit request: Http.Request, messages: play.i18n.Messages)
 
 @import scala.collection.immutable._
 

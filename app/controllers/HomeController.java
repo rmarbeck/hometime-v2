@@ -28,26 +28,31 @@ public class HomeController extends Controller {
      */
     public Result index(Http.Request request) {
     	Messages messages = messagesApi.preferred(request);
-        return ok(views.html.index.render(messages));
+        return ok(views.html.index.render(request, messages));
+    }
+    
+    public Result visit(Http.Request request) {
+    	Messages messages = messagesApi.preferred(request);
+        return ok(views.html.visit_us.render(request, messages));
     }
 
     public Result quotationOptions(Http.Request request) {
     	Messages messages = messagesApi.preferred(request);
-        return ok(views.html.quotation_options.render(messages));
+        return ok(views.html.quotation_options.render(request, messages));
     }
     
     public Result content(Http.Request request, String key) {
     	Messages messages = messagesApi.preferred(request);
-        return ok(contentTemplate.render(key, messages));
+        return ok(contentTemplate.render(key, request,  messages));
     }
     
     public Result content2(Http.Request request, String page) {
     	Messages messages = messagesApi.preferred(request);
-        return ok(contentTemplate.render(page, messages));
+        return ok(contentTemplate.render(page, request,  messages));
     }
 
     public Result offers(Http.Request request) {
     	Messages messages = messagesApi.preferred(request);
-        return ok(views.html.offers.render(messages));
+        return ok(views.html.offers.render(request, messages));
     }
 }

@@ -1,30 +1,49 @@
-@(form: Form[QuotationRequestData])(implicit request: Http.Request, messages: play.i18n.Messages)
+@(form: Form[QuotationRequestData], brands: Optional[List[Brand]], brand: Optional[Brand])(implicit request: Http.Request, messages: play.i18n.Messages)
 
 @import scala.collection.immutable._
-
 @import tags._
-
-@key = {quotation.form}
 
 @implicitField = @{ helper.FieldConstructor(canvasFieldTemplate.f) }
 
-@inputDiv(size: Int)(content: Html) = {
-	<div class="col-md-@size form-group mb-4">
+@*****************************************
+ * Keys
+ *****************************************@
+
+@formKey = {quotation.form}
+
+@keyIncludingBrand = {@formKey.@brand.map(_.getInternalName).getOrElse("undefined")}
+
+@*****************************************
+ * Style Helpers
+ *****************************************@
+
+@inputDiv(size: Int, addedClass: String="")(content: Html) = {
+	<div class="col-md-@size form-group mb-4 @addedClass">
 		@content
 	</div>
 }
 
-@fullWidth()(content: Html) = {
-	@inputDiv(12) {@content}
+@fullWidth(addedClass: String="")(content: Html) = {
+	@inputDiv(12, addedClass) {@content}
 }
 
-@halfWidth()(content: Html) = {
-	@inputDiv(6) {@content}
+@halfWidth(addedClass: String="")(content: Html) = {
+	@inputDiv(6, addedClass) {@content}
 }
 
-@computeMessageKey(fieldName: String, suffix: String) = {@{key}.@{fieldName.toString.toLowerCase.replace('_','.')}.@{suffix}}
+@computeClassForInput(isRequired: Boolean, isInError: Boolean, args: (Symbol,Any)*) = {form-control @if(isRequired) {required} @if(isInError) {error} @args.toMap.get(Symbol("_body_class")).map(_.toString)}
 
-@computeClassForInput(isRequired: Boolean, isInError: Boolean, args: (Symbol,Any)*) = {form-control @if(isRequired) {required} @if(isInError) {error} @args.toMap.get('_body_class).map(_.toString)}
+@selectLabelClassCss(size: Int) = {btn btn-outline-secondary px-@size t600 ls0 nott}
+
+@*****************************************
+ * End of Style Helpers
+ *****************************************@
+ 
+@*****************************************
+ * Form Helpers
+ *****************************************@
+
+@computeMessageKey(fieldName: String, suffix: String) = {@{formKey}.@{fieldName.toString.toLowerCase.replace('_','.')}.@{suffix}}
 
 @inputText(fieldName: String, isRequired: Boolean, isInError: Boolean, args: (Symbol,Any)*) = {
 	@helper.inputText(form(fieldName), (Seq(Symbol("class") -> computeClassForInput(isRequired, isInError, args:_*).toString, Symbol("_showConstraints") -> false, Symbol("placeholder") -> Html(Messages(computeMessageKey(fieldName, "placeholder").toString)), Symbol("_label") -> Html(Messages(computeMessageKey(fieldName, "label").toString))) ++ args):_* )(tags.canvasFieldTemplate, messages)
@@ -36,69 +55,52 @@
 	}
 }
 
-@layouts.main_helper(key.toString) {
+@selectField(size: Int, id: String, name: String, value: Option[String], tuple: (String, play.twirl.api.Html), args: Map[Symbol,Any]) = {
+											<label for="@(id)_@tuple._1" class="@selectLabelClassCss(size) @if(value == Some(tuple._1)){active}">
+												<input type="radio" name="@name" id="@(id)_@tuple._1" autocomplete="off" value="@tuple._1" @if(value == Some(tuple._1)){checked="checked"} @toHtmlArgs(args)>@tuple._2</input>
+											</label>
+}
+
+@*****************************************
+ * End of Form Helpers
+ *****************************************@
 
 
-	<div class="content-wrap">
-		<div class="container clearfix">
+@defining(brand.map(b => b.display_name).orElse(Messages(keyIncludingBrand.toString+".brand.name"))) { brandName =>
+@defining(
+	Messages(formKey.toString+".html.title", brandName),
+	Messages(formKey.toString+".html.description", brandName, Messages(keyIncludingBrand.toString+".brand.models")),
+	Messages(formKey.toString+".html.keywords", brandName, Messages(keyIncludingBrand.toString+".brand.models"))) { case (title, description, keywords) =>
+@layouts.main_helper_with_head_block(formKey.toString, Symbol("_html_title") -> title, Symbol("_html_description") -> description, Symbol("_html_keywords") -> keywords, Symbol("_head_intro_key") -> Messages(formKey.toString+".head.intro", brandName)){
 		
-			<div class="heading-block topmargin-sm">
-				<h2>Devis</h2>
-				<span>Demander un devis d'entretien</span>
-			</div>
-
-
-			<p><span class="dropcap">P</span>our obtenir un devis pour l'entretien d'une montre d'une marque supportée par Hometime (ou une autre marque), veuillez renseigner les informations ci-dessous. L'équipe Hometime vous répondra le plus vite possible pour établir un devis personnalisé.</p>
-		
-			
-			
-			@helper.form(action = routes.FormProcessingController.processQuotationRequest(), Symbol("id") -> "website-cost", Symbol("class") -> "row mb-0") {
+		@helper.form(action = routes.FormProcessingController.processQuotationRequest(), Symbol("id") -> "website-cost", Symbol("class") -> "row mb-0") {
 			@helper.CSRF.formField
 									<div class="form-process"></div>
 									
-									@fullWidth() {
-										@helper.input(form("orderType"), Symbol("_class") -> "mb-3", Symbol("_label") -> Html(Messages(computeMessageKey("orderType", "label").toString)), Symbol("_showConstraints") -> false) { (id, name, value, args) =>
-												@Seq(
-												"1" -> "Simple réglage",
-												"2" -> "Entretien partiel",
-												"3" -> "Révision complète",
-												"4" -> "Réparation/restauration",
-												"5" -> "Urgence étanchéité").map { v =>
-												<label for="@(id)_@v._1" class="btn btn-outline-secondary px-3 t600 ls0 nott @if(value == Some(v._1)){active}">
-													<input type="radio" name="@name" id="@(id)_@v._1" autocomplete="off" value="@v._1" @if(value == Some(v._1)){checked="checked"} @toHtmlArgs(args)>@v._2
-												</label>
-										    }
+									@fullWidth("my-forms") {
+										@helper.input(form("orderType"), Symbol("_class") -> "mb-3 group-label", Symbol("_label") -> Html(Messages(computeMessageKey("orderType", "label").toString)), Symbol("_showConstraints") -> false) { (id, name, value, args) =>
+												@List.range(1, 6).map(option => (option.toString, Html(Messages(formKey.toString+"."+option.toString+".order.type")))).toSeq.map { v => @selectField(3, id, name, value, v, args) }
 										}(tags.canvasRadioGroupBoxedFieldTemplate, messages)
 									}
 
-									@fullWidth() {
-										<label>Votre montre:</label>
+									@fullWidth("group-label") {
+										<label>@Html(Messages(formKey.toString+".group.label.watch"))</label>
 									}
-
+									
 									@halfWidth() {
-										@helper.select(form("brand"), options = Seq(
-											"1" -> "Baume & Mercier",
-											"22" -> "Blancpain"
-										), Symbol("class") -> "form-control required", Symbol("_default") -> Html(Messages(computeMessageKey("brand", "default").toString)), Symbol("_label") -> Html(Messages(computeMessageKey("brand", "label").toString)))
+										@helper.select(form("brand"), options = brands.get().map(brand => (brand.id.toString, brand.display_name)).toSeq, Symbol("class") -> computeClassForInput(true, form("brand").hasErrors, Symbol("_body_class") -> "").toString, Symbol("_default") -> Html(Messages(computeMessageKey("brand", "default").toString)), Symbol("_label") -> Html(Messages(computeMessageKey("brand", "label").toString)), Symbol("_showConstraints") -> false)
 									}
 								
 									@inputBox(form("model"), true)
-
-									@fullWidth() {
-										@helper.input(form("method"), Symbol("_class") -> "mb-3", Symbol("_label") -> Html(Messages(computeMessageKey("method", "label").toString))) { (id, name, value, args) =>
-												@Seq(
-												"1" -> "SAV de la marque",
-												"2" -> "Hometime",
-												"3" -> "Comparer les deux").map { v =>
-												<label for="@(id)_@v._1" class="btn btn-outline-secondary px-5 t600 ls0 nott @if(value == Some(v._1)){active}">
-													<input type="radio" name="@name" id="@(id)_@v._1" autocomplete="off" value="@v._1" @if(value == Some(v._1)){checked="checked"} @toHtmlArgs(args)>@v._2
-												</label>
-										    }
+									
+									@fullWidth("my-forms") {
+										@helper.input(form("method"), Symbol("_class") -> "mb-3", Symbol("_label") -> Html(Messages(computeMessageKey("method", "label").toString)), Symbol("_showConstraints") -> false) { (id, name, value, args) =>
+												@List.range(1, 4).map(value => (value.toString, Html(Messages(formKey.toString+"."+value.toString+".method")))).toSeq.map { v => @selectField(5, id, name, value, v, args) }
 										}(tags.canvasRadioGroupBoxedFieldTemplate, messages)
 									}
 									
-									@fullWidth() {
-										<label for="website-cost-name">Vos coordonées:</label>
+									@fullWidth("group-label") {
+										<label>@Html(Messages(formKey.toString+".group.label.customer"))</label>
 									}
 									
 									@List(("nameOfCustomer", true),
@@ -111,16 +113,10 @@
 									}
 
 									<div class="col-12">
-										<button type="submit" name="website-cost-submit" class="btn btn-success btn-lg">Envoyer la demande</button>
+										<button type="submit" name="website-cost-submit" class="btn btn-success btn-lg">@Html(Messages(formKey.toString+".submit"))</button>
 									</div>
 
 			}
-				
-
-			
-			<div class="col_full">
-				Au delà des entretiens classiques comme la révision complète, les changements de verres, de poussoirs ou de lunette, ou des restaurations de montres ayant subi de graves dommages (rouille causée par une perte d'étanchéité, chute violente...), nous pouvons proposer des services "à la carte" correspondant à des besoins très spécifiques. N'hésitez par à nous contacter pour réviser, réparer, restaurer ou même personnaliser votre montre !
-Dans certains cas, il est possible que nous ne soyons pas en mesure de vous proposer des devis comparatifs mais uniquement un devis dans le SAV officiel ou un devis chez un horloger partenaire. Nous vous en informons dans notre réponse.
-			</div>
-		</div>
+	}
+}
 }

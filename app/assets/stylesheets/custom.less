@@ -5,6 +5,9 @@
     LESS Stylesheet
 
 -----------------------------------------------------------------------------------*/
+// Initialize
+@import "less/variables.less";
+
 
 .features {
 	list-style-type: none;
@@ -23,10 +26,14 @@
 	background-color: #feefb3;
 }
 
-#alert-bar-unstyled {
+#alert-bar-unstyled, #flash-bar-unstyled {
 	position: relative;
   	border-bottom: 1px solid #EEE;
 	z-index: 199;
+}
+
+#alert-bar-unstyled *, #flash-bar-unstyled * {
+	border-radius: 0 !important;
 }
 
 #alert-bar {
@@ -74,4 +81,34 @@ abbr {
 
 .content-template .sub-title:not(:first-child) {
 	margin-top: 0.5em;
+}
+
+.page-intro {
+	font-size: 18px;
+}
+
+.page-intro:first-letter {
+	float: left;
+    line-height: 1;
+    margin: 0 5px 0 0;
+    text-transform: uppercase;
+	font-size: 52px;
+}
+
+.group-label label {
+	text-decoration: underline;
+}
+
+.error .btn-outline-secondary {
+	border-color: #E42C3E;
+}
+
+dd.error {
+	color: #E42C3E;
+	font-weight: bold;
+}
+
+.my-forms .btn-outline-secondary:not(:disabled):not(.disabled):active, .my-forms .btn-outline-secondary:not(:disabled):not(.disabled).active, .my-forms .show > .btn-outline-secondary.dropdown-toggle {
+    color: #fff;
+    background-color: @theme-color;
 }

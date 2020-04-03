@@ -16,6 +16,10 @@ import play.data.validation.ValidationError;
  */
 @Validate
 public class QuotationRequestData implements Validatable<List<ValidationError>> {
+	public static final String METHOD_BRAND = "1";
+	public static final String METHOD_LOCAL = "2";
+	public static final String METHOD_BOTH = "3";
+	
 	@Constraints.Required
 	public String orderType;
 	@Constraints.Required
@@ -52,5 +56,9 @@ public class QuotationRequestData implements Validatable<List<ValidationError>> 
     
     public QuotationRequestData() {
     	super();
+    }
+    
+    public void setCity(String newCity) {
+    	this.city = newCity;
     }
 }

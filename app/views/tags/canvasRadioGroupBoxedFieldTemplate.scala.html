@@ -1,6 +1,6 @@
 @(elements: helper.FieldElements)
-<label for="@elements.id" class="@elements.args.get(Symbol("_class")) @if(elements.hasErrors) {error}">@elements.label</label><br />
-<div class="btn-group btn-group-toggle flex-wrap" data-toggle="buttons">
+<label for="@elements.id" class="@elements.args.get(Symbol("_class")) @if(elements.hasErrors) {radio-box-label-error}">@elements.label</label><br />
+<div class="btn-group btn-group-toggle flex-wrap @if(elements.hasErrors) {error}" data-toggle="buttons">
 	@elements.input
 </div>
     @elements.errors.map { error =>

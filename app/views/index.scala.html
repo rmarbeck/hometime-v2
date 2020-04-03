@@ -1,4 +1,4 @@
-@()(implicit messages: play.i18n.Messages)
+@()(implicit request: Http.Request, messages: play.i18n.Messages)
 
 @import scala.collection.immutable._
 
@@ -50,14 +50,14 @@
 
 
 
-@layouts.home(Messages("home.html.title"), Messages("home.html.description"), Messages("home.html.keywords")) {
+@layouts.home() {
   <div class="content-wrap">
   				<div class="claim divcenter center clearfix bottommargin-sm" style="max-width: 900px;">
   					<!--<img class="bottommargin" src="/assets/images/url-avec-logo-375-black-high.png" alt="">-->
 					<h1>@Html(Messages("home.claim"))</h1>
 					<h2>@Html(Messages("home.claim.more"))</h2>
-					<a href="#" class="button button-3d button-dark button-large ">Venir nous voir</a>
-					<a href="#" class="button button-3d button-large">Demander un devis</a>
+					<a href="@routes.HomeController.visit()" class="button button-3d button-dark button-large ">Venir nous voir</a>
+					<a href="@routes.FormProcessingController.prepareQuotationRequest()" class="button button-3d button-large">Demander un devis</a>
 				</div>
 				
 				<div class="section nobottommargin padding-reduced">

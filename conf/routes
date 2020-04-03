@@ -7,10 +7,14 @@ GET     /																	controllers.HomeController.index(request: Request)
 
 GET     /estimation/prix/devis/reparation/revision/montre					controllers.HomeController.quotationOptions(request: Request)
 
+
 GET     /demande-de-devis													controllers.FormProcessingController.prepareQuotationRequest(request: Request)
 POST    /demande-de-devis													controllers.FormProcessingController.processQuotationRequest(request: Request)
+GET     /demande-de-devis/montre/reparation/revision/:brand    				controllers.FormProcessingController.prepareQuotationRequestWithBrand(request: Request, brand)
 
 GET     /les-services/l-offre												controllers.HomeController.offers(request: Request)
+GET     /venir-nous-voir													controllers.HomeController.visit(request: Request)
+
 
 GET     /entretien-reparation												controllers.HomeController.content(request: Request, key = "entretien")
 GET     /nos-horlogers														controllers.HomeController.content(request: Request, key = "watchmakers")

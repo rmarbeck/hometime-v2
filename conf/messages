@@ -123,6 +123,13 @@ main.menu.service=Entretien
 main.menu.service.content=Tout savoir sur l''entretien des montres
 main.menu.service.service.test=Quand faire réviser ma montre ?
 
+main.menu.visit.us=Venir nous voir
+
+main.menu.watch.dealing.main=Achat / Vente
+main.menu.watch.purchasing=Trouver et acheter une montre
+main.menu.watch.selling=Vendre sa montre
+main.menu.watch.estimate=Estimer sa collection
+
 main.menu.offer.main=Les services
 main.menu.offer=Les services Horlogers
 main.menu.offer.service=Entretien & révisions
@@ -334,7 +341,30 @@ quotation.options.html.title=Evaluation du tarif d''entretien d''une montre
 quotation.options.html.description=Les différentes méthodes pour déterminer le prix de la réparation d''une montre chez Hometime
 quotation.options.html.keywords=Prix, tarif, réparation, révision, entretien, montre, paris
 
+
+quotation.options.head=Devis
+quotation.options.head.subtitle=Obtenir un devis d''entretien de votre montre
+quotation.options.head.intro=hometime vous propose plusieurs façons d''évaluer le prix de la réparation de votre montre. Vous pouvez déterminer vous même en moins d''une minute le tarif d''un entretien ou bien demander l''envoi d''un devis personnalisé à l''un de nos horlogers. Enfin, pour un devis formel et définitif, vous pouvez passer nous voir dans notre atelier à Paris.
+quotation.options.disclaimer=Nous essayons de toujours fournir un maximum d''informations à nos clients avant de voir la montre. Cependant, dans certains cas cela n''est pas possible et seule l''auscultation de la montre permet de déterminer précisément le tarif de l''entretien. Nos devis permettent de répondre aux demandes de prix sur les entretiens les plus fréquents que sont les changemenents de pile avec ou sans étanchéité, les révisions complètes ou les réparations plus complexes.
+
 #------------------------
+
+
+page.visit.us.html.title=Venir chez Hometime
+page.visit.us.html.description=Comment venir dans nos locaux à Paris pour déposer une montre pour une révision complète, un entretien partiel, un polissage, un changement de pile ou tout autre service horloger
+page.visit.us.html.keywords=Locaux Hometime Paris, révision complète montre, démagnétisation, changement de pile, changement de batterie, horloger agréé, étanchéité, horloger indépendant, réparation, montre, paris
+page.visit.us.head=Venir chez Hometime
+page.visit.us.head.subtitle=Comment venir nous voir ?
+page.visit.us.head.intro=Toutes les informations pour prendre rendez-vous et nous rencontrer dans nos locaux situés dans le 1er arrondissement de Paris. Nos horlogers pourront vous donner un premier avis avant une aucultation plus détaillée de votre montre.
+page.visit.us.disclaimer=Nous pouvons vous recevoir pour répondre à l''ensemble de vos questions et pour vous proposer tous nos services horlogers, avec ou sans rendez-vous du Lundi au vendredi de 10h à 18h30.
+
+
+page.visit.us.text.part.1=Nous vous recevons dans nos locaux situés <b>322 rue Saint Honoré</b> dans le 1er arrondissement de Paris <b>tous les jours de la semaine de 10h à 18h30 et le samedi sur rendez-vous</b>.
+page.visit.us.text.part.2=Une fois sur les lieux, après la porte sur la rue : <b>au fond du couloir, prendre l''escalier à droite, puis 1er étage à droite.</b>
+page.visit.us.text.part.3=Appelez-nous pour prendre rendez-vous ou pour plus de précisions&nbsp;: <a href="tel:{0}" rel="nofollow"><span>{1}</span></a> 
+page.visit.us.text.part.4=Vous préférez que nous vous contactions par téléphone&nbsp;?
+
+
 
 
 # Service page
@@ -811,7 +841,12 @@ offer.menu.text.other=Achat/vente
 offer.menu.text.more=Les autres prestations
 offer.menu.text.prices=Les tarifs
 
+offer.head=Les services et les prestations Hometime
+offer.head.subtitle=Découvrez les services que nous proposons
 offer.baseline=Les services et les prestations Hometime
+
+offer.intro=
+offer.head.disclaimer=Pour plus de détails sur nos prestations, n''hésitez pas à nous appeler ou à passer dans notre atelier. Nous serons ravis de répondre à vos questions !
 
 offer.service.head=Révision & réparations
 offer.service.head.subtitle=Entretien des montres récentes
@@ -1400,6 +1435,35 @@ quartz.movado.brand.models=Edge, Modern classic, Museum Classic, Ultra slim, Red
 
 
 
+quotation.form.html.title=Devis pour révision ou réparation d''une montre {0}
+quotation.form.html.description=Formulaire de demande de devis gratuit pour révision, réparation ou restauration d''une montre automatique ou manuelle {0}, différents modèles  {1}.
+quotation.form.html.keywords=devis gratuit,devis en ligne, entretien, horloger agréé, évaluation, horloger indépendant, révision, réparation, montre, paris, yvelines, hauts de seine, {0}, {1}
+
+quotation.form.head=Devis
+quotation.form.head.subtitle=Demander un devis d''entretien
+quotation.form.disclaimer=Au delà des entretiens classiques comme la révision complète, les changements de verres, de poussoirs ou de lunette, ou des restaurations de montres ayant subi de graves dommages (rouille causée par une perte d'étanchéité, chute violente...), nous pouvons proposer des services "à la carte" correspondant à des besoins très spécifiques. N''hésitez par à nous contacter pour réviser, réparer, restaurer ou même personnaliser votre montre ! \
+Dans certains cas, il est possible que nous ne soyons pas en mesure de vous proposer des devis comparatifs mais uniquement un devis dans le SAV officiel ou un devis chez un horloger partenaire. Nous vous en informons dans notre réponse.
+
+quotation.form.group.label.watch=Votre montre
+quotation.form.group.label.customer=Vos coordonnées
+quotation.form.submit=Envoyer la demande
+
+quotation.form.undefined.brand.name=d''une marque supportée par Hometime
+
+quotation.form.rolex.brand.models=Submariner, Daytona, GMT Master, Datejust
+
+quotation.form.head.intro=Pour obtenir un devis pour l''entretien d''une montre {0} (ou une autre marque), veuillez renseigner les informations ci-dessous. L''équipe Hometime vous répondra le plus vite possible pour établir un devis personnalisé.
+
+
+quotation.form.1.order.type=Simple réglage
+quotation.form.2.order.type=Entretien partiel
+quotation.form.3.order.type=Révision complète
+quotation.form.4.order.type=Réparation/restauration
+quotation.form.5.order.type=Urgence étanchéité
+
+quotation.form.1.method=SAV de la marque
+quotation.form.2.method=Hometime
+quotation.form.3.method=Comparer les deux
 
 quotation.form.ordertype.label=Type d''entretien <br />(<a href="{0}">quand faire une révision&nbsp;?</a>)
 quotation.form.brand.label=Marque
@@ -1418,6 +1482,9 @@ quotation.form.phonenumber.label=Votre numéro de téléphone
 quotation.form.phonenumber.placeholder=06xxxxxx
 quotation.form.remark.label=Remarques
 quotation.form.remark.placeholder=Vous souhaitez préciser quelque-chose
+
+
+
 
 
 

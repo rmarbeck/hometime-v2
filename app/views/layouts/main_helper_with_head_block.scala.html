@@ -1,0 +1,15 @@
+@*
+ * Main template Helper : Key generates title, description and keywords
+ *@
+@(key: String, forcedValues: (Symbol, Any)*)(content: Html)(implicit request: Http.Request, messages: play.i18n.Messages)
+
+@getStringByKey(keyToLookFor: String, defaultKeySuffix: String) = {@Html(forcedValues.toMap.get(Symbol(keyToLookFor+"_force_raw")).map(_.toString).getOrElse(Messages(forcedValues.toMap.get(Symbol(keyToLookFor)).map(_.toString).getOrElse(key+"."+defaultKeySuffix))))}
+
+@defining(
+	getStringByKey("_html_title", "html.title").toString,
+	getStringByKey("_html_description", "html.description").toString,
+	getStringByKey("_html_keywords", "html.keywords").toString) { case (title, description, keywords) =>
+@layouts.main(key, title, description, keywords) {
+	@layouts.fragments.canvas_with_header_and_disclaimer(key, forcedValues:_*)(content)
+	}
+}

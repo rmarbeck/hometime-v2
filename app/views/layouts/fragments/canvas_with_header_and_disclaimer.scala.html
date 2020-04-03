@@ -1,0 +1,23 @@
+@(key: String, forcedValues: (Symbol, Any)*)(content: Html)(implicit messages: play.i18n.Messages)
+
+@getValue(keyToLookFor: String, defaultKeySuffix: String) = {@Html(forcedValues.toMap.get(Symbol(keyToLookFor+"_force_raw")).map(_.toString).getOrElse(Messages(forcedValues.toMap.get(Symbol(keyToLookFor)).map(_.toString).getOrElse(key+"."+defaultKeySuffix))))}
+
+@getForcedValueIfExists(keyToLookFor: String) = {@forcedValues.toMap.get(Symbol(keyToLookFor)).map(_.toString)}
+
+	<div class="content-wrap @getForcedValueIfExists("_css_outer_div_class")">
+		<div class="container clearfix @getForcedValueIfExists("_css_inner_div_class")">
+		
+			<div class="heading-block topmargin-sm bottommargin-sm @getForcedValueIfExists("_css_head_div_class")">
+				<h2>@getValue("_head_key", "head")</h2>
+				<span class="heading-subtitle">@getValue("_head_subtitle_key", "head.subtitle")</span>
+			</div>
+
+			<div class="bottommargin-sm page-intro @getForcedValueIfExists("_css_intro_div_class")">@getValue("_head_intro_key", "head.intro")</div>
+			
+			@content				
+
+			<div class="col_full topmargin-sm text-justify @getForcedValueIfExists("_css_disclaimer_div_class")">
+				@getValue("_disclaimer_key", "disclaimer")
+			</div>
+		</div>
+	</div>

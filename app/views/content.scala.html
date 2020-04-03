@@ -1,5 +1,5 @@
 @this(contentProvider: fr.hometime.utils.ContentProvider)
-@(key: String)(implicit messages: play.i18n.Messages)
+@(key: String)(implicit request: Http.Request, messages: play.i18n.Messages)
 
 @import scala.collection.immutable._
 
@@ -50,22 +50,12 @@
 }
 
 
-@layouts.main_helper(key) {
-
-	@(contentProvider.initialize(key))
-
-	<div class="content-wrap content-template">
-		<div class="container clearfix">
-			<div class="heading-block topmargin-sm">
-				<h2>@contentProvider.get("content.head")</h2>
-				@if(contentProvider.exists("content.head.subtitle")) {<span>@contentProvider.get("content.head.subtitle")</span>}
-			</div>
-		
-		@for(index <- 1 until contentProvider.getIntValue("content.count")+1){
-			@article(index)
+@(contentProvider.initialize(key))
+	
+@layouts.main_helper_with_head_block(key, Symbol("_head_key_force_raw") -> contentProvider.get("content.head"), Symbol("_head_subtitle_key_force_raw") -> contentProvider.get("content.head.subtitle"), Symbol("_head_intro_key_force_raw") -> "", Symbol("_disclaimer_key_force_raw") -> "", Symbol("_css_outer_div_class") -> "content-template"){
+		@List.range(1, contentProvider.getIntValue("content.count") + 1).map{ index =>
+				@article(index)
 		}
 		
 		<div class="divider divider-center"><a href="#" data-scrollto="#header"><i class="icon-chevron-up"></i></a></div>
-		</div>	
-	</div>
 }
