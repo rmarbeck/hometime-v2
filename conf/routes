@@ -11,18 +11,34 @@ GET     /estimation/prix/devis/reparation/revision/montre					controllers.HomeCo
 GET     /demande-de-devis													controllers.FormProcessingController.prepareQuotationRequest(request: Request)
 POST    /demande-de-devis													controllers.FormProcessingController.processQuotationRequest(request: Request)
 GET     /demande-de-devis/montre/reparation/revision/:brand    				controllers.FormProcessingController.prepareQuotationRequestWithBrand(request: Request, brand)
+GET     /demande-de-devis/urgence/etancheite								controllers.FormProcessingController.prepareQuotationRequestWater(request: Request)
+GET     /demande-de-devis/urgence/etancheite/montre/:brand    				controllers.FormProcessingController.prepareQuotationRequestWaterWithBrand(request: Request, brand)
 
 GET     /les-services/l-offre												controllers.HomeController.offers(request: Request)
 GET     /venir-nous-voir													controllers.HomeController.visit(request: Request)
 
 
-GET     /entretien-reparation												controllers.HomeController.content(request: Request, key = "entretien")
-GET     /nos-horlogers														controllers.HomeController.content(request: Request, key = "watchmakers")
+GET     /entretien-reparation												controllers.HomeController.content(request: Request, key = "content.service.repairing")
+GET     /nos-horlogers														controllers.HomeController.content(request: Request, key = "content.watchmakers")
 GET     /reparation/montre/rolex											controllers.HomeController.content(request: Request, key = "content.rolex.repairing")
+GET     /reparation/montre/omega											controllers.HomeController.content(request: Request, key = "content.omega.repairing")
+GET     /prise-en-charge-urgente-probleme-etancheite    					controllers.HomeController.content(request: Request, key = "content.water.repairing")
+GET     /authentification/certification/montre/paris    					controllers.HomeController.content(request: Request, key = "content.authenticating")
+GET     /urgence-buee-sur-le-verre                      					controllers.Default.redirect(to = "/prise-en-charge-rapide-probleme-etancheite")
+
 GET     /content/:page														controllers.HomeController.content(request: Request, page: String)
 
 GET		/perma/offre														controllers.Default.redirect(to = "/les-services/l-offre")
 GET		/perma/venir														controllers.Default.redirect(to = "/venir-nous-voir")
+GET		/perma/horlogers													controllers.Default.redirect(to = "/nos-horlogers")
+GET		/perma/entretien													controllers.Default.redirect(to = "/entretien-reparation")
+GET		/perma/rolex														controllers.Default.redirect(to = "/reparation/montre/rolex")
+GET		/perma/omega														controllers.Default.redirect(to = "/reparation/montre/omega")
+GET		/perma/devis														controllers.Default.redirect(to = "/demande-de-devis")
+GET		/perma/authent														controllers.Default.redirect(to = "/authentification/certification/montre/paris")
+GET		/perma/water														controllers.Default.redirect(to = "/prise-en-charge-urgente-probleme-etancheite")
+GET		/perma/water/action													controllers.Default.redirect(to = "/demande-de-devis/urgence/etancheite")
+
 
 # Map static resources from the /public folder to the /assets URL path
 GET     /assets/*file               controllers.Assets.versioned(path="/public", file: Asset)

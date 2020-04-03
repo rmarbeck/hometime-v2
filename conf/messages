@@ -139,9 +139,13 @@ main.menu.prices=Les tarifs
 main.menu.extra=Les services complémentaires
 
 main.menu.service.main=Entretien
-main.menu.service.why=Tout savoir sur l''entretien des montres
-
-
+main.menu.service.main.content=Comprendre l''entretien des montres
+main.menu.service.main.content.all=L''entretien en général
+main.menu.service.main.content.rolex=L''entretien des montres Rolex
+main.menu.service.main.content.omega=L''entretien des montres Omega
+main.menu.service.main.watchmakers=Nos horlogers
+main.menu.service.main.content.water=Ma montre a pris l''eau
+main.menu.service.main.content.authenticating=Authentification des montres
 
 
 main.menu.services.loan=Essai de montres
@@ -171,8 +175,8 @@ main.menu.content.paris=Réparation des montres sur Paris
 main.menu.rolex.repairing.content=Réparations Rolex
 main.menu.omega.repairing.content=Réparations Omega
 main.menu.authentication.content=Authentification des montres
-
-main.menu.watchmakers.content=Nos horlogers
+main.menu.water.repairing.content=Ma montre a pris l''eau
+main.menu.service.main.content.watchmakers=Nos horlogers
 
 
 
@@ -365,14 +369,96 @@ page.visit.us.text.part.3=Appelez-nous pour prendre rendez-vous ou pour plus de 
 page.visit.us.text.part.4=Vous préférez que nous vous contactions par téléphone&nbsp;?
 
 
+#------ Water Repairing page ------------------
+#------ content.water.repairing
+content.water.repairing.content.count=2
+content.water.repairing.html.title=Problème d''étanchéité d''une montre
+content.water.repairing.html.description=Comprendre quoi faire lorsque de la buée apparait sur le verre de sa montre
+content.water.repairing.html.keywords=entretien, réparation, montre mécanique, délai, urgence,, étanchéité, buée, séchage, manuelle, automatique
+content.water.repairing.content.head=Problème d''étanchéité
+content.water.repairing.content.head.subtitle=Que faire en cas d''entrée d''eau dans une montre
+
+content.water.repairing.content.1.head=Je vois <span class="text-muted">de la buée sur mon verre !</span>
+content.water.repairing.content.1.body=<div class="sub-title"></div>Une montre étanche est conçue pour empêcher toute entrée d''eau à l''intérieur du boitier. Il arrive malgré tout que de l''eau puisse pénétrer dans la montre à cause d''une mauvaise manipulation ou bien d''une défaillance ou d''une usure d''une des pièces.\
+ <br /><br />Si l''eau entre facilement dans le boitier, il est plus compliqué de la faire sortir et dans tous les cas la présence d''eau, même de courte durée, justifie une intervention horlogère (a fortiori dans le cas de l''eau de mer ou de l''eau de piscine).\
+ <br /><br />Les symptômes sont simples, si vous voyez de la buée sur le verre ou sur le fond de la montre, ou pire des traces de rouille, alors votre montre a pris l''eau.
+
+content.water.repairing.content.1.image.url=https://d1qsyzkyf147s1.cloudfront.net/assets/images/water/leak-proof.jpg
+
+content.water.repairing.content.1.image.title=Monaco embuée
+content.water.repairing.content.1.image.alt=Photo d''une Monaco embuée
+
+content.water.repairing.content.2.head=Que faire <span class="text-muted">si ma montre a pris l''eau ?</span>
+content.water.repairing.content.2.body=<div class="sub-title"></div>Le maître mot lorsque de l''eau entre dans le boitier de votre montre : <b>AGIR VITE !</b>\
+ <br /><br />Les dégâts occasionnés par l''eau peuvent être vite importants, surtout s''il s''agit d''eau de mer ou d''eau chlorée, mais si l''<b>intervention est très rapide il est possible d''éviter toute conséquence</b>.\
+ <br /><br />Une fois dans l''atelier horloger, la cause de l''intrusion d''eau est détectée puis la montre est démontée, séchée, nettoyée (pour être débarrassée de toute source de corrosion).\
+ Lors du remontage de la montre, les joints sont changés et l''étanchéité est contrôlée.\
+ <br /><br />Hometime vous propose d''intervenir dès que vous détectez un problème d''étanchéité et s''engage à réaliser les travaux nécessaires en quelques heures seulement.
+
+content.water.repairing.content.2.image.url=https://d1qsyzkyf147s1.cloudfront.net/assets/images/water/service.jpg
+content.water.repairing.content.2.image.title=Monaco ouverte
+content.water.repairing.content.2.image.alt=Photo d''une Monaco ouverte
+content.water.repairing.content.2.default.to.action.text=Demander une intervention en urgence
+content.water.repairing.content.2.default.to.action.perma=/perma/water/action
 
 
-# Service page
-service.html.title=Entretenir sa montre
-service.html.description=Tout savoir sur l''entretien, simple révision ou réparation, d''une montre mécanique à remontage manuel ou automatique : pourquoi le faire, la durée, le prix.
-service.html.keywords=entretien, révision, réparation, montre mécanique, délai, durée, prix, étanchéité, manuelle, automatique
-service.content.1.head=Pourquoi <span class="text-muted">une montre s''use-t-elle ?</span>
-service.content.1.body=<div class="sub-title">Le mouvement :</div>Une montre mécanique est constituée de nombreuses pièces en mouvement. \
+
+#------ Authentication page ------------------
+#------ content.authenticating
+content.authenticating.content.count=3
+content.authenticating.html.title=Hometime vous parle de l''authentification des montres de Luxe
+content.authenticating.html.description=Hometime authentifie et certifie les montres de marque récentes ou vintage
+content.authenticating.html.keywords=authentification, certification, réparation, montre, auth, entretien, vintage, restauration, submariner, daytona, datejust
+content.authenticating.content.head=L''authentification des montres de Luxe
+content.authenticating.content.head.subtitle=Hometime vous fait bénéficier de son expertise
+
+content.authenticating.content.1.head=Les enjeux de l''authentification
+content.authenticating.content.1.body=<div class="sub-title">Les fausses montres :</div>Depuis 2018, la qualité des fausses montres, et principalement des Rolex, a franchi un cap. Il devient presque <b>impossible de déterminer si une montre est authentique sans l''ouvrir</b> et sans disposer d''une expertise poussée.\
+ <br \><br \>Nous voyons de fausses montres depuis longtemps et pouvons la plupart du temps détecter les fausses sur photos. Cependant, aujourd''hui nous ne pouvons plus assurer l''authenticité uniquement sur photo. Certaines copies nécessitent une inspection attentive et exhaustive pour en certifier la provenance. \
+ <div class="sub-title">Qui peut authentifier les montres ?</div><b>De moins en moins de professionnels acceptent aujourd''hui de certifier l''authenticité</b> des montres (même en boutiques officielles).\
+ <br \><br \>Cela est principalement dû au fait qu''il peut s''agir d''un exercice difficile voire impossible sans l''inspection par un horloger expert ainsi qu''à la responsabilité prise par ce dernier (potentiellement coûteuse à assumer).\
+ <div class="sub-title">Authentification et garantie d''originalité :</div>Authentifier une montre consiste à certifier qu''elle provient ou non de la marque.\
+ <br \><br \>Cependant, dans le cas des montres vintage notamment, il peut être demandé à l''expert de certifier que toutes les pièces sont conformes à ce qu''elles devraient être et qu''elles n''ont pas été remplacées au cours de la vie de la montre par des pièces de la marque mais de rechange (pièces de service).\
+ Cette certification demande un niveau bien plus élevé d''expertise et un temps d''analyse significativement plus long.\
+ <div class="sub-title">Le mythe "boite et papiers" :</div><b>Beaucoup pensent que disposer de la boite et des papiers valide l''authenticité d''une montre</b>, alors que l''inverse doit inviter à la prudence.\
+ <br \><br \><b>Cela est faux</b>.\
+ <br \><br \>Les faussaires copient aussi la boite et les papiers. Même si la qualité et certains détails secrets ne sont pas au rendez-vous, ils peuvent tromper un non inité.\
+ A l''inverse, dans certains cas, notamment pour les montres anciennes, ne pas disposer des papiers est tout à fait commun.\
+ <br \><br \>Enfin, la côte des montres étant très sensible à la présence des papiers, il arrive que des vraies montres disposent de faux papiers ! 
+
+
+content.authenticating.content.2.head=Nos services d''authentification
+content.authenticating.content.2.body=<div class="sub-title">Non authenticité : </div>Lorque nous déterminons qu''une montre est une copie, nous proposons la rédaction gratuite d''un certificat permettant de le formaliser.\
+ <br \><br \>Un tel certificat peut permettre de déposer plainte ou du moins de faire pression sur un vendeur honnête.\
+ <div class="sub-title">Authenticité garantie :</div>Lorsque nos tests permettent d''assurer que la montre est bien authentique, la formalisation de ce résultat peut faire l''objet d''un certificat dont le tarif est indexé sur la valeur de la montre.\
+ <br \><br \>En fonction du besoin, nous pouvons aussi informer gratuitement le client que la montre est authentique. \
+ <div class="sub-title">Cas litigieux :</div>Dans certains cas, la montre est authentique mais certaines pièces ou accessoires ne sont pas conformes. De la même façon, nous pouvons alors établir un certificat détaillant les points litigieux.
+
+content.authenticating.content.2.image.url=https://d1qsyzkyf147s1.cloudfront.net/assets/images/authentication/analyse.jpg
+content.authenticating.content.2.image.title=Horloger expertisant une montre
+content.authenticating.content.2.image.alt=Photo d''un horloger expertisant une montre
+
+content.authenticating.content.3.head=La marche à suivre
+content.authenticating.content.3.body=Si vous avez une montre à faire authentifier, n''hésitez pas à venir nous voir avec ou sans rendez-vous. Nous pourrons vous faire un premier retour très rapidement.
+
+content.authenticating.content.3.default.to.action.text=Venir nous voir
+content.authenticating.content.3.default.to.action.perma=/perma/visit
+
+
+
+
+
+#------ Service Repairing page ------------------
+#------ content.service.repairing
+content.service.repairing.content.count=6
+content.service.repairing.html.title=Entretenir sa montre
+content.service.repairing.html.description=Tout savoir sur l''entretien, simple révision ou réparation, d''une montre mécanique à remontage manuel ou automatique : pourquoi le faire, la durée, le prix.
+content.service.repairing.html.keywords=entretien, révision, réparation, montre mécanique, délai, durée, prix, étanchéité, manuelle, automatique
+content.service.repairing.content.head=Entretenir ses montres
+content.service.repairing.content.head.subtitle=Tout savoir sur l''entretien des montres
+
+content.service.repairing.content.2.head=Pourquoi <span class="text-muted">une montre s''use&#8209;t&#8209;elle&nbsp;?</span>
+content.service.repairing.content.2.body=<div class="sub-title">Le mouvement :</div>Une montre mécanique est constituée de nombreuses pièces en mouvement. \
  Au cours de son fonctionnement deux phénomènes vont conduire progressivement à un encrassement du mouvement :\
  <ul><li>La production de <b>micro-particules métalliques</b> générées par le frottement des pièces les unes contre les autres,</li>\
  <li>Le <b>séchage progressif du lubrifiant</b> présent dans le mouvement.</li></ul>\
@@ -381,8 +467,14 @@ service.content.1.body=<div class="sub-title">Le mouvement :</div>Une montre mé
  A l''usage, le boitier reçoit des petits coups ou se retrouve en contact avec des objets susceptibles de le rayer. Cette usure est visible, cependant le boitier peut aussi souffrir d''une usure beaucoup moins visible, celle qui touche à l''<b>étanchéité de la montre</b>.\
  Les joints garantissant à la montre une parfaite résistance à l''humidité perdent de leur efficacité avec le temps. De même, dans le cas des chronographes par exemple, les boutons de déclenchement ou de remise à zéro peuvent s''user et perdre de leur étanchéité.\
 
-service.content.2.head=Comment <span class="text-muted">entretient-on une montre ?</span>
-service.content.2.body=<div class="sub-title">L''entretien quotidien :</div>L''entretien soigneux de sa montre au jour le jour est un gage de pérennité, d''autant qu''il peut se résumer à quelques réflexes simples \
+content.service.repairing.content.2.image.url=https://d1qsyzkyf147s1.cloudfront.net/assets/images/service/why.png
+content.service.repairing.content.2.image.title=Mouvement nu
+content.service.repairing.content.2.image.alt=Mouvement nu
+content.service.repairing.content.2.default.to.action.text=En savoir plus...
+content.service.repairing.content.2.default.to.action.perma=http://watchnext.fr/blog/2014/01/pourquoi-une-montre-suse-t-elle/?utm_source=hometime.fr
+
+content.service.repairing.content.3.head=Comment <span class="text-muted">entretient-on une montre&nbsp;?</span>
+content.service.repairing.content.3.body=<div class="sub-title">L''entretien quotidien :</div>L''entretien soigneux de sa montre au jour le jour est un gage de pérennité, d''autant qu''il peut se résumer à quelques réflexes simples \
  : éviter de porter sa montre lors d''activités l''exposant aux chocs, éviter les bains ou les douches - <span class="text-muted">même pour les montres étanches, les risques étant liés à l''écart de température brutal</span>, ne pas utiliser de produits chimiques pour la nettoyer, ne pas changer la date en dehors des heures mentionnées dans le manuel. Cet entretien ne peut suffire à garantir le bon fonctionnement de la montre à long terme, il doit s''accompagner de révisions régulières.\
  <div class="sub-title">La révision régulière :</div> Seul un horloger peut entretenir le mouvement d''une montre.\
  Si aucun élément de la montre n''est cassé, un horloger qualifié, qu''il soit dédié à la marque ou généraliste, réalise une <b>révision complète du mouvement</b>. Pour cela, il réalise les opérations suivantes :\
@@ -396,8 +488,14 @@ service.content.2.body=<div class="sub-title">L''entretien quotidien :</div>L''e
  Si nécessaire, l''horloger peut remplacer une pièce défectueuse par une pièce rigoureusement identique. L''horloger peut aussi intervenir pour redonner au boitier et au verre (cas des verres non saphir) leur aspect neuf par un polissage approprié.\
  <br />Après une révision, <b>la montre fonctionne comme au premier jour</b>.
 
-service.content.3.head=Quand <span class="text-muted">faut-il entretenir une montre ?</span>
-service.content.3.body=<div class="sub-title"></div>Le délai entre deux révisions dépend de très nombreux paramètres (marque et technologie employée dans le mouvement, fréquence de portée, utilisation d''un remontoir pour une montre automatique, ancienneté de la montre).\
+content.service.repairing.content.3.image.url=https://d1qsyzkyf147s1.cloudfront.net/assets/images/service/how.jpg
+content.service.repairing.content.3.image.title=Horloger au travail
+content.service.repairing.content.3.image.alt=Horloger au travail
+content.service.repairing.content.3.default.to.action.text=En savoir plus...
+content.service.repairing.content.3.default.to.action.perma=http://watchnext.fr/blog/2014/01/comment-entretient-on-une-montre/?utm_source=hometime.fr
+
+content.service.repairing.content.4.head=Quand <span class="text-muted">faut-il entretenir une montre&nbsp;?</span>
+content.service.repairing.content.4.body=<div class="sub-title"></div>Le délai entre deux révisions dépend de très nombreux paramètres (marque et technologie employée dans le mouvement, fréquence de portée, utilisation d''un remontoir pour une montre automatique, ancienneté de la montre).\
  <br /><br />Quoiqu''il en soit, pour la plupart des montres, il est nécessaire de procéder à une révision au bout de <b>5 à 7 ans</b>.\
  <br /><br />Cette durée doit être raccourcie si jamais vous décelez ou suspectez un dysfonctionnement comme :\
  <ul><li>Prise d''avance ou de retard supérieur à 10 secondes par jour (vous pouvez synchroniser votre montre de façon précise sur : <a target="_blank" href="http://wwp.greenwich-mean-time.ca/">GMT</a>),</li>\
@@ -406,8 +504,8 @@ service.content.3.body=<div class="sub-title"></div>Le délai entre deux révisi
  <li>Arrêt rapide de la montre après remontage (cas d''une montre manuelle) ou après l''avoir portée (cas d''une montre automatique),</li></ul>\
  <br />De plus, si vous devenez propriétaire d''une montre sans connaitre la date de sa dernière révision, une révision est hautement recommandée.
 
-service.content.4.head=Combien <span class="text-muted">ça coûte ?</span> Combien de temps <span class="text-muted">cela dure-t-il ?</span>
-service.content.4.body=<div class="sub-title">Le prix :</div>Chaque acteur (horloger, marque) est libre de fixer le prix de ses prestations, cependant il est fréquent de constater des prix compris entre <b>200€ et 500€</b>.\
+content.service.repairing.content.5.head=Combien <span class="text-muted">ça coûte ?</span> Combien de temps <span class="text-muted">cela dure-t-il ?</span>
+content.service.repairing.content.5.body=<div class="sub-title">Le prix :</div>Chaque acteur (horloger, marque) est libre de fixer le prix de ses prestations, cependant il est fréquent de constater des prix compris entre <b>200€ et 500€</b>.\
  <br/><br/>Le prix dépend de la complexité de la montre et de son raffinement, aussi le prix des révisions est souvent proportionnel au prix de vente neuf de la montre. Dans tous les cas, des tarifs excédant 20% du prix neuf de la montre pour une simple révision sont considérés comme très élevés.\
  Il faut bien entendu prendre en compte l''ensemble des services pouvant accompagner la révision (notamment la garantie d''étanchéité, ou la prise en charge à domicile). Dans le cas où la montre a subi des dommages et nécessite le remplacement de pièces, les prix peuvent dépasser cette limite des 20%. \
  <div class="sub-title">Les délais :</div>Lors d''une révision, il existe des opérations pour lesquelles les délais sont incompressibles et d''autres pour lesquelles ils peuvent être optimisés. Ainsi, le démontage, l''huilage et le remontage sont des opérations relativement rapides pouvant être réalisées en une journée.\
@@ -416,8 +514,12 @@ service.content.4.body=<div class="sub-title">Le prix :</div>Chaque acteur (horl
  <br />Les délais peuvent ainsi varier de <b>1 semaine à 3 mois</b>. \
  <br /><br /><b>Pour toutes les prestations qui lui sont confiées, Hometime se charge de minimiser coûts et délais.</b>
 
-service.content.5.head=Y-a-t-il des risques liés à l''entretien&nbsp;?
-service.content.5.body=<div class="sub-title"></div>Il n''y a pas de risques à proprement parler. Les montres sont toutes conçues pour être entretenues à intervalles réguliers.\
+content.service.repairing.content.5.default.to.action.text=En savoir plus...
+content.service.repairing.content.5.default.to.action.perma=http://watchnext.fr/blog/2014/01/combien-de-temps-dure-une-revision-ou-une-reparation-de-montre/?utm_source=hometime.fr
+
+
+content.service.repairing.content.6.head=Y-a-t-il des risques liés à l''entretien&nbsp;?
+content.service.repairing.content.6.body=<div class="sub-title"></div>Il n''y a pas de risques à proprement parler. Les montres sont toutes conçues pour être entretenues à intervalles réguliers.\
  Il existe beaucoup <b>plus de risques à ne pas faire entretenir</b> sa montre qu''à la faire entretenir. En effet, il peut arriver qu''une pièce cassée dans une montre ancienne ne puisse être remplacée alors qu''un entretien régulier aurait pu permettre d''éviter cette casse.\
  <br /><br />Il faut malgré tout être attentifs à certains points :\
  <ul><li>Confier sa montre à un acteur sérieux,</li>\
@@ -426,33 +528,28 @@ service.content.5.body=<div class="sub-title"></div>Il n''y a pas de risques à 
  <li>Connaitre les éventuels intermédiaires intervenant dans la réalisation du service.</li></ul>\
  <br /><b>La mission de Hometime est de s''occuper de tout pour vous garantir le meilleur.</b>
 
-service.content.6.head=Votre montre est précieuse !
-service.content.6.body=<div class="sub-title">Elle fait partie de votre patrimoine :</div>Les montres mécaniques sont aujourd'hui considérées comme <b>une valeur refuge</b> au même titre que les oeuvres d''art ou l''Or.\
+content.service.repairing.content.6.default.to.action.text=En savoir plus...
+content.service.repairing.content.6.default.to.action.perma=http://watchnext.fr/blog/2014/01/existe-t-il-des-risques-a-faire-entretenir-sa-montre/?utm_source=hometime.fr
+content.service.repairing.content.6.primary.to.action.text=Entretenir ma montre !
+content.service.repairing.content.6.primary.to.action.perma=/perma/devis
+
+content.service.repairing.content.1.head=Votre montre est précieuse&nbsp;!
+content.service.repairing.content.1.body=<div class="sub-title">Elle fait partie de votre patrimoine :</div>Les montres mécaniques sont aujourd'hui considérées comme <b>une valeur refuge</b> au même titre que les oeuvres d''art ou l''Or.\
  Si cela est évident pour une catégorie très particulière de montres (Rolex, Patek Philippe notamment), il faut noter que certaines montres peu cotées il y a quelques années s''apprécient très rapidement aujourd''hui (cas des montres Heuer par exemple, ou des Panerai).\
  <br /><br />Ainsi, prendre soin de sa montre doit être considéré comme un acte patrimonial important. D''autant qu''au delà de sa valeur pécuniaire une montre peut très souvent représenter une valeur sentimentale très forte.\
  <br /><br />Découvrez pourquoi les montres s''usent et comment les entretenir. 
 
-service.1.alt=Pourquoi faire entretenir sa montre
-service.2.alt=Comment entretient-on une montre
-service.3.alt=Quand faut-il entretenir une montre
-service.4.alt=Combien ça coûte et combien de temps ça dure
-service.5.alt=Y-a-t-il des risques liés à l''entretien
-service.6.alt=Votre montre c''est votre partimoine
-service.1.to.action=En savoir plus...
-service.2.to.action=En savoir plus...
-service.3.to.action=Outil de calcul personnalisé
-service.4.to.action=En savoir plus...
-service.5.default.to.action=En savoir plus...
-service.5.primary.to.action=Entretenir ma montre !
 
-#Rolex Repairing page
+
+#------ Rolex Repairing page ------------------
+#------ content.rolex.repairing
 content.rolex.repairing.content.count=4
 content.rolex.repairing.main.title=Réparation des montres Rolex
-content.rolex.repairing.content.head=Réparation des montres Rolex
-content.rolex.repairing.content.head.subtitle=Tout savoir sur l''entretien des montres Rolex
 content.rolex.repairing.html.title=Hometime vous parle de la réparation des montres Rolex
 content.rolex.repairing.html.description=Hometime répare les montres Rolex récentes ou vintage, pour les petits soucis ou les grosses restauration
 content.rolex.repairing.html.keywords=réparation, montre, rolex, entretien, vintage, restauration, submariner, daytona, datejust
+content.rolex.repairing.content.head=Réparation des montres Rolex
+content.rolex.repairing.content.head.subtitle=Tout savoir sur l''entretien des montres Rolex
 
 content.rolex.repairing.content.3.head=Problème de remontage automatique <span class="text-muted">- axe de masse défectueux</span>
 content.rolex.repairing.content.3.body=<div class="sub-title">Les symptômes :</div>La plupart des mouvements automatiques (pas les dernières générations) présente avec le temps une prise de jeu au niveau de l''axe de masse automatique. \
@@ -462,6 +559,8 @@ content.rolex.repairing.content.3.body=<div class="sub-title">Les symptômes :</
  <div class="sub-title">Comment prévenir ce problème ?</div>Dans la mesure du possible, il est conseillé d''eviter de faire subir des vibrations à une Rolex automatique de façon prolongée (scooter, golf, tennis, bricolage...). Quoiqu''il en soit, l''usure de l''axe de masse est inévitable à long terme.
 
 content.rolex.repairing.content.3.image.url=https://d1qsyzkyf147s1.cloudfront.net/assets/images/repairing/rolex/movement.jpg
+content.rolex.repairing.content.3.image.title=Masse automatique Rolex
+content.rolex.repairing.content.3.image.alt=Photo d''une masse automatique d''une montre Rolex
 content.rolex.repairing.content.3.default.to.action.text=Demander un devis
 content.rolex.repairing.content.3.default.to.action.perma=/perma/offre
 
@@ -476,6 +575,8 @@ content.rolex.repairing.content.2.body=<div class="sub-title">Pourquoi la montre
 content.rolex.repairing.2.to.action=En savoir plus...
 
 content.rolex.repairing.content.2.image.url=https://d1qsyzkyf147s1.cloudfront.net/assets/images/repairing/rolex/water.jpg
+content.rolex.repairing.content.2.image.title=Mouvement de montre Rolex rouillé
+content.rolex.repairing.content.2.image.alt=Photo d''un mouvement de montre Rolex rouillé
 
 content.rolex.repairing.content.1.head=La réparation des montres Rolex en général
 content.rolex.repairing.content.1.body= <br />Les montres Rolex représentent une grosse partie des réparations réalisées par Hometime, environ 1 montre sur 3 est une Rolex : <b>Submariner, Daytona, Datejust</b> ou d''autres modèles plus spécifiques. \
@@ -499,27 +600,19 @@ content.rolex.repairing.content.4.body=<div class="sub-title">Deux types de verr
  <div class="sub-title">Cas des verres en saphir :</div>Un verre en saphir peut se rayer ou se casser même si cela nécessite une matière très dure ou bien un choc important. Dans ces deux cas, il est nécessaire de remplacer le verre dans la mesure où il n''est pas possible de réparer le saphir. A l''occasion du remplacement d''un verre en saphir (et de son joint), l''étanchéité de la montre est refaite et garantie. \
  <div class="sub-title">Puis-je changer mon verre plexiglass par un verre saphir ?</div>Cela n''est pas possible, dans un sens ou dans l''autre. Les boitiers sont conçus différemment et il n''est pas possible de passer d''un type de verre à un autre.
 
-content.rolex.repairing.4.to.action=Demander un devis
 
-content.rolex.repairing.1.default.to.action=Venir nous voir
-content.rolex.repairing.1.primary.to.action=Demander un devis
-
-content.rolex.repairing.1.title=Masse automatique Rolex
-content.rolex.repairing.2.title=Mouvement de montre Rolex rouillé
-content.rolex.repairing.4.title=Verre cassé sur une Rolex
-content.rolex.repairing.1.alt=Photo d''une masse automatique d''une montre Rolex
-content.rolex.repairing.2.alt=Photo d''un mouvement de montre Rolex rouillé
-content.rolex.repairing.4.alt=Photo d''un verre cassé sur une Rolex
-
-
-
-#Omega Repairing page
+#------ Rolex Repairing page ------------------
+#------ content.rolex.repairing
+content.omega.repairing.content.count=4
+content.omega.repairing.main.title=Réparation des montres Omega
 content.omega.repairing.html.title=Hometime vous parle de la réparation des montres Omega
 content.omega.repairing.html.description=Hometime répare les montres Omega de toutes les époques et avec tous les types
 content.omega.repairing.html.keywords=réparation, montre, omega, entretien, vintage, restauration, seamaster, speedmaster, moonwatch, speed pro, planet ocean, 300m, coaxial
+content.omega.repairing.content.head=Réparation des montres Omega
+content.omega.repairing.content.head.subtitle=Tout savoir sur l''entretien des montres Omega
 
-content.omega.repairing.content.1.head=Verre cassé ou rayé
-content.omega.repairing.content.1.body=<div class="sub-title">Les différents cas de verres rayés :</div>En fonction du modèle ou de l''âge de la montre, celle-ci peut être équipée d''un verre saphir ou bien d''un verre en plexiglass.<br \><br \>Les verres en plexiglass peuvent être polis s''ils sont légèrement rayés, dans le cas des verres en saphir, ils sont la plupart du temps traités par un antireflet qui peut être retiré s''il est rayé de façon superficielle. \
+content.omega.repairing.content.3.head=Verre cassé ou rayé
+content.omega.repairing.content.3.body=<div class="sub-title">Les différents cas de verres rayés :</div>En fonction du modèle ou de l''âge de la montre, celle-ci peut être équipée d''un verre saphir ou bien d''un verre en plexiglass.<br \><br \>Les verres en plexiglass peuvent être polis s''ils sont légèrement rayés, dans le cas des verres en saphir, ils sont la plupart du temps traités par un antireflet qui peut être retiré s''il est rayé de façon superficielle. \
  <div class="sub-title">Si le verre est cassé :</div>Un verre en plexiglass peut se casser relativement facilement sans que cela soit dû à un choc violent. Si cela est le cas, le remplacement du verre n''est pas très onéreux et peut se faire dans le cadre d''un entretien partiel. \
  <br \><br \>Un verre saphir ne peut se casser qu''en subissant un choc violent. Ce choc crée souvent des dégâts au niveau du mouvement. Cela justifie le plus souvent une révision complète en plus du changement du verre. \
  <div class="sub-title">Changement de verre et étanchéité</div>La grande majorité des modèles de montre Omega est étanche. Le changement de verre implique de refaire l''étanchéité de la montre.
@@ -532,15 +625,12 @@ content.omega.repairing.content.2.body=<div class="sub-title">Pourquoi la lunett
  <div class="sub-title">Comment réduire le risque :</div>Manipuler régulièrement la lunette en lui faisant faire un tour complet peut permettre d''éviter son encrassement. \
  <div class="sub-title">Et si ma lunette est rayée :</div>Les lunettes sont conçues en deux parties, la partie tournante extérieure et la partie interne (celle sur laquelle sont inscrites les différentes indications) : l''insert de lunette. C''est cet insert qui peut se rayer avec le temps. En fonction des cas, Omega oblige à commander une lunette complète ou uniquement l''insert. Cela impacte directement le coût de la remise à neuf de la lunette.
 
-content.omega.repairing.2.to.action=En savoir plus...
 
-content.omega.repairing.content.3.head=La réparation des montres Omega chez Hometime
-content.omega.repairing.content.3.body= <br />Les montres Omega font partie des montres que nous réparons le plus chez Hometime après les montres Rolex. Les modèles que nous voyons le plus souvent sont des Speedmaster Professional (et quelques reduced à mouvement automatique) et des seamaster. Les autres modèles sont un peu plus rares mais quelques De Ville ou Constellation nous arrivent de temps en temps. \
+content.omega.repairing.content.1.head=La réparation des montres Omega chez Hometime
+content.omega.repairing.content.1.body= <br />Les montres Omega font partie des montres que nous réparons le plus chez Hometime après les montres Rolex. Les modèles que nous voyons le plus souvent sont des Speedmaster Professional (et quelques reduced à mouvement automatique) et des seamaster. Les autres modèles sont un peu plus rares mais quelques De Ville ou Constellation nous arrivent de temps en temps. \
  <br /><br />Le plus gros des réparations touche des montres ayant plus de 15 ans, voire des montres vintage réellement très anciennes. \
  <br /><br />Pour les montres les plus récentes équipées des échappements coaxiaux, nous pouvons être amenés à conseiller un entretien auprès du SAV de la marque afin de "mettre à jour" le calibre avec les dernières évolutions de cet échappement très particulier.
  
-content.omega.repairing.3.default.to.action=Demander un devis
-content.omega.repairing.3.primary.to.action=Devis interactif
  
 content.omega.repairing.content.4.head=Couronne ou poussoirs cassés
 content.omega.repairing.content.4.body=<div class="sub-title">La couronne de remontoir :</div>Le problème n''est pas spécifique aux montres Omega mais il s''agit d''une réparation relativement fréquente sur les modèles non équipés de couronnes vissées et notamment sur les modèles vintage. Si la couronne est détachée de la montre, il peut être parfois nécessaire de changer l''ensemble couronne/tige de couronne alors que dans les cas les moins graves il est possible de repostionner la couronne sur sa tige. \
@@ -548,10 +638,17 @@ content.omega.repairing.content.4.body=<div class="sub-title">La couronne de rem
  <div class="sub-title">Les poussoirs des Speedmaster :</div>Comme sur de nombreux chronographes, les poussoirs des Speedmaster sont assez exposés aux chocs et peuvent se briser. Il peuvent aussi se dévisser mais cela est beaucoup plus rare. Dans ces cas là, il est forcément nécessaire de remplacer les poussoirs et cela peut s''effectuer dans le cadre d''un entretien partiel. \
  <br \><br \>En fonction des conditions d''utilisation de la montre, les poussoirs peuvent aussi simplement s''encrasser et se bloquer. Un nettoyage suffit alors pour permettre à la montre de refonctionner normalement.
 
-content.omega.repairing.4.to.action=En savoir plus...
 
-content.omega.repairing.1.default.to.action=Venir nous voir
-content.omega.repairing.1.primary.to.action=Demander un devis
+
+
+
+
+
+#Omega Repairing page
+content.omega.repairing.html.title=Hometime vous parle de la réparation des montres Omega
+content.omega.repairing.html.description=Hometime répare les montres Omega de toutes les époques et avec tous les types
+content.omega.repairing.html.keywords=réparation, montre, omega, entretien, vintage, restauration, seamaster, speedmaster, moonwatch, speed pro, planet ocean, 300m, coaxial
+
 
 
 content.omega.repairing.main.title=Réparation des montres Omega
@@ -613,81 +710,45 @@ content.paris.repairing.2.title=Lunette tournante d''une paris
 content.paris.repairing.1.alt=Photo du verre cassé sur une paris Speedmaster mark IV
 content.paris.repairing.2.alt=Photo de la manipulation de la lunette tournante d''une Omega Seamaster
 
-
-#Authentication page
-content.auth.html.title=Hometime vous parle de l''authentification des montres de Luxe
-content.auth.html.description=Hometime authentifie et certifie les montres de marque récentes ou vintage
-content.auth.html.keywords=authentification, certification, réparation, montre, auth, entretien, vintage, restauration, submariner, daytona, datejust
-
-content.auth.main.title=Authentification des montres de Luxe
-
-content.auth.content.1.head=Les enjeux de l''authentification
-content.auth.content.1.body=<div class="sub-title">Les fausses montres :</div>Depuis 2018, la qualité des fausses montres, et principalement des Rolex, a franchi un cap. Il devient presque <b>impossible de déterminer si une montre est authentique sans l''ouvrir</b> et sans disposer d''une expertise poussée.\
- <br \><br \>Nous voyons de fausses montres depuis longtemps et pouvons la plupart du temps détecter les fausses sur photos. Cependant, aujourd''hui nous ne pouvons plus assurer l''authenticité uniquement sur photo. Certaines copies nécessitent une inspection attentive et exhaustive pour en certifier la provenance. \
- <div class="sub-title">Qui peut authentifier les montres ?</div><b>De moins en moins de professionnels acceptent aujourd''hui de certifier l''authenticité</b> des montres (même en boutiques officielles).\
- <br \><br \>Cela est principalement dû au fait qu''il peut s''agir d''un exercice difficile voire impossible sans l''inspection par un horloger expert ainsi qu''à la responsabilité prise par ce dernier (potentiellement coûteuse à assumer).\
- <div class="sub-title">Authentification et garantie d''originalité :</div>Authentifier une montre consiste à certifier qu''elle provient ou non de la marque.\
- <br \><br \>Cependant, dans le cas des montres vintage notamment, il peut être demandé à l''expert de certifier que toutes les pièces sont conformes à ce qu''elles devraient être et qu''elles n''ont pas été remplacées au cours de la vie de la montre par des pièces de la marque mais de rechange (pièces de service).\
- Cette certification demande un niveau bien plus élevé d''expertise et un temps d''analyse significativement plus long.\
- <div class="sub-title">Le mythe "boite et papiers" :</div><b>Beaucoup pensent que disposer de la boite et des papiers valide l''authenticité d''une montre</b>, alors que l''inverse doit inviter à la prudence.\
- <br \><br \><b>Cela est faux</b>.\
- <br \><br \>Les faussaires copient aussi la boite et les papiers. Même si la qualité et certains détails secrets ne sont pas au rendez-vous, ils peuvent tromper un non inité.\
- A l''inverse, dans certains cas, notamment pour les montres anciennes, ne pas disposer des papiers est tout à fait commun.\
- <br \><br \>Enfin, la côte des montres étant très sensible à la présence des papiers, il arrive que des vraies montres disposent de faux papiers ! 
-
-
-content.auth.content.2.head=Nos services d''authentification
-content.auth.content.2.body=<div class="sub-title">Non authenticité : </div>Lorque nous déterminons qu''une montre est une copie, nous proposons la rédaction gratuite d''un certificat permettant de le formaliser.\
- <br \><br \>Un tel certificat peut permettre de déposer plainte ou du moins de faire pression sur un vendeur honnête.\
- <div class="sub-title">Authenticité garantie :</div>Lorsque nos tests permettent d''assurer que la montre est bien authentique, la formalisation de ce résultat peut faire l''objet d''un certificat dont le tarif est indexé sur la valeur de la montre.\
- <br \><br \>En fonction du besoin, nous pouvons aussi informer gratuitement le client que la montre est authentique. \
- <div class="sub-title">Cas litigieux :</div>Dans certains cas, la montre est authentique mais certaines pièces ou accessoires ne sont pas conformes. De la même façon, nous pouvons alors établir un certificat détaillant les points litigieux.
-
-content.auth.content.3.head=La marche à suivre
-content.auth.content.3.body=Si vous avez une montre à faire authentifier, n''hésitez pas à venir nous voir avec ou sans rendez-vous. Nous pourrons vous faire un premier retour très rapidement.
-
-content.auth.3.to.action=Venir nous voir
-
-
 # Watchmakers page
-watchmakers.content.count=3
-watchmakers.content.head=Les horlogers Hometime
-watchmakers.content.head.subtitle=Qui sont nos horlogers ?
-watchmakers.html.title=Les horlogers Hometime
-watchmakers.html.description=Connaitre les horlogers travaillant chez watch next, leur expérience, leur parcours, leurs spécialités
-watchmakers.html.keywords=horlogers, expérience, diplomes,spécialités 
+content.watchmakers.content.count=3
+content.watchmakers.content.head=Les horlogers Hometime
+content.watchmakers.content.head.subtitle=Qui sont nos horlogers ?
+content.watchmakers.html.title=Les horlogers Hometime
+content.watchmakers.html.description=Connaitre les horlogers travaillant chez watch next, leur expérience, leur parcours, leurs spécialités
+content.watchmakers.html.keywords=horlogers, expérience, diplomes,spécialités 
 
-watchmakers.content.3.head=Simon <span class="text-muted">- chef d''atelier</span>
-watchmakers.content.3.body=<div class="sub-title">Qui est-il ?</div>Simon a 39 ans, il exerce depuis 20 ans, il vit en région parisienne. \
+content.watchmakers.content.3.head=Simon <span class="text-muted">- chef d''atelier</span>
+content.watchmakers.content.3.body=<div class="sub-title">Qui est-il ?</div>Simon a 39 ans, il exerce depuis 20 ans, il vit en région parisienne. \
  <div class="sub-title">Son parcours :</div>Après avoir travaillé pour les plus grandes maisons en SAV : Audemars Piguet, Jaeger LeCoultre... Simon a ouvert son propre atelier pendant 2 ans à Saint Germain en Laye. Après quelques expériences chez des horlogers prestigieux dans Paris, il a rejoint l''équipe en 2017. \
  <div class="sub-title">Son rôle chez Hometime :</div>Simon est associé chez Hometime. Il est le chef de l''atelier et à ce titre organise le travail, réalise les devis et se charge des réparations les plus compliquées.\
  <div class="sub-title">Il aime :</div>Tout ce qui est difficile... son surnom, <b>l''horloger de l''extrême</b>.
 
-watchmakers.content.3.image.url=https://d1qsyzkyf147s1.cloudfront.net/assets/images/watchmakers/simon.jpg
+content.watchmakers.content.3.image.url=https://d1qsyzkyf147s1.cloudfront.net/assets/images/watchmakers/simon.jpg
 
-watchmakers.content.2.head=Lou
-watchmakers.content.2.body=<div class="sub-title">Qui est-elle ?</div>Lou a 24 ans, elle exerce depuis 6 mois, elle vit à Paris et vient de Bretagne. \
+content.watchmakers.content.2.head=Lou
+content.watchmakers.content.2.body=<div class="sub-title">Qui est-elle ?</div>Lou a 24 ans, elle exerce depuis 6 mois, elle vit à Paris et vient de Bretagne. \
  <div class="sub-title">Son parcours :</div>Lou a étudié l''horlogerie au Lycée Jean Jaurès à Rennes. Elle y a obtenu en 2018 un diplôme des métiers d''Art, après 4 ans d''apprentissage théorique et pratique. Lors de sa formation Lou a effectué des stages chez Jaeger LeCoultre, Seiko ou encore chez des horlogers indépendants.\
  <div class="sub-title">Son rôle chez Hometime :</div>Lou travaille chez Hometime depuis Septembre 2018, elle répare les montres équipées de mouvements ETA, Valjoux et se forme aux mouvements plus complexes sous la conduite de Simon.\
  <div class="sub-title">Elle aime :</div>Se lever le matin pour venir travailler et apprendre de ses brillants patrons ;-)
 
-watchmakers.content.2.image.url=https://d1qsyzkyf147s1.cloudfront.net/assets/images/watchmakers/lou.jpg
+content.watchmakers.content.2.image.url=https://d1qsyzkyf147s1.cloudfront.net/assets/images/watchmakers/lou.jpg
 
-watchmakers.content.3.default.to.action.text=Venir nous voir
-watchmakers.content.3.default.to.action.perma=/perma/venir
-watchmakers.content.3.primary.to.action.text=Demander un devis
-watchmakers.content.3.primary.to.action.perma=/perma/offre
+content.watchmakers.content.3.default.to.action.text=Venir nous voir
+content.watchmakers.content.3.default.to.action.perma=/perma/venir
+content.watchmakers.content.3.primary.to.action.text=Demander un devis
+content.watchmakers.content.3.primary.to.action.perma=/perma/offre
 
-watchmakers.content.1.head=Notre équipe d''horlogers
-watchmakers.content.1.body= <br />Hometime dispose de sa propre équipe d''horlogers dédiés. Ils travaillent sur place et peuvent faire un premier diagnostic lors du dépôt de la montre avant de l''ausculter plus attentivement lorsque cela est nécessaire. \
+content.watchmakers.content.1.head=Notre équipe d''horlogers
+content.watchmakers.content.1.body= <br />Hometime dispose de sa propre équipe d''horlogers dédiés. Ils travaillent sur place et peuvent faire un premier diagnostic lors du dépôt de la montre avant de l''ausculter plus attentivement lorsque cela est nécessaire. \
  <br /><br />Spécialisés dans le Service Après Vente, ils ont les connaissances leur permettant de travailler sur des mouvements récents ou plus anciens, avec ou sans complication.\
  <br /><br />De la réparation d''une montre de grande marque à complications ayant subi de gros dégâts à un simple changement de pile de montre plus ou moins basique, ils sont toujours opérationnels.
  
-watchmakers.1.default.to.action=Venir nous voir
-watchmakers.1.primary.to.action=Demander un devis
+content.watchmakers.1.default.to.action=Venir nous voir
+content.watchmakers.1.primary.to.action=Demander un devis
 
 
-watchmakers.main.title=Les horlogers Hometime
+content.watchmakers.main.title=Les horlogers Hometime
 
 # Water page
 water.html.title=Problème d''étanchéité d''une montre
@@ -845,7 +906,7 @@ offer.head=Les services et les prestations Hometime
 offer.head.subtitle=Découvrez les services que nous proposons
 offer.baseline=Les services et les prestations Hometime
 
-offer.intro=
+offer.head.intro=
 offer.head.disclaimer=Pour plus de détails sur nos prestations, n''hésitez pas à nous appeler ou à passer dans notre atelier. Nous serons ravis de répondre à vos questions !
 
 offer.service.head=Révision & réparations

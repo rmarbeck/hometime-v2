@@ -40,10 +40,10 @@
 	@if(contentProvider.exists("content."+index+".default.to.action.text") || contentProvider.exists("content."+index+".primary.to.action.text")) {
 			<div class="center">
 				@if(contentProvider.exists("content."+index+".default.to.action.text")) {
-				<a href="@contentProvider.get("content."+index+".default.to.action.perma")" class="button button-border button-dark button-rounded button-large noleftmargin topmargin-sm">@contentProvider.get("content."+index+".default.to.action.text")</a>
+				<a href="@contentProvider.get("content."+index+".default.to.action.perma")" class="button-dark button button-border button-dark button-rounded button-large noleftmargin topmargin-sm">@contentProvider.get("content."+index+".default.to.action.text")</a>
 				}
 				@if(contentProvider.exists("content."+index+".primary.to.action.text")) {
-				<a href="@contentProvider.get("content."+index+".primary.to.action.perma")" class="button button-border button-dark button-rounded button-large noleftmargin topmargin-sm">@contentProvider.get("content."+index+".primary.to.action.text")</a>
+				<a href="@contentProvider.get("content."+index+".primary.to.action.perma")" class="button-light button button-border button-dark button-rounded button-large noleftmargin topmargin-sm">@contentProvider.get("content."+index+".primary.to.action.text")</a>
 				}
 			</div>
 	}
@@ -52,7 +52,7 @@
 
 @(contentProvider.initialize(key))
 	
-@layouts.main_helper_with_head_block(key, Symbol("_head_key_force_raw") -> contentProvider.get("content.head"), Symbol("_head_subtitle_key_force_raw") -> contentProvider.get("content.head.subtitle"), Symbol("_head_intro_key_force_raw") -> "", Symbol("_disclaimer_key_force_raw") -> "", Symbol("_css_outer_div_class") -> "content-template"){
+@layouts.main_helper_with_head_block(key, Symbol("_head_key_force_raw") -> contentProvider.get("content.head"), Symbol("_head_subtitle_key_force_raw") -> contentProvider.get("content.head.subtitle"), Symbol("_head_intro_key_force_raw") -> "", Symbol("_disclaimer_key_force_raw") -> "", Symbol("_css_content_div_class") -> "content-template"){
 		@List.range(1, contentProvider.getIntValue("content.count") + 1).map{ index =>
 				@article(index)
 		}

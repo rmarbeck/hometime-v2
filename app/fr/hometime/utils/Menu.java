@@ -128,7 +128,7 @@ public class Menu {
 	}
 	
 	public boolean isHighlighted(String key) {
-		if (label.equals(key))
+		if (label.contains(key))
 			return true;
 		if (hasParent())
 			return this.parent.get().isHighlighted(key);

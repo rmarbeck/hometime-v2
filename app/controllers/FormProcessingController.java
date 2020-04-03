@@ -26,6 +26,7 @@ import models.QuotationRequestData;
  *
  */
 public class FormProcessingController extends Controller implements WSBodyReadables, WSBodyWritables {
+	private final static String WATER_ISSUE_ORDER_TYPE = "5";
 	private MessagesApi messagesApi;
 	private FormFactory formFactory;
 	private BrandProvider brandProvider;
@@ -45,16 +46,24 @@ public class FormProcessingController extends Controller implements WSBodyReadab
 		return redirect(controllers.routes.HomeController.index()).flashing("success", "Demande de devis prise en compte avec succès {"+content+"}").flashing("warning", "Demande de devis prise en compte avec succès {"+content+"}").flashing("error", "Demande de devis prise en compte avec succès {"+content+"}");
 	}
 	
+	public Result prepareQuotationRequestWater(Http.Request request) {
+		return preparedQuotation(request, Optional.empty(), Optional.of(WATER_ISSUE_ORDER_TYPE));
+	}
+	
+	public Result prepareQuotationRequestWaterWithBrand(Http.Request request, String brandSeoName) {
+		return preparedQuotation(request, Optional.of(brandSeoName), Optional.of(WATER_ISSUE_ORDER_TYPE));
+	}
+	
 	public Result prepareQuotationRequest(Http.Request request) {
-		return ok(views.html.quotation_form.render(fillQuotationRequestWithDefaultData(Optional.empty()), brandProvider.retrieveBrands(), Optional.empty(), request, messagesApi.preferred(request)));
+		return preparedQuotation(request, Optional.empty(), Optional.empty());
 	}
 	
 	public Result prepareQuotationRequestWithBrand(Http.Request request, String brandSeoName) {
-		QuotationRequestData requestWithPrefilledBrand = new QuotationRequestData();
-		Optional<Brand> brandFound = brandProvider.getBrandBySeoName(brandSeoName);
-		brandFound.ifPresent(brand -> requestWithPrefilledBrand.brand = brand.id.toString());
-		requestWithPrefilledBrand.method = QuotationRequestData.METHOD_LOCAL;
-		return ok(views.html.quotation_form.render(fillQuotationRequestWithDefaultData(Optional.of(brandSeoName)), brandProvider.retrieveBrands(), brandFound, request, messagesApi.preferred(request)));
+		return preparedQuotation(request, Optional.of(brandSeoName), Optional.empty());
+	}
+	
+	private Result preparedQuotation(Http.Request request, Optional<String> brandSeoName, Optional<String> typeOfOrder) {
+		return ok(views.html.quotation_form.render(fillQuotationRequestWithDefaultData(brandSeoName, typeOfOrder), brandProvider.retrieveBrands(), getBrand(brandSeoName), request, messagesApi.preferred(request)));
 	}
 	
 	public CompletionStage<Result> processQuotationRequest(Http.Request request) {
@@ -76,14 +85,19 @@ public class FormProcessingController extends Controller implements WSBodyReadab
 		return Arrays.asList(values).stream().map(value -> key+"="+value).collect(Collectors.joining( "&" ));
 	}
 	
-	private Form<QuotationRequestData> fillQuotationRequestWithDefaultData(Optional<String> brandSeoName) {
-		QuotationRequestData requestWithPrefilledBrand = new QuotationRequestData();
+	private Form<QuotationRequestData> fillQuotationRequestWithDefaultData(Optional<String> brandSeoName, Optional<String> typeOfOrder) {
+		QuotationRequestData requestPrefilledIfNeeded = new QuotationRequestData();
 		brandSeoName.ifPresent(seoName -> {
 			Optional<Brand> brandFound = brandProvider.getBrandBySeoName(seoName);
-			brandFound.ifPresent(brand -> requestWithPrefilledBrand.brand = brand.id.toString());
+			brandFound.ifPresent(brand -> requestPrefilledIfNeeded.brand = brand.id.toString());
 		});
-		requestWithPrefilledBrand.method = QuotationRequestData.METHOD_LOCAL;
-		return getQuotationRequestForm().fill(requestWithPrefilledBrand);
+		typeOfOrder.ifPresent(orderType -> requestPrefilledIfNeeded.orderType = orderType);
+		requestPrefilledIfNeeded.method = QuotationRequestData.METHOD_LOCAL;
+		return getQuotationRequestForm().fill(requestPrefilledIfNeeded);
+	}
+	
+	private Optional<Brand> getBrand(Optional<String> brandSeoName) {
+		return brandSeoName.map(seoName -> brandProvider.getBrandBySeoName(seoName)).orElse(Optional.empty());
 	}
 
 	private Form<QuotationRequestData> getQuotationRequestForm() {
