@@ -1,12 +1,8 @@
 package fr.hometime.utils;
 
-import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 import java.util.concurrent.CompletionStage;
-import java.util.concurrent.ExecutionException;
-import java.util.concurrent.TimeUnit;
-import java.util.concurrent.TimeoutException;
 
 import javax.inject.Inject;
 import javax.inject.Singleton;
@@ -18,12 +14,11 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.JsonNode;
 
 import models.Brand;
+import play.libs.Json;
 import play.libs.ws.WSBodyReadables;
 import play.libs.ws.WSBodyWritables;
 import play.libs.ws.WSClient;
 import play.libs.ws.WSResponse;
-
-import play.libs.Json;
 
 @Singleton
 public class ExternalWSBrandProvider implements BrandProvider, WSBodyReadables, WSBodyWritables  {
@@ -54,22 +49,11 @@ public class ExternalWSBrandProvider implements BrandProvider, WSBodyReadables, 
 				List<Brand> brands = Json.mapper().readValue(json.traverse(), new TypeReference<List<Brand>>(){});
 			    return Optional.of(brands);
 			}catch(Exception e){
-			    //handle exception
+			    logger.error("Exception when trying to get Brands from webservice: "+e.getMessage());
 			}
 			return Optional.empty();
 		});
-		try {
-			return resultPromise.toCompletableFuture().get(2, TimeUnit.SECONDS);
-		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (ExecutionException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (TimeoutException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		return Optional.empty();
+
+		return resultPromise.toCompletableFuture().join();
 	}
 }

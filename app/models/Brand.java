@@ -22,6 +22,9 @@ public class Brand {
 	
 	public int quartz_category = 0;
 	
+	private Brand() {
+	}
+	
 	public Brand(Long id, String internalName) {
 		this(id, internalName, internalName, internalName);
 	}
