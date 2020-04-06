@@ -1,4 +1,4 @@
-@(title: String, description: String = "", keywords: String = "")(precontent: Html)(postcontent: Html)
+@(title: String, description: String = "", keywords: String = "")(precontent: Html)(postcontent: Html)(implicit request: Http.Request, messages: play.i18n.Messages)
 
 @import scala.collection.immutable._
 @import tags._
@@ -27,7 +27,7 @@
 
 	<!-- Document Title
 	============================================= -->
-	<title>@title</title>
+	<title>@Html(Messages("global.title.prefix"))@title</title>
 	<meta name="description" content="@description">
 	<meta name="keywords" content="@keywords">
 	

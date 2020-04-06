@@ -9,9 +9,9 @@
 				<div class="container clearfix">
 					@List.range(1, 5).map{ index => <p>@Html(Messages("page.visit.us.text.part."+index))</p> }
 				</div>	
-
-				<div style="height: 400px; margin-bottom: 20px; position: relative; overflow: hidden" class="gmap">
-					<iframe width="100%" height="400" frameborder="0" style="border:0" src="https://www.google.com/maps/embed/v1/place?key=AIzaSyBILpKrEOIAOcjVBa9-ownlM_oiEQqBTyc&q=322+rue+saint+honoré,Paris" allowfullscreen></iframe>
+				
+				<div>
+					<iframe width="600" height="450" frameborder="0" style="border:0" src="https://www.google.com/maps/embed/v1/place?q=place_id:ChIJawfbyi9u5kcR9cL5oxLwnNo&key=AIzaSyBILpKrEOIAOcjVBa9-ownlM_oiEQqBTyc" allowfullscreen></iframe>
 				</div>
 	}
 }

@@ -18,6 +18,8 @@ import play.i18n.MessagesApi;
 import play.mvc.*;
 import play.libs.ws.*;
 import models.Brand;
+import models.CallBackRequestData;
+import models.ContactRequestData;
 import models.QuotationRequestData;
 
 /**
@@ -42,9 +44,63 @@ public class FormProcessingController extends Controller implements WSBodyReadab
         this.ws = ws;
     }
 	
-	public Result displayFormContent(Http.Request request, String content) {
-		return redirect(controllers.routes.HomeController.index()).flashing("success", "Demande de devis prise en compte avec succès {"+content+"}").flashing("warning", "Demande de devis prise en compte avec succès {"+content+"}").flashing("error", "Demande de devis prise en compte avec succès {"+content+"}");
+	public Result displayFormSuccess(Http.Request request, String contentKey) {
+		return ok(views.html.action_success.render(contentKey, request, messagesApi.preferred(request))).flashing("success", "Demande de devis prise en compte avec succès {"+contentKey+"}").flashing("warning", "Demande de devis prise en compte avec succès {"+contentKey+"}").flashing("error", "Demande de devis prise en compte avec succès {"+contentKey+"}");
 	}
+	
+	/*************************************
+	 * 
+	 * Call Back Request Management
+	 * 
+	 *************************************/
+	public Result prepareCallBackRequest(Http.Request request) {
+		return ok(views.html.call_back_form.render(formFactory.form(CallBackRequestData.class).withDirectFieldAccess(true), request, messagesApi.preferred(request)));
+	}
+	
+	public CompletionStage<Result> processCallBackRequest(Http.Request request) {
+		final Form<CallBackRequestData> boundForm = formFactory.form(CallBackRequestData.class).withDirectFieldAccess(true).bindFromRequest(request);
+		
+		if (boundForm.hasErrors()) {
+			return CompletableFuture.supplyAsync(() -> badRequest(views.html.call_back_form.render(boundForm, request, messagesApi.preferred(request))));
+		} else {
+			/*CompletionStage<? extends WSResponse> responsePromise = ws.url("https://www.hometime.fr/new-order-from-outside").setContentType("application/x-www-form-urlencoded").post(request.body().asFormUrlEncoded().entrySet().stream().map(entry -> flattenValues(entry.getKey(), entry.getValue(), "&")).collect( Collectors.joining( "&" )));
+			return responsePromise.thenApply( response -> {
+				logger.error("!!!!!!!!!!!!!!!!!!!!! -> "+response.getStatus());
+				return displayFormContent(request, "call.back");
+			});*/
+			return CompletableFuture.supplyAsync(() -> displayFormSuccess(request, "call.back"));
+		}
+	}
+	
+	/*************************************
+	 * 
+	 * Contact Us Request Management
+	 * 
+	 *************************************/
+	public Result prepareContactRequest(Http.Request request) {
+		return ok(views.html.contact_us_form.render(formFactory.form(ContactRequestData.class).withDirectFieldAccess(true), request, messagesApi.preferred(request)));
+	}
+	
+	public CompletionStage<Result> processContactRequest(Http.Request request) {
+		final Form<ContactRequestData> boundForm = formFactory.form(ContactRequestData.class).withDirectFieldAccess(true).bindFromRequest(request);
+		
+		if (boundForm.hasErrors()) {
+			return CompletableFuture.supplyAsync(() -> badRequest(views.html.contact_us_form.render(boundForm, request, messagesApi.preferred(request))));
+		} else {
+			/*CompletionStage<? extends WSResponse> responsePromise = ws.url("https://www.hometime.fr/new-order-from-outside").setContentType("application/x-www-form-urlencoded").post(request.body().asFormUrlEncoded().entrySet().stream().map(entry -> flattenValues(entry.getKey(), entry.getValue(), "&")).collect( Collectors.joining( "&" )));
+			return responsePromise.thenApply( response -> {
+				logger.error("!!!!!!!!!!!!!!!!!!!!! -> "+response.getStatus());
+				return displayFormContent(request, "call.back");
+			});*/
+			return CompletableFuture.supplyAsync(() -> displayFormSuccess(request, "contact.us"));
+		}
+	}
+	
+	/*************************************
+	 * 
+	 * Quotation Request Management
+	 * 
+	 *************************************/
 	
 	public Result prepareQuotationRequestWater(Http.Request request) {
 		return preparedQuotation(request, Optional.empty(), Optional.of(WATER_ISSUE_ORDER_TYPE));
@@ -75,9 +131,9 @@ public class FormProcessingController extends Controller implements WSBodyReadab
 			CompletionStage<? extends WSResponse> responsePromise = ws.url("https://www.hometime.fr/new-order-from-outside").setContentType("application/x-www-form-urlencoded").post(request.body().asFormUrlEncoded().entrySet().stream().map(entry -> flattenValues(entry.getKey(), entry.getValue(), "&")).collect( Collectors.joining( "&" )));
 			return responsePromise.thenApply( response -> {
 				logger.error("!!!!!!!!!!!!!!!!!!!!! -> "+response.getStatus());
-				return displayFormContent(request, Integer.toString(response.getStatus()));
+				return displayFormSuccess(request, "quotation");
 			});
-			//return CompletableFuture.supplyAsync(() -> displayFormContent(request, Integer.toString(0)));
+			//return CompletableFuture.supplyAsync(() -> displayFormContent(request, "quotation"));
 		}
 	}
 	
@@ -103,4 +159,12 @@ public class FormProcessingController extends Controller implements WSBodyReadab
 	private Form<QuotationRequestData> getQuotationRequestForm() {
 		return formFactory.form(QuotationRequestData.class).withDirectFieldAccess(true);
 	}
+	
+	/*************************************
+	 * 
+	 * End Of Quotation Request Management
+	 * 
+	 *************************************/
+
+	
 }

@@ -1,6 +1,31 @@
 # Messages en francais
 
-offer.repeat.loop=1000
+global.title.prefix=Hometime -&nbsp;
+
+
+
+#------ Footer ------------------
+#------ footer
+footer.category.important.links=Liens importants
+footer.contact.us=Nous envoyer un email
+footer.call.back=Etre rappelé
+footer.visit.us=Venir chez Hometime
+footer.quotation.request=Demander un devis
+footer.site.plan=Plan du site
+footer.legal=Mentions légales
+footer.private=Vie privée
+footer.cgv=CGV
+footer.who.are.we=Qui sommes nous&nbsp;?
+footer.testimonials=Avis clients
+footer.faq=Questions fréquentes&nbsp;(FAQ)
+footer.claim=Horloger et bien plus encore, <strong>Hometime, tous les services dont vous avez besoin</strong>.
+footer.location=Atelier:
+footer.address=322 rue Saint Honoré<br/>75001&nbsp;Paris
+footer.copyright=© Watch next SAS 2013-{0,number,#}
+footer.phone.number=07&nbsp;82&nbsp;43&nbsp;47&nbsp;51
+footer.follow.on.facebook=<strong>Suivez-nous</strong><br>sur Facebook</small>
+footer.follow.on.instagram=<strong>Nos photos</strong><br>sur Instagram</small>
+
 
 # Glogal high level texts
 global.code.lang.head=fr
@@ -243,7 +268,7 @@ home.baseline=<i>Ne perdez plus votre temps, gagnez&#8209;le&nbsp;!</i>
 home.baseline.alt=<i>Ne perdez plus votre temps, gagnez&#8209;le&nbsp;!</i>
 
 home.claim=Ne perdez plus votre temps, gagnez&#8209;le&nbsp;!
-home.claim.more=Hometime propose depuis 2014 tous les services horlogers allant de l''<b>entretien de montres récentes ou anciennes</b>, l''<b>expertise</b>, jusqu''à à la <b>vente de montres neuves ou d''occasion</b>.
+home.claim.more=Hometime propose depuis 2014 tous les services horlogers allant de l''<b>entretien de montres récentes ou anciennes</b>, l''<b>expertise</b>, jusqu''à la <b>vente de montres neuves ou d''occasion</b>.
 
 home.promise.0.alt=Mouvement de montre
 home.promise.0.claim=Votre montre est précieuse
@@ -1496,6 +1521,11 @@ quartz.movado.brand.models=Edge, Modern classic, Museum Classic, Ultra slim, Red
 
 
 
+
+
+
+#------ Quotation Form ------------------
+#------ quotation.form
 quotation.form.html.title=Devis pour révision ou réparation d''une montre {0}
 quotation.form.html.description=Formulaire de demande de devis gratuit pour révision, réparation ou restauration d''une montre automatique ou manuelle {0}, différents modèles  {1}.
 quotation.form.html.keywords=devis gratuit,devis en ligne, entretien, horloger agréé, évaluation, horloger indépendant, révision, réparation, montre, paris, yvelines, hauts de seine, {0}, {1}
@@ -1544,10 +1574,80 @@ quotation.form.phonenumber.placeholder=06xxxxxx
 quotation.form.remark.label=Remarques
 quotation.form.remark.placeholder=Vous souhaitez préciser quelque-chose
 
+quotation.form.error.model.spam.detected=Notre système a détecté un contenu correspondant à du SPAM, veuillez contrôler la valeur saisie
+quotation.form.error.remark.spam.detected=Notre système a détecté un contenu correspondant à du SPAM, veuillez contrôler la valeur saisie
 
 
+#------ CallBack Form ------------------
+#------ call.back.form
+call.back.form.html.title=Etre rappelé
+call.back.form.html.description=Formulaire de contact, poser une question ou demander un renseignement, nous vous rappelons par téléphone.
+call.back.form.html.keywords=Nous contacter, question, information, renseignement, téléphone, rappel
+
+call.back.form.head=Demandez-nous de vous rappeler
+call.back.form.head.subtitle=Une simple demande et nous vous rappelons
+call.back.form.head.intro=Vous souhaitez nous poser une question ou pour toute autre raison, veuillez remplir le formulaire ci-dessous. Nous vous rappellerons le plus rapidement possible. Vous préférez nous appeler, composez le <b>07&nbsp;82&nbsp;43&nbsp;47&nbsp;51</b> (numéro de mobile standard).
+call.back.form.disclaimer=En fonction de l''horaire ou de notre charge de travail, il est possible que nous ne puissions pas vous rappeler immédiatement. Nous essayons dans tous les cas de limiter les délais, merci d''avance de votre compréhension.
+
+call.back.form.phonenumber.label=Votre numéro de téléphone
+call.back.form.phonenumber.placeholder=06xxxxxxxx
+call.back.request.validation.error.phoneNumber.not.recognised=Numéro de téléphone non reconnu, veuillez le resaisir s''il vous plaît
+
+call.back.form.question.label=Motif
+call.back.form.question.placeholder=Le motif de votre demande de contact (donné à titre indicatif)
+call.back.request.validation.error.question.spam.detected=Notre système a détecté un contenu correspondant à du SPAM, veuillez contrôler la valeur saisie
+call.back.form.submit=Envoyer
+
+#------ CallBack Success Page ------------------
+#------ call.back.success
+call.back.success.html.title=Etre rappelé
+call.back.success.html.description=Formulaire de contact, poser une question ou demander un renseignement, nous vous rappelons par téléphone.
+call.back.success.html.keywords=Nous contacter, question, information, renseignement, téléphone, rappel
+call.back.success.head=Demandez-nous de vous rappeler
+call.back.success.head.subtitle=Une simple demande et nous vous rappelons
+
+call.back.success.head.intro=Votre demande a bien été enregistrée, nous allons essayer de vous rappeler dans les plus brefs délais. En attendant, n''hésitez pas à consulter le site pour découvrir nos services&nbsp;!
+
+call.back.success.disclaimer=En fonction de l''horaire ou de notre charge de travail, il est possible que nous ne puissions pas vous rappeler immédiatement. Nous essayons dans tous les cas de limiter les délais, merci d''avance de votre compréhension.
 
 
+#------ Contact Form ------------------
+#------ contact.us.form
+contact.us.form.html.title=Nous contacter
+contact.us.form.html.description=Formulaire de contact, poser une question ou signaler un problème.
+contact.us.form.html.keywords=Nous contacter, question, information, renseignement, téléphone, rappel
+
+contact.us.form.head=Nous contacter
+contact.us.form.head.subtitle=Vous avez besoin de nous contacter, n''hésitez pas à nous laisser un message&nbsp;!
+contact.us.form.head.intro=Vous souhaitez nous contacter pour nous poser une question, nous signaler un problème, nous soutenir ou pour toute autre raison, veuillez remplir le formulaire ci-dessous. Nous prendrons connaissance de votre message très vite. Vous préférez nous appeler, composez le <b>07&nbsp;82&nbsp;43&nbsp;47&nbsp;51</b> (numéro de mobile standard).
+contact.us.form.disclaimer=Ce formulaire vous permet de rentrer en contact directement avec nous, n''hésitez pas à l''utiliser et à nous laisser un maximum d''informations pour qoue nous puission être le plus pertinent possible dans notre réponse.
+
+contact.us.form.title.label=Titre
+contact.us.form.title.placeholder=Titre de votre message
+
+contact.us.form.message.label=Message
+contact.us.form.message.placeholder=Votre message
+contact.us.request.validation.error.message.spam.detected=Notre système a détecté un contenu correspondant à du SPAM, veuillez contrôler la valeur saisie
+
+contact.us.form.group.label.name=A propos de vous
+contact.us.form.name.label=Votre Nom
+contact.us.form.name.placeholder=Prénom Nom
+contact.us.form.email.label=Email
+contact.us.form.email.placeholder=exemple@nomdedomaine.fr
+
+contact.us.form.submit=Envoyer
+
+#------ Contact Success Page ------------------
+#------ contact.us.success
+contact.us.success.html.title=Nous contacter
+contact.us.success.html.description=Formulaire de contact, poser une question ou signaler un problème.
+contact.us.success.html.keywords=Nous contacter, question, information, renseignement, téléphone, rappel
+contact.us.success.head=Nous contacter
+contact.us.success.head.subtitle=Vous avez besoin de nous contacter, n''hésitez pas à nous laisser un message&nbsp;!
+
+contact.us.success.head.intro=Votre demande a bien été enregistrée, nous allons essayer de la traiter dans les plus brefs délais. En attendant, n''hésitez pas à consulter le site pour découvrir nos services&nbsp;!
+
+contact.us.success.disclaimer=
 
 
 order.form.label.type.of.service=Type d''entretien <br />(<a href="{0}">quand faire une révision&nbsp;?</a>)

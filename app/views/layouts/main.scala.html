@@ -8,7 +8,7 @@
 <!DOCTYPE html>
 <html dir="ltr" lang="en-US">
 <head>
-	@layouts.fragments.main_head(title, description, keywords)(Html(""))(Html(""))
+	@layouts.fragments.main_head(title, description, keywords)(Html(""))(Html(""))(request, messages)
 </head>
 
 <body class="stretched @key">
@@ -27,7 +27,7 @@
 
 		@content
 			
-		@layouts.fragments.footer()
+		@layouts.fragments.footer()(request, messages)
 
 	</div><!-- #wrapper end -->
 

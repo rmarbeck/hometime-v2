@@ -67,4 +67,10 @@ public class SecurityHelper {
     		return true;
     	return false;
     }
+    
+    public static boolean doesFieldSeemToBeAPhoneNumber(String value) {
+    	if (value != null && PhoneNumberHelper.isItAValidPhoneNumber(value))
+    		return true;
+    	return false;
+    }
 }

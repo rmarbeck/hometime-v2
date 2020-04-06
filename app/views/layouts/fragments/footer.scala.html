@@ -1,7 +1,7 @@
-@()
+@()(implicit request: Http.Request, messages: play.i18n.Messages)
 
 @import fr.hometime.utils._
-@import java.util._
+@import scala.collection.immutable._
 @import tags._
 	
 		<!-- Footer
@@ -22,13 +22,12 @@
 
 								<img src="/assets/images/footer-widget-logo.png" alt="" class="footer-logo">
 
-								<p>Horloger et bien plus encore, <strong>Hometime</strong>, <strong>tous les services dont vous avez besoin</strong>.</p>
+								<p>@Html(Messages("footer.claim"))</p>
 
 								<div style="background: url('/assets/images/world-map.png') no-repeat center center; background-size: 100%;">
 									<address>
-										<strong>Atelier:</strong><br>
-										322 rue Saint Honoré<br>
-										75001 Paris<br>
+										<strong>@Html(Messages("footer.location"))</strong><br>
+										@Html(Messages("footer.address"))
 									</address>
 									<abbr title="Phone Number"><strong>Numéro:</strong></abbr> 07 82 43 47 51<br>
 									<abbr title="Days"><strong>Jours d'ouverture:</strong></abbr> du Lundi au Vendredi, Samedi sur rdv<br>
@@ -43,16 +42,16 @@
 
 							<div class="widget widget_links clearfix">
 
-								<h4>Liens importants</h4>
-
+								<h4>@Html(Messages("footer.category.important.links"))</h4>
 								<ul>
-									<li><a href="#">Qui sommes nous ?</a></li>
-									<li><a href="#">Venir chez Hometime</a></li>
-									<li><a href="#">Demander un devis</a></li>
-									<li><a href="#">Plan du site</a></li>
-									<li><a href="#">Avis clients <span class="icon-star3"/><span class="icon-star3"/><span class="icon-star3"/><span class="icon-star3"/><span class="icon-star3"/></a></li>
-									<li><a href="#">Questions fréquentes (FAQ)</a></li>
-									<li><a href="#">Nous envoyer un email <span class="icon-line-mail"/></a></li>
+									<li><a href="#">@Html(Messages("footer.who.are.we"))</a></li>
+									<li><a href="@routes.HomeController.visit()">@Html(Messages("footer.visit.us"))</a></li>
+									<li><a href="@routes.FormProcessingController.prepareQuotationRequest()">@Html(Messages("footer.quotation.request"))</a></li>
+									<li><a href="#">@Html(Messages("footer.site.plan"))</a></li>
+									<li><a href="#">@Html(Messages("footer.testimonials")) <span class="icon-star3"/><span class="icon-star3"/><span class="icon-star3"/><span class="icon-star3"/><span class="icon-star3"/></a></li>
+									<li><a href="#">@Html(Messages("footer.faq"))</a></li>
+									<li><a href="@routes.FormProcessingController.prepareContactRequest()">@Html(Messages("footer.contact.us"))&nbsp;<span class="icon-line-mail"/></a></li>
+									<li><a href="@routes.FormProcessingController.prepareCallBackRequest()">@Html(Messages("footer.call.back"))&nbsp;<span class="icon-line2-call-in"/></a></li>
 								</ul>
 
 							</div>
@@ -143,22 +142,16 @@
 						<div class="widget clearfix" style="margin-bottom: -20px;">
 
 							<div class="row">
-
-								<div class="col-lg-6 clearfix bottommargin-sm">
-									<a href="#" class="social-icon si-dark si-colored si-facebook nobottommargin" style="margin-right: 10px;">
-										<i class="icon-facebook"></i>
-										<i class="icon-facebook"></i>
+								@List(("facebook", "https://www.facebook.com/HometimeFr/"),
+								("instagram", "https://www.instagram.com/watchnexthometime/")).zipWithIndex.map { case (value,index) => 
+								<div class="col-lg-6 clearfix @if(index==0) {bottommargin-sm}">
+									<a href="@value._2" class="social-icon si-dark si-colored si-@value._1 nobottommargin" style="margin-right: 10px;">
+										<i class="icon-@value._1"></i>
+										<i class="icon-@value._1"></i>
 									</a>
-									<a href="#"><small style="display: block; margin-top: 3px;"><strong>Like us</strong><br>on Facebook</small></a>
+									<a href="#"><small style="display: block; margin-top: 3px;">@Html(Messages("footer.follow.on."+value._1.toString))</a>
 								</div>
-								<div class="col-lg-6 clearfix">
-									<a href="#" class="social-icon si-dark si-colored si-rss nobottommargin" style="margin-right: 10px;">
-										<i class="icon-rss"></i>
-										<i class="icon-rss"></i>
-									</a>
-									<a href="#"><small style="display: block; margin-top: 3px;"><strong>Subscribe</strong><br>to RSS Feeds</small></a>
-								</div>
-
+								}
 							</div>
 
 						</div>
@@ -176,56 +169,27 @@
 				<div class="container clearfix">
 
 					<div class="col_half">
-						© Watch next SAS 2013-2020<br>
-						<div class="copyright-links"><a href="#">Mentions légales</a> / <a href="#">Vie privées</a> / <a href="#">CGV</a></div>
+						@Html(Messages("footer.copyright",java.time.Year.now.getValue))<br>
+						<div class="copyright-links"><a href="#">@Html(Messages("footer.legal"))</a> / <a href="#">@Html(Messages("footer.private"))</a> / <a href="#">@Html(Messages("footer.cgv"))</a></div>
 					</div>
 
 					<div class="col_half col_last tright">
 						<div class="fright clearfix">
-							<a href="#" class="social-icon si-small si-borderless si-facebook">
-								<i class="icon-facebook"></i>
-								<i class="icon-facebook"></i>
-							</a>
-
-							<a href="#" class="social-icon si-small si-borderless si-twitter">
-								<i class="icon-twitter"></i>
-								<i class="icon-twitter"></i>
-							</a>
-
-							<a href="#" class="social-icon si-small si-borderless si-gplus">
-								<i class="icon-gplus"></i>
-								<i class="icon-gplus"></i>
-							</a>
-
-							<a href="#" class="social-icon si-small si-borderless si-pinterest">
-								<i class="icon-pinterest"></i>
-								<i class="icon-pinterest"></i>
-							</a>
-
-							<a href="#" class="social-icon si-small si-borderless si-vimeo">
-								<i class="icon-vimeo"></i>
-								<i class="icon-vimeo"></i>
-							</a>
-
-							<a href="#" class="social-icon si-small si-borderless si-github">
-								<i class="icon-github"></i>
-								<i class="icon-github"></i>
-							</a>
-
-							<a href="#" class="social-icon si-small si-borderless si-yahoo">
-								<i class="icon-yahoo"></i>
-								<i class="icon-yahoo"></i>
-							</a>
-
-							<a href="#" class="social-icon si-small si-borderless si-linkedin">
-								<i class="icon-linkedin"></i>
-								<i class="icon-linkedin"></i>
-							</a>
+						@List(("facebook", "https://www.facebook.com/HometimeFr/"),
+								("instagram", "https://www.instagram.com/watchnexthometime/"),
+								("google", "https://www.google.fr/maps/place/Hometime/@@48.8653845,2.3290163,17z/data=!3m1!4b1!4m5!3m4!1s0x47e66e044cc7bc6d:0xd0cd7665da91391f!8m2!3d48.865381!4d2.331205"),
+								("youtube", "https://www.youtube.com/channel/UC5Ejr-hgPxDZQxJbcSUsmbQ"),
+								("linkedin", "https://www.linkedin.com/company/watch-next/")).zipWithIndex.map { case (value,index) => 
+								<a href="@value._2" class="social-icon si-small si-borderless si-@value._1" target="_blank">
+									<i class="icon-@value._1"></i>
+									<i class="icon-@value._1"></i>
+								</a>
+							}
 						</div>
 
 						<div class="clear"></div>
 
-						<i class="icon-envelope2"></i> info@@canvas.com <span class="middot">&middot;</span> <i class="icon-headphones"></i> +91-11-6541-6369 <span class="middot">&middot;</span> <i class="icon-skype2"></i> CanvasOnSkype
+						<i class="icon-headphones"></i>&nbsp;<span class="middot">&middot;</span>&nbsp;@Html(Messages("footer.phone.number"))
 					</div>
 
 				</div>
