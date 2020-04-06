@@ -4,6 +4,9 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 import java.util.concurrent.CompletionStage;
+import java.util.concurrent.ExecutionException;
+import java.util.concurrent.TimeUnit;
+import java.util.concurrent.TimeoutException;
 
 import javax.inject.Inject;
 import javax.inject.Singleton;
@@ -55,6 +58,18 @@ public class ExternalWSBrandProvider implements BrandProvider, WSBodyReadables, 
 			}
 			return Optional.empty();
 		});
-		return resultPromise.toCompletableFuture().getNow(Optional.empty());
+		try {
+			return resultPromise.toCompletableFuture().get(2, TimeUnit.SECONDS);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (ExecutionException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (TimeoutException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return Optional.empty();
 	}
 }
