@@ -119,14 +119,14 @@ public class FormProcessingController extends Controller implements WSBodyReadab
 	}
 	
 	private Result preparedQuotation(Http.Request request, Optional<String> brandSeoName, Optional<String> typeOfOrder) {
-		return ok(views.html.quotation_form.render(fillQuotationRequestWithDefaultData(brandSeoName, typeOfOrder), brandProvider.retrieveBrands(), getBrand(brandSeoName), request, messagesApi.preferred(request)));
+		return ok(views.html.quotation_form.render(fillQuotationRequestWithDefaultData(brandSeoName, typeOfOrder), brandProvider.retrieveBrandsOrderedByName(), getBrand(brandSeoName), request, messagesApi.preferred(request)));
 	}
 	
 	public CompletionStage<Result> processQuotationRequest(Http.Request request) {
 		final Form<QuotationRequestData> boundForm = getQuotationRequestForm().bindFromRequest(request);
 		
 		if (boundForm.hasErrors()) {
-			return CompletableFuture.supplyAsync(() -> badRequest(views.html.quotation_form.render(boundForm, brandProvider.retrieveBrands(), Optional.empty(), request, messagesApi.preferred(request))));
+			return CompletableFuture.supplyAsync(() -> badRequest(views.html.quotation_form.render(boundForm, brandProvider.retrieveBrandsOrderedByName(), Optional.empty(), request, messagesApi.preferred(request))));
 		} else {
 			CompletionStage<? extends WSResponse> responsePromise = ws.url("https://www.hometime.fr/new-order-from-outside").setContentType("application/x-www-form-urlencoded").post(request.body().asFormUrlEncoded().entrySet().stream().map(entry -> flattenValues(entry.getKey(), entry.getValue(), "&")).collect( Collectors.joining( "&" )));
 			return responsePromise.thenApply( response -> {

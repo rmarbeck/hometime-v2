@@ -59,4 +59,12 @@ public class Brand {
 	public void setQuartz_category(int quartz_category) {
 		this.quartz_category = quartz_category;
 	}
+
+	public String getDisplayName() {
+		return display_name;
+	}
+
+	public String getSeoName() {
+		return seo_name;
+	}
 }
