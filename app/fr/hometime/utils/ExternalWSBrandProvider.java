@@ -1,5 +1,6 @@
 package fr.hometime.utils;
 
+import java.io.File;
 import java.util.List;
 import java.util.Optional;
 import java.util.concurrent.CompletionStage;
@@ -18,7 +19,6 @@ import play.libs.Json;
 import play.libs.ws.WSBodyReadables;
 import play.libs.ws.WSBodyWritables;
 import play.libs.ws.WSClient;
-import play.libs.ws.WSResponse;
 
 @Singleton
 public class ExternalWSBrandProvider implements BrandProvider, WSBodyReadables, WSBodyWritables  {
@@ -41,19 +41,37 @@ public class ExternalWSBrandProvider implements BrandProvider, WSBodyReadables, 
 	}
 	
 	private Optional<List<Brand>> tryToLoadBrandsFromOutside() {
-		CompletionStage<? extends WSResponse> responsePromise = ws.url("https://www.hometime.fr/ws/brands/get/all").get();
+		CompletionStage<Optional<List<Brand>>> resultPromise = ws.url("https://www.hometime.fr/ws/brands/get/all").addHeader("secretKey", "secretValue").get()
+				.exceptionally(e -> {
+					logger.error("Exception when trying to get Brands from webservice, call to external source failed: "+e.getMessage());
+					return null;
+				})
+				.thenApply( response -> {
+					if (response == null) {
+						return loadDefault();
+					} else {
+						JsonNode json = response.asJson();
+						try{
+							List<Brand> brands = Json.mapper().readValue(json.traverse(), new TypeReference<List<Brand>>(){});
+						    return Optional.of(brands);
+						}catch(Exception e){
+						    logger.error("Exception when trying to get Brands from webservice: "+e.getMessage());
+						}
+						return Optional.empty();
+					}
+				});
 		
-		CompletionStage<Optional<List<Brand>>> resultPromise = responsePromise.thenApply( response -> {
-			JsonNode json = response.asJson();
-			try{
-				List<Brand> brands = Json.mapper().readValue(json.traverse(), new TypeReference<List<Brand>>(){});
-			    return Optional.of(brands);
-			}catch(Exception e){
-			    logger.error("Exception when trying to get Brands from webservice: "+e.getMessage());
-			}
-			return Optional.empty();
-		});
-
 		return resultPromise.toCompletableFuture().join();
+	}
+	
+	private Optional<List<Brand>> loadDefault() {
+		logger.warn("Loading default brands from local file.");
+		try{
+			List<Brand> brands = Json.mapper().readValue(new File("conf/brands-default.json"), new TypeReference<List<Brand>>(){});
+		    return Optional.of(brands);
+		}catch(Exception e){
+		    logger.error("Exception when trying to get Brands from local file: "+e.getMessage());
+		}
+		return Optional.empty();
 	}
 }
