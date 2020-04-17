@@ -1,9 +1,9 @@
-@()(implicit request: Http.Request, messages: play.i18n.Messages)
+@(brands: Optional[List[Brand]])(implicit request: Http.Request, messages: play.i18n.Messages)
 
 @import scala.collection.immutable._
 @import tags._
 
-@service(key: String, imgUrl: String, align: String, index: Int, buttonsLinks: List[String], buttonsClasses: List[String]) = {
+@service(key: String, imgUrl: String, align: String, index: Int, buttonsLinks: List[String], buttonsClasses: List[String], bodyParams: String*) = {
 					@if(align.equals("left")) {
 						@service_img(key, imgUrl, false)
 					}
@@ -15,7 +15,7 @@
 							<span>@h_msg_key(key, "head.subtitle")</span>
 						</div>
 
-						<span>@h_msg_key(key, "body")</span>
+						<span>@h_msg_key(key, "body", bodyParams:_*)</span>
 						@if(buttonsLinks.size != 0) {
 						<div class="center">
 							@buttonsLinks.zipWithIndex.map { case (link, index) => @service_button(key, link, buttonsClasses.get(index), index) }
@@ -38,7 +38,7 @@
 }
 
 @service_button(key: String, link: String, cssClass: String, index: Int) = {
-						<a href="@link" class="@cssClass button button-border button-rounded button-large noleftmargin topmargin-sm">@h_msg_key(key, "action."+index+".text")</a>
+						<a href="@link" class="@cssClass btn noleftmargin topmargin-sm">@h_msg_key(key, "action."+index+".text")</a>
 }
 
 
@@ -61,12 +61,12 @@
 	@layouts.main_helper_with_head_block(key){
 
 				<div class="container clearfix">
-					@List((key+".service", "/assets/images/home/grid-6.jpg", "left", List(routes.HomeController.quotationOptions().url, routes.HomeController.quotationOptions().url), List("button-dark", "button-light")),
-						(key+".restore", "/assets/images/logo-ruuma.png", "right", List(routes.HomeController.quotationOptions().url), List("button-dark")),
-						(key+".quartz", "/assets/images/logo-ruuma.png", "left", List.empty[String], List.empty[String]),
-						(key+".auth", "/assets/images/logo-ruuma.png", "right", List(routes.HomeController.quotationOptions().url), List("button-dark")),
-						(key+".home", "/assets/images/logo-ruuma.png", "left", List(routes.HomeController.quotationOptions().url), List("button-dark")),
-						(key+".other", "/assets/images/logo-ruuma.png", "right", List(routes.HomeController.quotationOptions().url), List("button-dark"))).zipWithIndex.map { case (value,index) => @service(value._1, value._2, value._3, index+1, value._4, value._5) }
+					@List((key+".service", "/assets/images/home/grid-6.jpg", "left", List(routes.HomeController.quotationOptions().url, routes.HomeController.quotationOptions().url), List("btn-outline-dark", "btn-outline-secondary"), brands.get.map(_.getDisplayName).mkString(", ")),
+						(key+".restore", "/assets/images/logo-ruuma.png", "right", List(routes.HomeController.quotationOptions().url), List("btn-outline-dark"), ""),
+						(key+".quartz", "/assets/images/logo-ruuma.png", "left", List.empty[String], List.empty[String], ""),
+						(key+".auth", "/assets/images/logo-ruuma.png", "right", List(routes.HomeController.quotationOptions().url), List("btn-outline-dark"), ""),
+						(key+".home", "/assets/images/logo-ruuma.png", "left", List(routes.HomeController.quotationOptions().url), List("btn-outline-dark"), ""),
+						(key+".other", "/assets/images/logo-ruuma.png", "right", List(routes.HomeController.quotationOptions().url), List("btn-outline-dark"), "")).zipWithIndex.map { case (value,index) => @service(value._1, value._2, value._3, index+1, value._4, value._5, value._6) }
 				</div>	
 	}
 }

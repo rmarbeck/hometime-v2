@@ -7,7 +7,7 @@
 
 	@layouts.main_helper_with_head_block(key) {
 				<div class="container clearfix">
-					@List.range(1, 5).map{ index => <p>@if(index==3) {@Html(Messages("page.visit.us.text.part."+index, "0782434751", "07&nbsp;82&nbsp;43&nbsp;47&nbsp;51"))} else {@Html(Messages("page.visit.us.text.part."+index))}</p> }
+					@List.range(1, 5).map{ index => <p>@Html(Messages("page.visit.us.text.part."+index))</p> }
 				</div>	
 				
 				<div>

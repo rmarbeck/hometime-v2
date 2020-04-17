@@ -8,7 +8,7 @@ import java.util.stream.Collectors;
 
 import models.Brand;
 
-public interface BrandProvider {
+public interface BrandProvider extends DataProvider {
 	public Optional<List<Brand>> retrieveBrands();
 	
 	public default Optional<List<Brand>> retrieveBrandsOrderedByName() {

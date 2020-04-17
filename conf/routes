@@ -5,6 +5,8 @@
 # An example controller showing a sample home page
 GET     /																	controllers.HomeController.index(request: Request)
 
+GET     /test																controllers.HomeController.test(request: Request)
+
 GET     /estimation/prix/devis/reparation/revision/montre					controllers.HomeController.quotationOptions(request: Request)
 
 GET     /demande-de-devis													controllers.FormProcessingController.prepareQuotationRequest(request: Request)
@@ -23,6 +25,13 @@ POST    /nous-contacter														controllers.FormProcessingController.proces
 GET     /les-services/l-offre												controllers.HomeController.offers(request: Request)
 GET     /venir-nous-voir													controllers.HomeController.visit(request: Request)
 
+GET		/actualites/news													controllers.HomeController.news(request: Request)
+
+GET		/les-services/les-prix												controllers.HomeController.prices(request: Request)
+GET     /prices																controllers.Default.redirect(to = "/les-services/les-prix")
+
+GET		/avis-clients														controllers.HomeController.feedbacks(request: Request)
+
 
 GET     /entretien-reparation												controllers.HomeController.content(request: Request, key = "content.service.repairing")
 GET     /nos-horlogers														controllers.HomeController.content(request: Request, key = "content.watchmakers")
@@ -30,9 +39,19 @@ GET     /reparation/montre/rolex											controllers.HomeController.content(re
 GET     /reparation/montre/omega											controllers.HomeController.content(request: Request, key = "content.omega.repairing")
 GET     /prise-en-charge-urgente-probleme-etancheite    					controllers.HomeController.content(request: Request, key = "content.water.repairing")
 GET     /authentification/certification/montre/paris    					controllers.HomeController.content(request: Request, key = "content.authenticating")
+GET     /qui-sommes-nous													controllers.HomeController.content(request: Request, key = "content.who.are.we")
+GET     /mentions-legales													controllers.HomeController.content(request: Request, key = "content.legal")
+GET     /vie-prive															controllers.HomeController.content(request: Request, key = "content.privacy")
+GET     /privacy                    										controllers.Default.redirect(to = "/vie-prive")
+GET     /legal                      										controllers.Default.redirect(to = "/mentions-legales")
 GET     /urgence-buee-sur-le-verre                      					controllers.Default.redirect(to = "/prise-en-charge-rapide-probleme-etancheite")
+GET     /a-propos                   										controllers.Default.redirect(to = "/qui-sommes-nous")
+GET     /about                      										controllers.Default.redirect(to = "/qui-sommes-nous")
 
 GET     /content/:page														controllers.HomeController.content(request: Request, page: String)
+
+GET		/questions-frequentes												controllers.HomeController.faq(request: Request)
+GET		/faq																controllers.Default.redirect(to = "/questions-frequentes")
 
 GET		/perma/offre														controllers.Default.redirect(to = "/les-services/l-offre")
 GET		/perma/venir														controllers.Default.redirect(to = "/venir-nous-voir")
@@ -44,6 +63,9 @@ GET		/perma/devis														controllers.Default.redirect(to = "/demande-de-de
 GET		/perma/authent														controllers.Default.redirect(to = "/authentification/certification/montre/paris")
 GET		/perma/water														controllers.Default.redirect(to = "/prise-en-charge-urgente-probleme-etancheite")
 GET		/perma/water/action													controllers.Default.redirect(to = "/demande-de-devis/urgence/etancheite")
+GET		/perma/news															controllers.Default.redirect(to = "/actualites/news")
+GET		/perma/legal														controllers.Default.redirect(to = "/mentions-legales")
+GET		/perma/contact														controllers.Default.redirect(to = "/nous-contacter")
 
 
 # Map static resources from the /public folder to the /assets URL path

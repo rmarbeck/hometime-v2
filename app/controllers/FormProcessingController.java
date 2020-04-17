@@ -4,6 +4,7 @@ import java.util.Arrays;
 import java.util.Optional;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.CompletionStage;
+import java.util.function.BiFunction;
 import java.util.stream.Collectors;
 
 import javax.inject.Inject;
@@ -45,7 +46,11 @@ public class FormProcessingController extends Controller implements WSBodyReadab
     }
 	
 	public Result displayFormSuccess(Http.Request request, String contentKey) {
-		return ok(views.html.action_success.render(contentKey, request, messagesApi.preferred(request))).flashing("success", "Demande de devis prise en compte avec succès {"+contentKey+"}").flashing("warning", "Demande de devis prise en compte avec succès {"+contentKey+"}").flashing("error", "Demande de devis prise en compte avec succès {"+contentKey+"}");
+		return ok(views.html.action_success.render(contentKey, request, messagesApi.preferred(request)));
+	}
+	
+	public Result displayFormUnknownError(Http.Request request, String contentKey) {
+		return ok(views.html.action_error.render(contentKey, request, messagesApi.preferred(request)));
 	}
 	
 	/*************************************
@@ -63,12 +68,8 @@ public class FormProcessingController extends Controller implements WSBodyReadab
 		if (boundForm.hasErrors()) {
 			return CompletableFuture.supplyAsync(() -> badRequest(views.html.call_back_form.render(boundForm, request, messagesApi.preferred(request))));
 		} else {
-			/*CompletionStage<? extends WSResponse> responsePromise = ws.url("https://www.hometime.fr/new-order-from-outside").setContentType("application/x-www-form-urlencoded").post(request.body().asFormUrlEncoded().entrySet().stream().map(entry -> flattenValues(entry.getKey(), entry.getValue(), "&")).collect( Collectors.joining( "&" )));
-			return responsePromise.thenApply( response -> {
-				logger.error("!!!!!!!!!!!!!!!!!!!!! -> "+response.getStatus());
-				return displayFormContent(request, "call.back");
-			});*/
-			return CompletableFuture.supplyAsync(() -> displayFormSuccess(request, "call.back"));
+			CompletionStage<? extends WSResponse> responsePromise = ws.url("https://www.hometime.fr/new-call-back-request-from-outside").setContentType("application/x-www-form-urlencoded").post(request.body().asFormUrlEncoded().entrySet().stream().map(entry -> flattenValues(entry.getKey(), entry.getValue(), "&")).collect( Collectors.joining( "&" )));
+			return responsePromise.handle((response, error) -> handleFormResponse(response, error, request, "call.back"));
 		}
 	}
 	
@@ -87,12 +88,8 @@ public class FormProcessingController extends Controller implements WSBodyReadab
 		if (boundForm.hasErrors()) {
 			return CompletableFuture.supplyAsync(() -> badRequest(views.html.contact_us_form.render(boundForm, request, messagesApi.preferred(request))));
 		} else {
-			/*CompletionStage<? extends WSResponse> responsePromise = ws.url("https://www.hometime.fr/new-order-from-outside").setContentType("application/x-www-form-urlencoded").post(request.body().asFormUrlEncoded().entrySet().stream().map(entry -> flattenValues(entry.getKey(), entry.getValue(), "&")).collect( Collectors.joining( "&" )));
-			return responsePromise.thenApply( response -> {
-				logger.error("!!!!!!!!!!!!!!!!!!!!! -> "+response.getStatus());
-				return displayFormContent(request, "call.back");
-			});*/
-			return CompletableFuture.supplyAsync(() -> displayFormSuccess(request, "contact.us"));
+			CompletionStage<? extends WSResponse> responsePromise = ws.url("https://www.hometime.fr/new-contact-request-from-outside").setContentType("application/x-www-form-urlencoded").post(request.body().asFormUrlEncoded().entrySet().stream().map(entry -> flattenValues(entry.getKey(), entry.getValue(), "&")).collect( Collectors.joining( "&" )));
+			return responsePromise.handle((response, error) -> handleFormResponse(response, error, request, "contact.us"));
 		}
 	}
 	
@@ -129,12 +126,32 @@ public class FormProcessingController extends Controller implements WSBodyReadab
 			return CompletableFuture.supplyAsync(() -> badRequest(views.html.quotation_form.render(boundForm, brandProvider.retrieveBrandsOrderedByName(), Optional.empty(), request, messagesApi.preferred(request))));
 		} else {
 			CompletionStage<? extends WSResponse> responsePromise = ws.url("https://www.hometime.fr/new-order-from-outside").setContentType("application/x-www-form-urlencoded").post(request.body().asFormUrlEncoded().entrySet().stream().map(entry -> flattenValues(entry.getKey(), entry.getValue(), "&")).collect( Collectors.joining( "&" )));
-			return responsePromise.thenApply( response -> {
-				logger.error("!!!!!!!!!!!!!!!!!!!!! -> "+response.getStatus());
-				return displayFormSuccess(request, "quotation");
-			});
-			//return CompletableFuture.supplyAsync(() -> displayFormContent(request, "quotation"));
+			return responsePromise.handle((response, error) -> handleFormResponse(response, error, request, "quotation"));
 		}
+	}
+	
+	/*************************************
+	 * 
+	 * End Of Quotation Request Management
+	 * 
+	 *************************************/
+
+	/*************************************
+	 * 
+	 * Usefull helpers
+	 * 
+	 *************************************/
+	
+	private Result handleFormResponse(WSResponse response, Throwable error, Http.Request request, String formKey) {
+		if(response != null)
+			return displayFormSuccess(request, formKey);
+		return manageFatalError(request, formKey, error);
+	}
+	
+	private Result manageFatalError(Http.Request request, String formKey, Throwable error) {
+		logger.error("Error when trying to manage form '{}' with calling external webservice : {}", formKey, error.getLocalizedMessage());
+		error.printStackTrace();
+		return displayFormUnknownError(request, formKey);
 	}
 	
 	private String flattenValues(String key, String[] values, String separator) {
@@ -159,12 +176,6 @@ public class FormProcessingController extends Controller implements WSBodyReadab
 	private Form<QuotationRequestData> getQuotationRequestForm() {
 		return formFactory.form(QuotationRequestData.class).withDirectFieldAccess(true);
 	}
-	
-	/*************************************
-	 * 
-	 * End Of Quotation Request Management
-	 * 
-	 *************************************/
 
 	
 }

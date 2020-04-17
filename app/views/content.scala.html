@@ -40,10 +40,10 @@
 	@if(contentProvider.exists("content."+index+".default.to.action.text") || contentProvider.exists("content."+index+".primary.to.action.text")) {
 			<div class="center">
 				@if(contentProvider.exists("content."+index+".default.to.action.text")) {
-				<a href="@contentProvider.get("content."+index+".default.to.action.perma")" class="button-dark button button-border button-dark button-rounded button-large noleftmargin topmargin-sm">@contentProvider.get("content."+index+".default.to.action.text")</a>
+				<a href="@contentProvider.get("content."+index+".default.to.action.perma")" class="btn btn-outline-secondary noleftmargin topmargin-sm">@contentProvider.get("content."+index+".default.to.action.text")</a>
 				}
 				@if(contentProvider.exists("content."+index+".primary.to.action.text")) {
-				<a href="@contentProvider.get("content."+index+".primary.to.action.perma")" class="button-light button button-border button-dark button-rounded button-large noleftmargin topmargin-sm">@contentProvider.get("content."+index+".primary.to.action.text")</a>
+				<a href="@contentProvider.get("content."+index+".primary.to.action.perma")" class="btn btn-outline-dark noleftmargin topmargin-sm">@contentProvider.get("content."+index+".primary.to.action.text")</a>
 				}
 			</div>
 	}

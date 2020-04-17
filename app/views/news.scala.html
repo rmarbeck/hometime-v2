@@ -1,0 +1,68 @@
+@(newsList: Optional[List[News]])(implicit request: Http.Request, messages: play.i18n.Messages)
+
+@import scala.collection.immutable._
+@import tags._
+
+@post(title: String, body: String, date: Date, categories: String, icon: String, contentLink: String="")(content: Html) = {
+						<div class="entry clearfix">
+							<div class="entry-image">
+								@content
+							</div>
+							<div class="entry-c">
+								<div class="entry-title">
+									<h2>@if(!contentLink.equals("")) {<a href="@contentLink">@title</a>} else {@title}</h2>
+								</div>
+								<ul class="entry-meta clearfix">
+									<li><i class="icon-calendar3"></i> @Html(Messages("page.news.date.template", date)).toString.trim.capitalize</li>
+									<li><i class="icon-folder-open"></i> @categories</li>
+									<li><i class="@icon"></i></li>
+								</ul>
+								<div class="entry-content">
+									<p>@body</p>
+									@if(!contentLink.equals("")) {<a href="@contentLink" class="more-link">@Html(Messages("page.news.read.more.link.text"))</a>}
+								</div>
+							</div>
+						</div>
+}
+
+@videoPost(title: String, body: String, videoSrc: String, date: Date, categories: String, contentLink: String="") = {
+							@post(title, body, date, categories, "icon-film", contentLink)  {
+								<iframe src="@videoSrc" width="500" height="281" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+							}
+}
+
+@onePicturePost(title: String, body: String, imgUrl: String, imgAlt: String, date: Date, categories: String, contentLink: String="") = {
+							@post(title, body, date, categories, "icon-camera-retro", contentLink)  {
+								<a href="@imgUrl" data-lightbox="image"><img class="image_fade" src="@imgUrl" alt="@imgAlt"></a>
+							}
+}
+
+@defining("page.news") { case (key) =>
+
+	@layouts.main_helper_with_head_block(key){
+
+				<div class="container clearfix">
+					<div id="posts" class="small-thumbs">
+						@newsList.get.map{ news =>
+							@news.getType match {
+								case "ONE_PICTURE" => {
+									@onePicturePost(news.title, news.body, news.previewUrl.map(list => list.stream.findFirst.get).orElse(""), news.previewAlt.map(list => list.stream.findFirst.get).orElse(""), news.date, news.categories.map(list => list.stream.findFirst.get).orElse(""), news.readMoreUrl.orElse(""))
+								}
+								
+								case "VIDEO" => {
+									@videoPost(news.title, news.body, news.previewUrl.map(list => list.stream.findFirst.get).orElse(""), news.date, news.categories.map(list => list.stream.findFirst.get).orElse(""), news.readMoreUrl.orElse(""))
+								}
+							}
+						}
+					</div>
+					<!-- Pagination
+					============================================= -->
+					<div class="row mb-3">
+						<div class="col-12">
+							<a href="#" class="btn btn-outline-secondary float-left">@Html(Messages("page.news.pagination.before"))</a>
+							<a href="#" class="btn btn-outline-dark float-right">@Html(Messages("page.news.pagination.after"))</a>
+						</div>
+					</div>
+				</div>	
+	}
+}

@@ -1,0 +1,29 @@
+@(feedbacks: Optional[List[Feedback]])(implicit request: Http.Request, messages: play.i18n.Messages)
+
+@import scala.collection.immutable._
+@import tags._
+
+@defining("page.feedbacks") { case (key) =>
+
+	@layouts.main_helper_with_head_block(key) {
+				
+					<ul class="testimonials-grid grid-3 clearfix">
+						@feedbacks.get.map{ feedback =>
+						<li>
+							<div class="testimonial">
+								<div class="testi-image">
+									<a href="#"><img src="@feedback.pictureUrl" alt="Customer Testimonails"></a>
+								</div>
+								<div class="testi-content">
+									<span class="testi-date">@Html(Messages("feedback.date.template",feedback.displayDate)).toString.trim.capitalize</span><p>@feedback.body</p>
+									<div class="testi-meta">
+										@feedback.author
+										<span>@feedback.typeOfFeedback</span>
+									</div>
+								</div>
+							</div>
+						</li>
+						}
+					</ul>
+	}
+}

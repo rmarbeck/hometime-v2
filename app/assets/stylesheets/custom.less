@@ -85,6 +85,12 @@ abbr {
 	text-decoration: underline !important;
 }
 
+.dark .slider-caption,
+.dark .slider-caption h2 {
+	color: #EEE;
+	text-shadow: 0 0 3px #000 !important;
+}
+
 /*-----------------------------------------------------------------------------------
 	Correcting url of css images
 -----------------------------------------------------------------------------------*/
@@ -97,6 +103,40 @@ abbr {
 #page-title.page-title-pattern {
     background-image: url("/assets/images/pattern.png");
 }
+
+.dark #page-title.page-title-pattern { background-image: url('/assets/images/pattern2.png'); }
+
+.swiper_wrapper {
+	.swiper-container {
+		background: url('/assets/images/pattern2.png') repeat ;
+	}
+}
+
+.video-wrap {
+	.video-overlay,
+	.video-placeholder {
+		background: transparent url('/assets/images/grid.png') repeat;
+	}
+}
+
+.owl-carousel.owl-loading {
+	background: url('/assets/images/preloader.gif') no-repeat center center;
+}
+
+
+.fbox-border.fbox-effect .fbox-icon i:after {
+	background-image: url('/assets/images/icons/iconalt.svg');
+}
+
+.i-alt {
+	background-image: url('/assets/images/icons/iconalt.svg');
+}
+
+.i-overlay,
+.i-overlay a {
+	background: rgba(0,0,0,0.2) url('/assets/images/grid.png') repeat;
+}
+
 
 /*-----------------------------------------------------------------------------------
 	Customizing contents
@@ -156,4 +196,18 @@ dd.error {
 
 .action-successfull i.i-plain {
 	color: #3b916d;
+}
+
+.action-error i.i-plain {
+	color: #dc3545;
+}
+
+/*-----------------------------------------------------------------------------------
+	News page
+-----------------------------------------------------------------------------------*/
+
+.page-news {
+	.entry:first-of-type {
+		margin-top: 7em;
+	}
 }

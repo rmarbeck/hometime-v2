@@ -1,8 +1,22 @@
 @()(implicit request: Http.Request, messages: play.i18n.Messages)
 
 @import fr.hometime.utils._
+@import controllers._
 @import scala.collection.immutable._
 @import tags._
+
+@smallPost(title: String, body: String, date: Date, contentLink: String="") = {
+									<div class="spost clearfix">
+										<div class="entry-c">
+											<div class="entry-title">
+												<h4>@if(!contentLink.equals("")) {<a href="@contentLink">@title</a>} else {@title}</h4>
+											</div>
+											<ul class="entry-meta">
+												<li>@Html(Messages("page.news.date.template", date)).toString.trim.capitalize</li>
+											</ul>
+										</div>
+									</div>
+}
 	
 		<!-- Footer
 		============================================= -->
@@ -29,9 +43,9 @@
 										<strong>@Html(Messages("footer.location"))</strong><br>
 										@Html(Messages("footer.address"))
 									</address>
-									<abbr title="Phone Number"><strong>Numéro:</strong></abbr> 07 82 43 47 51<br>
-									<abbr title="Days"><strong>Jours d'ouverture:</strong></abbr> du Lundi au Vendredi, Samedi sur rdv<br>
-									<abbr title="Hours"><strong>Horaires:</strong></abbr> de 10h à 18h30
+									<abbr title="@Html(Messages("footer.phonenumber.abbrtitle"))"><strong>@Html(Messages("footer.phonenumber.label"))</strong></abbr> @Html(Messages("footer.phonenumber.value"))<br>
+									<abbr title="@Html(Messages("footer.opening.days.abbrtitle"))"><strong>@Html(Messages("footer.opening.days.label"))</strong></abbr> @Html(Messages("footer.opening.hours.value"))<br>
+									<abbr title="@Html(Messages("footer.opening.hours.abbrtitle"))"><strong>@Html(Messages("footer.opening.hours.label"))</strong></abbr> @Html(Messages("footer.opening.hours.value"))
 								</div>
 
 							</div>
@@ -44,12 +58,12 @@
 
 								<h4>@Html(Messages("footer.category.important.links"))</h4>
 								<ul>
-									<li><a href="#">@Html(Messages("footer.who.are.we"))</a></li>
+									<li><a href="@routes.HomeController.content("content.who.are.we").url">@Html(Messages("footer.who.are.we"))</a></li>
 									<li><a href="@routes.HomeController.visit()">@Html(Messages("footer.visit.us"))</a></li>
 									<li><a href="@routes.FormProcessingController.prepareQuotationRequest()">@Html(Messages("footer.quotation.request"))</a></li>
-									<li><a href="#">@Html(Messages("footer.site.plan"))</a></li>
-									<li><a href="#">@Html(Messages("footer.testimonials")) <span class="icon-star3"/><span class="icon-star3"/><span class="icon-star3"/><span class="icon-star3"/><span class="icon-star3"/></a></li>
-									<li><a href="#">@Html(Messages("footer.faq"))</a></li>
+									<li><a href="/assets/CGV - Hometime.pdf">@Html(Messages("footer.site.plan"))</a></li>
+									<li><a href="@routes.HomeController.feedbacks()">@Html(Messages("footer.testimonials")) <span class="icon-star3"/><span class="icon-star3"/><span class="icon-star3"/><span class="icon-star3"/><span class="icon-star3"/></a></li>
+									<li><a href="@routes.HomeController.faq()">@Html(Messages("footer.faq"))</a></li>
 									<li><a href="@routes.FormProcessingController.prepareContactRequest()">@Html(Messages("footer.contact.us"))&nbsp;<span class="icon-line-mail"/></a></li>
 									<li><a href="@routes.FormProcessingController.prepareCallBackRequest()">@Html(Messages("footer.call.back"))&nbsp;<span class="icon-line2-call-in"/></a></li>
 								</ul>
@@ -61,41 +75,14 @@
 						<div class="col_one_third col_last">
 
 							<div class="widget clearfix">
-								<h4>Recent Posts</h4>
+								<h4>@Html(Messages("footer.category.news"))</h4>
 
 								<div id="post-list-footer">
-									<div class="spost clearfix">
-										<div class="entry-c">
-											<div class="entry-title">
-												<h4><a href="#">Lorem ipsum dolor sit amet, consectetur</a></h4>
-											</div>
-											<ul class="entry-meta">
-												<li>10th July 2014</li>
-											</ul>
-										</div>
-									</div>
-
-									<div class="spost clearfix">
-										<div class="entry-c">
-											<div class="entry-title">
-												<h4><a href="#">Elit Assumenda vel amet dolorum quasi</a></h4>
-											</div>
-											<ul class="entry-meta">
-												<li>10th July 2014</li>
-											</ul>
-										</div>
-									</div>
-
-									<div class="spost clearfix">
-										<div class="entry-c">
-											<div class="entry-title">
-												<h4><a href="#">Debitis nihil placeat, illum est nisi</a></h4>
-											</div>
-											<ul class="entry-meta">
-												<li>10th July 2014</li>
-											</ul>
-										</div>
-									</div>
+									
+									@HomeController.injectedNewsProvider.retrieveNews().get.map{ news =>
+												@smallPost(news.title, news.body, news.date, news.readMoreUrl.orElse(""))
+									}
+									
 								</div>
 							</div>
 
@@ -170,7 +157,7 @@
 
 					<div class="col_half">
 						@Html(Messages("footer.copyright",java.time.Year.now.getValue))<br>
-						<div class="copyright-links"><a href="#">@Html(Messages("footer.legal"))</a> / <a href="#">@Html(Messages("footer.private"))</a> / <a href="#">@Html(Messages("footer.cgv"))</a></div>
+						<div class="copyright-links"><a href="@routes.HomeController.content("content.legal").url">@Html(Messages("footer.legal"))</a> / <a href="@routes.HomeController.content("content.privacy").url">@Html(Messages("footer.private"))</a> / <a href="/assets/CGV - Hometime.pdf">@Html(Messages("footer.cgv"))</a></div>
 					</div>
 
 					<div class="col_half col_last tright">

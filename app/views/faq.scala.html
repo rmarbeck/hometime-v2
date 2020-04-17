@@ -1,0 +1,51 @@
+@this(contentProvider: fr.hometime.utils.ContentProvider)
+@()(implicit request: Http.Request, messages: play.i18n.Messages)
+
+@import scala.collection.immutable._
+@import tags._
+
+@faqIndex(index: Int) = {
+	<li><i class="icon-caret-right"></i><strong><a href="#" data-scrollto="#faq-@index">@Html(contentProvider.get("content."+index+".question"))</a></strong></li>
+}
+
+@faqContent(index: Int) = {
+	<h3 id="faq-@index"><strong>Q.&nbsp;</strong>@Html(contentProvider.get("content."+index+".question"))</h3>
+	<p>@Html(contentProvider.get("content."+index+".answer"))</p>
+
+	<div class="divider divider-right"><a href="#" data-scrollto="#faqs-list"><i class="icon-chevron-up"></i></a></div>
+}
+
+@defining("page.faq") { case (key) =>
+
+@(contentProvider.initialize(key))
+
+	@layouts.main_helper_with_head_block(key){
+
+				<div class="container clearfix">
+					<!-- Post Content
+					============================================= -->
+					<div class="postcontent col_full nobottommargin clearfix">
+
+						<div id="faqs" class="faqs">
+
+							<div id="faqs-list" class="fancy-title title-bottom-border">
+								<h3>@Html(Messages("page.faq.questions.main.header"))</h3>
+							</div>
+
+							<ul class="iconlist faqlist">
+								@List.range(1, contentProvider.getIntValue("content.count") + 1).map{ index =>
+										@faqIndex(index)
+								}
+							</ul>
+
+							<div class="divider"><i class="icon-circle"></i></div>
+
+							@List.range(1, contentProvider.getIntValue("content.count") + 1).map{ index =>
+										@faqContent(index)
+							}
+						</div>
+
+					</div>
+				</div>	
+	}
+}

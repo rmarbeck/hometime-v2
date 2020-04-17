@@ -2,6 +2,9 @@ package controllers;
 
 import javax.inject.Inject;
 
+import fr.hometime.utils.BrandProvider;
+import fr.hometime.utils.FeedbackProvider;
+import fr.hometime.utils.NewsProvider;
 import play.i18n.Messages;
 import play.i18n.MessagesApi;
 import play.mvc.*;
@@ -13,11 +16,23 @@ import play.mvc.*;
 public class HomeController extends Controller {
 	private final MessagesApi messagesApi;
 	private final views.html.content contentTemplate;
+	private final views.html.faq faq;
+	private FeedbackProvider feedbackProvider;
+	private NewsProvider newsProvider;
+	private BrandProvider brandProvider;
+	
+	public static NewsProvider injectedNewsProvider;
 	
     @Inject
-    public HomeController(MessagesApi messagesApi, views.html.content contentTemplate) {
+    public HomeController(MessagesApi messagesApi, views.html.content contentTemplate, views.html.faq faq, FeedbackProvider feedbackProvider, NewsProvider newsProvider, BrandProvider brandProvider) {
         this.messagesApi = messagesApi;
         this.contentTemplate = contentTemplate;
+        this.faq = faq;
+        this.feedbackProvider = feedbackProvider;
+        this.newsProvider = newsProvider;
+        injectedNewsProvider = this.newsProvider;
+        this.brandProvider = brandProvider;
+        
     }
 
     /**
@@ -28,12 +43,31 @@ public class HomeController extends Controller {
      */
     public Result index(Http.Request request) {
     	Messages messages = messagesApi.preferred(request);
-        return ok(views.html.index.render(request, messages));
+        return ok(views.html.index.render(feedbackProvider.retrieveRandomSubsetOfEmphasizedFeedbacks(9), request, messages));
+    }
+    
+    public Result test(Http.Request request) {
+        return ok(views.html.test.render());
     }
     
     public Result visit(Http.Request request) {
     	Messages messages = messagesApi.preferred(request);
         return ok(views.html.visit_us.render(request, messages));
+    }
+    
+    public Result news(Http.Request request) {
+    	Messages messages = messagesApi.preferred(request);
+        return ok(views.html.news.render(newsProvider.retrieveNews(), request, messages));
+    }
+    
+    public Result prices(Http.Request request) {
+    	Messages messages = messagesApi.preferred(request);
+        return ok(views.html.prices.render(request, messages));
+    }
+
+    public Result feedbacks(Http.Request request) {
+    	Messages messages = messagesApi.preferred(request);
+        return ok(views.html.feedbacks.render(feedbackProvider.retrieveFeedbacksThatShouldBeDisplayedOrderedByDateAsc(), request, messages));
     }
 
     public Result quotationOptions(Http.Request request) {
@@ -50,9 +84,14 @@ public class HomeController extends Controller {
     	Messages messages = messagesApi.preferred(request);
         return ok(contentTemplate.render(page, request,  messages));
     }
+    
+    public Result faq(Http.Request request) {
+    	Messages messages = messagesApi.preferred(request);
+        return ok(faq.render(request,  messages));
+    }
 
     public Result offers(Http.Request request) {
     	Messages messages = messagesApi.preferred(request);
-        return ok(views.html.offers.render(request, messages));
+        return ok(views.html.offers.render(brandProvider.retrieveBrandsOrderedByName(), request, messages));
     }
 }

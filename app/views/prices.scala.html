@@ -1,0 +1,103 @@
+@()(implicit request: Http.Request, messages: play.i18n.Messages)
+
+@import scala.collection.immutable._
+@import tags._
+
+@defining("page.prices") { case (key) =>
+
+	@layouts.main_helper_with_head_block(key) {
+				
+				<div class="fancy-title title-dotted-border title-center">
+						<h3>Les tarifs pour les montres à quartz</h3>
+				</div>
+				<div class="row pricing pricing-3 bottommargin clearfix">
+
+						<div class="pricing-box pricing-minimal">
+							<div class="pricing-title">
+								<h3>Entrée de gamme</h3>
+								<span>Catégorie 3*</span>
+							</div>
+							<div class="pricing-price">
+								20<span class="price-tenure">€</span>
+							</div>
+							<div class="pricing-action">
+								<a href="#" class="btn btn-danger btn-block">Get Started</a>
+							</div>
+						</div>
+
+						<div class="pricing-box pricing-minimal">
+							<div class="pricing-title">
+								<h3>Milieu de gamme</h3>
+								<span>Catégorie 2**</span>
+							</div>
+							<div class="pricing-price">
+								25<span class="price-tenure">€</span>
+							</div>
+							<div class="pricing-action">
+								<a href="#" class="btn btn-danger btn-block bgcolor border-color">Start Trial</a>
+							</div>
+						</div>
+
+						<div class="pricing-box pricing-minimal">
+							<div class="pricing-title">
+								<h3>Haut de gamme</h3>
+								<span>Catégorie 1***</span>
+							</div>
+							<div class="pricing-price">
+								35<span class="price-tenure">€</span>
+							</div>
+							<div class="pricing-action">
+								<a href="#" class="btn btn-danger btn-block">Start Trial</a>
+							</div>
+						</div>
+
+					</div>
+				
+				
+					<div class="fancy-title title-dotted-border title-center">
+						<h3>Les tarifs pour les montres mécaniques</h3>
+					</div>
+
+					<table class="table table-hover table-comparison nobottommargin">
+					  <thead>
+						<tr>
+						  <th>&nbsp;</th>
+						  <th>Montres de catégorie 3*</th>
+						  <th>Montres de catégorie 2**</th>
+						  <th>Montres de catégorie 1***</th>
+						</tr>
+					  </thead>
+					  <tbody>
+					  	<tr>
+						  <td>Simple réglage ou démagnétisation</td>
+						  <td colspan="3">Les prix sont fournis sur devis, mais des tarifs compris entre 50€ et 200€ sont la norme.</td>
+						</tr>
+						<tr>
+						  <td>Entretien intermédiaire</td>
+						  <td colspan="3">L'entretien intermédiaire inclut un contrôle de la marche, un polissage et l'étanchéité, les tarifs sont compris entre 100€ et 200€.</td>
+						</tr>
+						<tr>
+						  <td>Révision complète</td>
+						  <td>Entre 180€ et 250€</td>
+						  <td>Entre 300€ et 500€</td>
+						  <td>Entre 360€ et 600€</td>
+						</tr>
+						<tr>
+						  <td>Réparation</td>
+						  <td colspan="3">Sur devis gratuit uniquement.</td>
+						</tr>
+						<tr>
+						  <td>Frais de déplacement</td>
+						  <td colspan="3">Gratuits (sur Paris et première couronne).<br/>Pour les envois par courrier ou transporteur, les tarifs standards sont appliqués sans surcoût.</td>
+						</tr>
+						<tr>
+						  <td>&nbsp;</td>
+						  <td><a href="#" class="btn btn-secondary">Sign Up</a></td>
+						  <td><a href="#" class="btn btn-secondary">Sign Up</a></td>
+						  <td><a href="#" class="btn btn-secondary">Sign Up</a></td>
+						</tr>
+					  </tbody>
+					</table>
+
+	}
+}

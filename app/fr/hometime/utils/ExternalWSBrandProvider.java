@@ -25,7 +25,7 @@ public class ExternalWSBrandProvider implements BrandProvider, WSBodyReadables, 
 	private final WSClient ws;
 	private Optional<List<Brand>> brands = Optional.empty();
 	
-	private final Logger logger = LoggerFactory.getLogger(getClass()) ;
+	private final Logger logger = LoggerFactory.getLogger(getClass());
 
 	@Inject
 	public ExternalWSBrandProvider(WSClient ws) {

@@ -45,7 +45,7 @@ public class Brand {
 	}
 
 	public void setSeo_name(String seoName) {
-		this.seo_name = seo_name;
+		this.seo_name = seoName;
 	}
 
 	public void setLogo_url(String logoUrl) {

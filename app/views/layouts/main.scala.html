@@ -11,7 +11,7 @@
 	@layouts.fragments.main_head(title, description, keywords)(Html(""))(Html(""))(request, messages)
 </head>
 
-<body class="stretched @key">
+<body class="stretched @key.replace(".", "-")">
 
 	<!-- Document Wrapper
 	============================================= -->

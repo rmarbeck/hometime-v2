@@ -28,7 +28,7 @@
 					.getParentIfExists()
 				.addSubMenu("extra", Optional.of("index-portfolio.html"), Optional.empty(), Optional.empty())
 					.getParentIfExists()
-				.addSubMenu("feedbacks", Optional.of("index-portfolio.html"), Optional.empty(), Optional.empty())
+				.addSubMenu("feedbacks", Optional.of(routes.HomeController.feedbacks().url), Optional.empty(), Optional.empty())
 				.getHighestParentIfExists());
 				
 		mainMenu.add(
@@ -53,6 +53,8 @@
 					.getParentIfExists()
 				.addSubMenu("service.main.content.water", Optional.of("/perma/water"), Optional.empty(), Optional.empty())
 					.getParentIfExists()
+				.addSubMenu("service.main.news", Optional.of(routes.HomeController.news().url), Optional.empty(), Optional.empty())
+						.getParentIfExists()
 				.addSubMenu("service.main.content.authenticating", Optional.of("/perma/authent"), Optional.empty(), Optional.empty())
 					.getParentIfExists()	
 				.addSubMenu("service.main.content.watchmakers", Optional.of("/perma/horlogers"), Optional.empty(), Optional.empty())
