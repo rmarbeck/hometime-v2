@@ -143,8 +143,13 @@ public class FormProcessingController extends Controller implements WSBodyReadab
 	 *************************************/
 	
 	private Result handleFormResponse(WSResponse response, Throwable error, Http.Request request, String formKey) {
-		if(response != null)
-			return displayFormSuccess(request, formKey);
+		if(response != null) {
+			if (response.getStatus() < 400) {
+				return displayFormSuccess(request, formKey);
+			} else {
+				return manageFatalError(request, formKey, new Exception("response has error code "+response.getStatus()));
+			}
+		}
 		return manageFatalError(request, formKey, error);
 	}
 	
