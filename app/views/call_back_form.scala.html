@@ -70,10 +70,10 @@
 				@helper.CSRF.formField
 									<div class="form-process"></div>
 									
-									@inputBox(form("phoneNumber"), true)
+									@inputBox(form("number"), true)
 									
 									@fullWidth() {
-										@helper.textarea(form("question"), Symbol("class") -> "form-control", Symbol("placeholder") -> Html(Messages(computeMessageKey("question", "placeholder").toString)), Symbol("_label") -> Html(Messages(computeMessageKey("question", "label").toString)), Symbol("cols") -> "30", Symbol("rows") -> "10")
+										@helper.textarea(form("reason"), Symbol("class") -> "form-control", Symbol("placeholder") -> Html(Messages(computeMessageKey("reason", "placeholder").toString)), Symbol("_label") -> Html(Messages(computeMessageKey("reason", "label").toString)), Symbol("cols") -> "30", Symbol("rows") -> "10")
 									}
 
 									<div class="col-12">

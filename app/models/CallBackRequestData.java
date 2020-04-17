@@ -19,17 +19,17 @@ import play.data.validation.ValidationError;
 public class CallBackRequestData implements Validatable<List<ValidationError>> {
 	@Constraints.Required
 	@Formats.NonEmpty
-	public String phoneNumber;
+	public String number;
 	@Constraints.MaxLength(1000)
-	public String question;
+	public String reason;
 
 	@Override
     public List<ValidationError> validate() {
     	List<ValidationError> errors = new ArrayList<ValidationError>();
-    	if (!doesFieldSeemToBeAPhoneNumber(phoneNumber))
-    		errors.add(new ValidationError("phoneNumber", "call.back.request.validation.error.phoneNumber.not.recognised"));
-    	if (doesFieldContainSPAM(question))
-    		errors.add(new ValidationError("question", "call.back.request.validation.error.question.spam.detected"));
+    	if (!doesFieldSeemToBeAPhoneNumber(number))
+    		errors.add(new ValidationError("number", "call.back.request.validation.error.number.not.recognised"));
+    	if (doesFieldContainSPAM(reason))
+    		errors.add(new ValidationError("reason", "call.back.request.validation.error.reason.spam.detected"));
     	return errors.isEmpty() ? null : errors;
     }
     

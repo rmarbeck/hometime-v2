@@ -1838,13 +1838,13 @@ call.back.form.head.subtitle=Une simple demande et nous vous rappelons
 call.back.form.head.intro=Vous souhaitez nous poser une question ou pour toute autre raison, veuillez remplir le formulaire ci-dessous. Nous vous rappellerons le plus rapidement possible. Vous préférez nous appeler, composez le <b>07&nbsp;82&nbsp;43&nbsp;47&nbsp;51</b> (numéro de mobile standard).
 call.back.form.disclaimer=En fonction de l''horaire ou de notre charge de travail, il est possible que nous ne puissions pas vous rappeler immédiatement. Nous essayons dans tous les cas de limiter les délais, merci d''avance de votre compréhension.
 
-call.back.form.phonenumber.label=Votre numéro de téléphone
-call.back.form.phonenumber.placeholder=06xxxxxxxx
-call.back.request.validation.error.phoneNumber.not.recognised=Numéro de téléphone non reconnu, veuillez le resaisir s''il vous plaît
+call.back.form.number.label=Votre numéro de téléphone
+call.back.form.number.placeholder=06xxxxxxxx
+call.back.request.validation.error.number.not.recognised=Numéro de téléphone non reconnu, veuillez le resaisir s''il vous plaît
 
-call.back.form.question.label=Motif
-call.back.form.question.placeholder=Le motif de votre demande de contact (donné à titre indicatif)
-call.back.request.validation.error.question.spam.detected=Notre système a détecté un contenu correspondant à du SPAM, veuillez contrôler la valeur saisie
+call.back.form.reason.label=Motif
+call.back.form.reason.placeholder=Le motif de votre demande de contact (donné à titre indicatif)
+call.back.request.validation.error.reason.spam.detected=Notre système a détecté un contenu correspondant à du SPAM, veuillez contrôler la valeur saisie
 call.back.form.submit=Envoyer
 
 #------ CallBack Success Page ------------------
