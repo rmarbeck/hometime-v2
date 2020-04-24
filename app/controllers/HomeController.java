@@ -43,7 +43,7 @@ public class HomeController extends Controller {
      */
     public Result index(Http.Request request) {
     	Messages messages = messagesApi.preferred(request);
-        return ok(views.html.index.render(feedbackProvider.retrieveRandomSubsetOfEmphasizedFeedbacks(9), request, messages));
+        return ok(views.html.index.render(feedbackProvider.retrieveRandomSubsetOfEmphasizedFeedbacks(9), brandProvider.retrieveSupportedBrandsOrderedByInternalName(), request, messages));
     }
     
     public Result test(Http.Request request) {

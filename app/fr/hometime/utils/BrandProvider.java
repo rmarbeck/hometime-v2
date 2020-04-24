@@ -19,6 +19,10 @@ public interface BrandProvider extends DataProvider {
 		return Hidden.getBrandsOrderedByString(Comparator.comparing(Brand::getSeoName), retrieveBrands());
 	}
 	
+	public default Optional<List<Brand>> retrieveSupportedBrandsOrderedByInternalName() {
+		return Hidden.getBrandsOrderedAndFilteredByString(Comparator.comparing(Brand::getInternalName), Brand::isSupported, retrieveBrands());
+	}
+	
 	public default Optional<Brand> getBrandById(long id) {
 		return Hidden.getBrandByFilter(brand -> (brand.id==id), retrieveBrands());
 	}
@@ -37,7 +41,11 @@ public interface BrandProvider extends DataProvider {
         }
         
         private static Optional<List<Brand>> getBrandsOrderedByString(Comparator<Brand> comparator, Optional<List<Brand>> brands) {
-        	return brands.map(list -> list.stream().sorted(comparator).collect(Collectors.toList()));
+        	return getBrandsOrderedAndFilteredByString(comparator, brand -> true, brands);
+        }
+        
+        private static Optional<List<Brand>> getBrandsOrderedAndFilteredByString(Comparator<Brand> comparator, Predicate<Brand> tester, Optional<List<Brand>> brands) {
+        	return brands.map(list -> list.stream().filter(tester).sorted(comparator).collect(Collectors.toList()));
         }
     }
 }

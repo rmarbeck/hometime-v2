@@ -73,7 +73,7 @@
 									@inputBox(form("title"), true)
 									
 									@fullWidth() {
-										@helper.textarea(form("message"), Symbol("class") -> "form-control", Symbol("placeholder") -> Html(Messages(computeMessageKey("message", "placeholder").toString)), Symbol("_label") -> Html(Messages(computeMessageKey("message", "label").toString)), Symbol("cols") -> "30", Symbol("rows") -> "10")
+										@helper.textarea(form("message"), Symbol("class") -> "form-control", Symbol("placeholder") -> Html(Messages(computeMessageKey("message", "placeholder").toString)), Symbol("_label") -> Html(Messages(computeMessageKey("message", "label").toString)), Symbol("cols") -> "30", Symbol("rows") -> "10", Symbol("_showConstraints") -> false)
 									}
 									
 									@fullWidth("group-label") {

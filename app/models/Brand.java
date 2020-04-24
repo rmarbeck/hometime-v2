@@ -67,4 +67,8 @@ public class Brand {
 	public String getSeoName() {
 		return seo_name;
 	}
+	
+	public boolean isSupported() {
+		return this.supported;
+	}
 }

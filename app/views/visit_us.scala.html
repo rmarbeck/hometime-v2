@@ -6,9 +6,7 @@
 @defining("page.visit.us") { case (key) =>
 
 	@layouts.main_helper_with_head_block(key) {
-				<div class="container clearfix">
-					@List.range(1, 5).map{ index => <p>@if(index==3) {@Html(Messages("page.visit.us.text.part."+index, "0782434751", "07&nbsp;82&nbsp;43&nbsp;47&nbsp;51"))} else {@Html(Messages("page.visit.us.text.part."+index))}</p> }
-				</div>	
+				@List.range(1, 5).map{ index => <p>@if(index==3) {@Html(Messages("page.visit.us.text.part."+index, "0782434751", "07&nbsp;82&nbsp;43&nbsp;47&nbsp;51"))} else {@Html(Messages("page.visit.us.text.part."+index))}</p> }	
 				
 				<div>
 					<iframe width="600" height="450" frameborder="0" style="border:0" src="https://www.google.com/maps/embed/v1/place?q=place_id:ChIJawfbyi9u5kcR9cL5oxLwnNo&key=AIzaSyBILpKrEOIAOcjVBa9-ownlM_oiEQqBTyc" allowfullscreen></iframe>

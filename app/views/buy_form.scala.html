@@ -1,4 +1,4 @@
-@(form: Form[QuotationRequestData], brands: Optional[List[Brand]], brand: Optional[Brand])(implicit request: Http.Request, messages: play.i18n.Messages)
+@(form: Form[BuyRequestData], brands: Optional[List[Brand]], brand: Optional[Brand])(implicit request: Http.Request, messages: play.i18n.Messages)
 
 @import scala.collection.immutable._
 @import tags._
@@ -9,7 +9,7 @@
  * Keys
  *****************************************@
 
-@formKey = {quotation.form}
+@formKey = {buy.form}
 
 @keyIncludingBrand = {@formKey.@brand.map(_.getInternalName).getOrElse("undefined")}
 
@@ -73,19 +73,9 @@
 	Messages(formKey.toString+".html.keywords", brandName, Messages(keyIncludingBrand.toString+".brand.models"))) { case (title, description, keywords) =>
 @layouts.main_helper_with_head_block(formKey.toString, Symbol("_html_title") -> title, Symbol("_html_description") -> description, Symbol("_html_keywords") -> keywords, Symbol("_head_intro_key") -> Messages(formKey.toString+".head.intro", brandName)){
 		
-		@helper.form(action = routes.FormProcessingController.processQuotationRequest(), Symbol("id") -> "website-cost", Symbol("class") -> "row mb-0") {
+		@helper.form(action = routes.FormProcessingController.processBuyRequest(), Symbol("id") -> "website-cost", Symbol("class") -> "row mb-0") {
 			@helper.CSRF.formField
 									<div class="form-process"></div>
-									
-									@fullWidth("my-forms") {
-										@helper.input(form("orderType"), Symbol("_class") -> "mb-3 group-label", Symbol("_label") -> Html(Messages(computeMessageKey("orderType", "label").toString)), Symbol("_showConstraints") -> false) { (id, name, value, args) =>
-												@List.range(1, 6).map(option => (option.toString, Html(Messages(formKey.toString+"."+option.toString+".order.type")))).toSeq.map { v => @selectField(3, id, name, value, v, args) }
-										}(tags.canvasRadioGroupBoxedFieldTemplate, messages)
-									}
-
-									@fullWidth("group-label") {
-										<label>@Html(Messages(formKey.toString+".group.label.watch"))</label>
-									}
 									
 									@halfWidth() {
 										@helper.select(form("brand"), options = brands.get().map(brand => (brand.id.toString, brand.display_name)).toSeq, Symbol("class") -> computeClassForInput(true, form("brand").hasErrors, Symbol("_body_class") -> "").toString, Symbol("_default") -> Html(Messages(computeMessageKey("brand", "default").toString)), Symbol("_label") -> Html(Messages(computeMessageKey("brand", "label").toString)), Symbol("_showConstraints") -> false)
@@ -93,11 +83,31 @@
 								
 									@inputBox(form("model"), true)
 									
+									@fullWidth() {
+										@helper.textarea(form("criteria"), Symbol("class") -> "form-control", Symbol("placeholder") -> Html(Messages(computeMessageKey("criteria", "placeholder").toString)), Symbol("_label") -> Html(Messages(computeMessageKey("criteria", "label").toString)), Symbol("cols") -> "30", Symbol("rows") -> "5", Symbol("_showConstraints") -> false)
+									}
+									
 									@fullWidth("my-forms") {
-										@helper.input(form("method"), Symbol("_class") -> "mb-3", Symbol("_label") -> Html(Messages(computeMessageKey("method", "label").toString)), Symbol("_showConstraints") -> false) { (id, name, value, args) =>
-												@List.range(1, 4).map(value => (value.toString, Html(Messages(formKey.toString+"."+value.toString+".method")))).toSeq.map { v => @selectField(5, id, name, value, v, args) }
+										@helper.input(form("timeframe"), Symbol("_class") -> "mb-3", Symbol("_label") -> Html(Messages(computeMessageKey("timeframe", "label").toString)), Symbol("_showConstraints") -> false) { (id, name, value, args) =>
+												@BuyRequestData.Timeframe.values.map(value => (value.toString, Html(Messages(formKey.toString+"."+value.toString.toLowerCase.replace('_','.')+".timeframe")))).toSeq.map { v => @selectField(5, id, name, value, v, args) }
 										}(tags.canvasRadioGroupBoxedFieldTemplate, messages)
 									}
+									
+									@fullWidth("my-forms") {
+										@helper.input(form("story"), Symbol("_class") -> "mb-3", Symbol("_label") -> Html(Messages(computeMessageKey("story", "label").toString)), Symbol("_showConstraints") -> false) { (id, name, value, args) =>
+												@BuyRequestData.WatchStory.values.map(value => (value.toString, Html(Messages(formKey.toString+"."+value.toString.toLowerCase.replace('_','.')+".story")))).toSeq.map { v => @selectField(5, id, name, value, v, args) }
+										}(tags.canvasRadioGroupBoxedFieldTemplate, messages)
+									}
+									
+									@fullWidth("my-forms") {
+										@helper.input(form("pack"), Symbol("_class") -> "mb-3", Symbol("_label") -> Html(Messages(computeMessageKey("pack", "label").toString)), Symbol("_showConstraints") -> false) { (id, name, value, args) =>
+												@BuyRequestData.Package.values.map(value => (value.toString, Html(Messages(formKey.toString+"."+value.toString.toLowerCase.replace('_','.')+".pack")))).toSeq.map { v => @selectField(5, id, name, value, v, args) }
+										}(tags.canvasRadioGroupBoxedFieldTemplate, messages)
+									}
+									
+									@inputBox(form("expectedPrice"), true, Symbol("type") -> "number", Symbol("step") -> "100", Symbol("min") -> "400", Symbol("max") -> "80000")
+									
+									@inputBox(form("priceHigherBound"), true, Symbol("type") -> "number", Symbol("step") -> "100", Symbol("min") -> "400", Symbol("max") -> "80000")
 									
 									@fullWidth("group-label") {
 										<label>@Html(Messages(formKey.toString+".group.label.customer"))</label>

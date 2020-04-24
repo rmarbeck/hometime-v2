@@ -230,7 +230,7 @@ home.main.header.2.title=Vous avez une belle montre, entretenez la !
 home.main.header.2.text=Votre montre est faite pour durer, mais pour cela il est nécessaire de l''entretenir régulièrement. Hometime s''occupe de tout.
 
 home.main.header.3.title=Trouvez votre prochaine montre&nbsp;!
-home.main.header.3.text=Hometime vous propose de trouver votre prochaine montre. Neuve ou d''occasion nous recherchons pour vous les plus belles pièces, au meilleur prix en garanties 2 ans.
+home.main.header.3.text=Hometime vous propose de trouver votre prochaine montre. Neuve ou d''occasion nous recherchons pour vous les plus belles pièces, au meilleur prix et garanties 2 ans.
 
 
 home.video.claim=Comprendre Hometime en 30 secondes
@@ -343,6 +343,12 @@ home.tell.more.call.to.action.title=Tout savoir sur nos services
 home.feedback.call.to.action=Tous les avis
 home.feedback.call.to.action.title=Ce qu''en pensent nos clients
 
+
+
+home.testimonials.head.title=Avis clients
+home.testimonials.head.baseline=Quelques avis des clients nous ayant fait confiance
+							
+							
 home.title.for.facebook=Hometime
 home.type.for.facebook=website
 home.description.for.facebook=Hometime, entretien et essai prolongé de montres de luxe
@@ -375,6 +381,16 @@ home.reason.8.body=Je possède une montre ancienne ou vintage, je peux la faire 
 
 home.text.feedback=Avis clients
 
+
+home.supported.brands.title=Les marques entretenues
+home.supported.brands.claim=Hometime entretient les marques suivantes :
+home.brand.generic.quotation.title=Demander un devis en ligne gratuit
+home.brand.generic.quotation.text=Devis personnalisé
+home.brand.title=Demander un devis gratuit pour une réparation ou une révision d''une montre {0}
+home.brand.alt=Réparation ou révision montre {0}
+
+home.brand.generic.auto.quotation.title=Obtenez le tarif de l''entretien en quelques clics
+home.brand.generic.auto.quotation.text=Devis interactif
 
 #------------------------
 quotation.options.html.title=Evaluation du tarif d''entretien d''une montre
@@ -1868,6 +1884,93 @@ call.back.error.head=Erreur
 call.back.error.head.subtitle=Problème rencontré lors de la demande de rappel
 call.back.error.head.intro=Veuillez nous excuser, une erreur s''est produite.<br/>Peut-être celle-ci est transitoire, alors n''hésitez pas à réessayer ou à nous appeler&nbsp;!<br /><br />Nous allons essayer de résoudre le problème au plus vite.
 call.back.error.disclaimer=Nous avons enregistrer cette erreur et allons essayer de la résoudre rapidement. Merci de votre compréhension.
+
+
+
+#------ Buy Form ------------------
+#------ buy.form
+buy.form.html.title=Recherche d''une montre neuve ou d''occasion à vendre
+buy.form.html.description=Formulaire de recherche d''une montre neuve ou d''occasion. Nous vous conseillons et cherchons pour vous des montres et les garantissons pendant 2 ans.
+buy.form.html.keywords=courtier, courtage, recherche montre occasion, recherche montre occasion, garantie 2 ans, en france, expertise, authentique, full set, paris, yvelines, hauts de seine
+
+buy.form.head=Chercher une montre
+buy.form.head.subtitle=Vous cherchez une montre, nous essayons de la trouver&nbsp;!
+buy.form.head.intro=Vous pouvez renseigner les informations ci-dessous pour décrire la montre que vous recherchez. Nous vous proposerons alors des montres <b>certifiées authentiques et garanties 2 ans par Hometime</b>. Les montres sont livrées à domicile sur Paris et sa région, et par colis sécurisé partout en France.\
+ <br /><br /> Si vous avez besoin de conseils, nous sommes là pour vous guider. N''hésitez pas à nous appeler&nbsp;!
+buy.form.disclaimer=Hometime agit comme courtier en montres neuves ou d''occasion. Nous sélectionnons les meilleurs bijoutiers et vous proposons nos services de conseils pour vous guider dans vos choix. Les montres que nous vous proposons sont systématiquement expertisées et nous vous assurons de leur authenticité (un certificat est remis lors de la vente). De plus, nous effectuons des tests de marche et d''étanchéité et vous conseillons sur l''utilisation au quotidien de votre montre. Si vous rencontrez le moindre problème, Hometime assure son service après vente dans toute la France, vous avez un interlocuteur unique et bien réel.
+
+buy.form.brand.label=Marque
+buy.form.brand.default=Sélectionnez la marque recherchée
+
+buy.form.model.label=Modèle recherché
+buy.form.model.placeholder=Submariner|Monaco|Portugaise|...
+
+buy.form.story.label=Etat de la montre
+buy.form.new.only.story=Neuve absolument
+buy.form.worn.only.story=D''occasion seulement
+buy.form.both.story=Peu importe
+
+
+buy.form.timeframe.label=Horizon temporel
+buy.form.emergency.timeframe=Recherche urgente
+buy.form.within.month.timeframe=Dans le mois
+buy.form.within.3.months.timeframe=A moyen terme
+buy.form.opportunity.timeframe=Quand l''occasion se présente
+
+
+buy.form.pack.label=Accessoires disponibles
+buy.form.full.set.only.pack=Boite et papiers (fullset)
+buy.form.watch.only.pack=Seulement la montre
+buy.form.both.pack=Peu importe
+
+buy.form.expectedprice.label=Prix souhaité (en&nbsp;€)
+buy.form.expectedprice.placeholder=
+buy.form.pricehigherbound.label=Prix maximum (en&nbsp;€)
+buy.form.pricehigherbound.placeholder=
+
+buy.form.criteria.label=Critères forts
+buy.form.criteria.placeholder=cadran noir|boucle déployante|...
+
+buy.form.remark.label=Remarques
+buy.form.remark.placeholder=...
+buy.request.validation.error.criteria.spam.detected=Notre système a détecté un contenu correspondant à du SPAM, veuillez contrôler la valeur saisie
+buy.request.validation.error.remark.spam.detected=Notre système a détecté un contenu correspondant à du SPAM, veuillez contrôler la valeur saisie
+buy.request.validation.error.model.spam.detected=Notre système a détecté un contenu correspondant à du SPAM, veuillez contrôler la valeur saisie
+
+buy.form.group.label.customer=A propos de vous
+buy.form.nameofcustomer.label=Vos nom et prénom
+buy.form.nameofcustomer.placeholder=Prénom Nom
+buy.form.email.label=Email
+buy.form.email.placeholder=exemple@nomdedomaine.fr
+buy.form.phonenumber.label=Votre numéro de téléphone
+buy.form.phonenumber.placeholder=06xxxxxxxx
+buy.form.city.label=Votre lieu de résidence
+buy.form.city.placeholder=Ville
+
+buy.form.submit=Envoyer
+
+#------ Contact Success Page ------------------
+#------ buy.success
+buy.success.html.title=Recherche d''une montre neuve ou d''occasion à vendre
+buy.success.html.description=Formulaire de recherche d''une montre neuve ou d''occasion. Nous vous conseillons et cherchons pour vous des montres et les garantissons pendant 2 ans.
+buy.success.html.keywords=courtier, courtage, recherche montre occasion, recherche montre occasion, garantie 2 ans, en france, expertise, authentique, full set, paris, yvelines, hauts de seine
+buy.success.head=Chercher une montre
+buy.success.head.subtitle=Vous pouvez renseigner les informations ci-dessous pour décrire la montre que vous recherchez. Nous vous proposerons alors des montres <b>certifiées authentiques et garanties 2 ans par Hometime</b>. Les montres sont livrées à domicile sur Paris et sa région, et par colis sécurisé partout en France.\
+ <br /><br /> Si vous avez besoin de conseils, nous sommes là pour vous guider. N''hésitez pas à nous appeler&nbsp;!
+
+buy.success.head.intro=Votre demande a bien été enregistrée, nous allons essayer de la traiter dans les plus brefs délais. En attendant, n''hésitez pas à consulter le site pour découvrir nos services&nbsp;!
+
+buy.success.disclaimer=
+
+buy.error.html.title=Erreur dans notre traitement
+buy.error.html.description=Demande de recherche de montre en échec
+buy.error.html.keywords=demande, achat, recherche, ko
+
+buy.error.head=Erreur
+buy.error.head.subtitle=Problème rencontré lors de la demande de recherche de montre
+buy.error.head.intro=Veuillez nous excuser, une erreur s''est produite.<br/>Peut-être celle-ci est transitoire, alors n''hésitez pas à réessayer ou à nous appeler&nbsp;!<br /><br />Nous allons essayer de résoudre le problème au plus vite.
+buy.error.disclaimer=Nous avons enregistrer cette erreur et allons essayer de la résoudre rapidement. Merci de votre compréhension.
+
 
 
 #------ Contact Form ------------------

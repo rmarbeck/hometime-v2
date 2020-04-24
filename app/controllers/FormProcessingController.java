@@ -1,6 +1,9 @@
 package controllers;
 
 import java.util.Arrays;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.CompletionStage;
@@ -19,6 +22,7 @@ import play.i18n.MessagesApi;
 import play.mvc.*;
 import play.libs.ws.*;
 import models.Brand;
+import models.BuyRequestData;
 import models.CallBackRequestData;
 import models.ContactRequestData;
 import models.QuotationRequestData;
@@ -90,6 +94,26 @@ public class FormProcessingController extends Controller implements WSBodyReadab
 		} else {
 			CompletionStage<? extends WSResponse> responsePromise = ws.url("https://www.hometime.fr/new-contact-request-from-outside").setContentType("application/x-www-form-urlencoded").post(request.body().asFormUrlEncoded().entrySet().stream().map(entry -> flattenValues(entry.getKey(), entry.getValue(), "&")).collect( Collectors.joining( "&" )));
 			return responsePromise.handle((response, error) -> handleFormResponse(response, error, request, "contact.us"));
+		}
+	}
+	
+	/*************************************
+	 * 
+	 * Buy Request Management
+	 * 
+	 *************************************/
+	public Result prepareBuyRequest(Http.Request request) {
+		return ok(views.html.buy_form.render(formFactory.form(BuyRequestData.class).withDirectFieldAccess(true), brandProvider.retrieveBrandsOrderedByName(), Optional.empty(), request, messagesApi.preferred(request)));
+	}
+	
+	public CompletionStage<Result> processBuyRequest(Http.Request request) {
+		final Form<BuyRequestData> boundForm = formFactory.form(BuyRequestData.class).withDirectFieldAccess(true).bindFromRequest(request);
+		
+		if (boundForm.hasErrors()) {
+			return CompletableFuture.supplyAsync(() -> badRequest(views.html.buy_form.render(boundForm, brandProvider.retrieveBrandsOrderedByName(), Optional.empty(), request, messagesApi.preferred(request))));
+		} else {
+			CompletionStage<? extends WSResponse> responsePromise = ws.url("https://www.hometime.fr/new-buy-request-from-outside").setContentType("application/x-www-form-urlencoded").setHeaders(getHeadersForFriendlyLocation()).post(request.body().asFormUrlEncoded().entrySet().stream().map(entry -> flattenValues(entry.getKey(), entry.getValue(), "&")).collect( Collectors.joining( "&" )));
+			return responsePromise.handle((response, error) -> handleFormResponse(response, error, request, "buy"));
 		}
 	}
 	
@@ -182,5 +206,10 @@ public class FormProcessingController extends Controller implements WSBodyReadab
 		return formFactory.form(QuotationRequestData.class).withDirectFieldAccess(true);
 	}
 
+	private Map<String, List<String>> getHeadersForFriendlyLocation() {
+		Map<String, List<String>> headers = new HashMap<String, List<String>>();
+		headers.put("secretKey", Arrays.asList("staticValue"));
+		return headers;
+	}
 	
 }

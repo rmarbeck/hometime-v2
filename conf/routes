@@ -18,6 +18,9 @@ GET     /demande-de-devis/urgence/etancheite/montre/:brand    				controllers.Fo
 GET     /demande-de-rappel													controllers.FormProcessingController.prepareCallBackRequest(request: Request)
 POST    /demande-de-rappel													controllers.FormProcessingController.processCallBackRequest(request: Request)
 
+GET     /rechercher-une-montre												controllers.FormProcessingController.prepareBuyRequest(request: Request)
+POST    /rechercher-une-montre												controllers.FormProcessingController.processBuyRequest(request: Request)
+
 GET     /nous-contacter														controllers.FormProcessingController.prepareContactRequest(request: Request)
 POST    /nous-contacter														controllers.FormProcessingController.processContactRequest(request: Request)
 

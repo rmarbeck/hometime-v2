@@ -1,6 +1,7 @@
-@(feedbacks: Optional[List[Feedback]])(implicit request: Http.Request, messages: play.i18n.Messages)
+@(feedbacks: Optional[List[Feedback]], brands: Optional[List[Brand]])(implicit request: Http.Request, messages: play.i18n.Messages)
 
 @import scala.collection.immutable._
+@import tags._
 
 
 @promise(icon: String, index: Int) = {
@@ -51,10 +52,10 @@
 @testimonial(feedback: Feedback) = {
 								<div class="testimonial">
 									<div class="testi-image">
-										<a href="#"><img src="@feedback.pictureUrl" alt="Customer Testimonails"></a>
+										<a href="@routes.HomeController.feedbacks()#feedback@feedback.id"><img src="@feedback.pictureUrl" alt="Customer Testimonails"></a>
 									</div>
 									<div class="testi-content">
-										<span class="testi-date">@Html(Messages("feedback.date.template",feedback.displayDate)).toString.trim.capitalize</span><p>@feedback.body</p>
+										<span class="testi-date">@Html(Messages("feedback.date.template",feedback.displayDate)).toString.trim.capitalize</span><p>@takeif_html(feedback.body, 100)</p>
 										<div class="testi-meta">
 											@feedback.author
 											<span>@feedback.typeOfFeedback</span>
@@ -89,17 +90,31 @@
 				<div class="container clearfix">
 					<div class="heading-block topmargin-lg center">
 						<h2>Devis d'entretien ou de réparation</h2>
-						<span class="divcenter">Choisissez le mode qui vous convient</span>
+						<span class="divcenter">Choisissez par marque...</span>
 					</div>
 				
+					<div class="row bottommargin-lg">
+						@brands.get.map{ brand =>
+							<div class="brand-logo-list-item col-3 col-sm-2 col-xl-1">
+								<a href="@routes.FormProcessingController.prepareQuotationRequestWithBrand(brand.getSeoName)" title="@Html(Messages("home.brand.title", brand.getDisplayName))"><img class="img-responsive lazyload" data-src="https://d1qsyzkyf147s1.cloudfront.net/assets/images/@brand.logo_url" alt="@Html(Messages("home.brand.alt", brand.getDisplayName))" title="@Html(Messages("home.brand.title", brand.getDisplayName))"></a>
+							</div>
+						}
+					</div>
+					
+					<div class="heading-block topmargin-lg center">
+						<h2></h2>
+						<span class="divcenter">...ou le mode qui vous convient</span>
+					</div>
 				
 					@List(("icon-line-pie-graph", "#", "Devis interactif", "En 5 étapes, évaluez le coût de l'entretien de votre montre.", List("Devis immédiat", "Prix et délais approximatifs", "24h/24")),
 							("icon-eye", "#", "Devis horloger", "Nos horlogers analysent votre besoin et vous répondent.", List("Devis détaillé", "Un horloger vous répond", "Sous 48h maximum")),
 							("icon-shop", "#", "Devis formel", "Sur place, nous établissons un devis ferme montre en main.", List("Nous auscultons votre montre", "Le devis est gratuit", "Il nous engage"))).zipWithIndex.map { case (value,index) => @quotation(value._1, value._2, value._3, value._4, index+1, value._5) }
+						
+										
+
 												
 				</div>
 				
-
 				<div class="promo promo-light promo-full bottommargin-sm notopborder padding-reduced">
 					<div class="container clearfix">
 						<h3>@Html(Messages("global.text.call.us.reasons"))<span>&nbsp;<a href="tel:@Messages("global.href.phone.number")" rel="nofollow">@Html(Messages("global.text.phone.number"))</a></span></h3>
@@ -194,33 +209,19 @@
 
 					<div class="container clearfix">
 
-						<div class="heading-block center">
-							<h3>Testimonials</h3>
-							<span>Check out some of our Client Reviews</span>
+						<div class="heading-block center bottommargin-sm">
+							<h3>@Html(Messages("home.testimonials.head.title"))</h3>
+							<span>@Html(Messages("home.testimonials.head.baseline"))</span>
 						</div>
 
-						<ul class="testimonials-grid grid-3 clearfix nobottommargin">
-							@feedbacks.get.map{ feedback =>
-							<li>
-								@testimonial(feedback)
-							</li>
-							}
-						</ul>
-
-					</div>
-
-				</div>
-				
-
-				
-
-				<div class="container clearfix">
-					<div id="oc-testi" class="owl-carousel testimonials-carousel carousel-widget" data-margin="20" data-items-sm="1" data-items-md="2" data-items-xl="3">
+						<div id="oc-testi" class="owl-carousel testimonials-carousel carousel-widget" data-margin="20" data-items-sm="1" data-items-md="2" data-items-xl="3">
 						@feedbacks.get.map{ feedback =>
 							<div class="oc-item">
 								@testimonial(feedback)
 							</div>
 						}
+						</div>
+
 					</div>
 
 				</div>

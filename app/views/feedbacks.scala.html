@@ -10,12 +10,13 @@
 					<ul class="testimonials-grid grid-3 clearfix">
 						@feedbacks.get.map{ feedback =>
 						<li>
+							<div id="feedback@feedback.id"></div>
 							<div class="testimonial">
 								<div class="testi-image">
-									<a href="#"><img src="@feedback.pictureUrl" alt="Customer Testimonails"></a>
+									<img src="@feedback.pictureUrl" alt="Customer Testimonails">
 								</div>
 								<div class="testi-content">
-									<span class="testi-date">@Html(Messages("feedback.date.template",feedback.displayDate)).toString.trim.capitalize</span><p>@feedback.body</p>
+									<span class="testi-date">@Html(Messages("feedback.date.template",feedback.displayDate)).toString.trim.capitalize</span><p>@takeif_html(feedback.body, 300)</p>
 									<div class="testi-meta">
 										@feedback.author
 										<span>@feedback.typeOfFeedback</span>

@@ -1,0 +1,175 @@
+/*-----------------------------------------------------------------------------------
+	less/responsive-hacks-home-only.less
+-----------------------------------------------------------------------------------*/
+
+// Initialize
+@import "variables.less";
+
+.home {
+
+	.slider-caption h2 {
+	    font-size: 3rem;
+	}
+
+	.claim h1 {
+		margin-top: -1.5em;
+		font-size: 28px;
+	}
+	
+	
+	.claim h2 {
+		padding: 0 40px;
+		font-size: 24px;
+	}
+	
+	abbr {
+		text-decoration: underline !important;
+	}
+	
+	.dark .slider-caption,
+	.dark .slider-caption h2 {
+		color: #EEE;
+		text-shadow: 0 0 3px #000 !important;
+	}
+	
+
+	@media only screen and (max-width: 1199.98px) {
+	
+	}
+	
+	@media only screen and (min-width: 1200px) {
+		.slider-1 h2 {
+			padding-left: 10em !important;
+			margin-top: -1em !important;
+		}
+		
+		.slider-3 h2 {
+			font-size: 2rem;
+			margin-top: 2em !important;
+		}
+		
+		#header.transparent-header + #slider {
+			margin-bottom: -190px !important;
+		}
+	}
+	
+	@media only screen and (min-width: 992px) and (max-width: 1199.98px) {
+		#header.transparent-header + #slider {
+			margin-bottom: -200px;
+		}
+		
+		.slider-1 h2 {
+			padding-left: 7em !important;
+			margin-top: -1em !important;
+		}
+		
+		.slider-3 {
+			max-width: 450px;
+			h2 {
+				font-size: 2rem;
+				margin-top: 2em !important;
+			}
+			p {
+				font-size: 1.4rem;
+			}
+		}
+	}
+	
+	
+	@media only screen and (max-width: 991.98px) {
+	
+	}
+	
+	@media only screen and (min-width: 768px) and (max-width: 991.98px) {
+		.slider-1 h2 {
+			font-size: 40px !important;
+			margin-top: -3em !important;
+		}
+		
+		.slider-3 {
+			max-width: 350px;
+			h2 {
+				font-size: 1.8rem;
+				margin-top: 1em !important;
+			}
+			p {
+				font-size: 1.3rem;
+			}
+		}
+	}
+	
+	@media only screen and (max-width: 767.98px) {
+		#header.transparent-header + #slider {
+			margin-bottom: 0 !important;
+		}
+	
+		.promo {
+			h3 {
+				font-size: 15px !important;
+			}
+		}
+		
+		.promo > span,
+		.promo > .container > span {
+			font-size: 13px !important;
+		}
+		
+		h1 {
+			font-size: 20px !important;
+		}
+		
+		h2 {
+			font-size: 18px !important;
+		}
+		
+		.claim h1 {
+			margin-top: -60px !important;
+			font-size: 18px !important;
+		}
+	
+		.claim h2 {
+			font-size: 15px !important;
+		}
+	}
+	
+	@media only screen and (min-width: 768px) {
+		.brand-logo-list-item {
+			img {
+				border: 5px solid transparent;
+			}
+			img:hover {
+				filter: drop-shadow(0px 0px 15px grey);
+				border: none;
+			}
+		}
+	}
+	
+	@media (min-width: 576px) and (max-width: 767.98px) {
+		.slider-1 h2 {
+			font-size: 28px !important;
+			margin-top: -3em !important;
+		}
+		
+		.slider-3 {
+			max-width: 250px;
+			h2 {
+				font-size: 1.5rem !important;
+			}
+		}
+	}
+	
+	@media (max-width: 575.98px) {
+		.slider-1 h2 {
+			font-size: 24px !important;
+			margin-top: -2em !important;
+		}
+		
+		.slider-3 {
+			max-width: 190px;
+		    right: 25px;
+		    h2 {
+				font-size: 1rem !important;
+			}
+		}
+	}
+}

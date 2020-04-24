@@ -73,7 +73,7 @@
 									@inputBox(form("number"), true)
 									
 									@fullWidth() {
-										@helper.textarea(form("reason"), Symbol("class") -> "form-control", Symbol("placeholder") -> Html(Messages(computeMessageKey("reason", "placeholder").toString)), Symbol("_label") -> Html(Messages(computeMessageKey("reason", "label").toString)), Symbol("cols") -> "30", Symbol("rows") -> "10")
+										@helper.textarea(form("reason"), Symbol("class") -> "form-control", Symbol("placeholder") -> Html(Messages(computeMessageKey("reason", "placeholder").toString)), Symbol("_label") -> Html(Messages(computeMessageKey("reason", "label").toString)), Symbol("cols") -> "30", Symbol("rows") -> "10", Symbol("_showConstraints") -> false)
 									}
 
 									<div class="col-12">
