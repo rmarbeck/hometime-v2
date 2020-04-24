@@ -100,7 +100,7 @@ public class BuyRequestData implements Validatable<List<ValidationError>> {
 	@Constraints.Required
 	public String timeframe;
 
-	@Constraints.Required
+	
 	public String brand;
 	
 	@Constraints.Required
