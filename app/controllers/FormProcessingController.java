@@ -112,7 +112,7 @@ public class FormProcessingController extends Controller implements WSBodyReadab
 		if (boundForm.hasErrors()) {
 			return CompletableFuture.supplyAsync(() -> badRequest(views.html.buy_form.render(boundForm, brandProvider.retrieveBrandsOrderedByName(), Optional.empty(), request, messagesApi.preferred(request))));
 		} else {
-			CompletionStage<? extends WSResponse> responsePromise = ws.url("https://www.hometime.fr/new-buy-request-from-outside").setContentType("application/x-www-form-urlencoded").post(request.body().asFormUrlEncoded().entrySet().stream().map(entry -> flattenValues(entry.getKey(), entry.getValue(), "&")).collect( Collectors.joining( "&" )));
+			CompletionStage<? extends WSResponse> responsePromise = ws.url("https://www.hometime.fr/new-buy-request-from-outside").addHeader("secretKey", "staticValue").setContentType("application/x-www-form-urlencoded").post(request.body().asFormUrlEncoded().entrySet().stream().map(entry -> flattenValues(entry.getKey(), entry.getValue(), "&")).collect( Collectors.joining( "&" )));
 			return responsePromise.handle((response, error) -> handleFormResponse(response, error, request, "buy"));
 		}
 	}
@@ -205,11 +205,4 @@ public class FormProcessingController extends Controller implements WSBodyReadab
 	private Form<QuotationRequestData> getQuotationRequestForm() {
 		return formFactory.form(QuotationRequestData.class).withDirectFieldAccess(true);
 	}
-
-	private Map<String, List<String>> getHeadersForFriendlyLocation() {
-		Map<String, List<String>> headers = new HashMap<String, List<String>>();
-		headers.put("secretKey", Arrays.asList("staticValue"));
-		return headers;
-	}
-	
 }
