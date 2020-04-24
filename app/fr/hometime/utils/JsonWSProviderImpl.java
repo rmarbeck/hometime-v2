@@ -11,6 +11,7 @@ import org.slf4j.LoggerFactory;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.JsonNode;
+import com.typesafe.config.Config;
 
 import models.Brand;
 import models.Feedback;
@@ -22,6 +23,7 @@ import play.libs.ws.WSClient;
 @Singleton
 public class JsonWSProviderImpl implements JsonWSProvider, JsonListParser, JsonWSLoader, BrandProvider, FeedbackProvider, PriceProvider, WSBodyReadables, WSBodyWritables {
 	private final WSClient ws;
+	private final Config config;
 	private String brandWSUrl;
 	private String feedbacksUrl;
 	private String pricesUrl;
@@ -33,9 +35,15 @@ public class JsonWSProviderImpl implements JsonWSProvider, JsonListParser, JsonW
 		return ws;
 	}
 	
+	@Override
+	public Config config() {
+		return config;
+	}
+	
 	@Inject
-	public JsonWSProviderImpl(WSClient ws) {
+	public JsonWSProviderImpl(WSClient ws, Config config) {
         this.ws = ws;
+        this.config = config;
         this.brandWSUrl = "https://www.hometime.fr/ws/brands/get/all";
         this.feedbacksUrl = "https://www.hometime.fr/ws/feedbacks/get/all";
         this.pricesUrl = "https://www.hometime.fr/ws/prices/get/all";

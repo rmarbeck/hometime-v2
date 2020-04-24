@@ -18,6 +18,7 @@ import org.slf4j.LoggerFactory;
 import com.typesafe.config.Config;
 
 import fr.hometime.utils.BrandProvider;
+import fr.hometime.utils.WebserviceHelper;
 import play.data.Form;
 import play.data.FormFactory;
 import play.i18n.MessagesApi;
@@ -36,13 +37,11 @@ import models.QuotationRequestData;
  */
 public class FormProcessingController extends Controller implements WSBodyReadables, WSBodyWritables {
 	private final static String WATER_ISSUE_ORDER_TYPE = "5";
-	private final static String SECRET_KEY = "SECRET_KEY";
 	private MessagesApi messagesApi;
 	private FormFactory formFactory;
 	private BrandProvider brandProvider;
 	private final WSClient ws;
 	private final Config config;
-	private static Optional<String> secretKey = Optional.empty();
 	
 	private final Logger logger = LoggerFactory.getLogger(getClass()) ;
 	
@@ -118,7 +117,7 @@ public class FormProcessingController extends Controller implements WSBodyReadab
 		if (boundForm.hasErrors()) {
 			return CompletableFuture.supplyAsync(() -> badRequest(views.html.buy_form.render(boundForm, brandProvider.retrieveBrandsOrderedByName(), Optional.empty(), request, messagesApi.preferred(request))));
 		} else {
-			CompletionStage<? extends WSResponse> responsePromise = wsWithSecret("https://www.hometime.fr/new-buy-request-from-outside").addHeader("secretKey", getSecretKey()).setContentType("application/x-www-form-urlencoded").post(request.body().asFormUrlEncoded().entrySet().stream().map(entry -> flattenValues(entry.getKey(), entry.getValue(), "&")).collect( Collectors.joining( "&" )));
+			CompletionStage<? extends WSResponse> responsePromise = wsWithSecret("https://www.hometime.fr/new-buy-request-from-outside").setContentType("application/x-www-form-urlencoded").post(request.body().asFormUrlEncoded().entrySet().stream().map(entry -> flattenValues(entry.getKey(), entry.getValue(), "&")).collect( Collectors.joining( "&" )));
 			return responsePromise.handle((response, error) -> handleFormResponse(response, error, request, "buy"));
 		}
 	}
@@ -212,15 +211,7 @@ public class FormProcessingController extends Controller implements WSBodyReadab
 		return formFactory.form(QuotationRequestData.class).withDirectFieldAccess(true);
 	}
 	
-	private String getSecretKey() {
-		if (secretKey.isPresent())
-			return secretKey.get();
-		secretKey = Optional.of(config.getString("ws.friendlylocation.secretkey"));
-		logger.error("Secret key -->>" + secretKey.get());
-		return secretKey.get();
-	}
-	
 	private WSRequest wsWithSecret(String url) {
-		return ws.url(url).addHeader(SECRET_KEY, getSecretKey());
+		return WebserviceHelper.wsWithSecret(ws, url, config);
 	}
 }
