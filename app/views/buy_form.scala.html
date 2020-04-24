@@ -78,7 +78,7 @@
 									<div class="form-process"></div>
 									
 									@halfWidth() {
-										@helper.select(form("brand"), options = brands.get().map(brand => (brand.id.toString, brand.display_name)).toSeq, Symbol("class") -> computeClassForInput(true, form("brand").hasErrors, Symbol("_body_class") -> "").toString, Symbol("_default") -> Html(Messages(computeMessageKey("brand", "default").toString)), Symbol("_label") -> Html(Messages(computeMessageKey("brand", "label").toString)), Symbol("_showConstraints") -> false)
+										@helper.select(form("brand.id"), options = brands.get().map(brand => (brand.id.toString, brand.display_name)).toSeq, Symbol("class") -> computeClassForInput(true, form("brand").hasErrors, Symbol("_body_class") -> "").toString, Symbol("_default") -> Html(Messages(computeMessageKey("brand", "default").toString)), Symbol("_label") -> Html(Messages(computeMessageKey("brand", "label").toString)), Symbol("_showConstraints") -> false)
 									}
 								
 									@inputBox(form("model"), true)

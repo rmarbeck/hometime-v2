@@ -112,7 +112,7 @@ public class FormProcessingController extends Controller implements WSBodyReadab
 		if (boundForm.hasErrors()) {
 			return CompletableFuture.supplyAsync(() -> badRequest(views.html.buy_form.render(boundForm, brandProvider.retrieveBrandsOrderedByName(), Optional.empty(), request, messagesApi.preferred(request))));
 		} else {
-			CompletionStage<? extends WSResponse> responsePromise = ws.url("https://www.hometime.fr/new-buy-request-from-outside").setContentType("application/x-www-form-urlencoded").setHeaders(getHeadersForFriendlyLocation()).post(request.body().asFormUrlEncoded().entrySet().stream().map(entry -> flattenValues(entry.getKey(), entry.getValue(), "&")).collect( Collectors.joining( "&" )));
+			CompletionStage<? extends WSResponse> responsePromise = ws.url("https://www.hometime.fr/new-buy-request-from-outside").setContentType("application/x-www-form-urlencoded").post(request.body().asFormUrlEncoded().entrySet().stream().map(entry -> flattenValues(entry.getKey(), entry.getValue(), "&")).collect( Collectors.joining( "&" )));
 			return responsePromise.handle((response, error) -> handleFormResponse(response, error, request, "buy"));
 		}
 	}
@@ -184,7 +184,7 @@ public class FormProcessingController extends Controller implements WSBodyReadab
 	}
 	
 	private String flattenValues(String key, String[] values, String separator) {
-		return Arrays.asList(values).stream().map(value -> key+"="+value).collect(Collectors.joining( "&" ));
+		return Arrays.asList(values).stream().map(value -> { logger.error(key+"="+value); return key+"="+value;}).collect(Collectors.joining( "&" ));
 	}
 	
 	private Form<QuotationRequestData> fillQuotationRequestWithDefaultData(Optional<String> brandSeoName, Optional<String> typeOfOrder) {
