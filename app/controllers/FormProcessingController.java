@@ -15,6 +15,8 @@ import javax.inject.Inject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import com.typesafe.config.Config;
+
 import fr.hometime.utils.BrandProvider;
 import play.data.Form;
 import play.data.FormFactory;
@@ -34,19 +36,23 @@ import models.QuotationRequestData;
  */
 public class FormProcessingController extends Controller implements WSBodyReadables, WSBodyWritables {
 	private final static String WATER_ISSUE_ORDER_TYPE = "5";
+	private final static String SECRET_KEY = "SECRET_KEY";
 	private MessagesApi messagesApi;
 	private FormFactory formFactory;
 	private BrandProvider brandProvider;
 	private final WSClient ws;
+	private final Config config;
+	private static Optional<String> secretKey = Optional.empty();
 	
 	private final Logger logger = LoggerFactory.getLogger(getClass()) ;
 	
 	@Inject
-    public FormProcessingController(FormFactory formFactory, MessagesApi messagesApi, WSClient ws, BrandProvider brandProvider) {
+    public FormProcessingController(FormFactory formFactory, MessagesApi messagesApi, WSClient ws, BrandProvider brandProvider, Config config) {
         this.formFactory = formFactory;
         this.messagesApi = messagesApi;
         this.brandProvider = brandProvider;
         this.ws = ws;
+        this.config = config;
     }
 	
 	public Result displayFormSuccess(Http.Request request, String contentKey) {
@@ -72,7 +78,7 @@ public class FormProcessingController extends Controller implements WSBodyReadab
 		if (boundForm.hasErrors()) {
 			return CompletableFuture.supplyAsync(() -> badRequest(views.html.call_back_form.render(boundForm, request, messagesApi.preferred(request))));
 		} else {
-			CompletionStage<? extends WSResponse> responsePromise = ws.url("https://www.hometime.fr/new-call-back-request-from-outside").setContentType("application/x-www-form-urlencoded").post(request.body().asFormUrlEncoded().entrySet().stream().map(entry -> flattenValues(entry.getKey(), entry.getValue(), "&")).collect( Collectors.joining( "&" )));
+			CompletionStage<? extends WSResponse> responsePromise = wsWithSecret("https://www.hometime.fr/new-call-back-request-from-outside").setContentType("application/x-www-form-urlencoded").post(request.body().asFormUrlEncoded().entrySet().stream().map(entry -> flattenValues(entry.getKey(), entry.getValue(), "&")).collect( Collectors.joining( "&" )));
 			return responsePromise.handle((response, error) -> handleFormResponse(response, error, request, "call.back"));
 		}
 	}
@@ -92,7 +98,7 @@ public class FormProcessingController extends Controller implements WSBodyReadab
 		if (boundForm.hasErrors()) {
 			return CompletableFuture.supplyAsync(() -> badRequest(views.html.contact_us_form.render(boundForm, request, messagesApi.preferred(request))));
 		} else {
-			CompletionStage<? extends WSResponse> responsePromise = ws.url("https://www.hometime.fr/new-contact-request-from-outside").setContentType("application/x-www-form-urlencoded").post(request.body().asFormUrlEncoded().entrySet().stream().map(entry -> flattenValues(entry.getKey(), entry.getValue(), "&")).collect( Collectors.joining( "&" )));
+			CompletionStage<? extends WSResponse> responsePromise = wsWithSecret("https://www.hometime.fr/new-contact-request-from-outside").setContentType("application/x-www-form-urlencoded").post(request.body().asFormUrlEncoded().entrySet().stream().map(entry -> flattenValues(entry.getKey(), entry.getValue(), "&")).collect( Collectors.joining( "&" )));
 			return responsePromise.handle((response, error) -> handleFormResponse(response, error, request, "contact.us"));
 		}
 	}
@@ -112,7 +118,7 @@ public class FormProcessingController extends Controller implements WSBodyReadab
 		if (boundForm.hasErrors()) {
 			return CompletableFuture.supplyAsync(() -> badRequest(views.html.buy_form.render(boundForm, brandProvider.retrieveBrandsOrderedByName(), Optional.empty(), request, messagesApi.preferred(request))));
 		} else {
-			CompletionStage<? extends WSResponse> responsePromise = ws.url("https://www.hometime.fr/new-buy-request-from-outside").addHeader("secretKey", "staticValue").setContentType("application/x-www-form-urlencoded").post(request.body().asFormUrlEncoded().entrySet().stream().map(entry -> flattenValues(entry.getKey(), entry.getValue(), "&")).collect( Collectors.joining( "&" )));
+			CompletionStage<? extends WSResponse> responsePromise = wsWithSecret("https://www.hometime.fr/new-buy-request-from-outside").addHeader("secretKey", getSecretKey()).setContentType("application/x-www-form-urlencoded").post(request.body().asFormUrlEncoded().entrySet().stream().map(entry -> flattenValues(entry.getKey(), entry.getValue(), "&")).collect( Collectors.joining( "&" )));
 			return responsePromise.handle((response, error) -> handleFormResponse(response, error, request, "buy"));
 		}
 	}
@@ -149,7 +155,7 @@ public class FormProcessingController extends Controller implements WSBodyReadab
 		if (boundForm.hasErrors()) {
 			return CompletableFuture.supplyAsync(() -> badRequest(views.html.quotation_form.render(boundForm, brandProvider.retrieveBrandsOrderedByName(), Optional.empty(), request, messagesApi.preferred(request))));
 		} else {
-			CompletionStage<? extends WSResponse> responsePromise = ws.url("https://www.hometime.fr/new-order-from-outside").setContentType("application/x-www-form-urlencoded").post(request.body().asFormUrlEncoded().entrySet().stream().map(entry -> flattenValues(entry.getKey(), entry.getValue(), "&")).collect( Collectors.joining( "&" )));
+			CompletionStage<? extends WSResponse> responsePromise = wsWithSecret("https://www.hometime.fr/new-order-from-outside").setContentType("application/x-www-form-urlencoded").post(request.body().asFormUrlEncoded().entrySet().stream().map(entry -> flattenValues(entry.getKey(), entry.getValue(), "&")).collect( Collectors.joining( "&" )));
 			return responsePromise.handle((response, error) -> handleFormResponse(response, error, request, "quotation"));
 		}
 	}
@@ -184,7 +190,7 @@ public class FormProcessingController extends Controller implements WSBodyReadab
 	}
 	
 	private String flattenValues(String key, String[] values, String separator) {
-		return Arrays.asList(values).stream().map(value -> { logger.error(key+"="+value); return key+"="+value;}).collect(Collectors.joining( "&" ));
+		return Arrays.asList(values).stream().map(value -> key+"="+value).collect(Collectors.joining( "&" ));
 	}
 	
 	private Form<QuotationRequestData> fillQuotationRequestWithDefaultData(Optional<String> brandSeoName, Optional<String> typeOfOrder) {
@@ -204,5 +210,17 @@ public class FormProcessingController extends Controller implements WSBodyReadab
 
 	private Form<QuotationRequestData> getQuotationRequestForm() {
 		return formFactory.form(QuotationRequestData.class).withDirectFieldAccess(true);
+	}
+	
+	private String getSecretKey() {
+		if (secretKey.isPresent())
+			return secretKey.get();
+		secretKey = Optional.of(config.getString("ws.friendlylocation.secretkey"));
+		logger.error("Secret key -->>" + secretKey.get());
+		return secretKey.get();
+	}
+	
+	private WSRequest wsWithSecret(String url) {
+		return ws.url(url).addHeader(SECRET_KEY, getSecretKey());
 	}
 }
