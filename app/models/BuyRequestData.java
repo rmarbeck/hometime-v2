@@ -100,8 +100,8 @@ public class BuyRequestData implements Validatable<List<ValidationError>> {
 	@Constraints.Required
 	public String timeframe;
 
-	
-	public String brand;
+	@Constraints.Required
+	public BrandProxy brand;
 	
 	@Constraints.Required
 	@Constraints.MaxLength(1000)
