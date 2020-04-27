@@ -141,7 +141,7 @@ public class FormProcessingController extends Controller implements WSBodyReadab
 			return CompletableFuture.supplyAsync(() -> badRequest(views.html.service_test_form.render(boundForm, request, messagesApi.preferred(request))));
 		} else {
 			CompletionStage<? extends WSResponse> responsePromise = wsWithSecret("https://www.hometime.fr/new-service-test-from-outside").setContentType("application/x-www-form-urlencoded").post(request.body().asFormUrlEncoded().entrySet().stream().map(entry -> flattenValues(entry.getKey(), entry.getValue(), "&")).collect( Collectors.joining( "&" )));
-			return responsePromise.handle((response, error) -> handleFormResponse(response, error, request, "service.test"));
+			return responsePromise.handle((response, error) -> handleJsonFormResponse(response, error, request, "service.test"));
 		}
 	}
 	
