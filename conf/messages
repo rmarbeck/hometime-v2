@@ -425,7 +425,7 @@ quotation.success.disclaimer=Au delà des entretiens classiques comme la révisi
 quotation.error.head=Demande de devis
 quotation.error.head.subtitle=Problème rencontré lors de la demande de devis
 quotation.error.head.intro=Veuillez nous excuser, une erreur s''est produite.<br/>Peut-être celle-ci est transitoire, alors n''hésitez pas à réessayer ou à nous appeler&nbsp;!<br /><br />Nous allons essayer de résoudre le problème au plus vite.
-quotation.error.disclaimer=Nous avons enregistrer cette erreur et allons essayer de la résoudre rapidement. Merci de votre compréhension.
+quotation.error.disclaimer=Nous avons enregistré cette erreur et allons essayer de la résoudre rapidement. Merci de votre compréhension.
 
 
 
@@ -1883,7 +1883,115 @@ call.back.error.html.keywords=demande, rappel, ko
 call.back.error.head=Erreur
 call.back.error.head.subtitle=Problème rencontré lors de la demande de rappel
 call.back.error.head.intro=Veuillez nous excuser, une erreur s''est produite.<br/>Peut-être celle-ci est transitoire, alors n''hésitez pas à réessayer ou à nous appeler&nbsp;!<br /><br />Nous allons essayer de résoudre le problème au plus vite.
-call.back.error.disclaimer=Nous avons enregistrer cette erreur et allons essayer de la résoudre rapidement. Merci de votre compréhension.
+call.back.error.disclaimer=Nous avons enregistré cette erreur et allons essayer de la résoudre rapidement. Merci de votre compréhension.
+
+
+#------ Service Test Form ------------------
+#------ service.test.form
+service.test.form.html.title=Quand faire réviser ma montre ?
+service.test.form.html.description=Formulaire d''évaluation du meilleur moment pour faire réviser sa montre
+service.test.form.html.keywords=Quand, délai, durée, révision, montre
+
+service.test.form.head=Fréquence d''entretien des montres
+service.test.form.head.subtitle=Dois-je faire réviser ma montre mécanique ?
+service.test.form.head.intro=Cette page vous permet de connaitre le meilleur moment pour faire réviser votre montre. Renseignez les différentes informations ci-dessous et validez, le résultat apparaîtra immédiatement.
+service.test.form.disclaimer=
+
+service.test.form.movement.type.label=Type de mouvement
+service.test.form.1.movement.type=A remontage manuel
+service.test.form.2.movement.type=A remontage automatique
+
+service.test.form.movement.complexity.label=Fonctionnalités
+service.test.form.0.movement.complexity=3 aiguilles ou GMT
+service.test.form.1.movement.complexity=Chronographe
+service.test.form.2.movement.complexity=Montre à complications
+service.test.form.period.label=Période de fabrication
+service.test.form.year.label=Année de la dernière révision
+
+service.test.form.group.label.customer=Pour une évaluation personnalisée, veuillez remplir les informations ci-dessous (*)
+service.test.form.group.label.customer.disclaimer=(*) optionel
+service.test.form.model.label=Marque et modèle
+service.test.form.model.placeholder=Marque, nom du modèle, références
+service.test.form.nameofcustomer.label=Votre nom
+service.test.form.nameofcustomer.placeholder=Prénom Nom
+service.test.form.email.label=Votre email
+service.test.form.email.placeholder=exemple@nomdedomaine.fr
+
+service.test.form.period.default=Quand a été fabriquée votre montre ?
+service.test.form.0.period={0,number,####}
+service.test.form.1.period={0,number,####}
+service.test.form.2.period={0,number,####}
+service.test.form.3.period={0,number,####}
+service.test.form.4.period={0,number,####}
+service.test.form.5.period={0,number,####}
+service.test.form.6.period={0,number,####}
+service.test.form.7.period={0,number,####}
+service.test.form.8.period={0,number,####}
+service.test.form.9.period={0,number,####}
+service.test.form.10.period={0,number,####}
+service.test.form.11.period=entre {1,number,####} et {2,number,####}
+service.test.form.12.period=entre {1,number,####} et {2,number,####}
+service.test.form.13.period=entre {1,number,####} et {2,number,####}
+service.test.form.14.period=entre {1,number,####} et {2,number,####}
+service.test.form.15.period=entre {1,number,####} et {2,number,####}
+service.test.form.16.period=avant {2,number,####}
+
+service.test.form.year.default=A quand remontre la dernière révision ?
+service.test.form.0.year=Il y a moins d''1 an
+service.test.form.1.year=Il y a entre 1 an et 2 ans
+service.test.form.2.year=Il y a entre 2 ans et 3 ans
+service.test.form.3.year=Il y a entre 3 ans et 4 ans
+service.test.form.4.year=Il y a entre 4 ans et 5 ans
+service.test.form.5.year=Il y a entre 5 ans et 6 ans
+service.test.form.6.year=Il y a entre 6 ans et 7 ans
+service.test.form.7.year=Il y a entre 7 ans et 8 ans
+service.test.form.8.year=Il y a entre 8 ans et 9 ans
+service.test.form.9.year=Il y a entre 9 ans et 10 ans
+service.test.form.10.year=Il y a entre 10 ans et 11 ans
+service.test.form.11.year=Il y a plus de 11 ans
+service.test.form.12.year=Aucune révision depuis l''achat de la montre neuve
+service.test.form.13.year=Je ne sais pas
+
+service.test.form.performance.issue.label=Performances chronométriques
+service.test.form.0.performance.issue=La montre fonctionne correctement
+service.test.form.1.performance.issue=La montre prend plus de 20 secondes d''avance ou de retard par jour
+
+service.test.form.power.reserve.issue.label=Durée de fonctionnement
+service.test.form.0.power.reserve.issue=Elle ne s''arrête pas inopinément
+service.test.form.1.power.reserve.issue=Elle s''arrête la nuit et/ou je suis obligé de la remonter plus souvent qu''avant
+
+service.test.form.water.issue.label=Etanchéité
+service.test.form.0.water.issue=Ma montre ne montre aucun signe de présence d''eau dans le boitier
+service.test.form.1.water.issue=De la buée se forme de temps en temps à l''intérieur de ma montre
+
+service.test.form.usage.frequency.label=Fréquence de portée
+
+service.test.form.doing.sport.label=Exposition aux vibrations et aux chocs
+service.test.form.0.doing.sport=Je ne porte pas ma montre pendant des activités l''exposant aux chocs ou aux vibrations
+service.test.form.1.doing.sport=Il m''arrive de porter ma montre pendant des activités telles que le tennis, le vtt, la trottinnette...
+
+service.test.form.usage.frequency.default=Comment qualifieriez-vous vos habitudes ? 
+service.test.form.0.usage.frequency=Je porte la montre tous les jours
+service.test.form.1.usage.frequency=Je porte la montre fréquemment et la pose sur un remontoir le reste du temps
+service.test.form.2.usage.frequency=Je porte la montre occasionnellement et elle est rangée dans un tiroir lorsque je ne la porte pas
+service.test.form.3.usage.frequency=La montre n''a pas été portée ni remontée pendant plus de 18 mois
+
+
+service.test.form.submit=Evaluer
+
+
+#------ Service Test Success Page ------------------
+#------ service.test.success
+
+service.test.error.html.title=Estimation en erreur
+service.test.error.html.description=Formulaire d''évaluation en échec
+service.test.error.html.keywords=Quand, délai, durée, révision, montre, ko
+
+service.test.error.head=Erreur
+service.test.error.head.subtitle=Problème rencontré lors de votre évalutation
+service.test.error.head.intro=Veuillez nous excuser, une erreur s''est produite.<br/>Peut-être celle-ci est transitoire, alors n''hésitez pas à réessayer ou à nous appeler&nbsp;!<br /><br />Nous allons essayer de résoudre le problème au plus vite.
+service.test.error.disclaimer=Nous avons enregistré cette erreur et allons essayer de la résoudre rapidement. Merci de votre compréhension.
+
 
 
 
@@ -1923,9 +2031,9 @@ buy.form.full.set.only.pack=Boite et papiers (fullset)
 buy.form.watch.only.pack=Seulement la montre
 buy.form.both.pack=Peu importe
 
-buy.form.expectedprice.label=Prix souhaité (en&nbsp;€)
+buy.form.expectedprice.label=Prix souhaité
 buy.form.expectedprice.placeholder=
-buy.form.pricehigherbound.label=Prix maximum (en&nbsp;€)
+buy.form.pricehigherbound.label=Prix maximum
 buy.form.pricehigherbound.placeholder=
 
 buy.form.criteria.label=Critères forts
@@ -1949,7 +2057,7 @@ buy.form.city.placeholder=Ville
 
 buy.form.submit=Envoyer
 
-#------ Contact Success Page ------------------
+#------ Buy Success Page ------------------
 #------ buy.success
 buy.success.html.title=Recherche d''une montre neuve ou d''occasion à vendre
 buy.success.html.description=Formulaire de recherche d''une montre neuve ou d''occasion. Nous vous conseillons et cherchons pour vous des montres et les garantissons pendant 2 ans.
@@ -1968,7 +2076,7 @@ buy.error.html.keywords=demande, achat, recherche, ko
 buy.error.head=Erreur
 buy.error.head.subtitle=Problème rencontré lors de la demande de recherche de montre
 buy.error.head.intro=Veuillez nous excuser, une erreur s''est produite.<br/>Peut-être celle-ci est transitoire, alors n''hésitez pas à réessayer ou à nous appeler&nbsp;!<br /><br />Nous allons essayer de résoudre le problème au plus vite.
-buy.error.disclaimer=Nous avons enregistrer cette erreur et allons essayer de la résoudre rapidement. Merci de votre compréhension.
+buy.error.disclaimer=Nous avons enregistré cette erreur et allons essayer de la résoudre rapidement. Merci de votre compréhension.
 
 
 
@@ -2017,7 +2125,7 @@ contact.us.error.html.keywords=demande, contact, ko
 contact.us.error.head=Erreur
 contact.us.error.head.subtitle=Problème rencontré lors de la demande de prise de contact
 contact.us.error.head.intro=Veuillez nous excuser, une erreur s''est produite.<br/>Peut-être celle-ci est transitoire, alors n''hésitez pas à réessayer ou à nous appeler&nbsp;!<br /><br />Nous allons essayer de résoudre le problème au plus vite.
-contact.us.error.disclaimer=Nous avons enregistrer cette erreur et allons essayer de la résoudre rapidement. Merci de votre compréhension.
+contact.us.error.disclaimer=Nous avons enregistré cette erreur et allons essayer de la résoudre rapidement. Merci de votre compréhension.
 
 
 order.form.label.type.of.service=Type d''entretien <br />(<a href="{0}">quand faire une révision&nbsp;?</a>)

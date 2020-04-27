@@ -78,35 +78,41 @@
 									<div class="form-process"></div>
 									
 									@fullWidth("my-forms") {
-										@helper.input(form("orderType"), Symbol("_class") -> "mb-3 group-label", Symbol("_label") -> Html(Messages(computeMessageKey("orderType", "label").toString)), Symbol("_showConstraints") -> false) { (id, name, value, args) =>
+										@helper.input(form("orderType"), Symbol("_class") -> "mb-3 group-label not-clickable", Symbol("_label") -> Html(Messages(computeMessageKey("orderType", "label").toString)), Symbol("_showConstraints") -> false) { (id, name, value, args) =>
 												@List.range(1, 6).map(option => (option.toString, Html(Messages(formKey.toString+"."+option.toString+".order.type")))).toSeq.map { v => @selectField(3, id, name, value, v, args) }
 										}(tags.canvasRadioGroupBoxedFieldTemplate, messages)
 									}
 
 									@fullWidth("group-label") {
-										<label>@Html(Messages(formKey.toString+".group.label.watch"))</label>
+										<label class="not-clickable">@Html(Messages(formKey.toString+".group.label.watch"))</label>
 									}
 									
 									@halfWidth() {
-										@helper.select(form("brand"), options = brands.get().map(brand => (brand.id.toString, brand.display_name)).toSeq, Symbol("class") -> computeClassForInput(true, form("brand").hasErrors, Symbol("_body_class") -> "").toString, Symbol("_default") -> Html(Messages(computeMessageKey("brand", "default").toString)), Symbol("_label") -> Html(Messages(computeMessageKey("brand", "label").toString)), Symbol("_showConstraints") -> false)
+										@helper.select(form("brand"), options = brands.get().map(brand => (brand.id.toString, brand.display_name)).toSeq, Symbol("_class") -> "not-clickable", Symbol("class") -> computeClassForInput(true, form("brand").hasErrors, Symbol("_body_class") -> "").toString, Symbol("_default") -> Html(Messages(computeMessageKey("brand", "default").toString)), Symbol("_label") -> Html(Messages(computeMessageKey("brand", "label").toString)), Symbol("_showConstraints") -> false)
 									}
 								
 									@inputBox(form("model"), true)
 									
 									@fullWidth("my-forms") {
-										@helper.input(form("method"), Symbol("_class") -> "mb-3", Symbol("_label") -> Html(Messages(computeMessageKey("method", "label").toString)), Symbol("_showConstraints") -> false) { (id, name, value, args) =>
+										@helper.input(form("method"), Symbol("_class") -> "mb-3 not-clickable", Symbol("_label") -> Html(Messages(computeMessageKey("method", "label").toString)), Symbol("_showConstraints") -> false) { (id, name, value, args) =>
 												@List.range(1, 4).map(value => (value.toString, Html(Messages(formKey.toString+"."+value.toString+".method")))).toSeq.map { v => @selectField(5, id, name, value, v, args) }
 										}(tags.canvasRadioGroupBoxedFieldTemplate, messages)
 									}
 									
-									@fullWidth("group-label") {
-										<label>@Html(Messages(formKey.toString+".group.label.customer"))</label>
-									}
 									
-									@List(("nameOfCustomer", true),
-										("email", true),
-										("phoneNumber", false),
-										("city", true)).map { value => @inputBox(form(value._1), value._2) }
+									<div class="col-12 mt-2 mb-3">
+										<div class="card p-3 bg-light">
+											<div class="my-forms">
+												<h3 class="mb-2">@Html(Messages(formKey.toString+".group.label.customer"))</h3>
+												<div class="row">
+													@List(("nameOfCustomer", true),
+														("email", true),
+														("phoneNumber", false),
+														("city", true)).map { value => @inputBox(form(value._1), value._2) }
+												</div>
+											</div>
+										</div>
+									</div>
 									
 									@fullWidth() {
 										@helper.textarea(form("remark"), Symbol("class") -> "form-control", Symbol("placeholder") -> Html(Messages(computeMessageKey("remark", "placeholder").toString)), Symbol("_label") -> Html(Messages(computeMessageKey("remark", "label").toString)), Symbol("cols") -> "30", Symbol("rows") -> "10", Symbol("_showConstraints") -> false)

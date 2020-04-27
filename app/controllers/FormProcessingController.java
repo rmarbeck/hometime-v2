@@ -8,6 +8,7 @@ import java.util.Optional;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.CompletionStage;
 import java.util.function.BiFunction;
+import java.util.function.Supplier;
 import java.util.stream.Collectors;
 
 import javax.inject.Inject;
@@ -15,6 +16,7 @@ import javax.inject.Inject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import com.fasterxml.jackson.databind.JsonNode;
 import com.typesafe.config.Config;
 
 import fr.hometime.utils.BrandProvider;
@@ -29,6 +31,7 @@ import models.BuyRequestData;
 import models.CallBackRequestData;
 import models.ContactRequestData;
 import models.QuotationRequestData;
+import models.ServiceTestRequestData;
 
 /**
  * Controller for forms processing
@@ -124,6 +127,26 @@ public class FormProcessingController extends Controller implements WSBodyReadab
 	
 	/*************************************
 	 * 
+	 * Service Test Request Management
+	 * 
+	 *************************************/
+	public Result prepareServiceTestRequest(Http.Request request) {
+		return ok(views.html.service_test_form.render(formFactory.form(ServiceTestRequestData.class).withDirectFieldAccess(true), request, messagesApi.preferred(request)));
+	}
+	
+	public CompletionStage<Result> processServiceTestRequest(Http.Request request) {
+		final Form<ServiceTestRequestData> boundForm = formFactory.form(ServiceTestRequestData.class).withDirectFieldAccess(true).bindFromRequest(request);
+		
+		if (boundForm.hasErrors()) {
+			return CompletableFuture.supplyAsync(() -> badRequest(views.html.service_test_form.render(boundForm, request, messagesApi.preferred(request))));
+		} else {
+			CompletionStage<? extends WSResponse> responsePromise = wsWithSecret("https://www.hometime.fr/new-service-test-from-outside").setContentType("application/x-www-form-urlencoded").post(request.body().asFormUrlEncoded().entrySet().stream().map(entry -> flattenValues(entry.getKey(), entry.getValue(), "&")).collect( Collectors.joining( "&" )));
+			return responsePromise.handle((response, error) -> handleFormResponse(response, error, request, "service.test"));
+		}
+	}
+	
+	/*************************************
+	 * 
 	 * Quotation Request Management
 	 * 
 	 *************************************/
@@ -154,6 +177,7 @@ public class FormProcessingController extends Controller implements WSBodyReadab
 		if (boundForm.hasErrors()) {
 			return CompletableFuture.supplyAsync(() -> badRequest(views.html.quotation_form.render(boundForm, brandProvider.retrieveBrandsOrderedByName(), Optional.empty(), request, messagesApi.preferred(request))));
 		} else {
+			request.body().asFormUrlEncoded().entrySet().stream().map(entry -> flattenValues(entry.getKey(), entry.getValue(), "&")).collect( Collectors.joining( "&" ));
 			CompletionStage<? extends WSResponse> responsePromise = wsWithSecret("https://www.hometime.fr/new-order-from-outside").setContentType("application/x-www-form-urlencoded").post(request.body().asFormUrlEncoded().entrySet().stream().map(entry -> flattenValues(entry.getKey(), entry.getValue(), "&")).collect( Collectors.joining( "&" )));
 			return responsePromise.handle((response, error) -> handleFormResponse(response, error, request, "quotation"));
 		}
@@ -172,9 +196,31 @@ public class FormProcessingController extends Controller implements WSBodyReadab
 	 *************************************/
 	
 	private Result handleFormResponse(WSResponse response, Throwable error, Http.Request request, String formKey) {
+		return genericHandler(response, error, request, formKey, () -> displayFormSuccess(request, formKey));
+	}
+	
+	private Result handleJsonFormResponse(WSResponse response, Throwable error, Http.Request request, String formKey) {
+		return genericHandler(response, error, request, formKey, () -> {
+			JsonNode json = request.body().asJson();
+			  if (json == null) {
+			    return badRequest("Expecting Json data");
+			  } else {
+			    String serviceTestResult = json.findPath("ServiceTestResult").textValue();
+			    logger.error("----->"+serviceTestResult);
+			    String isCustomizationAsked = json.findPath("IsCustomizationAsked").textValue();
+			    logger.error("----->"+isCustomizationAsked);
+			    String customerEmail = json.findPath("CustomerEmail").textValue();
+			    logger.error("----->"+customerEmail);
+			  }
+			
+			return displayFormSuccess(request, formKey);	
+		});
+	}
+	
+	private Result genericHandler(WSResponse response, Throwable error, Http.Request request, String formKey, Supplier<Result> toDo) {
 		if(response != null) {
 			if (response.getStatus() < 400) {
-				return displayFormSuccess(request, formKey);
+				return toDo.get();
 			} else {
 				return manageFatalError(request, formKey, new Exception("response has error code "+response.getStatus()));
 			}
@@ -189,7 +235,7 @@ public class FormProcessingController extends Controller implements WSBodyReadab
 	}
 	
 	private String flattenValues(String key, String[] values, String separator) {
-		return Arrays.asList(values).stream().map(value -> key+"="+value).collect(Collectors.joining( "&" ));
+		return Arrays.asList(values).stream().map(value -> { logger.error(key+"="+value); return key+"="+value;}).collect(Collectors.joining( "&" ));
 	}
 	
 	private Form<QuotationRequestData> fillQuotationRequestWithDefaultData(Optional<String> brandSeoName, Optional<String> typeOfOrder) {

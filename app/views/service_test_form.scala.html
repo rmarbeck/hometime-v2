@@ -1,0 +1,146 @@
+@(form: Form[ServiceTestRequestData])(implicit request: Http.Request, messages: play.i18n.Messages)
+
+@import scala.collection.immutable._
+@import tags._
+
+@implicitField = @{ helper.FieldConstructor(canvasFieldTemplate.f) }
+
+@*****************************************
+ * Keys
+ *****************************************@
+
+@formKey = {service.test.form}
+
+@*****************************************
+ * Style Helpers
+ *****************************************@
+
+@inputDiv(size: Int, addedClass: String="")(content: Html) = {
+	<div class="col-md-@size form-group mb-4 @addedClass">
+		@content
+	</div>
+}
+
+@fullWidth(addedClass: String="")(content: Html) = {
+	@inputDiv(12, addedClass) {@content}
+}
+
+@halfWidth(addedClass: String="")(content: Html) = {
+	@inputDiv(6, addedClass) {@content}
+}
+
+@computeClassForInput(isRequired: Boolean, isInError: Boolean, args: (Symbol,Any)*) = {form-control @if(isRequired) {required} @if(isInError) {error} @args.toMap.get(Symbol("_body_class")).map(_.toString)}
+
+@selectLabelClassCss(size: Int) = {btn btn-outline-secondary px-@size t600 ls0 nott}
+
+@*****************************************
+ * End of Style Helpers
+ *****************************************@
+ 
+@*****************************************
+ * Form Helpers
+ *****************************************@
+
+@computeMessageKey(fieldName: String, suffix: String) = {@{formKey}.@{fieldName.toString.toLowerCase.replace('_','.')}.@{suffix}}
+
+@inputText(fieldName: String, isRequired: Boolean, isInError: Boolean, args: (Symbol,Any)*) = {
+	@helper.inputText(form(fieldName), (Seq(Symbol("class") -> computeClassForInput(isRequired, isInError, args:_*).toString, Symbol("_showConstraints") -> false, Symbol("placeholder") -> Html(Messages(computeMessageKey(fieldName, "placeholder").toString)), Symbol("_label") -> Html(Messages(computeMessageKey(fieldName, "label").toString))) ++ args):_* )(tags.canvasFieldTemplate, messages)
+}
+
+@inputBox(fieldName: play.data.Form.Field, isRequired: Boolean, args: (Symbol,Any)*) = {
+	@fullWidth() {
+		@inputText(fieldName.name.get, isRequired, fieldName.hasErrors, args:_*)
+	}
+}
+
+@selectField(size: Int, id: String, name: String, value: Option[String], tuple: (String, play.twirl.api.Html), args: Map[Symbol,Any]) = {
+											<label for="@(id)_@tuple._1" class="@selectLabelClassCss(size) @if(value == Some(tuple._1)){active}">
+												<input type="radio" name="@name" id="@(id)_@tuple._1" autocomplete="off" value="@tuple._1" @if(value == Some(tuple._1)){checked="checked"} @toHtmlArgs(args)>@tuple._2</input>
+											</label>
+}
+
+@simpleRadio(size: Int, id: String, name: String, value: Option[String], tuple: (String, play.twirl.api.Html), args: Map[Symbol,Any]) = {
+										<div class="form-check">
+											<input class="form-check-input required valid" type="radio" name="@(id)" id="@(id)_@tuple._1" @if(value == Some(tuple._1)){checked="checked"} @toHtmlArgs(args) value="@tuple._1">
+											<label class="form-check-label nott ml-2" for="@(id)_@tuple._1">@tuple._2</label>
+										</div>
+}
+
+@*****************************************
+ * End of Form Helpers
+ *****************************************@
+ 
+@layouts.main_helper_with_head_block(formKey.toString){
+
+		@helper.form(action = routes.FormProcessingController.processServiceTestRequest(), Symbol("id") -> "website-cost", Symbol("class") -> "row mb-0") {
+			@helper.CSRF.formField
+									<div class="form-process"></div>
+	
+									@fullWidth("my-forms") {
+										@helper.input(form("movementType"), Symbol("_class") -> "mb-3 not-clickable", Symbol("_label") -> Html(Messages(computeMessageKey("movement.type", "label").toString)), Symbol("_showConstraints") -> false) { (id, name, value, args) =>
+												@ServiceTestRequestData.MovementTypes.values.map(value => (value.toString, Html(Messages(formKey.toString+"."+value.toString.toLowerCase.replace('_','.')+".movement.type")))).toSeq.map { v => @selectField(5, id, name, value, v, args) }
+										}(tags.canvasRadioGroupBoxedFieldTemplate, messages)
+									}
+									
+									@fullWidth("my-forms") {
+										@helper.input(form("movementComplexity"), Symbol("_class") -> "mb-3 not-clickable", Symbol("_label") -> Html(Messages(computeMessageKey("movement.complexity", "label").toString)), Symbol("_showConstraints") -> false) { (id, name, value, args) =>
+												@ServiceTestRequestData.MovementComplexity.values.map(value => (value.toString, Html(Messages(formKey.toString+"."+value.toString.toLowerCase.replace('_','.')+".movement.complexity")))).toSeq.map { v => @selectField(5, id, name, value, v, args) }
+										}(tags.canvasRadioGroupBoxedFieldTemplate, messages)
+									}
+				
+									@halfWidth() {
+										@helper.select(form("buildPeriod"), options = ServiceTestRequestData.BuildPeriod.values.map(value => (value.toString, display_build_period(value)(messages).toString)).toSeq, Symbol("_class") -> "not-clickable", Symbol("class") -> computeClassForInput(true, form("period").hasErrors, Symbol("_body_class") -> "").toString, Symbol("_default") -> Html(Messages(computeMessageKey("period", "default").toString)), Symbol("_label") -> Html(Messages(computeMessageKey("period", "label").toString)), Symbol("_showConstraints") -> false)
+									}
+									
+									@halfWidth() {
+										@helper.select(form("lastServiceYear"), options = ServiceTestRequestData.LastServiceYear.values.map(value => (value.toString, Html(Messages(formKey.toString+"."+value.toString.toLowerCase.replace('_','.')+".year")).toString)).toSeq, Symbol("_class") -> "not-clickable", Symbol("class") -> computeClassForInput(true, form("year").hasErrors, Symbol("_body_class") -> "").toString, Symbol("_default") -> Html(Messages(computeMessageKey("year", "default").toString)), Symbol("_label") -> Html(Messages(computeMessageKey("year", "label").toString)), Symbol("_showConstraints") -> false)
+									}
+									
+		
+									@fullWidth("my-forms simple-radio") {
+										@helper.input(form("performanceIssue"), Symbol("_class") -> "mb-3 not-clickable", Symbol("_label") -> Html(Messages(computeMessageKey("performance.issue", "label").toString)), Symbol("_showConstraints") -> false) { (id, name, value, args) =>
+												@List("0","1").map(value => (value.toString, Html(Messages(formKey.toString+"."+value.toString.toLowerCase.replace('_','.')+".performance.issue")))).toSeq.map { v => @simpleRadio(5, id, name, value, v, args) }
+										}
+									}
+									
+									@fullWidth("my-forms simple-radio") {
+										@helper.input(form("powerReserveIssue"), Symbol("_class") -> "mb-3 not-clickable", Symbol("_label") -> Html(Messages(computeMessageKey("power.reserve.issue", "label").toString)), Symbol("_showConstraints") -> false) { (id, name, value, args) =>
+												@List("0","1").map(value => (value.toString, Html(Messages(formKey.toString+"."+value.toString.toLowerCase.replace('_','.')+".power.reserve.issue")))).toSeq.map { v => @simpleRadio(5, id, name, value, v, args) }
+										}
+									}
+									
+									@fullWidth("my-forms simple-radio") {
+										@helper.input(form("waterIssue"), Symbol("_class") -> "mb-3 not-clickable", Symbol("_label") -> Html(Messages(computeMessageKey("water.issue", "label").toString)), Symbol("_showConstraints") -> false) { (id, name, value, args) =>
+												@List("0","1").map(value => (value.toString, Html(Messages(formKey.toString+"."+value.toString.toLowerCase.replace('_','.')+".water.issue")))).toSeq.map { v => @simpleRadio(5, id, name, value, v, args) }
+										}
+									}
+									
+									@fullWidth() {
+										@helper.select(form("usageFrequency"), options = ServiceTestRequestData.UsageFrequency.values.map(value => (value.toString, Html(Messages(formKey.toString+"."+value.toString.toLowerCase.replace('_','.')+".usage.frequency")).toString)).toSeq, Symbol("class") -> computeClassForInput(true, form("usage.frequency").hasErrors, Symbol("_body_class") -> "").toString, Symbol("_default") -> Html(Messages(computeMessageKey("usage.frequency", "default").toString)), Symbol("_label") -> Html(Messages(computeMessageKey("usage.frequency", "label").toString)), Symbol("_showConstraints") -> false)
+									}
+									
+									@fullWidth("my-forms simple-radio") {
+										@helper.input(form("doingSport"), Symbol("_class") -> "mb-3 not-clickable", Symbol("_label") -> Html(Messages(computeMessageKey("doing.sport", "label").toString)), Symbol("_showConstraints") -> false) { (id, name, value, args) =>
+												@List("0","1").map(value => (value.toString, Html(Messages(formKey.toString+"."+value.toString.toLowerCase.replace('_','.')+".doing.sport")))).toSeq.map { v => @simpleRadio(5, id, name, value, v, args) }
+										}
+									}
+									
+									<div class="col-12 mt-2 mb-3">
+										<div class="card p-3 bg-light">
+											<div class="my-forms">
+												<h3 class="mb-2">@Html(Messages(formKey.toString+".group.label.customer"))</h3>
+												@List(("model", true),
+													  ("nameOfCustomer", true),
+													  ("email", true)).map { value => @inputBox(form(value._1), value._2) }
+												<span>@Html(Messages(formKey.toString+".group.label.customer.disclaimer"))</span>
+											</div>
+										</div>
+									</div>
+										
+									
+									<div class="col-12">
+										<button type="submit" name="website-cost-submit" class="btn btn-success btn-lg">@Html(Messages(formKey.toString+".submit"))</button>
+									</div>
+
+	}
+}

@@ -105,9 +105,9 @@
 										}(tags.canvasRadioGroupBoxedFieldTemplate, messages)
 									}
 									
-									@inputBox(form("expectedPrice"), true, Symbol("type") -> "number", Symbol("step") -> "100", Symbol("min") -> "400", Symbol("max") -> "80000")
+									@inputBox(form("expectedPrice"), true, Symbol("type") -> "number", Symbol("step") -> "100", Symbol("min") -> "400", Symbol("max") -> "80000",  Symbol("_input_group_append") -> "€")
 									
-									@inputBox(form("priceHigherBound"), true, Symbol("type") -> "number", Symbol("step") -> "100", Symbol("min") -> "400", Symbol("max") -> "80000")
+									@inputBox(form("priceHigherBound"), true, Symbol("type") -> "number", Symbol("step") -> "100", Symbol("min") -> "400", Symbol("max") -> "80000",  Symbol("_input_group_append") -> "€")
 									
 									@fullWidth("group-label") {
 										<label>@Html(Messages(formKey.toString+".group.label.customer"))</label>

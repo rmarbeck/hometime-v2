@@ -1,6 +1,13 @@
 @(elements: helper.FieldElements)
 <label for="@elements.id" class="@elements.args.get(Symbol("_class"))">@elements.label</label>
-	@elements.input
+	<div class="input-group">
+		@elements.input
+		@elements.args.get(Symbol("_input_group_append")).map{ value =>
+		<div class="input-group-append">
+			<span class="input-group-text bg-white">@value.toString</span>
+		</div>
+		}
+	</div>
     @elements.infos.map { info =>
         <dd class="info">@info</dd>
     }

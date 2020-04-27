@@ -147,6 +147,10 @@
 	Customizing forms
 -----------------------------------------------------------------------------------*/
 
+label.not-clickable {
+	cursor: default;
+}
+
 .group-label label {
 	text-decoration: underline;
 }
@@ -171,6 +175,26 @@ dd.error {
 
 .action-error i.i-plain {
 	color: #dc3545;
+}
+
+.my-forms {
+	h3 {
+		font-size: 1.2rem;
+	}
+}
+
+.simple-radio {
+	.input-group {
+		display: block !important;
+	}
+	input {
+		margin-left: 0 !important;
+	}
+	.form-check label {
+		margin-left: 1.25rem !important;
+		font-weight: normal;
+		cursor: pointer;
+	}
 }
 
 /*-----------------------------------------------------------------------------------
