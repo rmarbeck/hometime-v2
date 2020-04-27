@@ -1983,6 +1983,18 @@ service.test.form.submit=Evaluer
 #------ Service Test Success Page ------------------
 #------ service.test.success
 
+service.test.success.html.title=Quand faire entretenir ma montre
+service.test.success.html.description=Formulaire d''évaluation permettant de déterminer quand faire réviser ma montre
+service.test.success.html.keywords=Quand, délai, durée, révision, montre
+service.test.success.head=Fréquence d''entretien des montres
+service.test.success.head.subtitle=Dois-je faire réviser ma montre mécanique ?
+service.test.success.head.intro=
+service.test.success.disclaimer=* Cette évaluation est approximative et n''a qu''une valeur indicative. Elle ne peut remplacer une analyse personnalisée, montre en main par un horloger.
+
+service.test.success.customization.asked=Vous avez demandé une analyse personnalisée approfondie, nous allons vous répondre rapidement à l''adresse suivante : <strong>{0}</strong>.
+service.test.success.action.back.to.form=Faire une autre évaluation
+
+
 service.test.error.html.title=Estimation en erreur
 service.test.error.html.description=Formulaire d''évaluation en échec
 service.test.error.html.keywords=Quand, délai, durée, révision, montre, ko
@@ -1991,6 +2003,46 @@ service.test.error.head=Erreur
 service.test.error.head.subtitle=Problème rencontré lors de votre évalutation
 service.test.error.head.intro=Veuillez nous excuser, une erreur s''est produite.<br/>Peut-être celle-ci est transitoire, alors n''hésitez pas à réessayer ou à nous appeler&nbsp;!<br /><br />Nous allons essayer de résoudre le problème au plus vite.
 service.test.error.disclaimer=Nous avons enregistré cette erreur et allons essayer de la résoudre rapidement. Merci de votre compréhension.
+
+
+
+service.test.success.result.0.title=Profitez de votre montre&nbsp;*
+service.test.success.result.1.title=Entretien recommandé dans environ 5 ans&nbsp;*
+service.test.success.result.2.title=Entretien recommandé dans environ 4 ans&nbsp;*
+service.test.success.result.3.title=Entretien recommandé dans 2 ou 3 ans&nbsp;*
+service.test.success.result.4.title=Entretien recommandé cette année&nbsp;*
+service.test.success.result.5.title=Entretien recommandé à court terme&nbsp;*
+service.test.success.result.6.title=Entretien partiel fortement conseillé&nbsp;*
+service.test.success.result.7.title=Entretien complet recommandé en urgence&nbsp;*
+
+service.test.success.result.0.content=Votre montre est récente et n''a pas besoin d''une révision à court terme.\
+ <br /><br />Pensez cependant à faire vérifier l''étanchéité une fois <strong>tous les 2 ans</strong> s''il vous arrive de l''immerger ou de l''exposer à l''eau&nbsp;!\
+ <br /><br />Pour profiter le plus longtemps possible de votre montre, découvrez des articles pratiques sur <a href="http://watchnext.fr/blog/?utm_source=service_test">notre blog</a>.
+service.test.success.result.1.content=La révision ne s''impose pas à court terme, nous vous conseillons de prévoir un entetien d''ici à <strong>5 ans</strong>.\
+ <br /><br />Pensez cependant à faire vérifier l''étanchéité une fois <strong>tous les 2 ans</strong> s''il vous arrive de l''immerger ou de l''exposer à l''eau&nbsp;!\
+ <br /><br />Pour profiter le plus longtemps possible de votre montre, découvrez des articles pratiques sur <a href="http://watchnext.fr/blog/?utm_source=service_test">notre blog</a>.
+service.test.success.result.2.content=La révision ne s''impose pas à court terme, nous vous conseillons de prévoir un entetien d''ici à <strong>4 ans</strong>.\
+ <br /><br />Pensez cependant à faire vérifier l''étanchéité une fois <strong>tous les 2 ans</strong> s''il vous arrive de l''immerger ou de l''exposer à l''eau&nbsp;!\
+ <br /><br />Pour profiter le plus longtemps possible de votre montre, découvrez des articles pratiques sur <a href="http://watchnext.fr/blog/?utm_source=service_test">notre blog</a>.
+service.test.success.result.3.content=Il n''y a pas d''urgence pour réaliser une révision pour votre montre.\
+ <br /><br />Nous vous conseillons de le faire d'ici à <strong>2 ou 3 ans</strong>.\
+ <br /><br />Pensez cependant à faire vérifier l''étanchéité s''il vous arrive d''immerger votre montre ou de l''exposer à l''eau&nbsp;!\
+ <br /><br />Pour profiter le plus longtemps possible de votre montre, découvrez des articles pratiques sur <a href="http://watchnext.fr/blog/?utm_source=service_test">notre blog</a>.
+service.test.success.result.4.content=La prochaine révision de votre montre devrait être réalisée cette année ou l''année prochaine.\
+ <br /><br />L''entretien régulier de votre montre par un horloger qualifié est un gage de pérennité.\
+ <br /><br />Pour profiter le plus longtemps possible de votre montre, découvrez des articles pratiques sur <a href="http://watchnext.fr/blog/?utm_source=service_test">notre blog</a>.
+service.test.success.result.5.content=Nous vous conseillons de faire réviser votre montre dans les mois qui viennent.\
+<br /><br />N''hésitez pas à nous demander un devis, c''est rapide et gratuit&nbsp;!
+service.test.success.result.6.content=Nous vous conseillons de consulter un horloger pour faire vérifier votre montre.\
+<br /><br />Sans faire de révision complète, il pourrait certainement régler le mouvement pour améliorer ses performances.<br /><br />De plus, à cette occasion nous vous conseillons de faire vérifier l''étanchéité de votre montre pour éviter tout risque.\
+<br /><br />N''hésitez pas à nous demander un devis, c''est rapide et gratuit&nbsp;!
+service.test.success.result.7.content=Nous vous conseillons un entretien d''urgence. Celui-ci s''impose pour votre montre. \
+<br /><br />Cet entretien est important pour éviter une dégradation du mouvement qui pourrait causer des dommages importants.\
+<br /><br />N''hésitez pas à nous demander un devis, c''est rapide et gratuit&nbsp;! 
+
+service.test.success.add.to.google.agenda.option=Si vous disposez d''un compte google, cliquez sur  l''icône pour créer un rappel dans votre agenda :
+
+service.test.success.warning.ask.customized.test=Pour obtenir une évaluation plus précise, vous pouvez remplir à nouveau le formulaire en indiquant la marque et le modèle de votre montre et en nous laissant vos coordonnées.
 
 
 

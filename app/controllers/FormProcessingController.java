@@ -39,7 +39,12 @@ import models.ServiceTestRequestData;
  *
  */
 public class FormProcessingController extends Controller implements WSBodyReadables, WSBodyWritables {
-	private final static String WATER_ISSUE_ORDER_TYPE = "5";
+	public final static String SERVICE_ORDER_TYPE = "1";
+	public final static String REPAIR_ORDER_TYPE = "2";
+	public final static String INTERMEDIATE_ORDER_TYPE = "3";
+	public final static String SETTING_UP_ORDER_TYPE = "4";
+	public final static String WATER_ISSUE_ORDER_TYPE = "5";
+	public final static String ORDER_TYPE_PARAMETER_NAME = "type";
 	private MessagesApi messagesApi;
 	private FormFactory formFactory;
 	private BrandProvider brandProvider;
@@ -59,6 +64,10 @@ public class FormProcessingController extends Controller implements WSBodyReadab
 	
 	public Result displayFormSuccess(Http.Request request, String contentKey) {
 		return ok(views.html.action_success.render(contentKey, request, messagesApi.preferred(request)));
+	}
+	
+	public Result displayServiceTestFormSuccess(Http.Request request, ServiceTestRequestData.TestResult result, boolean isCustomizationAsked, Optional<String> email) {
+		return ok(views.html.service_test_success.render(result, isCustomizationAsked, email, request, messagesApi.preferred(request)));
 	}
 	
 	public Result displayFormUnknownError(Http.Request request, String contentKey) {
@@ -168,7 +177,7 @@ public class FormProcessingController extends Controller implements WSBodyReadab
 	}
 	
 	private Result preparedQuotation(Http.Request request, Optional<String> brandSeoName, Optional<String> typeOfOrder) {
-		return ok(views.html.quotation_form.render(fillQuotationRequestWithDefaultData(brandSeoName, typeOfOrder), brandProvider.retrieveBrandsOrderedByName(), getBrand(brandSeoName), request, messagesApi.preferred(request)));
+		return ok(views.html.quotation_form.render(fillQuotationRequestWithDefaultData(brandSeoName, typeOfOrder, request), brandProvider.retrieveBrandsOrderedByName(), getBrand(brandSeoName), request, messagesApi.preferred(request)));
 	}
 	
 	public CompletionStage<Result> processQuotationRequest(Http.Request request) {
@@ -204,16 +213,12 @@ public class FormProcessingController extends Controller implements WSBodyReadab
 			JsonNode json = response.asJson();
 			  if (json == null) {
 			    return badRequest("Expecting Json data");
-			  } else {
-			    String serviceTestResult = json.findPath("ServiceTestResult").textValue();
-			    logger.error("----->"+serviceTestResult);
-			    String isCustomizationAsked = json.findPath("IsCustomizationAsked").textValue();
-			    logger.error("----->"+isCustomizationAsked);
-			    String customerEmail = json.findPath("CustomerEmail").textValue();
-			    logger.error("----->"+customerEmail);
 			  }
+			  String serviceTestResult = json.findPath("ServiceTestResult").textValue();
+			  String isCustomizationAsked = json.findPath("IsCustomizationAsked").textValue();
+			  String customerEmail = json.findPath("CustomerEmail").textValue();
 			
-			return displayFormSuccess(request, formKey);	
+			return displayServiceTestFormSuccess(request, ServiceTestRequestData.TestResult.fromString(serviceTestResult), isCustomizationAsked.equals("1")?true:false, Optional.of(customerEmail));	
 		});
 	}
 	
@@ -228,6 +233,17 @@ public class FormProcessingController extends Controller implements WSBodyReadab
 		return manageFatalError(request, formKey, error);
 	}
 	
+	private Result genericHandlerMock(WSResponse response, Throwable error, Http.Request request, String formKey, Supplier<Result> toDo) {
+		if(response != null) {
+			if (response.getStatus() < 400) {
+				return toDo.get();
+			} else {
+				return displayServiceTestFormSuccess(request, ServiceTestRequestData.TestResult.IN_2_TO_3_YEARS, false, Optional.of("toto@titi"));
+			}
+		}
+		return displayServiceTestFormSuccess(request, ServiceTestRequestData.TestResult.IN_2_TO_3_YEARS, false, Optional.of("toto@titi"));
+	}
+	
 	private Result manageFatalError(Http.Request request, String formKey, Throwable error) {
 		logger.error("Error when trying to manage form '{}' with calling external webservice : {}", formKey, error.getLocalizedMessage());
 		error.printStackTrace();
@@ -238,15 +254,23 @@ public class FormProcessingController extends Controller implements WSBodyReadab
 		return Arrays.asList(values).stream().map(value -> { logger.error(key+"="+value); return key+"="+value;}).collect(Collectors.joining( "&" ));
 	}
 	
-	private Form<QuotationRequestData> fillQuotationRequestWithDefaultData(Optional<String> brandSeoName, Optional<String> typeOfOrder) {
+	private Form<QuotationRequestData> fillQuotationRequestWithDefaultData(Optional<String> brandSeoName, Optional<String> typeOfOrder, Http.Request request) {
 		QuotationRequestData requestPrefilledIfNeeded = new QuotationRequestData();
 		brandSeoName.ifPresent(seoName -> {
 			Optional<Brand> brandFound = brandProvider.getBrandBySeoName(seoName);
 			brandFound.ifPresent(brand -> requestPrefilledIfNeeded.brand = brand.id.toString());
 		});
-		typeOfOrder.ifPresent(orderType -> requestPrefilledIfNeeded.orderType = orderType);
+		if (typeOfOrder.isPresent()) {
+			requestPrefilledIfNeeded.orderType = typeOfOrder.get();
+		} else {
+			guessTypeOfOrderFromRequest(request).ifPresent(orderType -> requestPrefilledIfNeeded.orderType = orderType);
+		}
 		requestPrefilledIfNeeded.method = QuotationRequestData.METHOD_LOCAL;
 		return getQuotationRequestForm().fill(requestPrefilledIfNeeded);
+	}
+	
+	private Optional<String> guessTypeOfOrderFromRequest(Http.Request request) {
+		return request.queryString(ORDER_TYPE_PARAMETER_NAME);
 	}
 	
 	private Optional<Brand> getBrand(Optional<String> brandSeoName) {

@@ -61,8 +61,8 @@
 
 @simpleRadio(size: Int, id: String, name: String, value: Option[String], tuple: (String, play.twirl.api.Html), args: Map[Symbol,Any]) = {
 										<div class="form-check">
-											<input class="form-check-input required valid" type="radio" name="@(id)" id="@(id)_@tuple._1" @if(value == Some(tuple._1)){checked="checked"} @toHtmlArgs(args) value="@tuple._1">
-											<label class="form-check-label nott ml-2" for="@(id)_@tuple._1">@tuple._2</label>
+											<input class="form-check-input required valid radio-style" type="radio" name="@(id)" id="@(id)_@tuple._1" @if(value == Some(tuple._1)){checked="checked"} @toHtmlArgs(args) value="@tuple._1">
+											<label class="form-check-label nott ml-2 radio-style-3-label" for="@(id)_@tuple._1">@tuple._2</label>
 										</div>
 }
 
@@ -88,11 +88,11 @@
 										}(tags.canvasRadioGroupBoxedFieldTemplate, messages)
 									}
 				
-									@halfWidth() {
+									@fullWidth() {
 										@helper.select(form("buildPeriod"), options = ServiceTestRequestData.BuildPeriod.values.map(value => (value.toString, display_build_period(value)(messages).toString)).toSeq, Symbol("_class") -> "not-clickable", Symbol("class") -> computeClassForInput(true, form("period").hasErrors, Symbol("_body_class") -> "").toString, Symbol("_default") -> Html(Messages(computeMessageKey("period", "default").toString)), Symbol("_label") -> Html(Messages(computeMessageKey("period", "label").toString)), Symbol("_showConstraints") -> false)
 									}
 									
-									@halfWidth() {
+									@fullWidth() {
 										@helper.select(form("lastServiceYear"), options = ServiceTestRequestData.LastServiceYear.values.map(value => (value.toString, Html(Messages(formKey.toString+"."+value.toString.toLowerCase.replace('_','.')+".year")).toString)).toSeq, Symbol("_class") -> "not-clickable", Symbol("class") -> computeClassForInput(true, form("year").hasErrors, Symbol("_body_class") -> "").toString, Symbol("_default") -> Html(Messages(computeMessageKey("year", "default").toString)), Symbol("_label") -> Html(Messages(computeMessageKey("year", "label").toString)), Symbol("_showConstraints") -> false)
 									}
 									

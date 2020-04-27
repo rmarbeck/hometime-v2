@@ -1,0 +1,73 @@
+@(result: ServiceTestRequestData.TestResult, customAsked: Boolean, email: Optional[String])(implicit request: Http.Request, messages: play.i18n.Messages)
+
+@import scala.collection.immutable._
+@import tags._
+
+@import controllers.FormProcessingController
+
+@displayResult(icon: String, action: String, key: String) = {
+		@if(customAsked) {
+		<div class="notopmargin style-msg infomsg">
+			<div class="sb-msg"><i class="icon-info-sign"></i>@Html(Messages(key+".customization.asked", email.orElse("")))</div>
+			<button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+		</div>
+		}
+		
+		<div class="feature-box fbox-center fbox-dark fbox-effect">
+			<div class="fbox-icon">
+				<i class="@icon i-alt"></i>
+			</div>
+			<h3>@Html(Messages(key+".result."+result+".title")) @if(result.intValue() > 0 && result.intValue() < 6) {@add_service_to_google_calendar(result)}</h3>
+			<p>@Html(Messages(key+".result."+result+".content"))</p>
+		</div>
+		
+		<div class="center">
+			<a href="@action" class="btn-outline-dark btn noleftmargin topmargin-sm">@Html(Messages(key+".action.back.to.form"))</a>
+ 		</div>
+		
+		 @if(result.intValue() > 0 && result.intValue() < 6) {
+            <div class="topmargin warning-message">
+                @Html(Messages(key+".add.to.google.agenda.option"))
+                @add_service_to_google_calendar(result)
+            </div>
+        }
+        @if(customAsked == false) {
+           <div class="warning-message">@Html(Messages(key+".warning.ask.customized.test"))</div>
+        }
+		
+
+}
+
+@getServiceURL(typeOfOrder: String) = @{routes.FormProcessingController.prepareQuotationRequest().url+"?type="+typeOfOrder}
+
+@defining("service.test.success") { case (key) =>
+	@layouts.main_helper_with_head_block(key, Symbol("_css_content_div_class") -> "action-result") {
+		
+		@result match {
+              case ServiceTestRequestData.TestResult.IN_5_YEARS => {
+              	@displayResult("icon-thumbs-up", routes.FormProcessingController.prepareServiceTestRequest().url, key)
+              }
+              case ServiceTestRequestData.TestResult.IN_4_YEARS => {
+              	@displayResult("icon-thumbs-up", getServiceURL(FormProcessingController.INTERMEDIATE_ORDER_TYPE), key)
+              }
+              case ServiceTestRequestData.TestResult.IN_2_TO_3_YEARS => {
+                @displayResult("icon-thumbs-up", getServiceURL(FormProcessingController.INTERMEDIATE_ORDER_TYPE), key)
+              }
+              case ServiceTestRequestData.TestResult.NEXT_YEAR => {
+                @displayResult("icon-thumbs-up", getServiceURL(FormProcessingController.SERVICE_ORDER_TYPE), key)
+              }
+              case ServiceTestRequestData.TestResult.THIS_YEAR => {
+                @displayResult("icon-thumbs-up", getServiceURL(FormProcessingController.SERVICE_ORDER_TYPE), key)
+              }
+              case ServiceTestRequestData.TestResult.NOW_FOR_SOFT_SERVICE => {
+                @displayResult("icon-thumbs-up", getServiceURL(FormProcessingController.SETTING_UP_ORDER_TYPE), key)
+              }
+              case ServiceTestRequestData.TestResult.NOW_FOR_FULL_SERVICE => {
+                @displayResult("icon-thumbs-up", getServiceURL(FormProcessingController.SERVICE_ORDER_TYPE), key)
+              }
+              case default => {
+                @displayResult("icon-thumbs-up", routes.FormProcessingController.prepareServiceTestRequest().url, key)
+              }
+            }
+	}
+}
