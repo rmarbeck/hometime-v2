@@ -201,7 +201,7 @@ public class FormProcessingController extends Controller implements WSBodyReadab
 	
 	private Result handleJsonFormResponse(WSResponse response, Throwable error, Http.Request request, String formKey) {
 		return genericHandler(response, error, request, formKey, () -> {
-			JsonNode json = request.body().asJson();
+			JsonNode json = response.asJson();
 			  if (json == null) {
 			    return badRequest("Expecting Json data");
 			  } else {
