@@ -2045,6 +2045,14 @@ service.test.success.add.to.google.agenda.option=Si vous disposez d''un compte g
 service.test.success.warning.ask.customized.test=Pour obtenir une évaluation plus précise, vous pouvez remplir à nouveau le formulaire en indiquant la marque et le modèle de votre montre et en nous laissant vos coordonnées.
 
 
+service.test.success.action.0=Faire une nouvelle évaluation
+service.test.success.action.1=Faire une nouvelle évaluation
+service.test.success.action.2=Nous demander un devis
+service.test.success.action.3=Nous demander un devis
+service.test.success.action.4=Nous demander un devis
+service.test.success.action.5=Nous demander un devis
+service.test.success.action.6=Nous demander un devis
+service.test.success.action.7=Nous demander un devis
 
 
 #------ Buy Form ------------------

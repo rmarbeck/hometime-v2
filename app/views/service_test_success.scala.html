@@ -13,7 +13,7 @@
 		</div>
 		}
 		
-		<div class="feature-box fbox-center fbox-dark fbox-effect">
+		<div class="feature-box fbox-center fbox-dark fbox-effect fbox-bg">
 			<div class="fbox-icon">
 				<i class="@icon i-alt"></i>
 			</div>
@@ -21,19 +21,23 @@
 			<p>@Html(Messages(key+".result."+result+".content"))</p>
 		</div>
 		
-		<div class="center">
-			<a href="@action" class="btn-outline-dark btn noleftmargin topmargin-sm">@Html(Messages(key+".action.back.to.form"))</a>
- 		</div>
-		
 		 @if(result.intValue() > 0 && result.intValue() < 6) {
             <div class="topmargin warning-message">
                 @Html(Messages(key+".add.to.google.agenda.option"))
                 @add_service_to_google_calendar(result)
+                @if(customAsked == false) {
+		           @Html(Messages(key+".warning.ask.customized.test"))
+	    	    }
             </div>
+        } else {
+        	@if(customAsked == false) {
+	           <div class="topmargin warning-message">@Html(Messages(key+".warning.ask.customized.test"))</div>
+    	    }
         }
-        @if(customAsked == false) {
-           <div class="warning-message">@Html(Messages(key+".warning.ask.customized.test"))</div>
-        }
+        		
+		<div class="center">
+			<a href="@action" class="btn-outline-dark btn noleftmargin topmargin-sm nobottommargin">@Html(Messages(key+".action."+result.intValue()))</a>
+ 		</div>
 		
 
 }
@@ -48,22 +52,22 @@
               	@displayResult("icon-thumbs-up", routes.FormProcessingController.prepareServiceTestRequest().url, key)
               }
               case ServiceTestRequestData.TestResult.IN_4_YEARS => {
-              	@displayResult("icon-thumbs-up", getServiceURL(FormProcessingController.INTERMEDIATE_ORDER_TYPE), key)
+              	@displayResult("icon-calendar3", getServiceURL(FormProcessingController.INTERMEDIATE_ORDER_TYPE), key)
               }
               case ServiceTestRequestData.TestResult.IN_2_TO_3_YEARS => {
-                @displayResult("icon-thumbs-up", getServiceURL(FormProcessingController.INTERMEDIATE_ORDER_TYPE), key)
+                @displayResult("icon-calendar3", getServiceURL(FormProcessingController.INTERMEDIATE_ORDER_TYPE), key)
               }
               case ServiceTestRequestData.TestResult.NEXT_YEAR => {
-                @displayResult("icon-thumbs-up", getServiceURL(FormProcessingController.SERVICE_ORDER_TYPE), key)
+                @displayResult("icon-calendar3", getServiceURL(FormProcessingController.SERVICE_ORDER_TYPE), key)
               }
               case ServiceTestRequestData.TestResult.THIS_YEAR => {
-                @displayResult("icon-thumbs-up", getServiceURL(FormProcessingController.SERVICE_ORDER_TYPE), key)
+                @displayResult("icon-play1", getServiceURL(FormProcessingController.SERVICE_ORDER_TYPE), key)
               }
               case ServiceTestRequestData.TestResult.NOW_FOR_SOFT_SERVICE => {
-                @displayResult("icon-thumbs-up", getServiceURL(FormProcessingController.SETTING_UP_ORDER_TYPE), key)
+                @displayResult("icon-et-alarmclock", getServiceURL(FormProcessingController.SETTING_UP_ORDER_TYPE), key)
               }
               case ServiceTestRequestData.TestResult.NOW_FOR_FULL_SERVICE => {
-                @displayResult("icon-thumbs-up", getServiceURL(FormProcessingController.SERVICE_ORDER_TYPE), key)
+                @displayResult("icon-stopwatch1", getServiceURL(FormProcessingController.SERVICE_ORDER_TYPE), key)
               }
               case default => {
                 @displayResult("icon-thumbs-up", routes.FormProcessingController.prepareServiceTestRequest().url, key)

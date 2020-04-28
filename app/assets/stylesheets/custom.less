@@ -16,9 +16,22 @@
 	list-style-type: none;
 }
 
+.feature-box.fbox-center.fbox-bg h3:after {
+	content: '';
+	display: block;
+	margin: 20px auto;
+	width: 30px;
+	border-top: 2px solid #555;
+	-webkit-transition: width .3s ease;
+	-o-transition: width .3s ease;
+	transition: width .3s ease;
+}
+
+.feature-box.fbox-center.fbox-bg:hover h3:after { width: 50px; }
+
 .service-test-success {
 	.feature-box.fbox-center p {
-    	font-size: 20px;
+    	font-size: 18px;
 	}
 }
 

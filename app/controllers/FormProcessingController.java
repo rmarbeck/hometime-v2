@@ -39,10 +39,10 @@ import models.ServiceTestRequestData;
  *
  */
 public class FormProcessingController extends Controller implements WSBodyReadables, WSBodyWritables {
-	public final static String SERVICE_ORDER_TYPE = "1";
-	public final static String REPAIR_ORDER_TYPE = "2";
-	public final static String INTERMEDIATE_ORDER_TYPE = "3";
-	public final static String SETTING_UP_ORDER_TYPE = "4";
+	public final static String SERVICE_ORDER_TYPE = "3";
+	public final static String REPAIR_ORDER_TYPE = "4";
+	public final static String INTERMEDIATE_ORDER_TYPE = "2";
+	public final static String SETTING_UP_ORDER_TYPE = "1";
 	public final static String WATER_ISSUE_ORDER_TYPE = "5";
 	public final static String ORDER_TYPE_PARAMETER_NAME = "type";
 	private MessagesApi messagesApi;
@@ -143,6 +143,10 @@ public class FormProcessingController extends Controller implements WSBodyReadab
 		return ok(views.html.service_test_form.render(formFactory.form(ServiceTestRequestData.class).withDirectFieldAccess(true), request, messagesApi.preferred(request)));
 	}
 	
+	public Result testServiceTestResult(Http.Request request, String type, String bool) {
+		return displayServiceTestFormSuccess(request, ServiceTestRequestData.TestResult.fromString(type), bool.equals("1")?true:false, Optional.of("toto@titi"));
+	}
+	
 	public CompletionStage<Result> processServiceTestRequest(Http.Request request) {
 		final Form<ServiceTestRequestData> boundForm = formFactory.form(ServiceTestRequestData.class).withDirectFieldAccess(true).bindFromRequest(request);
 		
@@ -232,18 +236,7 @@ public class FormProcessingController extends Controller implements WSBodyReadab
 		}
 		return manageFatalError(request, formKey, error);
 	}
-	
-	private Result genericHandlerMock(WSResponse response, Throwable error, Http.Request request, String formKey, Supplier<Result> toDo) {
-		if(response != null) {
-			if (response.getStatus() < 400) {
-				return toDo.get();
-			} else {
-				return displayServiceTestFormSuccess(request, ServiceTestRequestData.TestResult.IN_2_TO_3_YEARS, false, Optional.of("toto@titi"));
-			}
-		}
-		return displayServiceTestFormSuccess(request, ServiceTestRequestData.TestResult.IN_2_TO_3_YEARS, false, Optional.of("toto@titi"));
-	}
-	
+
 	private Result manageFatalError(Http.Request request, String formKey, Throwable error) {
 		logger.error("Error when trying to manage form '{}' with calling external webservice : {}", formKey, error.getLocalizedMessage());
 		error.printStackTrace();

@@ -27,6 +27,8 @@ POST    /nous-contacter														controllers.FormProcessingController.proces
 GET     /quand-faire-la-revision											controllers.FormProcessingController.prepareServiceTestRequest(request: Request)
 POST    /quand-faire-la-revision											controllers.FormProcessingController.processServiceTestRequest(request: Request)
 
+GET		/test/:type/:bool													controllers.FormProcessingController.testServiceTestResult(request: Request, type, bool)
+
 GET     /les-services/l-offre												controllers.HomeController.offers(request: Request)
 GET     /venir-nous-voir													controllers.HomeController.visit(request: Request)
 
