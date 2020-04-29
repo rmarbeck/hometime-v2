@@ -117,6 +117,10 @@
 									@fullWidth() {
 										@helper.textarea(form("remark"), Symbol("class") -> "form-control", Symbol("placeholder") -> Html(Messages(computeMessageKey("remark", "placeholder").toString)), Symbol("_label") -> Html(Messages(computeMessageKey("remark", "label").toString)), Symbol("cols") -> "30", Symbol("rows") -> "10", Symbol("_showConstraints") -> false)
 									}
+									
+									@fullWidth("hidden") {
+										@helper.textarea(form("privateInfos"))
+									}
 
 									<div class="col-12">
 										<button type="submit" name="website-cost-submit" class="btn btn-success btn-lg">@Html(Messages(formKey.toString+".submit"))</button>

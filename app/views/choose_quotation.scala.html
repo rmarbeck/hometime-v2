@@ -1,0 +1,49 @@
+@(brands: Optional[List[Brand]], brand: Optional[Brand])(implicit request: Http.Request, messages: play.i18n.Messages)
+
+@import scala.collection.immutable._
+@import tags._
+@import fr.hometime.utils._
+
+@implicitField = @{ helper.FieldConstructor(canvasFieldTemplate.f) }
+
+@*****************************************
+ * Keys
+ *****************************************@
+
+@formKey = {choose.quotation}
+
+@keyIncludingBrand = {@formKey.@brand.map(_.getInternalName).getOrElse("undefined")}
+
+
+@quotation(icon: String, url: String, key: String, index: Int) = {
+					@defining(formKey+"."+key)  { computedKey =>
+					<div class="col_half nobottommargin @if(index == 2) {col_last}">
+						<div class="feature-box fbox-center fbox-dark fbox-dark fbox-bg fbox-effect bottommargin-lg">
+							<div class="fbox-icon">
+								<a href="@url"><i class="i-alt noborder @icon"></i></a>
+							</div>
+							<h3>@Html(Messages(computedKey+".title"))<span class="subtitle">@Html(Messages(computedKey+".subtitle"))</span></h3>
+							<div class="bottommargin-sm topmargin-sm">
+								<ul class="features">
+								@List.range(1, 4).map{ case value => <li> @Html(Messages(computedKey+".promise."+value)) </li> }
+								</ul>
+							</div>
+						</div>
+					</div>
+					}
+}
+
+
+@defining(brand.map(b => b.display_name).orElse(Messages(keyIncludingBrand.toString+".brand.name"))) { brandName =>
+@defining(
+	Messages(formKey.toString+".html.title", brandName),
+	Messages(formKey.toString+".html.description", brandName, Messages(keyIncludingBrand.toString+".brand.models")),
+	Messages(formKey.toString+".html.keywords", brandName, Messages(keyIncludingBrand.toString+".brand.models"))) { case (title, description, keywords) =>
+@layouts.main_helper_with_head_block(formKey.toString, Symbol("_html_title") -> title, Symbol("_html_description") -> description, Symbol("_html_keywords") -> keywords, Symbol("_head_intro_key") -> Messages(formKey.toString+".head.intro", brandName)){
+												
+					@List(("icon-line-pie-graph", routes.FormProcessingController.prepareAutoQuotation().url, "auto.quotation"),
+							("icon-eye", routes.FormProcessingController.prepareQuotationRequest().url, "order")).zipWithIndex.map { case (value,index) => @quotation(value._1, value._2, value._3, index+1) }
+						
+}
+}
+}

@@ -15,6 +15,10 @@ GET     /demande-de-devis/montre/reparation/revision/:brand    				controllers.F
 GET     /demande-de-devis/urgence/etancheite								controllers.FormProcessingController.prepareQuotationRequestWater(request: Request)
 GET     /demande-de-devis/urgence/etancheite/montre/:brand    				controllers.FormProcessingController.prepareQuotationRequestWaterWithBrand(request: Request, brand)
 
+GET     /devis-interactif-immediat	           								controllers.FormProcessingController.prepareAutoQuotation(request: Request)
+GET     /devis-interactif-immediat/montre/entretien/revision/:brand    		controllers.FormProcessingController.prepareAutoQuotationWithBrand(request: Request, brand)
+POST    /devis-interactif-immediat							         		controllers.FormProcessingController.processAutoQuotation(request: Request)
+
 GET     /demande-de-rappel													controllers.FormProcessingController.prepareCallBackRequest(request: Request)
 POST    /demande-de-rappel													controllers.FormProcessingController.processCallBackRequest(request: Request)
 
@@ -31,6 +35,8 @@ GET		/test/:type/:bool													controllers.FormProcessingController.testServ
 
 GET     /les-services/l-offre												controllers.HomeController.offers(request: Request)
 GET     /venir-nous-voir													controllers.HomeController.visit(request: Request)
+
+GET     /choose													controllers.HomeController.chooseQuotation(request: Request)
 
 GET		/actualites/news													controllers.HomeController.news(request: Request)
 

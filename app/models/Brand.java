@@ -71,4 +71,8 @@ public class Brand {
 	public boolean isSupported() {
 		return this.supported;
 	}
+
+	public int getQuartzCategory() {
+		return quartz_category;
+	}
 }

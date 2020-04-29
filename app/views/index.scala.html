@@ -33,20 +33,22 @@
 					</div>
 }
 
-@quotation(icon: String, url: String, title: String, subTitle: String, index: Int, list: List[String]) = {
-					<div class="col_one_third nobottommargin @if(index == 2) {col_last}">
+@quotation(icon: String, url: String, key: String, index: Int) = {
+					@defining("home."+key)  { computedKey =>
+					<div class="col_one_third nobottommargin @if(index == 3) {col_last}">
 						<div class="feature-box fbox-center fbox-dark fbox-dark fbox-bg fbox-effect bottommargin-lg">
 							<div class="fbox-icon">
 								<a href="@url"><i class="i-alt noborder @icon"></i></a>
 							</div>
-							<h3>@title<span class="subtitle">@subTitle</span></h3>
+							<h3>@Html(Messages(computedKey+".title"))<span class="subtitle">@Html(Messages(computedKey+".subtitle"))</span></h3>
 							<div class="bottommargin-sm topmargin-sm">
 								<ul class="features">
-								@list.map{ case value => <li> @value </li> }
+								@List.range(1, 4).map{ case value => <li> @Html(Messages(computedKey+".promise."+value)) </li> }
 								</ul>
 							</div>
 						</div>
 					</div>
+					}
 }
 
 @testimonial(feedback: Feedback) = {
@@ -106,9 +108,10 @@
 						<span class="divcenter">...ou le mode qui vous convient</span>
 					</div>
 				
-					@List(("icon-line-pie-graph", "#", "Devis interactif", "En 5 étapes, évaluez le coût de l'entretien de votre montre.", List("Devis immédiat", "Prix et délais approximatifs", "24h/24")),
-							("icon-eye", "#", "Devis horloger", "Nos horlogers analysent votre besoin et vous répondent.", List("Devis détaillé", "Un horloger vous répond", "Sous 48h maximum")),
-							("icon-shop", "#", "Devis formel", "Sur place, nous établissons un devis ferme montre en main.", List("Nous auscultons votre montre", "Le devis est gratuit", "Il nous engage"))).zipWithIndex.map { case (value,index) => @quotation(value._1, value._2, value._3, value._4, index+1, value._5) }
+												
+					@List(("icon-line-pie-graph", routes.FormProcessingController.prepareAutoQuotation().url, "auto.quotation"),
+							("icon-eye", routes.FormProcessingController.prepareQuotationRequest().url, "order"),
+							("icon-shop", routes.HomeController.visit().url, "local")).zipWithIndex.map { case (value,index) => @quotation(value._1, value._2, value._3, index+1) }
 						
 										
 
