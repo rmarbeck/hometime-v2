@@ -36,7 +36,7 @@ GET		/test/:type/:bool													controllers.FormProcessingController.testServ
 GET     /les-services/l-offre												controllers.HomeController.offers(request: Request)
 GET     /venir-nous-voir													controllers.HomeController.visit(request: Request)
 
-GET     /choose													controllers.HomeController.chooseQuotation(request: Request)
+GET     /choisir/type/devis/entretien/montre/:brand							controllers.HomeController.chooseQuotation(request: Request, brand)
 
 GET		/actualites/news													controllers.HomeController.news(request: Request)
 
@@ -45,6 +45,7 @@ GET     /prices																controllers.Default.redirect(to = "/les-services/
 
 GET		/avis-clients														controllers.HomeController.feedbacks(request: Request)
 
+POST	/abonnement															controllers.FormProcessingController.processRegister(request: Request)
 
 GET     /entretien-reparation												controllers.HomeController.content(request: Request, key = "content.service.repairing")
 GET     /nos-horlogers														controllers.HomeController.content(request: Request, key = "content.watchmakers")

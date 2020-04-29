@@ -17,16 +17,19 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.node.ObjectNode;
 import com.typesafe.config.Config;
 
 import fr.hometime.utils.BrandProvider;
 import fr.hometime.utils.NewsProvider;
 import fr.hometime.utils.PriceProvider;
 import fr.hometime.utils.WebserviceHelper;
+import play.data.DynamicForm;
 import play.data.Form;
 import play.data.FormFactory;
 import play.i18n.MessagesApi;
 import play.mvc.*;
+import play.libs.Json;
 import play.libs.ws.*;
 import models.AutoQuotationRequestData;
 import models.Brand;
@@ -80,6 +83,17 @@ public class FormProcessingController extends Controller implements WSBodyReadab
 	
 	public Result displayFormUnknownError(Http.Request request, String contentKey) {
 		return ok(views.html.action_error.render(contentKey, request, messagesApi.preferred(request)));
+	}
+	
+	public Result processRegister(Http.Request request) {
+		final DynamicForm boundForm = formFactory.form().bindFromRequest(request);
+		
+		logger.error("....-------> "+boundForm.get("email"));
+		
+		ObjectNode resultAsJson = Json.newObject();
+		resultAsJson.put("message", messagesApi.preferred(request).at("register.message.ok"));
+		
+		return ok(resultAsJson);
 	}
 	
 	/*************************************

@@ -77,9 +77,9 @@ public class HomeController extends Controller {
         return ok(views.html.quotation_options.render(request, messages));
     }
     
-    public Result chooseQuotation(Http.Request request) {
+    public Result chooseQuotation(Http.Request request, String brandSeoName) {
     	Messages messages = messagesApi.preferred(request);
-        return ok(views.html.choose_quotation.render(brandProvider.retrieveSupportedBrandsOrderedByInternalName(), Optional.empty(), request, messages));
+        return ok(views.html.choose_quotation.render(brandProvider.retrieveSupportedBrandsOrderedByInternalName(), brandProvider.getBrandBySeoName(brandSeoName), request, messages));
     }
     
     public Result content(Http.Request request, String key) {

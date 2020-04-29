@@ -2,7 +2,14 @@
 
 global.title.prefix=Hometime -&nbsp;
 
+global.phone.number=07&nbsp;82&nbsp;43&nbsp;47&nbsp;51
+global.phone.number.raw=0782434751
 
+top.bar.address.street=322 rue Saint Honoré,
+top.bar.address.zip=75001
+top.bar.address.city=Paris
+
+register.message.ok=Merci, nous avons bien enregistré votre adresse.
 
 #------ Footer ------------------
 #------ footer
@@ -24,6 +31,7 @@ footer.location=Atelier:
 footer.address=322 rue Saint Honoré<br/>75001&nbsp;Paris
 footer.copyright=© Watch next SAS 2013-{0,number,#}
 footer.phone.number=07&nbsp;82&nbsp;43&nbsp;47&nbsp;51
+footer.phone.number.raw=0782434751
 footer.follow.on.facebook=<strong>Suivez-nous</strong><br>sur Facebook</small>
 footer.follow.on.instagram=<strong>Nos photos</strong><br>sur Instagram</small>
 
@@ -34,8 +42,13 @@ footer.opening.days.label=Jours d''ouverture:
 footer.opening.days.value=du lundi au vendredi, samedi sur rdv
 footer.opening.days.abbrtitle=Nos jours d''ouverture
 footer.opening.hours.label=Horaires:
-footer.opening.hours.value=du 10h à 18h30
+footer.opening.hours.value=de 10h à 18h30
 footer.opening.hours.abbrtitle=Les horaires d''ouverture
+
+footer.subscribe.main.action=Abonnez-vous
+footer.subscribe.main.topic=pour recevoir des offres spéciales ou des informations importantes
+footer.subscribe.action.placeholder=adresse email
+footer.subscribe.action.label=S''abonner
 
 # Glogal high level texts
 global.code.lang.head=fr
@@ -253,6 +266,11 @@ home.stats.4.unit=+
 home.action.text.visit.us.action=Venir nous voir
 home.action.text.quotation.action=Demander un devis
 
+
+home.quotation.options=Devis d''entretien ou de réparation
+home.quotation.by.brand=Choisissez par marque...
+home.quotation.alternative=...ou le mode qui vous convient
+
 #------------------------
 
 home.caption.1.head=Vous avez une belle montre, entretenez&nbsp;la&nbsp;!
@@ -373,6 +391,8 @@ home.order.promise.1=Devis détaillé
 home.order.promise.2=Un horloger vous répond
 home.order.promise.3=Sous 48h maximum
 
+
+
 home.local.title=Devis définitif
 home.local.subtitle=Sur place, nous établissons un devis ferme montre en main.
 home.local.promise.1=Nous auscultons votre montre
@@ -427,6 +447,33 @@ quotation.options.disclaimer=Nous essayons de toujours fournir un maximum d''inf
 #------------------------
 
 
+choose.quotation.html.title=Choix du type de de devis pour une {0}
+choose.quotation.html.description=Choisir le mode de devis pour évaluer le coût d''entretetien de sa montre {0}
+choose.quotation.html.keywords=choix, devis, interactif, formal, montre {0}
+choose.quotation.head=Choix du type de devis
+choose.quotation.head.subtitle=Choisissez comment évaluer le coût d''entretien de votre montre&nbsp;!
+choose.quotation.head.intro=Vous avez besoin d''un entretien sur votre montre {0}, choisissez ci-dessous le type de devis qui vous convient. Dans un cas vous êtes autonome et pouvez évaluer le coût en quelques secondes. Dans le deuxième cas, un de nos horlogers établira un devis en quelques heures.
+choose.quotation.disclaimer=Vous pouvez très bien choisir un type de devis puis un autre par la suite, alors n''hésitez pas !
+
+choose.quotation.order.title=Devis prévisionnel
+choose.quotation.order.subtitle=En détaillant votre besoin, nos horlogers<br/>analysent votre demande et vous répondent.
+choose.quotation.order.promise.1=Devis détaillé
+choose.quotation.order.promise.2=Un horloger vous répond
+choose.quotation.order.promise.3=Sous 48h maximum
+
+choose.quotation.quotation.alternative=Vous préférez venir nous voir&nbsp?
+choose.quotation.quotation.alternative.subtitle=Nous auculterons votre montre attentivement pour vous établir un devis
+choose.quotation.visit.us=Venir nous voir
+
+
+choose.quotation.auto.quotation.title=Devis interactif
+choose.quotation.auto.quotation.subtitle=En 5 étapes, évaluez vous même<br/>le coût de l''entretien de votre montre.
+choose.quotation.auto.quotation.promise.1=Devis immédiat
+choose.quotation.auto.quotation.promise.2=Prix et délais approximatifs
+choose.quotation.auto.quotation.promise.3=24h/24
+
+
+
 #------ Quotation form end pages ------------------
 #------ quotation.success
 #------ quotation.error
@@ -461,10 +508,14 @@ page.visit.us.head.intro=Toutes les informations pour prendre rendez-vous et nou
 page.visit.us.disclaimer=Nous pouvons vous recevoir pour répondre à l''ensemble de vos questions et pour vous proposer tous nos services horlogers, avec ou sans rendez-vous du Lundi au vendredi de 10h à 18h30.
 
 
-page.visit.us.text.part.1=Nous vous recevons dans nos locaux situés <b>322 rue Saint Honoré</b> dans le 1er arrondissement de Paris <b>tous les jours de la semaine de 10h à 18h30 et le samedi sur rendez-vous</b>.
-page.visit.us.text.part.2=Une fois sur les lieux, après la porte sur la rue : <b>au fond du couloir, prendre l''escalier à droite, puis 1er étage à droite.</b>
-page.visit.us.text.part.3=Appelez-nous pour prendre rendez-vous ou pour plus de précisions&nbsp;: <a href="tel:{0}" rel="nofollow"><span>{1}</span></a> 
-page.visit.us.text.part.4=Vous préférez que nous vous contactions par téléphone&nbsp;?
+page.visit.us.title.0=Notre adresse
+page.visit.us.body.0=Nous vous recevons dans nos locaux situés <b>322 rue Saint Honoré</b> dans le 1er arrondissement de Paris <b>tous les jours de la semaine de 10h à 18h30 et le samedi sur rendez-vous</b>.
+
+page.visit.us.title.1=Une fois sur place
+page.visit.us.body.1=Nos locaux sont sur cour, après la porte sur la rue : <b>au fond du couloir, prendre l'escalier à droite, puis 1er étage à droite</b>.
+
+page.visit.us.title.2=Appelez-nous&nbsp;!
+page.visit.us.body.2=Appelez-nous pour prendre rendez-vous ou pour plus de précisions&nbsp;: <a href="tel:0782434751" rel="nofollow"><span>07&nbsp;82&nbsp;43&nbsp;47&nbsp;51</span></a> 
 
 
 #------ News page ------------------
@@ -1101,7 +1152,7 @@ content.watchmakers.content.2.image.url=https://d1qsyzkyf147s1.cloudfront.net/as
 content.watchmakers.content.3.default.to.action.text=Venir nous voir
 content.watchmakers.content.3.default.to.action.perma=/perma/venir
 content.watchmakers.content.3.primary.to.action.text=Demander un devis
-content.watchmakers.content.3.primary.to.action.perma=/perma/offre
+content.watchmakers.content.3.primary.to.action.perma=/perma/devis
 
 content.watchmakers.content.1.head=Notre équipe d''horlogers
 content.watchmakers.content.1.body= <br />Hometime dispose de sa propre équipe d''horlogers dédiés. Ils travaillent sur place et peuvent faire un premier diagnostic lors du dépôt de la montre avant de l''ausculter plus attentivement lorsque cela est nécessaire. \

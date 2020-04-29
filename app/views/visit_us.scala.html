@@ -3,13 +3,36 @@
 @import scala.collection.immutable._
 @import tags._
 
+@feature(icon: String, key: String, index: Int) = {
+						<div class="col_one_third bottommargin-xl @if(index == 2) {col_last}">
+
+							<div class="feature-box fbox-plain">
+								<div class="fbox-icon">
+									<i class="@icon"></i>
+								</div>
+								<h3>@Html(Messages(key+".title."+index))</h3>
+								<p>@Html(Messages(key+".body."+index))</p>
+							</div>
+
+						</div>
+}
+
 @defining("page.visit.us") { case (key) =>
 
 	@layouts.main_helper_with_head_block(key) {
-				@List.range(1, 5).map{ index => <p>@if(index==3) {@Html(Messages("page.visit.us.text.part."+index, "0782434751", "07&nbsp;82&nbsp;43&nbsp;47&nbsp;51"))} else {@Html(Messages("page.visit.us.text.part."+index))}</p> }	
-				
-				<div>
-					<iframe width="600" height="450" frameborder="0" style="border:0" src="https://www.google.com/maps/embed/v1/place?q=place_id:ChIJawfbyi9u5kcR9cL5oxLwnNo&key=AIzaSyBILpKrEOIAOcjVBa9-ownlM_oiEQqBTyc" allowfullscreen></iframe>
+	
+					<div class="topmargin-lg">
+					
+						@List("icon-location",
+									"icon-walking",
+									"icon-line2-call-out").zipWithIndex.map { case (value, index) => @feature(value, key, index) }
+	
+						<div class="col_full">
+
+							<iframe width="600" height="450" frameborder="0" style="border:0" src="https://www.google.com/maps/embed/v1/place?q=place_id:ChIJawfbyi9u5kcR9cL5oxLwnNo&key=AIzaSyBILpKrEOIAOcjVBa9-ownlM_oiEQqBTyc" allowfullscreen></iframe>
+
+						</div>
 				</div>
+	
 	}
 }

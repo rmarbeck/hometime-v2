@@ -44,7 +44,7 @@
 										@Html(Messages("footer.address"))
 									</address>
 									<abbr title="@Html(Messages("footer.phonenumber.abbrtitle"))"><strong>@Html(Messages("footer.phonenumber.label"))</strong></abbr> @Html(Messages("footer.phonenumber.value"))<br>
-									<abbr title="@Html(Messages("footer.opening.days.abbrtitle"))"><strong>@Html(Messages("footer.opening.days.label"))</strong></abbr> @Html(Messages("footer.opening.hours.value"))<br>
+									<abbr title="@Html(Messages("footer.opening.days.abbrtitle"))"><strong>@Html(Messages("footer.opening.days.label"))</strong></abbr> @Html(Messages("footer.opening.days.value"))<br>
 									<abbr title="@Html(Messages("footer.opening.hours.abbrtitle"))"><strong>@Html(Messages("footer.opening.hours.label"))</strong></abbr> @Html(Messages("footer.opening.hours.value"))
 								</div>
 
@@ -92,35 +92,18 @@
 
 					<div class="col_one_third col_last">
 
-						<div class="widget clearfix" style="margin-bottom: -20px;">
-
-							<div class="row">
-
-								<div class="col-lg-6 bottommargin-sm">
-									<div class="counter counter-small"><span data-from="50" data-to="15065421" data-refresh-interval="80" data-speed="3000" data-comma="true"></span></div>
-									<h5 class="nobottommargin">Total Downloads</h5>
-								</div>
-
-								<div class="col-lg-6 bottommargin-sm">
-									<div class="counter counter-small"><span data-from="100" data-to="18465" data-refresh-interval="50" data-speed="2000" data-comma="true"></span></div>
-									<h5 class="nobottommargin">Clients</h5>
-								</div>
-
-							</div>
-
-						</div>
-
 						<div class="widget subscribe-widget clearfix">
-							<h5><strong>Subscribe</strong> to Our Newsletter to get Important News, Amazing Offers &amp; Inside Scoops:</h5>
+							<h5><strong>@Html(Messages("footer.subscribe.main.action"))</strong> @Html(Messages("footer.subscribe.main.topic"))</h5>
 							<div class="widget-subscribe-form-result"></div>
-							<form id="widget-subscribe-form" action="include/subscribe.php" method="post" class="nobottommargin">
+							<form id="widget-subscribe-form" action="@routes.FormProcessingController.processRegister()" method="post" class="nobottommargin">
+								@helper.CSRF.formField
 								<div class="input-group divcenter">
 									<div class="input-group-prepend">
 										<div class="input-group-text"><i class="icon-email2"></i></div>
 									</div>
-									<input type="email" id="widget-subscribe-form-email" name="widget-subscribe-form-email" class="form-control required email" placeholder="Enter your Email">
+									<input type="email" id="widget-subscribe-form-email" name="email" class="form-control required email" placeholder="@Html(Messages("footer.subscribe.action.placeholder"))">
 									<div class="input-group-append">
-										<button class="btn btn-success" type="submit">Subscribe</button>
+										<button class="btn btn-success" type="submit">@Html(Messages("footer.subscribe.action.label"))</button>
 									</div>
 								</div>
 							</form>
@@ -176,7 +159,7 @@
 
 						<div class="clear"></div>
 
-						<i class="icon-headphones"></i>&nbsp;<span class="middot">&middot;</span>&nbsp;@Html(Messages("footer.phone.number"))
+						<a href="tel:@Messages("global.phone.number.raw")" rel="nofollow"><i class="icon-headphones"></i>&nbsp;<span class="middot">&middot;</span>&nbsp;@Html(Messages("footer.phone.number"))</a>
 					</div>
 
 				</div>

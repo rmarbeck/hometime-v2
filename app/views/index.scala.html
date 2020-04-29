@@ -18,7 +18,7 @@
 @feature(icon: String, index: Int, pushRight: Boolean) = {
 							<div class="feature-box @if(pushRight) {fbox-right} topmargin" data-animate="fadeIn">
 								<div class="fbox-icon">
-									<a href="#"><i class="@icon" style="background-color:#3b916d"></i></a>
+									<i class="@icon" style="background-color:#3b916d"></i>
 								</div>
 								<h3>@Html(Messages("home.feature."+index+".head"))</h3>
 								<p>@Html(Messages("home.feature."+index+".body"))</p>
@@ -36,9 +36,10 @@
 @quotation(icon: String, url: String, key: String, index: Int) = {
 					@defining("home."+key)  { computedKey =>
 					<div class="col_one_third nobottommargin @if(index == 3) {col_last}">
-						<div class="feature-box fbox-center fbox-dark fbox-dark fbox-bg fbox-effect bottommargin-lg">
+						<a href="@url">
+						<div class="quotation-option feature-box fbox-center fbox-dark fbox-dark fbox-bg fbox-effect bottommargin-lg">
 							<div class="fbox-icon">
-								<a href="@url"><i class="i-alt noborder @icon"></i></a>
+								<i class="i-alt noborder @icon"></i>
 							</div>
 							<h3>@Html(Messages(computedKey+".title"))<span class="subtitle">@Html(Messages(computedKey+".subtitle"))</span></h3>
 							<div class="bottommargin-sm topmargin-sm">
@@ -47,6 +48,7 @@
 								</ul>
 							</div>
 						</div>
+						</a>
 					</div>
 					}
 }
@@ -91,21 +93,21 @@
   
 				<div class="container clearfix">
 					<div class="heading-block topmargin-lg center">
-						<h2>Devis d'entretien ou de réparation</h2>
-						<span class="divcenter">Choisissez par marque...</span>
+						<h2>@Html(Messages("home.quotation.options"))</h2>
+						<span class="divcenter">@Html(Messages("home.quotation.by.brand"))</span>
 					</div>
 				
 					<div class="row bottommargin-lg">
 						@brands.get.map{ brand =>
 							<div class="brand-logo-list-item col-3 col-sm-2 col-xl-1">
-								<a href="@routes.FormProcessingController.prepareQuotationRequestWithBrand(brand.getSeoName)" title="@Html(Messages("home.brand.title", brand.getDisplayName))"><img class="img-responsive lazyload" data-src="https://d1qsyzkyf147s1.cloudfront.net/assets/images/@brand.logo_url" alt="@Html(Messages("home.brand.alt", brand.getDisplayName))" title="@Html(Messages("home.brand.title", brand.getDisplayName))"></a>
+								<a href="@routes.HomeController.chooseQuotation(brand.getSeoName)" title="@Html(Messages("home.brand.title", brand.getDisplayName))"><img class="img-responsive lazyload" data-src="https://d1qsyzkyf147s1.cloudfront.net/assets/images/@brand.logo_url" alt="@Html(Messages("home.brand.alt", brand.getDisplayName))" title="@Html(Messages("home.brand.title", brand.getDisplayName))"></a>
 							</div>
 						}
 					</div>
 					
 					<div class="heading-block topmargin-lg center">
 						<h2></h2>
-						<span class="divcenter">...ou le mode qui vous convient</span>
+						<span class="divcenter">@Html(Messages("home.quotation.alternative"))</span>
 					</div>
 				
 												
@@ -122,7 +124,9 @@
 					<div class="container clearfix">
 						<h3>@Html(Messages("global.text.call.us.reasons"))<span>&nbsp;<a href="tel:@Messages("global.href.phone.number")" rel="nofollow">@Html(Messages("global.text.phone.number"))</a></span></h3>
 						<span>@Html(Messages("global.text.footer.conditions.cost")), @Html(Messages("global.text.footer.conditions.when"))</span>
-						<a href="@routes.HomeController.quotationOptions()" class="button button-dark button-xlarge button-rounded">@Html(Messages("home.action.text.visit.us.action"))</a>
+						<div class="action">
+							<a href="@routes.HomeController.visit()" class="button button-dark button-xlarge button-rounded"><i class="icon-location"></i> @Html(Messages("home.action.text.visit.us.action"))</a>
+						</div>
 					</div>
 				</div>				
 
@@ -133,8 +137,23 @@
 						<h2>@Html(Messages("home.feature.claim"))</h2>
 						<span class="divcenter">@Html(Messages("home.feature.baseline"))</span>
 					</div>
+					
+					<div class="d-block d-md-none row bottommargin-sm leftmargin-sm rightmargin-sm">
 
-					<div class="row bottommargin-sm">
+						<div class="bottommargin">
+						
+							@List("icon-home",
+									"icon-thumbs-up21",
+									"icon-euro-sign",
+									"icon-calendar-alt",
+									"icon-leaf",
+									"icon-certificate").zipWithIndex.map { case (e, index) => @feature(e, index, false) }
+
+						</div>
+
+					</div>
+
+					<div class="d-none d-md-flex  row bottommargin-sm">
 
 						<div class="col-lg-4 col-md-6 bottommargin">
 						

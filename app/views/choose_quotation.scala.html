@@ -16,11 +16,12 @@
 
 
 @quotation(icon: String, url: String, key: String, index: Int) = {
-					@defining(formKey+"."+key)  { computedKey =>
+					@defining(formKey.toString+"."+key)  { computedKey =>
 					<div class="col_half nobottommargin @if(index == 2) {col_last}">
+						<a href="@url">
 						<div class="feature-box fbox-center fbox-dark fbox-dark fbox-bg fbox-effect bottommargin-lg">
 							<div class="fbox-icon">
-								<a href="@url"><i class="i-alt noborder @icon"></i></a>
+								<i class="i-alt noborder @icon"></i>
 							</div>
 							<h3>@Html(Messages(computedKey+".title"))<span class="subtitle">@Html(Messages(computedKey+".subtitle"))</span></h3>
 							<div class="bottommargin-sm topmargin-sm">
@@ -29,6 +30,7 @@
 								</ul>
 							</div>
 						</div>
+						</a>
 					</div>
 					}
 }
@@ -41,8 +43,24 @@
 	Messages(formKey.toString+".html.keywords", brandName, Messages(keyIncludingBrand.toString+".brand.models"))) { case (title, description, keywords) =>
 @layouts.main_helper_with_head_block(formKey.toString, Symbol("_html_title") -> title, Symbol("_html_description") -> description, Symbol("_html_keywords") -> keywords, Symbol("_head_intro_key") -> Messages(formKey.toString+".head.intro", brandName)){
 												
-					@List(("icon-line-pie-graph", routes.FormProcessingController.prepareAutoQuotation().url, "auto.quotation"),
-							("icon-eye", routes.FormProcessingController.prepareQuotationRequest().url, "order")).zipWithIndex.map { case (value,index) => @quotation(value._1, value._2, value._3, index+1) }
+						@brand.map{ brand =>
+							<div class="image-container">
+								<img class="img-responsive" src="https://d1qsyzkyf147s1.cloudfront.net/assets/images/@brand.logo_url"></a>
+							</div>
+						}												
+												
+												
+					@List(("icon-line-pie-graph", routes.FormProcessingController.prepareAutoQuotationWithBrand(brand.map(_.getSeoName).orElse("unkwown")).url, "auto.quotation"),
+							("icon-eye", routes.FormProcessingController.prepareQuotationRequestWithBrand(brand.map(_.getSeoName).orElse("unkwown")).url, "order")).zipWithIndex.map { case (value,index) => @quotation(value._1, value._2, value._3, index+1) }
+							
+					<div class="heading-block topmargin-lg center">
+						<h2>@Html(Messages(formKey.toString+".quotation.alternative"))</h2>
+						<span class="divcenter">@Html(Messages(formKey.toString+".quotation.alternative.subtitle"))</span>
+					</div>
+					<div class="center">
+						<a href="@routes.HomeController.visit()" class="button button-3d button-dark button-large "><i class="icon-location"></i> @Html(Messages(formKey.toString+".visit.us"))</a>
+					</div>
+					
 						
 }
 }
