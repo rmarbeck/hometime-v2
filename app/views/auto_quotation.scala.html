@@ -353,14 +353,14 @@ $(document).ready(function(){
 								                  	@action
 								                  </div>
 								                  <div class="separator">
-								                    @Html(Messages(formKey+".action.alternative.separator"))
+								                    @Html(Messages(formKey.toString+".action.alternative.separator"))
 								                  </div>
 								                  <div class="action-alternative">
-								                    <a class="btn btn-outline-secondary noleftmargin" href="@routes.FormProcessingController.prepareCallBackRequest()" title="@Messages("global.text.call.request.title")"><i class="icon-line2-call-end"></i>&nbsp;&nbsp;@Html(Messages(formKey+".action.alternative"))</a>
+								                    <a class="btn btn-outline-secondary noleftmargin" href="@routes.FormProcessingController.prepareCallBackRequest()" title="@Messages("global.text.call.request.title")"><i class="icon-line2-call-end"></i>&nbsp;&nbsp;@Html(Messages(formKey.toString+".action.alternative"))</a>
 								                  </div>
 								            	</div>
 								            	@if(displayDisclaimer) {
-										        	@Html(Messages(formKey+".disclaimer.service.prices"))
+										        	@Html(Messages(formKey.toString+".disclaimer.service.prices"))
 										        }
 											</div>
 										</div>
@@ -377,7 +377,7 @@ $(document).ready(function(){
 						@List.range(1, 6).map{ value => 
 							<li role="tab" tabindex="@if(value==1) {0} else {-1}" class="ui-tabs-tab ui-corner-top ui-state-default ui-tab @if(value==1) {ui-tabs-active ui-state-active}" aria-controls="ptab@value" aria-labelledby="ui-id-@value" aria-selected=""@if(value==1) {true} else {false}" aria-expanded="@if(value==1) {true} else {false}">
 								<a href="#ptab@value" class="i-circled i-bordered i-alt divcenter ui-tabs-anchor" role="presentation" tabindex="-1" id="ui-id-@value">@value</a>
-								<h5>@Html(Messages(formKey+".process.step."+value))</h5>
+								<h5>@Html(Messages(formKey.toString+".process.step."+value))</h5>
 							</li>
 						}
 						</ul>
@@ -423,16 +423,16 @@ $(document).ready(function(){
 										@helper.textarea(form("privateInfos"))
 									}
 									
-									@result_block(Html(Messages(formKey+".quotation.header.service.prices")), Html(Messages(formKey+".quotation.body.service.prices")), false, "quotation") {
+									@result_block(Html(Messages(formKey.toString+".quotation.header.service.prices")), Html(Messages(formKey.toString+".quotation.body.service.prices")), false, "quotation") {
 									<button type="submit" class="btn btn-primary">@Html(Messages("auto.order.action.submit"))</button>
 									}
 									
-									@result_block(Html(Messages(formKey+".quartz.header.service.prices")), Html(Messages(formKey+".quartz.body.service.prices")), false, "quartz") {
+									@result_block(Html(Messages(formKey.toString+".quartz.header.service.prices")), Html(Messages(formKey.toString+".quartz.body.service.prices")), false, "quartz") {
 									<a class="btn btn-success" href="#" title="@Messages("auto.order.action.visit.us")">@Html(Messages("auto.order.action.visit.us"))</a>
 									}
 									
-									@result_block(Html(Messages(formKey+".header.contact")), Html(""), false, "contact") {
-									<span class="text-action">@Html(Messages(formKey+".body.contact"))</span>
+									@result_block(Html(Messages(formKey.toString+".header.contact")), Html(""), false, "contact") {
+									<span class="text-action">@Html(Messages(formKey.toString+".body.contact"))</span>
 									}
 	}		
 	

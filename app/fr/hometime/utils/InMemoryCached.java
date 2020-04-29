@@ -28,7 +28,7 @@ public class InMemoryCached<T> implements Cachable<T> {
 	
 	@Override
 	public Cachable<T> of(Supplier<T> supplier) {
-		logger.warn("Default duration for caching used : {} ms", validity.toMillis());
+		logger.info("Default duration for caching used : {} ms", validity.toMillis());
 		this.set(supplier);
 		return this;
 	}
@@ -50,7 +50,7 @@ public class InMemoryCached<T> implements Cachable<T> {
 
 	@Override
 	public void flush() {
-		log("Flushing cache");
+		logger.info("Flushing cache");
 		this.value = Optional.empty();
 		this.nextRefreshNeeded = Optional.empty();
 	}
@@ -62,12 +62,12 @@ public class InMemoryCached<T> implements Cachable<T> {
 	@Override
 	public boolean isValid() {
 		boolean result = nextRefreshNeeded.map(instant -> instant.isAfter(Instant.now())).orElse(false);
-		log("Checking cache for validity : it is "+ result);
+		logger.info("Checking cache for validity : it is "+ result);
 		return result;
 	}
 	
 	private void retrieveAndUpdateValue() {
-		log("Retreving and caching data");
+		logger.info("Retreving and caching data");
 		this.supplier.ifPresent(supplier -> {
 			T newValue = supplier.get();
 			if (newValue != null) {
@@ -81,7 +81,7 @@ public class InMemoryCached<T> implements Cachable<T> {
 	}
 	
 	private void log(String message) {
-		logger.error(message+" of type {}", getTypeOfClassCached());
+		logger.warn(message+" of type {}", getTypeOfClassCached());
 	}
 	
 	private String getTypeOfClassCached() {
