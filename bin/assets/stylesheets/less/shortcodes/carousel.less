@@ -103,6 +103,8 @@
 .owl-dots button {
 	cursor: pointer;
 	cursor: hand;
+	padding: 0;
+	border: 0;
 	-webkit-user-select: none;
 	-khtml-user-select: none;
 	-moz-user-select: none;
@@ -298,8 +300,8 @@
 			zoom: 1;
 			margin-top: 30px;
 			*display: inline;
-			span {
-				display: block;
+			//span {
+				//display: block;
 				width: 8px;
 				height: 8px;
 				margin: 0 4px;
@@ -309,10 +311,10 @@
 				-webkit-transition: all .3s ease;
 				-o-transition: all .3s ease;
 				transition: all .3s ease;
-			}
+			//}
 			&.active,
 			&:hover {
-				span { opacity: 1; }
+				opacity: 1;
 			}
 		}
 	}

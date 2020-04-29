@@ -1,0 +1,442 @@
+@(form: Form[AutoQuotationRequestData], brands: Optional[List[Brand]], brand: Optional[Brand])(implicit request: Http.Request, messages: play.i18n.Messages)
+
+@import scala.collection.immutable._
+@import tags._
+@import fr.hometime.utils._
+
+@implicitField = @{ helper.FieldConstructor(canvasFieldTemplate.f) }
+
+@*****************************************
+ * Keys
+ *****************************************@
+
+@formKey = {auto.quotation.form}
+
+@keyIncludingBrand = {@formKey.@brand.map(_.getInternalName).getOrElse("undefined")}
+
+@*****************************************
+ * Style Helpers
+ *****************************************@
+
+@inputDiv(size: Int, addedClass: String="")(content: Html) = {
+	<div class="col-md-@size form-group mb-4 @addedClass">
+		@content
+	</div>
+}
+
+@fullWidth(addedClass: String="")(content: Html) = {
+	@inputDiv(12, addedClass) {@content}
+}
+
+@halfWidth(addedClass: String="")(content: Html) = {
+	@inputDiv(6, addedClass) {@content}
+}
+
+@computeClassForInput(isRequired: Boolean, isInError: Boolean, args: (Symbol,Any)*) = {form-control @if(isRequired) {required} @if(isInError) {error} @args.toMap.get(Symbol("_body_class")).map(_.toString)}
+
+@selectLabelClassCss(size: Int) = {btn btn-outline-secondary px-@size t600 ls0 nott}
+
+@*****************************************
+ * End of Style Helpers
+ *****************************************@
+ 
+ @*****************************************
+ * Form Helpers
+ *****************************************@
+
+@computeMessageKey(fieldName: String, suffix: String) = {@{formKey}.@{fieldName.toString.toLowerCase.replace('_','.')}.@{suffix}}
+
+@inputText(fieldName: String, isRequired: Boolean, isInError: Boolean, args: (Symbol,Any)*) = {
+	@helper.inputText(form(fieldName), (Seq(Symbol("class") -> computeClassForInput(isRequired, isInError, args:_*).toString, Symbol("_showConstraints") -> false, Symbol("placeholder") -> Html(Messages(computeMessageKey(fieldName, "placeholder").toString)), Symbol("_label") -> Html(Messages(computeMessageKey(fieldName, "label").toString))) ++ args):_* )(tags.canvasFieldTemplate, messages)
+}
+
+@inputBox(fieldName: play.data.Form.Field, isRequired: Boolean, args: (Symbol,Any)*) = {
+	@halfWidth() {
+		@inputText(fieldName.name.get, isRequired, fieldName.hasErrors, args:_*)
+	}
+}
+
+@selectField(size: Int, id: String, name: String, value: Option[String], tuple: (String, play.twirl.api.Html), args: Map[Symbol,Any]) = {
+											<label for="@(id)_@tuple._1" class="@selectLabelClassCss(size) @if(value == Some(tuple._1)){active}">
+												<input type="radio" name="@name" id="@(id)_@tuple._1" autocomplete="off" value="@tuple._1" @if(value == Some(tuple._1)){checked="checked"} @toHtmlArgs(args)>@tuple._2</input>
+											</label>
+}
+
+@*****************************************
+ * End of Form Helpers
+ *****************************************@
+ 
+ 
+ 
+@end_script = {
+<script>
+$(document).ready(function(){
+    function resetToStep(stepNumber) {
+		if (stepNumber <= 1)
+ 			$( '.movement-type' ).addClass('hidden');
+ 		if (stepNumber <= 2)
+ 			$( '.movement-complexity' ).addClass('hidden');
+ 		if (stepNumber <= 3)
+     		$( '.condition' ).addClass('hidden');
+	    if (stepNumber <= 4)
+	    	$( '.emergency' ).addClass('hidden');
+	    
+ 		$( '.result' ).addClass('hidden');
+
+
+ 		updateStepInHeader(stepNumber);
+    }
+    
+    function displayMovementTypeSelection() {
+    		$( '.movement-type' ).removeClass('hidden');
+     		$( '.movement-complexity' ).addClass('hidden');
+     		$( '.condition' ).addClass('hidden');
+     		$( '.emergency' ).addClass('hidden');
+     		scroller('.movement-type');
+     		
+     		updateStepInHeader(2);
+    }
+    
+    function displayMovementComplexitySelection() {
+     		$( '.movement-complexity' ).removeClass('hidden');
+     		$( '.condition' ).addClass('hidden');
+     		$( '.emergency' ).addClass('hidden');
+     		scroller('.movement-complexity');
+     		
+     		updateStepInHeader(3);
+    }
+    
+    function displayConditionSelection() {
+     		$( '.condition' ).removeClass('hidden');
+     		$( '.emergency' ).addClass('hidden');
+     		scroller('.condition');
+     		
+     		updateStepInHeader(4);
+    }
+    
+    function displayEmergencySelection() {
+     		$( '.emergency' ).removeClass('hidden');
+     		scroller('.emergency');
+     		
+     		updateStepInHeader(5);
+    }
+
+    function displayBatteryChange() {
+    	brandValue = $('#'+activeBrand).attr("data_quot").split(',');
+    	$('.resultbrand').html(activeBrandName);
+    	if (activeType == 'QUARTZ') {
+	    	$('#battery').html(brandValue[1]);
+	    	$('#water').html(brandValue[2]);
+    	}
+    	//ga('send', 'event', 'auto-order', 'battery-change-displayed', "brandValue[0]");
+    }
+    
+    function displayChoices() {
+    	brandValue = $('#'+activeBrand).attr("data_quot").split(',');
+    	$('.resultbrand').html(activeBrandName);
+    	if (activeType == 'QUARTZ') {
+	    	$('#lowerprice').html(brandValue[1]);
+	    	$('#higherprice').html(brandValue[2]);
+    	} else {
+    		factor = 100;
+    		if (activeEmergency == 'HIGH') {
+    			factor = brandValue[11];	
+    		}
+    		if (activeEmergency == 'LOW') {
+    			factor = brandValue[12];	
+    		}
+    		$('#lowerprice').html(roundValue(brandValue[3],factor));
+	    	$('#higherprice').html(roundValue(brandValue[4],factor));
+    		if(activeComplexity == 'CHRONO') {
+	    		$('#lowerprice').html(roundValue(brandValue[5],factor));
+	    		$('#higherprice').html(roundValue(brandValue[6],factor));
+    		}
+    		if(activeComplexity == 'GMT') {
+    			$('#lowerprice').html(roundValue(brandValue[7],factor));
+	    		$('#higherprice').html(roundValue(brandValue[8],factor));
+    		}
+    		if(activeComplexity == 'OTHER') {
+    			$('#lowerprice').html(roundValue(brandValue[9],factor));
+	    		$('#higherprice').html(roundValue(brandValue[10],factor));
+    		}
+    	}
+    	
+    	//ga('send', 'event', 'auto-order', 'quotation-displayed', "brandValue[0]");
+    }
+    
+    function roundValue(value, factor) {
+    	return Math.round( value * (factor/100) / 10 ) * 10;
+    }
+    
+    function displayResult() {
+    		updateStepInHeader(5);
+     		$( '.result' ).addClass('hidden');
+    		$( '.quotation' ).removeClass('hidden');
+     		displayChoices();
+     		$('#privateInfos').val($('#quotation-price').text().trim());
+     		scroller('.quotation');
+    }
+    
+    function displayQuartz() {
+    		updateStepInHeader(5);
+     		$( '.result' ).addClass('hidden');
+    		$( '.quartz' ).removeClass('hidden');
+     		displayBatteryChange();
+     		scroller('.quartz');
+    }
+    
+    function displayActionContact() {
+    		updateStepInHeader(5);
+     		$( '.result' ).addClass('hidden');
+    		$( '.contact' ).removeClass('hidden');
+    		scroller('.contact');
+    }
+    
+    function unknownSelectedForMovementType() {
+    		resetToStep(2);
+     		displayActionContact();
+    }
+    
+    function mecaValueSelectedForMovementType() {
+    		$( '.result' ).addClass('hidden');
+   			displayMovementComplexitySelection();
+    }
+    
+    function quartzValueSelectedForMovementType() {
+    		$( '.result' ).addClass('hidden');
+    		$( '.movement-complexity' ).addClass('hidden');
+   			displayConditionSelection();
+    }
+    
+    function unknownSelectedForMovementComplexity() {
+     		resetToStep(3);
+     		displayActionContact();
+    }
+    
+    function knownValueSelectedForMovementComplexity() {
+    		$( '.result' ).addClass('hidden');
+     		displayConditionSelection();
+    }
+    
+    function knownValueSelectedForWorkingCondition() {
+    		if (activeCondition == 'BROKEN') {
+    			$( '.emergency' ).addClass('hidden');
+    			displayActionContact();
+    		} else if (activeType == 'QUARTZ') {
+    			$( '.result' ).addClass('hidden');
+    			$( '.emergency' ).addClass('hidden');
+     			displayQuartz();
+     		} else {
+     			$( '.result' ).addClass('hidden');
+     			displayEmergencySelection();
+     		}
+    }
+    
+	function scroller(classToScrollTo) {
+	    var scrollOffset = 0;
+		if (window.matchMedia("(min-width: 768px)").matches) {
+			scrollOffset = -700;
+		} else {
+			scrollOffset = -100;
+		}
+    	$('html, body').animate({scrollTop: $(classToScrollTo).offset().top + scrollOffset }, 'slow');
+    }
+    
+    function updateStepInHeader(step) {
+    		var i;
+		    for (i = 1; i <= step; i++) {
+			    $('#ui-id-'+i).parent().removeClass('ui-tabs-active ui-state-active');
+			    $('#ui-id-'+i).parent().addClass('ui-tabs-active ui-state-active');
+		    }
+		    for (i = step + 1 ; i < 5; i++) {
+			    $('#ui-id-'+i).parent().removeClass('ui-tabs-active ui-state-active');
+		    }
+    }
+    
+
+    var activeBrand;
+    var activeBrandName;
+    var activeType;
+    var activeComplexity;
+    var activeCondition;
+    var activeEmergency;
+    
+    function manageBrandSelection() {
+    	if ($('#brand').find('option:selected').val() != "") {
+     		$('input[name="movementType"]').removeAttr("checked");
+     		$('input[name="movementComplexity"]').removeAttr("checked");
+     		$('input[name="workingCondition"]').removeAttr("checked");
+     		$('input[name="emergencyLevel"]').removeAttr("checked");
+     		activeBrand = $('#brand').find('option:selected').val();
+     		activeBrandName = $('#brand').find('option:selected').text();
+     		if (activeBrandName == 'Autre marque') {
+     			resetToStep(1);
+	     		displayActionContact();
+	     	} else {
+	     		$( '.result' ).addClass('hidden');
+	     	   	displayMovementTypeSelection();
+	     	}
+     	} else {
+     		$( '.result' ).addClass('hidden');
+    		resetToStep(1); 	
+     	}	
+    }
+        	
+	//$('h1').append(" - étape <span id='step-value'>1</span> sur <span id='step-out-of'>5</span>");
+    
+    resetToStep(1);
+    manageBrandSelection();
+	
+	$('#brand').change(function() {
+     	manageBrandSelection();																																															
+ 	});
+    
+    $('input[name="movementType"]').change(function() {
+		selected_value = $('input[name="movementType"]:checked').val();
+		$('input[name="movementComplexity"]').removeAttr("checked");
+		$('input[name="workingCondition"]').removeAttr("checked");
+     	$('input[name="emergencyLevel"]').removeAttr("checked");
+		if (selected_value == "UNKNOWN") {
+			unknownSelectedForMovementType();
+        } else if ( selected_value == "QUARTZ" ) {
+        	$( '.result' ).addClass('hidden');
+        	activeType = selected_value;
+        	quartzValueSelectedForMovementType()
+        } else {
+        	$( '.result' ).addClass('hidden');;
+        	activeType = selected_value;
+        	mecaValueSelectedForMovementType()
+        }
+    });
+    
+    $('input[name="movementComplexity"]').change(function(){
+    		selected_value = $('input[name="movementComplexity"]:checked').val();
+    		$('input[name="workingCondition"]').removeAttr("checked");
+     		$('input[name="emergencyLevel"]').removeAttr("checked");
+    		if (selected_value == "UNKNOWN") {
+    			unknownSelectedForMovementComplexity();
+            } else {
+            	activeComplexity = selected_value;
+            	knownValueSelectedForMovementComplexity()
+            }
+    });
+    
+    $('input[name="workingCondition"]').change(function(){
+    		selected_value = $('input[name="workingCondition"]:checked').val();
+    		$('input[name="emergencyLevel"]').removeAttr("checked");
+    		activeCondition = selected_value;
+           	knownValueSelectedForWorkingCondition()
+    });
+    
+    $('input[name="emergencyLevel"]').change(function(){
+    		selected_value = $('input[name="emergencyLevel"]:checked').val();
+    		activeEmergency = selected_value;
+    		if (selected_value == 'VERY_HIGH') {
+    			displayActionContact();
+    		} else {
+    			displayResult();
+    		}
+    });
+         
+})
+</script>
+}
+
+@result_block(title: Html, body: Html, displayDisclaimer: Boolean, cssCass: String = "")(action : Html) = {
+									<div class="col-12 mt-2 mb-3 result hidden @cssCass">
+										<div class="card p-3 bg-light text-center">
+											<div class="my-forms">
+												<h3 class="mb-2 auto-quotation-result-title">@title</h3>
+												<div class="auto-quotation-result-title-body">@body</div>
+												<div class="auto-quotation-result-actions form-group">
+								                  <div class="main-action">
+								                  	@action
+								                  </div>
+								                  <div class="separator">
+								                    @Html(Messages(formKey+".action.alternative.separator"))
+								                  </div>
+								                  <div class="action-alternative">
+								                    <a class="btn btn-outline-secondary noleftmargin" href="@routes.FormProcessingController.prepareCallBackRequest()" title="@Messages("global.text.call.request.title")"><i class="icon-line2-call-end"></i>&nbsp;&nbsp;@Html(Messages(formKey+".action.alternative"))</a>
+								                  </div>
+								            	</div>
+								            	@if(displayDisclaimer) {
+										        	@Html(Messages(formKey+".disclaimer.service.prices"))
+										        }
+											</div>
+										</div>
+									</div>
+}
+
+@defining(brand.map(b => b.display_name).orElse(Messages(keyIncludingBrand.toString+".brand.name"))) { brandName =>
+@defining(
+	Messages(formKey.toString+".html.title", brandName),
+	Messages(formKey.toString+".html.description", brandName, Messages(keyIncludingBrand.toString+".brand.models")),
+	Messages(formKey.toString+".html.keywords", brandName, Messages(keyIncludingBrand.toString+".brand.models"))) { case (title, description, keywords) =>
+@layouts.main_helper_with_head_block(formKey.toString, Symbol("_html_title") -> title, Symbol("_html_description") -> description, Symbol("_html_keywords") -> keywords, Symbol("_head_intro_key") -> Messages(formKey.toString+".head.intro", brandName), Symbol("_end_script") -> end_script){
+						<ul class="d-none d-md-block process-steps process-5 bottommargin clearfix ui-tabs-nav ui-corner-all ui-helper-reset ui-helper-clearfix ui-widget-header " role="tablist">
+						@List.range(1, 6).map{ value => 
+							<li role="tab" tabindex="@if(value==1) {0} else {-1}" class="ui-tabs-tab ui-corner-top ui-state-default ui-tab @if(value==1) {ui-tabs-active ui-state-active}" aria-controls="ptab@value" aria-labelledby="ui-id-@value" aria-selected=""@if(value==1) {true} else {false}" aria-expanded="@if(value==1) {true} else {false}">
+								<a href="#ptab@value" class="i-circled i-bordered i-alt divcenter ui-tabs-anchor" role="presentation" tabindex="-1" id="ui-id-@value">@value</a>
+								<h5>@Html(Messages(formKey+".process.step."+value))</h5>
+							</li>
+						}
+						</ul>
+	@helper.form(action = routes.FormProcessingController.processAutoQuotation(), Symbol("id") -> "website-cost", Symbol("class") -> "row mb-0") {
+		<div id="data">
+	        @for(s <- brands.get) {
+	      	<div id="@s.id" data_quot='@s.display_name@PriceHelper.getPricesForAutoOrder(s)'></div>
+	      	}
+	    </div>  
+	
+			@helper.CSRF.formField
+									<div class="form-process"></div>
+									
+									@fullWidth("step1") {
+										@helper.select(form("brand"), options = brands.get().map(brand => (brand.id.toString, brand.display_name)).toSeq, Symbol("_class") -> "not-clickable", Symbol("class") -> computeClassForInput(true, form("brand").hasErrors, Symbol("_body_class") -> "").toString, Symbol("_default") -> Html(Messages(computeMessageKey("brand", "default").toString)), Symbol("_label") -> Html(Messages(computeMessageKey("brand", "label").toString)), Symbol("_showConstraints") -> false)
+									}
+	
+									@fullWidth("my-forms movement-type") {
+										@helper.input(form("movementType"), Symbol("_class") -> "mb-3 not-clickable", Symbol("_label") -> Html(Messages(computeMessageKey("movement.type", "label").toString)), Symbol("_showConstraints") -> false) { (id, name, value, args) =>
+												@AutoQuotationRequestData.MovementTypes.values.map(value => (value.toString, Html(Messages(formKey.toString+"."+value.toString.toLowerCase.replace('_','.')+".movement.type")))).toSeq.map { v => @selectField(5, id, name, value, v, args) }
+										}(tags.canvasRadioGroupBoxedFieldTemplate, messages)
+									}
+									
+									@fullWidth("my-forms movement-complexity") {
+										@helper.input(form("movementComplexity"), Symbol("_class") -> "mb-3 not-clickable", Symbol("_label") -> Html(Messages(computeMessageKey("movement.complexity", "label").toString)), Symbol("_showConstraints") -> false) { (id, name, value, args) =>
+												@AutoQuotationRequestData.MovementComplexity.values.map(value => (value.toString, Html(Messages(formKey.toString+"."+value.toString.toLowerCase.replace('_','.')+".movement.complexity")))).toSeq.map { v => @selectField(5, id, name, value, v, args) }
+										}(tags.canvasRadioGroupBoxedFieldTemplate, messages)
+									}
+									
+									@fullWidth("my-forms condition") {
+										@helper.input(form("workingCondition"), Symbol("_class") -> "mb-3 not-clickable", Symbol("_label") -> Html(Messages(computeMessageKey("working.condition", "label").toString)), Symbol("_showConstraints") -> false) { (id, name, value, args) =>
+												@AutoQuotationRequestData.WorkingCondition.values.map(value => (value.toString, Html(Messages(formKey.toString+"."+value.toString.toLowerCase.replace('_','.')+".working.condition")))).toSeq.map { v => @selectField(5, id, name, value, v, args) }
+										}(tags.canvasRadioGroupBoxedFieldTemplate, messages)
+									}
+									
+									@fullWidth("my-forms emergency") {
+										@helper.input(form("emergencyLevel"), Symbol("_class") -> "mb-3 not-clickable", Symbol("_label") -> Html(Messages(computeMessageKey("emergency.level", "label").toString)), Symbol("_showConstraints") -> false) { (id, name, value, args) =>
+												@AutoQuotationRequestData.EmergencyLevel.values.map(value => (value.toString, Html(Messages(formKey.toString+"."+value.toString.toLowerCase.replace('_','.')+".emergency.level")))).toSeq.map { v => @selectField(5, id, name, value, v, args) }
+										}(tags.canvasRadioGroupBoxedFieldTemplate, messages)
+									}
+									
+									@fullWidth("hidden") {
+										@helper.textarea(form("privateInfos"))
+									}
+									
+									@result_block(Html(Messages(formKey+".quotation.header.service.prices")), Html(Messages(formKey+".quotation.body.service.prices")), false, "quotation") {
+									<button type="submit" class="btn btn-primary">@Html(Messages("auto.order.action.submit"))</button>
+									}
+									
+									@result_block(Html(Messages(formKey+".quartz.header.service.prices")), Html(Messages(formKey+".quartz.body.service.prices")), false, "quartz") {
+									<a class="btn btn-success" href="#" title="@Messages("auto.order.action.visit.us")">@Html(Messages("auto.order.action.visit.us"))</a>
+									}
+									
+									@result_block(Html(Messages(formKey+".header.contact")), Html(""), false, "contact") {
+									<span class="text-action">@Html(Messages(formKey+".body.contact"))</span>
+									}
+	}		
+	
+
+}
+}
+}

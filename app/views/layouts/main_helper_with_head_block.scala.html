@@ -9,7 +9,7 @@
 	getStringByKey("_html_title", "html.title").toString,
 	getStringByKey("_html_description", "html.description").toString,
 	getStringByKey("_html_keywords", "html.keywords").toString) { case (title, description, keywords) =>
-@layouts.main(key, title, description, keywords) {
+@layouts.main(key, title, description, keywords, forcedValues:_*) {
 	@layouts.fragments.canvas_with_header_and_disclaimer(key, forcedValues:_*)(content)
 	}
 }

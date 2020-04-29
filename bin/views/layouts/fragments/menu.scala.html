@@ -15,47 +15,53 @@
 					
 	@{ 
 		mainMenu.add(
-			Menu.of("offer.main", Optional.empty(), Optional.empty(), Optional.of("icon-stack"))
+			Menu.of("offer.main", Optional.empty(), Optional.empty(), Optional.of("icon-line-watch"))
 				.addSubMenu("offer", Optional.of(routes.HomeController.offers().url), Optional.empty(), Optional.empty())
-				.addSubMenu("offer.service", Optional.of(routes.HomeController.offers().url), Optional.empty(), Optional.empty())
-				.getParentIfExists()
-				.addSubMenu("offer.restore", Optional.of(routes.HomeController.offers().url+"#offer.restore"), Optional.empty(), Optional.empty())
-				.getParentIfExists()
-				.addSubMenu("offer.quartz", Optional.of(routes.HomeController.offers().url+"#offer.quartz"), Optional.empty(), Optional.empty())
-				.getParentIfExists()
-				.getParentIfExists()
+					.addSubMenu("offer.service", Optional.of(routes.HomeController.offers().url), Optional.empty(), Optional.empty())
+						.getParentIfExists()
+					.addSubMenu("offer.restore", Optional.of(routes.HomeController.offers().url+"#offer.restore"), Optional.empty(), Optional.empty())
+						.getParentIfExists()
+					.addSubMenu("offer.quartz", Optional.of(routes.HomeController.offers().url+"#offer.quartz"), Optional.empty(), Optional.empty())
+						.getParentIfExists()
+					.getParentIfExists()
 				.addSubMenu("prices", Optional.of("index-portfolio.html"), Optional.empty(), Optional.empty())
-				.getParentIfExists()
+					.getParentIfExists()
 				.addSubMenu("extra", Optional.of("index-portfolio.html"), Optional.empty(), Optional.empty())
-				.getParentIfExists()
-				.addSubMenu("feedbacks", Optional.of("index-portfolio.html"), Optional.empty(), Optional.empty())
+					.getParentIfExists()
+				.addSubMenu("feedbacks", Optional.of(routes.HomeController.feedbacks().url), Optional.empty(), Optional.empty())
 				.getHighestParentIfExists());
 				
 		mainMenu.add(
-			Menu.of("Achat montres", Optional.of("index.html"), Optional.empty(), Optional.empty())
-				.addSubMenu("Home - Corporate", Optional.of("index-corporate.html"), Optional.empty(), Optional.empty())
-					.addSubMenu("Corporate - Layout 1", Optional.of("index-corporate.html"), Optional.empty(), Optional.empty())
+			Menu.of("watch.dealing.main", Optional.empty(), Optional.empty(), Optional.of("icon-exchange-alt"))
+				.addSubMenu("watch.purchasing", Optional.of("#"), Optional.empty(), Optional.empty())
 					.getParentIfExists()
-				.getParentIfExists()
-				.addSubMenu("Home - Portfolio", Optional.of("index-portfolio.html"), Optional.empty(), Optional.empty())
+				.addSubMenu("watch.selling", Optional.of("#"), Optional.empty(), Optional.empty())
+					.getParentIfExists()
+				.addSubMenu("watch.estimate", Optional.of("#"), Optional.empty(), Optional.empty())
+					.getParentIfExists()
 				.getHighestParentIfExists());
 				
 		mainMenu.add(
-			Menu.of("service.main", Optional.empty(), Optional.empty(), Optional.empty())
-				.addSubMenu("service.why", Optional.of(routes.HomeController.content("entretien").url), Optional.empty(), Optional.empty())
-					.addSubMenu("Corporate - Layout 1", Optional.of("index-corporate.html"), Optional.empty(), Optional.empty())
+			Menu.of("service.main", Optional.empty(), Optional.empty(), Optional.of("icon-wrench"))
+				.addSubMenu("service.main.content", Optional.empty(), Optional.empty(), Optional.empty())
+					.addSubMenu("service.main.content.all", Optional.of(routes.HomeController.content("content.service.repairing").url), Optional.empty(), Optional.empty())
+						.getParentIfExists()
+					.addSubMenu("service.main.content.rolex", Optional.of(routes.HomeController.content("content.rolex.repairing").url), Optional.empty(), Optional.empty())
+						.getParentIfExists()
+					.addSubMenu("service.main.content.omega", Optional.of(routes.HomeController.content("content.omega.repairing").url), Optional.empty(), Optional.empty())
+						.getParentIfExists()
 					.getParentIfExists()
-				.getParentIfExists()
-				.addSubMenu("Home - Portfolio", Optional.of("index-portfolio.html"), Optional.empty(), Optional.empty())
+				.addSubMenu("service.main.content.water", Optional.of("/perma/water"), Optional.empty(), Optional.empty())
+					.getParentIfExists()
+				.addSubMenu("service.main.news", Optional.of(routes.HomeController.news().url), Optional.empty(), Optional.empty())
+						.getParentIfExists()
+				.addSubMenu("service.main.content.authenticating", Optional.of("/perma/authent"), Optional.empty(), Optional.empty())
+					.getParentIfExists()	
+				.addSubMenu("service.main.content.watchmakers", Optional.of("/perma/horlogers"), Optional.empty(), Optional.empty())
 				.getHighestParentIfExists());
 				
 		mainMenu.add(
-			Menu.of("Venir nous voir", Optional.of("index.html"), Optional.of("d-lg-none d-xl-block"), Optional.of("icon-time"))
-				.addSubMenu("Home - Corporate", Optional.of("index-corporate.html"), Optional.empty(), Optional.empty())
-					.addSubMenu("Corporate - Layout 1", Optional.of("index-corporate.html"), Optional.empty(), Optional.empty())
-					.getParentIfExists()
-				.getParentIfExists()
-				.addSubMenu("Home - Portfolio", Optional.of("index-portfolio.html"), Optional.empty(), Optional.empty())
+			Menu.of("visit.us", Optional.of(routes.HomeController.visit().url), Optional.of("d-lg-none d-xl-block"), Optional.of("icon-location"))
 				.getHighestParentIfExists());
 				
 		
@@ -63,7 +69,7 @@
 	}
 					<!-- Primary Navigation
 					============================================= -->
-					<nav id="primary-menu" class="not-dark">
-						@displayMenu(mainMenu, messageKey,4)				
+					<nav id="primary-menu" class="not-dark style-5">
+						@displayMenu(mainMenu, messageKey,4)
 					</nav><!-- #primary-menu end -->
 }

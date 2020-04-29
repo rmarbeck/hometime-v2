@@ -68,13 +68,16 @@ public class InMemoryCached<T> implements Cachable<T> {
 	
 	private void retrieveAndUpdateValue() {
 		log("Retreving and caching data");
-		T newValue = (this.supplier.get()).get();
-		if (newValue != null) {
-			this.value = Optional.of(newValue);
-			this.nextRefreshNeeded = Optional.of(Instant.now().plus(validity));
-		} else {
-			log("Retrieved value is null, no update");	
-		}
+		this.supplier.ifPresent(supplier -> {
+			T newValue = supplier.get();
+			if (newValue != null) {
+				this.value = Optional.of(newValue);
+				this.nextRefreshNeeded = Optional.of(Instant.now().plus(validity));
+			} else {
+				log("Retrieved value is null, no update");	
+			}	
+		});
+		log("Unable to retrieve a way to get the value, no update");	
 	}
 	
 	private void log(String message) {

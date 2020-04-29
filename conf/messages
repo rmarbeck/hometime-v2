@@ -361,6 +361,27 @@ home.auto.order.links.by.brand.title=Obtenez le tarif de l''entretien d''une mon
 home.auto.order.links.by.brand=Devis interactif révision {0}
 
 
+home.auto.quotation.title=Devis interactif
+home.auto.quotation.subtitle=En 5 étapes, évaluez le coût de l''entretien de votre montre.
+home.auto.quotation.promise.1=Devis immédiat
+home.auto.quotation.promise.2=Prix et délais approximatifs
+home.auto.quotation.promise.3=24h/24
+
+home.order.title=Devis prévisionnel
+home.order.subtitle=Nos horlogers analysent votre besoin et vous répondent.
+home.order.promise.1=Devis détaillé
+home.order.promise.2=Un horloger vous répond
+home.order.promise.3=Sous 48h maximum
+
+home.local.title=Devis définitif
+home.local.subtitle=Sur place, nous établissons un devis ferme montre en main.
+home.local.promise.1=Nous auscultons votre montre
+home.local.promise.2=Le devis est gratuit
+home.local.promise.3=Il nous engage
+
+
+
+
 home.text.what.is.it=Hometime, qu''est-ce que c''est&nbsp;?
 home.what.is.it.1.body=Hometime propose tous les services horlogers partout en France avec des solutions adaptées à chacun. 
 home.what.is.it.2.body=Nous disposons de nos horlogers et par ailleurs nous sélectionnons les meilleurs acteurs du marché pour vous apporter tous nos services : entretien, essai, achat, vente.
@@ -531,7 +552,60 @@ page.faq.content.16.answer=Nous sommes joignables au 07&nbsp;82&nbsp;43&nbsp;47&
 
 
 
+#------ Auto quotation form ------------------
+#------ auto.quotation.form
+auto.quotation.form.html.title=Devis pour l''entretien d''une montre {0}
+auto.quotation.form.html.description=Formulaire de devis interactif immédiat pour révision, réparation ou restauration d''une montre à quartz, automatique ou manuelle {0}, différents modèles  {1}.
+auto.quotation.form.html.keywords=devis interactif, devis gratuit,devis en ligne, entretien, horloger agréé, évaluation, horloger indépendant, révision, réparation, montre, paris, yvelines, hauts de seine, {0}, {1}
 
+
+auto.quotation.form.head=Devis interactif immédiat
+auto.quotation.form.head.subtitle=Votre devis en quelques clics&nbsp;!
+auto.quotation.form.head.intro=
+auto.quotation.form.disclaimer=En quelques étapes, estimez vous même le tarif de révision ou de réparation de votre montre, que celle-ci soit une montre mécanique à remontage manuel ou à remontage automatique, ou bien une montre à quartz. Dans certains cas, nous vous proposerons de nous contacter pour plus de précision dans l''estimation de l''entretien de votre montre.
+
+
+auto.quotation.form.brand.label=Quelle est la marque de votre montre&nbsp;?
+auto.quotation.form.brand.default=Sélectionnez la marque de votre montre
+auto.quotation.form.movement.type.label=Type de mouvement
+auto.quotation.form.manual.movement.type=Remontage manuel
+auto.quotation.form.auto.movement.type=Remontage automatique
+auto.quotation.form.quartz.movement.type=Fonctionnement à pile
+auto.quotation.form.unknown.movement.type=Je ne sais pas
+auto.quotation.form.movement.complexity.label=Type de montre
+auto.quotation.form.two.or.three.hands.movement.complexity=Simple (2 ou 3 aiguilles)
+auto.quotation.form.chrono.movement.complexity=Chronographe
+auto.quotation.form.gmt.movement.complexity=GMT
+auto.quotation.form.other.movement.complexity=Avec plusieurs fonctions complexes
+auto.quotation.form.unknown.movement.complexity=Je ne sais pas
+auto.quotation.form.working.condition.label=Etat de la montre
+auto.quotation.form.working.working.condition=Fonctionne<br /><small>peut retarder ou avancer</small>
+auto.quotation.form.not.working.working.condition=Arrêtée<br /><small>sans casse apparente</small>
+auto.quotation.form.broken.working.condition=Cassée<br /><small>des pièces sont endommagées</small>
+auto.quotation.form.emergency.level.label=Niveau d''urgence
+auto.quotation.form.normal.emergency.level=Normale
+auto.quotation.form.high.emergency.level=Urgent (environ 1 semaine)
+auto.quotation.form.very.high.emergency.level=Très urgent (moins de 48h)
+auto.quotation.form.low.emergency.level=Pas de contrainte
+
+auto.quotation.form.action.alternative.separator=Vous préférez que nous vous rappelions&nbsp;?
+
+auto.quotation.form.process.step.1=Marque
+auto.quotation.form.process.step.2=Type
+auto.quotation.form.process.step.3=Complexité
+auto.quotation.form.process.step.4=Fonctionnement
+auto.quotation.form.process.step.5=Urgence
+
+auto.quotation.form.action.alternative=Etre rappelé
+
+auto.quotation.form.quotation.header.service.prices=<b>Pour les montres <span class="resultbrand"></span>, le tarif de révision complète est habituellement :</b>
+auto.quotation.form.quotation.body.service.prices=<span id="quotation-price">compris entre <strong><span id="lowerprice"></span>€</strong> et <strong><span id="higherprice"></span>€</strong> avec des travaux garantis pendant 1 an (2 ans pour l''étanchéité si applicable)</span>
+
+auto.quotation.form.quartz.header.service.prices=<b>Pour les montres <span class="resultbrand"></span>, le tarif d''entretien partiel est le suivant :</b>
+auto.quotation.form.quartz.body.service.prices=<strong><span id="battery">{0}</span>€</strong> pour changement de pile, <strong><span id="water">{1}</span>€</strong> avec étanchéité garantie 2 ans
+
+auto.quotation.form.header.contact=<b>Dans ce cas de figure, nous vous invitons à prendre contact avec nous pour évaluer notre capacité à vous aider :</b>
+auto.quotation.form.body.contact=Par email à l''adresse suivante : <a href="mailto:contact@hometime.fr">contact@hometime.fr</a> ou bien en nous appelant au <b>07&nbsp;82&nbsp;43&nbsp;47&nbsp;51</b>
 
 #------ Water Repairing page ------------------
 #------ content.water.repairing

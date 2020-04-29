@@ -11,6 +11,7 @@ import fr.hometime.utils.JsonLocalFileProviderImpl;
 import fr.hometime.utils.JsonWSProvider;
 import fr.hometime.utils.JsonWSProviderImpl;
 import fr.hometime.utils.NewsProvider;
+import fr.hometime.utils.PriceProvider;
 import fr.hometime.utils.StaticNewsProvider;
 import models.Brand;
 import models.Feedback;
@@ -30,6 +31,7 @@ public class Module extends AbstractModule {
 		bind(new TypeLiteral<Cachable<List<Brand>>>() {}).to(new TypeLiteral<InMemoryCached<List<Brand>>>() {});
 		bind(new TypeLiteral<Cachable<List<Feedback>>>() {}).to(new TypeLiteral<InMemoryCached<List<Feedback>>>() {});
 		bind(new TypeLiteral<Cachable<List<Price>>>() {}).to(new TypeLiteral<InMemoryCached<List<Price>>>() {});
+		bind(PriceProvider.class).to(CachedMultiSourceDataProvider.class);
 		bind(BrandProvider.class).to(CachedMultiSourceDataProvider.class);
 		bind(FeedbackProvider.class).to(CachedMultiSourceDataProvider.class);
 		bind(NewsProvider.class).to(StaticNewsProvider.class);

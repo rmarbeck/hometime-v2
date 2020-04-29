@@ -1,5 +1,7 @@
 package controllers;
 
+import java.util.Optional;
+
 import javax.inject.Inject;
 
 import fr.hometime.utils.BrandProvider;
@@ -73,6 +75,11 @@ public class HomeController extends Controller {
     public Result quotationOptions(Http.Request request) {
     	Messages messages = messagesApi.preferred(request);
         return ok(views.html.quotation_options.render(request, messages));
+    }
+    
+    public Result chooseQuotation(Http.Request request) {
+    	Messages messages = messagesApi.preferred(request);
+        return ok(views.html.choose_quotation.render(brandProvider.retrieveSupportedBrandsOrderedByInternalName(), Optional.empty(), request, messages));
     }
     
     public Result content(Http.Request request, String key) {

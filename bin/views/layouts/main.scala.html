@@ -1,23 +1,25 @@
 @*
  * Main template
  *@
-@(key: String, title: String, description: String = "", keywords: String = "")(content: Html)(implicit messages: play.i18n.Messages)
+@(key: String, title: String, description: String, keywords: String, args: (Symbol, Any)*)(content: Html)(implicit request: Http.Request, messages: play.i18n.Messages)
 
 @import scala.collection.immutable._
 
 <!DOCTYPE html>
 <html dir="ltr" lang="en-US">
 <head>
-	@layouts.fragments.main_head(title, description, keywords)(Html(""))(Html(""))
+	@layouts.fragments.main_head(title, description, keywords)(Html(""))(Html(""))(request, messages)
 </head>
 
-<body class="stretched @key">
+<body class="stretched @key.replace(".", "-")">
 
 	<!-- Document Wrapper
 	============================================= -->
 	<div id="wrapper" class="clearfix">
 		
 		@layouts.fragments.main_alert_bar()
+		
+		@layouts.fragments.main_flash_bar()(request, messages)
 
 		@layouts.fragments.main_top_bar()
 
@@ -25,7 +27,7 @@
 
 		@content
 			
-		@layouts.fragments.footer()
+		@layouts.fragments.footer()(request, messages)
 
 	</div><!-- #wrapper end -->
 
@@ -42,6 +44,10 @@
 	<!-- Footer Scripts
 	============================================= -->
 	<script src="@routes.Assets.versioned("js/functions.js")"></script>
+	<script src="@routes.Assets.versioned("js/site-wise-custom.js")"></script>
+	<script src="@routes.Assets.versioned("js/lazysizes.min.js")"></script>
+	
+	args.toMap.get(Symbol("_end_script")).map(_)
 
 </body>
 </html>

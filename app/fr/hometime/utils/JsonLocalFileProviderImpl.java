@@ -26,7 +26,7 @@ public class JsonLocalFileProviderImpl implements JsonLocalFileProvider, JsonLis
 	public JsonLocalFileProviderImpl() {
         this.brandFile = "conf/brands-default.json";
         this.feedbacksFile = "conf/feedbacks-default.json";
-        this.pricesFile = "file://";
+        this.pricesFile = "conf/prices-default.json";
 	}
 	
 	public JsonLocalFileProviderImpl of() {

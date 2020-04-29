@@ -20,12 +20,15 @@ import com.fasterxml.jackson.databind.JsonNode;
 import com.typesafe.config.Config;
 
 import fr.hometime.utils.BrandProvider;
+import fr.hometime.utils.NewsProvider;
+import fr.hometime.utils.PriceProvider;
 import fr.hometime.utils.WebserviceHelper;
 import play.data.Form;
 import play.data.FormFactory;
 import play.i18n.MessagesApi;
 import play.mvc.*;
 import play.libs.ws.*;
+import models.AutoQuotationRequestData;
 import models.Brand;
 import models.BuyRequestData;
 import models.CallBackRequestData;
@@ -48,16 +51,21 @@ public class FormProcessingController extends Controller implements WSBodyReadab
 	private MessagesApi messagesApi;
 	private FormFactory formFactory;
 	private BrandProvider brandProvider;
+	private PriceProvider priceProvider;
 	private final WSClient ws;
 	private final Config config;
 	
-	private final Logger logger = LoggerFactory.getLogger(getClass()) ;
+	public static PriceProvider injectedPriceProvider;
+	
+	private final Logger logger = LoggerFactory.getLogger(getClass());
 	
 	@Inject
-    public FormProcessingController(FormFactory formFactory, MessagesApi messagesApi, WSClient ws, BrandProvider brandProvider, Config config) {
+    public FormProcessingController(FormFactory formFactory, MessagesApi messagesApi, WSClient ws, BrandProvider brandProvider, PriceProvider priceProvider, Config config) {
         this.formFactory = formFactory;
         this.messagesApi = messagesApi;
         this.brandProvider = brandProvider;
+        this.priceProvider = priceProvider;
+        this.injectedPriceProvider = priceProvider;
         this.ws = ws;
         this.config = config;
     }
@@ -156,6 +164,40 @@ public class FormProcessingController extends Controller implements WSBodyReadab
 			CompletionStage<? extends WSResponse> responsePromise = wsWithSecret("https://www.hometime.fr/new-service-test-from-outside").setContentType("application/x-www-form-urlencoded").post(request.body().asFormUrlEncoded().entrySet().stream().map(entry -> flattenValues(entry.getKey(), entry.getValue(), "&")).collect( Collectors.joining( "&" )));
 			return responsePromise.handle((response, error) -> handleJsonFormResponse(response, error, request, "service.test"));
 		}
+	}
+	
+	/*************************************
+	 * 
+	 * Auto Request Management
+	 * 
+	 *************************************/
+	
+	public Result prepareAutoQuotation(Http.Request request) {
+		return preparedAutoQuotation(request, Optional.empty());
+	}
+	
+	public Result prepareAutoQuotationWithBrand(Http.Request request, String brandSeoName) {
+		return preparedAutoQuotation(request, Optional.of(brandSeoName));
+	}
+	
+	public Result processAutoQuotation(Http.Request request) {
+		final Form<AutoQuotationRequestData> boundForm = formFactory.form(AutoQuotationRequestData.class).withDirectFieldAccess(true).bindFromRequest(request);
+		Optional<String> brandSeoName = brandProvider.getBrandById(Long.parseLong(boundForm.get().brand)).map(Brand::getSeoName);
+		return preparedQuotation(request, brandSeoName, Optional.of(SERVICE_ORDER_TYPE));
+	}
+	
+	private Result preparedAutoQuotation(Http.Request request, Optional<String> brandSeoName) {
+		return ok(views.html.auto_quotation.render(fillAutoQuotationRequestWithDefaultData(brandSeoName), brandProvider.retrieveBrandsOrderedByName(), getBrand(brandSeoName), request, messagesApi.preferred(request)));
+	}
+	
+	private Form<AutoQuotationRequestData> fillAutoQuotationRequestWithDefaultData(Optional<String> brandSeoName) {
+		AutoQuotationRequestData requestPrefilledIfNeeded = new AutoQuotationRequestData();
+		brandSeoName.ifPresent(seoName -> {
+			Optional<Brand> brandFound = brandProvider.getBrandBySeoName(seoName);
+			brandFound.ifPresent(brand -> requestPrefilledIfNeeded.brand = brand.id.toString());
+		});
+
+		return formFactory.form(AutoQuotationRequestData.class).withDirectFieldAccess(true).fill(requestPrefilledIfNeeded);
 	}
 	
 	/*************************************
@@ -259,6 +301,7 @@ public class FormProcessingController extends Controller implements WSBodyReadab
 			guessTypeOfOrderFromRequest(request).ifPresent(orderType -> requestPrefilledIfNeeded.orderType = orderType);
 		}
 		requestPrefilledIfNeeded.method = QuotationRequestData.METHOD_LOCAL;
+		requestPrefilledIfNeeded.privateInfos = formFactory.form().bindFromRequest(request).get("privateInfos");
 		return getQuotationRequestForm().fill(requestPrefilledIfNeeded);
 	}
 	
