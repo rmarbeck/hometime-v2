@@ -1436,6 +1436,46 @@ more.accessories.nato.alt=Bracelet nato
 more.accessories.box.alt=Boite à montre
 more.accessories.winder.alt=Remontoir à montre
 
+#------ Prices page ------------------
+#------ page.prices
+page.prices.html.title=Les tarifs
+page.prices.html.description=Liste des tarifs des prestations pour intervention sur Paris et proche banlieue.
+page.prices.html.keywords=tarifs, prix, devis, paris, yvelines, hauts de seine
+page.prices.head=Tarifs d''entretien
+page.prices.head.subtitle=Les prix des prestations Hometime
+page.prices.head.intro=Nos tarifs de révision et de réparation sont présentés sous forme de fourchette car un nombre important de facteurs peut faire varier la durée et la complexité de la prestation.\
+ Dès la prise de contact avec vous, nous vous fournirons une évaluation beaucoup plus précise à partir des informations que vous nous donnerez.
+
+page.prices.visit.us=Venir nous voir
+page.prices.quotation.request=Demander un devis
+
+page.prices.meca.head=Les tarifs pour les montres mécaniques
+page.prices.table.body.service=Révision complète
+page.prices.table.body.watch.of.category=Montres de catégorie {0}
+page.prices.table.body.service.prices=Entre <strong>{0}</strong> et <strong>{1}</strong>
+page.prices.table.body.service.details=Les prix indiqués correspondent aux prix moyens constatés. Le prix dépend de votre choix de faire réviser la montre par un horloger généraliste ou par le réseau de la marque et sera détaillé dans un <a href="{0}">devis personnalisé</a>.
+page.prices.table.body.repair=Réparation
+page.prices.table.body.repair.prices=Sur devis gratuit uniquement.
+page.prices.table.body.intermediate.service=Entretien intermédiaire
+page.prices.table.body.intermediate.service.prices=L''entretien intermédiaire inclut un contrôle de la marche, un polissage et l''étanchéité, les tarifs sont compris entre <strong>{0}</strong> et <strong>{1}</strong>.
+page.prices.table.body.soft.service=Simple réglage ou démagnétisation
+page.prices.table.body.soft.service.prices=Les prix sont fournis sur devis, mais des tarifs compris entre <strong>{0}</strong> et <strong>{1}</strong> sont la norme.
+page.prices.table.body.loan=Essai de montre dans le cadre d''une révision
+page.prices.table.body.loan.prices=Entre <strong>{0}</strong> et <strong>{1}</strong>.Voir les prix sur la fiche de chaque montre.<sup>0</sup>
+page.prices.table.body.other=Autres services
+page.prices.table.body.other.prices=Pour les services d''expertise, de conseils ou vente d''accessoires n''hésitez pas à <a href="{0}">nous contacter</a>.
+page.prices.table.body.moving=Frais de déplacement
+page.prices.table.body.moving.prices=Gratuits (sur Paris et première couronne). <br /> Pour les envois par courrier ou transporteur, les tarifs standards sont appliqués sans surcoût.
+
+
+page.prices.quartz.head=Les tarifs pour les montres à quartz
+
+page.prices.disclaimer=Dans certains cas précis, nos prix peuvent différer à la baisse ou à la hausse. Les devis que nous établissons une fois la montre en mains nous engagent.
+
+page.prices.inner.disclaimer=* Montres de catégorie 3 : Victorinox, Tissot, Swatch, Seiko, Nomos, Movado, Michel Herbelin, Ice&nbsp;Watch, Hamilton, Fortis, Festina, Certina, Alpina<br/>\
+** Montres de catégorie 2 : Zenith, Tudor, Tag&nbsp;Heuer, Rado, Montblanc, Longines, Hermès, Frédérique Constant, Ebel, Chopard, Chanel, B.R.M, Breitling, Bell&nbsp;&&nbsp;Ross, Baume&nbsp;&&nbsp;Mercier<br/>\
+*** Montres de catégorie 1 : Vacheron&nbsp;Constantin, Ulysse&nbsp;Nardin, Rolex, Patek&nbsp;Philippe, Panerai, Omega, A Lange&nbsp;&&nbsp;Söhne, Jaeger LeCoultre, IWC, Hublot, Girard Perregaux, Concord, Cartier, Bulgari, Breguet, Blancpain, Audemars&nbsp;Piguet<br/>
+
 # Prices page
 prices.html.title=Les tarifs
 prices.html.description=Liste des tarifs des prestations pour intervention sur Paris et proche banlieue.

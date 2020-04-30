@@ -6,98 +6,190 @@
 @defining("page.prices") { case (key) =>
 
 	@layouts.main_helper_with_head_block(key) {
-				
-				<div class="fancy-title title-dotted-border title-center">
-						<h3>Les tarifs pour les montres à quartz</h3>
-				</div>
-				<div class="row pricing pricing-3 bottommargin clearfix">
-
-						<div class="pricing-box pricing-minimal">
-							<div class="pricing-title">
-								<h3>Entrée de gamme</h3>
-								<span>Catégorie 3*</span>
-							</div>
-							<div class="pricing-price">
-								20<span class="price-tenure">€</span>
-							</div>
-							<div class="pricing-action">
-								<a href="#" class="btn btn-danger btn-block">Get Started</a>
-							</div>
-						</div>
-
-						<div class="pricing-box pricing-minimal">
-							<div class="pricing-title">
-								<h3>Milieu de gamme</h3>
-								<span>Catégorie 2**</span>
-							</div>
-							<div class="pricing-price">
-								25<span class="price-tenure">€</span>
-							</div>
-							<div class="pricing-action">
-								<a href="#" class="btn btn-danger btn-block bgcolor border-color">Start Trial</a>
-							</div>
-						</div>
-
-						<div class="pricing-box pricing-minimal">
-							<div class="pricing-title">
-								<h3>Haut de gamme</h3>
-								<span>Catégorie 1***</span>
-							</div>
-							<div class="pricing-price">
-								35<span class="price-tenure">€</span>
-							</div>
-							<div class="pricing-action">
-								<a href="#" class="btn btn-danger btn-block">Start Trial</a>
-							</div>
-						</div>
-
-					</div>
-				
-				
-					<div class="fancy-title title-dotted-border title-center">
-						<h3>Les tarifs pour les montres mécaniques</h3>
+	
+					
+					<!--<div class="fancy-title title-dotted-border title-center topmargin-lg">
+						<h3>@Html(Messages(key+".meca.head"))</h3>
 					</div>
 
 					<table class="table table-hover table-comparison nobottommargin">
 					  <thead>
 						<tr>
 						  <th>&nbsp;</th>
-						  <th>Montres de catégorie 3*</th>
-						  <th>Montres de catégorie 2**</th>
-						  <th>Montres de catégorie 1***</th>
+						  <th>@Html(Messages(key+".table.body.watch.of.category", "3*"))</th>
+						  <th>@Html(Messages(key+".table.body.watch.of.category", "2**"))</th>
+						  <th>@Html(Messages(key+".table.body.watch.of.category", "1***"))</th>
 						</tr>
 					  </thead>
 					  <tbody>
 					  	<tr>
-						  <td>Simple réglage ou démagnétisation</td>
-						  <td colspan="3">Les prix sont fournis sur devis, mais des tarifs compris entre 50€ et 200€ sont la norme.</td>
+						  <td>@Html(Messages(key+".table.body.soft.service"))</td>
+						  <td colspan="3">@Html(Messages(key+".table.body.soft.service.prices", "50€", "200€"))</td>
 						</tr>
 						<tr>
-						  <td>Entretien intermédiaire</td>
-						  <td colspan="3">L'entretien intermédiaire inclut un contrôle de la marche, un polissage et l'étanchéité, les tarifs sont compris entre 100€ et 200€.</td>
+						  <td>@Html(Messages(key+".table.body.intermediate.service"))</td>
+						  <td colspan="3">@Html(Messages(key+".table.body.intermediate.service.prices", "100€", "200€"))</td>
 						</tr>
 						<tr>
-						  <td>Révision complète</td>
-						  <td>Entre 180€ et 250€</td>
-						  <td>Entre 300€ et 500€</td>
-						  <td>Entre 360€ et 600€</td>
+						  <td>@Html(Messages(key+".table.body.service"))</td>
+						  <td>@Html(Messages(key+".table.body.service.prices", "180€", "250€"))</td>
+						  <td>@Html(Messages(key+".table.body.service.prices", "300€", "500€"))</td>
+						  <td>@Html(Messages(key+".table.body.service.prices", "360€", "600€"))</td>
 						</tr>
 						<tr>
-						  <td>Réparation</td>
-						  <td colspan="3">Sur devis gratuit uniquement.</td>
+						  <td>@Html(Messages(key+".table.body.repair"))</td>
+						  <td colspan="3">@Html(Messages(key+".table.body.repair.prices"))</td>
+						</tr>
+						<tr>
+						  <td>@Html(Messages(key+".table.body.moving"))</td>
+						  <td colspan="3">@Html(Messages(key+".table.body.moving.prices"))</td>
+						</tr>
+						<tr>
+							<td colspan="4">&nbsp;</td>
+						</tr>
+					  </tbody>
+					</table>
+					
+					<div class="center">
+						
+					</div>-->
+					
+					
+					<div class="fancy-title title-dotted-border title-center topmargin-lg">
+						<h3>@Html(Messages(key+".meca.head"))</h3>
+					</div>
+
+					<table class="table table-hover table-comparison nobottommargin">
+					  <thead>
+						<tr>
+						  <th>&nbsp;</th>
+						  <th>Forfait simple<br/>(réglage ou démagnétisation)</th>
+						  <th>Forfait intermédiaire<br/>(entretien partiel)</th>
+						  <th>Forfait complet<br/>(révision complète)</th>
+						</tr>
+					  </thead>
+					  <tbody>
+						<tr>
+						  <td>Garantie d'étanchéité (2&nbsp;ans)</td>
+						  <td><i class="icon-ok"></i></td>
+						  <td><i class="icon-ok"></i></td>
+						  <td><i class="icon-ok"></i></td>
+						</tr>
+						<tr>
+						  <td>Garantie de fonctionnement (1&nbsp;an)</td>
+						  <td><i class="icon-remove"></i></td>
+						  <td><i class="icon-remove"></i></td>
+						  <td><i class="icon-ok"></i></td>
+						</tr>
+						<tr>
+						  <td>Montres de catégorie 3*</td>
+						  <td>@Html(Messages(key+".table.body.service.prices", "50€", "100€"))</td>
+						  <td>@Html(Messages(key+".table.body.service.prices", "100€", "150€"))</td>
+						  <td>@Html(Messages(key+".table.body.service.prices", "180€", "250€"))</td>
+						</tr>
+						<tr>
+						  <td>Montres de catégorie 2**</td>
+						  <td>@Html(Messages(key+".table.body.service.prices", "75€", "150€"))</td>
+						  <td>@Html(Messages(key+".table.body.service.prices", "120€", "200€"))</td>
+						  <td>@Html(Messages(key+".table.body.service.prices", "300€", "500€"))</td>
+						</tr>
+						
+						<tr>
+						  <td>Montres de catégorie 1***</td>
+						  <td>@Html(Messages(key+".table.body.service.prices", "75€", "200€"))</td>
+						  <td>@Html(Messages(key+".table.body.service.prices", "150€", "200€"))</td>
+						  <td>@Html(Messages(key+".table.body.service.prices", "360€", "600€"))</td>
 						</tr>
 						<tr>
 						  <td>Frais de déplacement</td>
 						  <td colspan="3">Gratuits (sur Paris et première couronne).<br/>Pour les envois par courrier ou transporteur, les tarifs standards sont appliqués sans surcoût.</td>
 						</tr>
 						<tr>
-						  <td>&nbsp;</td>
-						  <td><a href="#" class="btn btn-secondary">Sign Up</a></td>
-						  <td><a href="#" class="btn btn-secondary">Sign Up</a></td>
-						  <td><a href="#" class="btn btn-secondary">Sign Up</a></td>
+							<td colspan="4">&nbsp;</td>
 						</tr>
 					  </tbody>
 					</table>
+					<div class="disclaimer">
+						@Html(Messages("page.prices.inner.disclaimer"))
+					</div>
+					
+					<div class="center">
+						<a href="@routes.FormProcessingController.prepareQuotationRequest()" class="button button-3d button-large">@Html(Messages(key.toString+".quotation.request"))</a>
+					</div>
+					
+				
+					<div class="fancy-title title-dotted-border title-center topmargin-lg">
+						<h3>@Html(Messages(key+".quartz.head"))</h3>
+					</div>
+
+					<table class="table table-hover table-comparison nobottommargin">
+					  <thead>
+						<tr>
+						  <th>&nbsp;</th>
+						  <th>Forfait simple<br/>(changement de la pile)</th>
+						  <th>Forfait étanchéité<br/>(pile + étanchéité)</th>
+						  <th>Forfait complet<br/>(pile + étanchéité + polissage)</th>
+						</tr>
+					  </thead>
+					  <tbody>
+					  	<tr>
+						  <td>Changement de la pile</td>
+						  <td><i class="icon-ok"></i></td>
+						  <td><i class="icon-ok"></i></td>
+						  <td><i class="icon-ok"></i></td>
+						</tr>
+						<tr>
+						  <td>Garantie de fonctionnement</td>
+						  <td colspan="3">Fonctionnement de la pile garanti pendant 2 ans</td>
+						</tr>
+						<tr>
+						  <td>Etanchiété</td>
+						  <td><i class="icon-remove"></i></td>
+						  <td><i class="icon-ok"></i></td>
+						  <td><i class="icon-ok"></i></td>
+						</tr>
+						<tr>
+						  <td>Polissage</td>
+						  <td><i class="icon-remove"></i></td>
+						  <td><i class="icon-remove"></i></td>
+						  <td><i class="icon-ok"></i></td>
+						</tr>
+						<tr>
+						  <td>Montres de catégorie 3*</td>
+						  <td>20€ TTC</td>
+						  <td>49€ TTC</td>
+						  <td>environ 100€ (sur devis)</td>
+						</tr>
+						<tr>
+						  <td>Montres de catégorie 2**</td>
+						  <td>20€ TTC</td>
+						  <td>69€ TTC</td>
+						  <td>environ 140€ (sur devis)</td>
+						</tr>
+						
+						<tr>
+						  <td>Montres de catégorie 1***</td>
+						  <td>35€ TTC</td>
+						  <td>89€ TTC</td>
+						  <td>environ 160€ (sur devis)</td>
+						</tr>
+						<tr>
+						  <td>Frais de déplacement</td>
+						  <td colspan="3">Gratuits (sur Paris et première couronne).<br/>Pour les envois par courrier ou transporteur, les tarifs standards sont appliqués sans surcoût.</td>
+						</tr>
+						<tr>
+							<td colspan="4">&nbsp;</td>
+						</tr>
+					  </tbody>
+					</table>
+					
+					<div class="disclaimer">
+						@Html(Messages("page.prices.inner.disclaimer"))
+					</div>
+				
+					<div class="center">
+						<a href="@routes.HomeController.visit()" class="button button-3d button-dark button-large "><i class="icon-location"></i> @Html(Messages(key.toString+".visit.us"))</a>
+					</div>
 
 	}
 }
