@@ -3,4 +3,5 @@
  *
  * @param file file to look at
  *@
-@(file: String)(implicit request: Http.Request)@controllers.HomeController.injectedConfigWrapper.tryToGetString("conditional.hostname.for.cdn.host").map{conditionalHostname =>@if(request.host.contains(conditionalHostname)) {@controllers.HomeController.injectedConfigWrapper.tryToGetString("cdn.host").map{value =>//@value}}}@routes.Assets.versioned(file)
+@import fr.hometime.utils._
+@(file: String, absolute: Boolean=false)(implicit request: Http.Request)@AssetsHelper.computeRootPath(controllers.HomeController.injectedConfigWrapper, request, absolute)@routes.Assets.versioned(file)

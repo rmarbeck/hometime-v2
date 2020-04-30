@@ -100,7 +100,7 @@
 					<div class="row bottommargin-lg">
 						@brands.get.map{ brand =>
 							<div class="brand-logo-list-item col-3 col-sm-2 col-xl-1">
-								<a href="@routes.HomeController.chooseQuotation(brand.getSeoName)" title="@Html(Messages("home.brand.title", brand.getDisplayName))"><img class="img-responsive lazyload" data-src="https:@remote_assets("/assets/images/@brand.logo_url")" alt="@Html(Messages("home.brand.alt", brand.getDisplayName))" title="@Html(Messages("home.brand.title", brand.getDisplayName))"></a>
+								<a href="@routes.HomeController.chooseQuotation(brand.getSeoName)" title="@Html(Messages("home.brand.title", brand.getDisplayName))"><img class="img-responsive lazyload" data-src="@remote_assets("images/"+brand.logo_url.get(), true)" alt="@Html(Messages("home.brand.alt", brand.getDisplayName))" title="@Html(Messages("home.brand.title", brand.getDisplayName))"></a>
 							</div>
 						}
 					</div>
