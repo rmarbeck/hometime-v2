@@ -1552,6 +1552,9 @@ quartz.prices.table.quartz.working.waranty.label=Garantie de fonctionnement
 quartz.prices.table.quartz.working.waranty.value=Fonctionnement de la pile garanti pendant 2 ans
 quartz.prices.table.body.price.fixed={0} TTC
 quartz.prices.table.body.price.on.quotation=environ {0} TTC (sur devis)
+quartz.prices.table.body.watch.of.category=Montres de catégorie {0}
+quartz.prices.table.body.moving=Frais de déplacement
+quartz.prices.table.body.moving.prices=Gratuits (sur Paris et première couronne). <br /> Pour les envois par courrier ou transporteur, les tarifs standards sont appliqués sans surcoût.
 
 # Prices page
 prices.html.title=Les tarifs
