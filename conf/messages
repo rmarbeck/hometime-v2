@@ -1466,9 +1466,24 @@ page.prices.table.body.other=Autres services
 page.prices.table.body.other.prices=Pour les services d''expertise, de conseils ou vente d''accessoires n''hésitez pas à <a href="{0}">nous contacter</a>.
 page.prices.table.body.moving=Frais de déplacement
 page.prices.table.body.moving.prices=Gratuits (sur Paris et première couronne). <br /> Pour les envois par courrier ou transporteur, les tarifs standards sont appliqués sans surcoût.
-
+page.prices.table.pack.1=Entretien simple<br/>(réglage ou démagnétisation)
+page.prices.table.pack.2=Entretien intermédiaire<br/>(entretien partiel)
+page.prices.table.pack.3=Entretien complet<br/>(révision complète)
+page.prices.table.water.waranty=Garantie d'étanchéité (2&nbsp;ans)
+page.prices.table.working.waranty=Garantie de fonctionnement (1&nbsp;an)
 
 page.prices.quartz.head=Les tarifs pour les montres à quartz
+page.prices.table.quartz.pack.1=Forfait simple<br/>(changement de la pile)
+page.prices.table.quartz.pack.2=Forfait étanchéité<br/>(pile + étanchéité)
+page.prices.table.quartz.pack.3=Forfait complet<br/>(pile + étanchéité + polissage)
+page.prices.table.quartz.feature.1=Changement de la pile
+page.prices.table.quartz.feature.2=Etanchéité
+page.prices.table.quartz.feature.3=Polissage
+
+page.prices.table.quartz.working.waranty.label=Garantie de fonctionnement
+page.prices.table.quartz.working.waranty.value=Fonctionnement de la pile garanti pendant 2 ans
+page.prices.table.body.price.fixed={0} TTC
+page.prices.table.body.price.on.quotation=environ {0} TTC (sur devis)
 
 page.prices.disclaimer=Dans certains cas précis, nos prix peuvent différer à la baisse ou à la hausse. Les devis que nous établissons une fois la montre en mains nous engagent.
 

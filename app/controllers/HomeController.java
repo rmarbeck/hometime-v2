@@ -4,12 +4,16 @@ import java.util.Optional;
 
 import javax.inject.Inject;
 
+import com.typesafe.config.Config;
+
 import fr.hometime.utils.BrandProvider;
+import fr.hometime.utils.ConfigWrapper;
 import fr.hometime.utils.FeedbackProvider;
 import fr.hometime.utils.NewsProvider;
 import play.i18n.Messages;
 import play.i18n.MessagesApi;
 import play.mvc.*;
+import play.twirl.api.Html;
 
 /**
  * This controller contains an action to handle HTTP requests
@@ -22,11 +26,14 @@ public class HomeController extends Controller {
 	private FeedbackProvider feedbackProvider;
 	private NewsProvider newsProvider;
 	private BrandProvider brandProvider;
+	private ConfigWrapper configWrapper;
 	
 	public static NewsProvider injectedNewsProvider;
 	
+	public static ConfigWrapper injectedConfigWrapper;
+	
     @Inject
-    public HomeController(MessagesApi messagesApi, views.html.content contentTemplate, views.html.faq faq, FeedbackProvider feedbackProvider, NewsProvider newsProvider, BrandProvider brandProvider) {
+    public HomeController(MessagesApi messagesApi, views.html.content contentTemplate, views.html.faq faq, FeedbackProvider feedbackProvider, NewsProvider newsProvider, BrandProvider brandProvider, ConfigWrapper configWrapper) {
         this.messagesApi = messagesApi;
         this.contentTemplate = contentTemplate;
         this.faq = faq;
@@ -34,9 +41,11 @@ public class HomeController extends Controller {
         this.newsProvider = newsProvider;
         injectedNewsProvider = this.newsProvider;
         this.brandProvider = brandProvider;
+        this.configWrapper = configWrapper;
+        injectedConfigWrapper = configWrapper;
         
     }
-
+    
     /**
      * An action that renders an HTML page with a welcome message.
      * The configuration in the <code>routes</code> file means that

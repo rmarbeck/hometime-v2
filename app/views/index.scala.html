@@ -100,7 +100,7 @@
 					<div class="row bottommargin-lg">
 						@brands.get.map{ brand =>
 							<div class="brand-logo-list-item col-3 col-sm-2 col-xl-1">
-								<a href="@routes.HomeController.chooseQuotation(brand.getSeoName)" title="@Html(Messages("home.brand.title", brand.getDisplayName))"><img class="img-responsive lazyload" data-src="https://d1qsyzkyf147s1.cloudfront.net/assets/images/@brand.logo_url" alt="@Html(Messages("home.brand.alt", brand.getDisplayName))" title="@Html(Messages("home.brand.title", brand.getDisplayName))"></a>
+								<a href="@routes.HomeController.chooseQuotation(brand.getSeoName)" title="@Html(Messages("home.brand.title", brand.getDisplayName))"><img class="img-responsive lazyload" data-src="https:@remote_assets("/assets/images/@brand.logo_url")" alt="@Html(Messages("home.brand.alt", brand.getDisplayName))" title="@Html(Messages("home.brand.title", brand.getDisplayName))"></a>
 							</div>
 						}
 					</div>
@@ -164,7 +164,7 @@
 						</div>
 
 						<div class="col-lg-4 d-md-none d-lg-block bottommargin center">
-							<img src="@routes.Assets.versioned("images/home/m116610lv-0002.webp")" alt="Rolex Hulk">
+							<img src="@remote_assets("images/home/m116610lv-0002.webp")" alt="Rolex Hulk">
 						</div>
 
 						<div class="col-lg-4 col-md-6 bottommargin">

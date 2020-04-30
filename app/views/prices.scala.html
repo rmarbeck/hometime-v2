@@ -63,46 +63,46 @@
 					  <thead>
 						<tr>
 						  <th>&nbsp;</th>
-						  <th>Forfait simple<br/>(réglage ou démagnétisation)</th>
-						  <th>Forfait intermédiaire<br/>(entretien partiel)</th>
-						  <th>Forfait complet<br/>(révision complète)</th>
+						  <th>@Html(Messages(key+".table.pack.1"))</th>
+						  <th>@Html(Messages(key+".table.pack.2"))</th>
+						  <th>@Html(Messages(key+".table.pack.3"))</th>
 						</tr>
 					  </thead>
 					  <tbody>
 						<tr>
-						  <td>Garantie d'étanchéité (2&nbsp;ans)</td>
+						  <td>@Html(Messages(key+".table.water.waranty"))</td>
 						  <td><i class="icon-ok"></i></td>
 						  <td><i class="icon-ok"></i></td>
 						  <td><i class="icon-ok"></i></td>
 						</tr>
 						<tr>
-						  <td>Garantie de fonctionnement (1&nbsp;an)</td>
+						  <td>@Html(Messages(key+".table.working.waranty"))</td>
 						  <td><i class="icon-remove"></i></td>
 						  <td><i class="icon-remove"></i></td>
 						  <td><i class="icon-ok"></i></td>
 						</tr>
 						<tr>
-						  <td>Montres de catégorie 3*</td>
+						  <td>@Html(Messages(key+".table.body.watch.of.category", "3*"))</td>
 						  <td>@Html(Messages(key+".table.body.service.prices", "50€", "100€"))</td>
 						  <td>@Html(Messages(key+".table.body.service.prices", "100€", "150€"))</td>
 						  <td>@Html(Messages(key+".table.body.service.prices", "180€", "250€"))</td>
 						</tr>
 						<tr>
-						  <td>Montres de catégorie 2**</td>
+						  <td>@Html(Messages(key+".table.body.watch.of.category", "2**"))</td>
 						  <td>@Html(Messages(key+".table.body.service.prices", "75€", "150€"))</td>
 						  <td>@Html(Messages(key+".table.body.service.prices", "120€", "200€"))</td>
 						  <td>@Html(Messages(key+".table.body.service.prices", "300€", "500€"))</td>
 						</tr>
 						
 						<tr>
-						  <td>Montres de catégorie 1***</td>
+						  <td>@Html(Messages(key+".table.body.watch.of.category", "1***"))</td>
 						  <td>@Html(Messages(key+".table.body.service.prices", "75€", "200€"))</td>
 						  <td>@Html(Messages(key+".table.body.service.prices", "150€", "200€"))</td>
 						  <td>@Html(Messages(key+".table.body.service.prices", "360€", "600€"))</td>
 						</tr>
 						<tr>
-						  <td>Frais de déplacement</td>
-						  <td colspan="3">Gratuits (sur Paris et première couronne).<br/>Pour les envois par courrier ou transporteur, les tarifs standards sont appliqués sans surcoût.</td>
+						  <td>@Html(Messages(key+".table.body.moving"))</td>
+						  <td colspan="3">@Html(Messages(key+".table.body.moving.prices"))</td>
 						</tr>
 						<tr>
 							<td colspan="4">&nbsp;</td>
@@ -126,56 +126,56 @@
 					  <thead>
 						<tr>
 						  <th>&nbsp;</th>
-						  <th>Forfait simple<br/>(changement de la pile)</th>
-						  <th>Forfait étanchéité<br/>(pile + étanchéité)</th>
-						  <th>Forfait complet<br/>(pile + étanchéité + polissage)</th>
+						  <th>@Html(Messages(key+".table.quartz.pack.1"))</th>
+						  <th>@Html(Messages(key+".table.quartz.pack.2"))</th>
+						  <th>@Html(Messages(key+".table.quartz.pack.3"))</th>
 						</tr>
 					  </thead>
 					  <tbody>
 					  	<tr>
-						  <td>Changement de la pile</td>
+						  <td>@Html(Messages(key+".table.quartz.feature.1"))</td>
 						  <td><i class="icon-ok"></i></td>
 						  <td><i class="icon-ok"></i></td>
 						  <td><i class="icon-ok"></i></td>
 						</tr>
 						<tr>
-						  <td>Garantie de fonctionnement</td>
-						  <td colspan="3">Fonctionnement de la pile garanti pendant 2 ans</td>
+						  <td>@Html(Messages(key+".table.quartz.working.waranty.label"))</td>
+						  <td colspan="3">@Html(Messages(key+".table.quartz.working.waranty.value"))</td>
 						</tr>
 						<tr>
-						  <td>Etanchiété</td>
+						  <td>@Html(Messages(key+".table.quartz.feature.2"))</td>
 						  <td><i class="icon-remove"></i></td>
 						  <td><i class="icon-ok"></i></td>
 						  <td><i class="icon-ok"></i></td>
 						</tr>
 						<tr>
-						  <td>Polissage</td>
+						  <td>@Html(Messages(key+".table.quartz.feature.3"))</td>
 						  <td><i class="icon-remove"></i></td>
 						  <td><i class="icon-remove"></i></td>
 						  <td><i class="icon-ok"></i></td>
 						</tr>
 						<tr>
-						  <td>Montres de catégorie 3*</td>
-						  <td>20€ TTC</td>
-						  <td>49€ TTC</td>
-						  <td>environ 100€ (sur devis)</td>
+						  <td>@Html(Messages(key+".table.body.watch.of.category", "3*"))</td>
+						  <td>@Html(Messages(key+".table.body.price.fixed", "20€"))</td>
+						  <td>@Html(Messages(key+".table.body.price.fixed", "49€"))</td>*
+						  <td>@Html(Messages(key+".table.body.price.on.quotation", "100€"))</td>
 						</tr>
 						<tr>
-						  <td>Montres de catégorie 2**</td>
-						  <td>20€ TTC</td>
-						  <td>69€ TTC</td>
-						  <td>environ 140€ (sur devis)</td>
+						  <td>@Html(Messages(key+".table.body.watch.of.category", "2**"))</td>
+						  <td>@Html(Messages(key+".table.body.price.fixed", "25€"))</td>
+						  <td>@Html(Messages(key+".table.body.price.fixed", "69€"))</td>
+						  <td>@Html(Messages(key+".table.body.price.on.quotation", "140€"))</td>
 						</tr>
 						
 						<tr>
-						  <td>Montres de catégorie 1***</td>
-						  <td>35€ TTC</td>
-						  <td>89€ TTC</td>
-						  <td>environ 160€ (sur devis)</td>
+						  <td>@Html(Messages(key+".table.body.watch.of.category", "1***"))</td>
+						  <td>@Html(Messages(key+".table.body.price.fixed", "35€"))</td>
+						  <td>@Html(Messages(key+".table.body.price.fixed", "89€"))</td>
+						  <td>@Html(Messages(key+".table.body.price.on.quotation", "160€"))</td>
 						</tr>
 						<tr>
-						  <td>Frais de déplacement</td>
-						  <td colspan="3">Gratuits (sur Paris et première couronne).<br/>Pour les envois par courrier ou transporteur, les tarifs standards sont appliqués sans surcoût.</td>
+						  <td>@Html(Messages(key+".table.body.moving"))</td>
+						  <td colspan="3">@Html(Messages(key+".table.body.moving.prices"))</td>
 						</tr>
 						<tr>
 							<td colspan="4">&nbsp;</td>

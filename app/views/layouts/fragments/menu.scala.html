@@ -24,7 +24,7 @@
 					.addSubMenu("offer.quartz", Optional.of(routes.HomeController.offers().url+"#offer.quartz"), Optional.empty(), Optional.empty())
 						.getParentIfExists()
 					.getParentIfExists()
-				.addSubMenu("prices", Optional.of("index-portfolio.html"), Optional.empty(), Optional.empty())
+				.addSubMenu("prices", Optional.of(routes.HomeController.prices().url), Optional.empty(), Optional.empty())
 					.getParentIfExists()
 				.addSubMenu("feedbacks", Optional.of(routes.HomeController.feedbacks().url), Optional.empty(), Optional.empty())
 				.getHighestParentIfExists());

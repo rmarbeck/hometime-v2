@@ -11,6 +11,7 @@ import fr.hometime.utils.JsonLocalFileProviderImpl;
 import fr.hometime.utils.JsonWSProvider;
 import fr.hometime.utils.JsonWSProviderImpl;
 import fr.hometime.utils.NewsProvider;
+import fr.hometime.utils.PlayConfigWrapper;
 import fr.hometime.utils.PriceProvider;
 import fr.hometime.utils.StaticNewsProvider;
 import models.Brand;
@@ -19,6 +20,7 @@ import models.Price;
 import fr.hometime.utils.BrandProvider;
 import fr.hometime.utils.Cachable;
 import fr.hometime.utils.CachedMultiSourceDataProvider;
+import fr.hometime.utils.ConfigWrapper;
 import fr.hometime.utils.ContentProvider;
 import fr.hometime.utils.FeedbackProvider;
 
@@ -37,6 +39,7 @@ public class Module extends AbstractModule {
 		bind(NewsProvider.class).to(StaticNewsProvider.class);
 		bind(JsonWSProvider.class).to(JsonWSProviderImpl.class);
 		bind(JsonLocalFileProvider.class).to(JsonLocalFileProviderImpl.class);
+		bind(ConfigWrapper.class).to(PlayConfigWrapper.class).asEagerSingleton();
 	}
 
 }
