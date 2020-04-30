@@ -4,6 +4,7 @@
 @(key: String, title: String, description: String, keywords: String, args: (Symbol, Any)*)(content: Html)(implicit request: Http.Request, messages: play.i18n.Messages)
 
 @import scala.collection.immutable._
+@import tags._
 
 <!DOCTYPE html>
 <html dir="ltr" lang="en-US">
@@ -19,15 +20,15 @@
 		
 		@layouts.fragments.main_alert_bar()
 		
-		@layouts.fragments.main_flash_bar()(request, messages)
+		@layouts.fragments.main_flash_bar()
 
 		@layouts.fragments.main_top_bar()
 
-		@layouts.fragments.main_header(key)(messages)
+		@layouts.fragments.main_header(key)
 
 		@content
 			
-		@layouts.fragments.footer()(request, messages)
+		@layouts.fragments.footer()
 
 	</div><!-- #wrapper end -->
 
@@ -38,14 +39,14 @@
 	<!-- External JavaScripts
 	============================================= -->
 	@List("js/jquery.js",
-			"js/plugins.js").map { e =><script src="@routes.Assets.versioned(e)"></script>
+			"js/plugins.js").map { e =><script src="@remote_assets(e)"></script>
 	}
 
 	<!-- Footer Scripts
 	============================================= -->
-	<script src="@routes.Assets.versioned("js/functions.js")"></script>
-	<script src="@routes.Assets.versioned("js/site-wise-custom.js")"></script>
-	<script src="@routes.Assets.versioned("js/lazysizes.min.js")"></script>
+	<script src="@remote_assets("js/functions.js")"></script>
+	<script src="@remote_assets("js/site-wise-custom.js")"></script>
+	<script src="@remote_assets("js/lazysizes.min.js")"></script>
 	
 	@args.toMap.get(Symbol("_end_script"))
 

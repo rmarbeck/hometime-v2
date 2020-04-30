@@ -236,6 +236,13 @@ home.html.title=Révision, réparation et essai de montres à domicile sur Paris
 home.html.description=Révision et réparation de montres de marque avec intervention à domicile sur Paris et sa région, avec possibilité d''essai prolongé d''une montre de légende.
 home.html.keywords=entretien, entretien montre, révision, réparation, révision montre, réparation montre, montre mécanique, montre automatique, sav, service après vente, rolex, omega, panerai, tag heuer, paris, région parisienne, 75, yvelines, hauts de seine, devis gratuit, essai, à domicile, devis en ligne, horloger, horlogerie
 
+
+home.bottom.line.claim=Besoin d''une évaluation pour une réparation&nbsp;?
+home.bottom.line.action=Demandez nous un devis
+
+home.action.quotation.request=Demander un devis
+home.action.visit.us=Venir nous voir
+
 home.main.header.1.title=
 home.main.header.1.text=Entretien|Achat&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;Vente&nbsp;&nbsp;|&nbsp;Conseils&nbsp;&nbsp;|Expertise
 
@@ -249,6 +256,8 @@ home.main.header.3.text=Hometime vous propose de trouver votre prochaine montre.
 home.video.claim=Comprendre Hometime en 30 secondes
 home.video.baseline=Clip vidéo Hometime
 home.video.sub=
+
+home.portfolio.claim=Hometime en images
 
 home.stats.1.text=Depuis 2014
 home.stats.1.unit=ans

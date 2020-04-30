@@ -74,8 +74,8 @@
   					<!--<img class="bottommargin" src="/assets/images/url-avec-logo-375-black-high.png" alt="">-->
 					<h1>@Html(Messages("home.claim"))</h1>
 					<h2>@Html(Messages("home.claim.more"))</h2>
-					<a href="@routes.HomeController.visit()" class="button button-3d button-dark button-large ">Venir nous voir</a>
-					<a href="@routes.FormProcessingController.prepareQuotationRequest()" class="button button-3d button-large">Demander un devis</a>
+					<a href="@routes.HomeController.visit()" class="button button-3d button-dark button-large ">@Html(Messages("home.action.visit.us"))</a>
+					<a href="@routes.FormProcessingController.prepareQuotationRequest()" class="button button-3d button-large">@Html(Messages("home.action.quotation.request"))</a>
 				</div>
 				
 				<div class="section nobottommargin padding-reduced">
@@ -181,7 +181,7 @@
 				
 				<div class="row clearfix align-items-stretch">
 
-					<div class="col-lg-6 center col-padding" style="background: url('@routes.Assets.versioned("images/home/bg3.jpg")') center center no-repeat; background-size: cover;">
+					<div class="col-lg-6 center col-padding" style="background: url('@remote_assets("images/home/bg3.jpg")') center center no-repeat; background-size: cover;">
 					</div>
 
 					<div class="col-lg-6 center col-padding" style="background-color: #F5F5F5;">
@@ -211,21 +211,22 @@
 				<div class="section topmargin nobottommargin nobottomborder">
 					<div class="container clearfix">
 						<div class="heading-block center nomargin">
-							<h3>Our Latest Works</h3>
+							<h3>@Html(Messages("home.portfolio.claim"))</h3>
 						</div>
 					</div>
 				</div>
 
-				<div id="portfolio" class="portfolio portfolio-nomargin grid-container portfolio-notitle portfolio-full grid-container clearfix">
+				<div id="portfolio" class="portfolio portfolio-nomargin grid-container portfolio-full grid-container clearfix">
 				
 					@for(index <- 1 to 8) {
 					<article class="portfolio-item pf-media pf-icons">
 						<div class="portfolio-image">
-							<img src="@routes.Assets.versioned("images/home/grid-"+index+".jpg")" alt="@Html(Messages("home.grid"+index+".alt"))">
+							<img src="@remote_assets("images/home/grid-"+index+".jpg")" alt="@Html(Messages("home.grid"+index+".alt"))">
 						</div>
 					</article>
 					}
 				</div>
+				
 
 				<div class="section topmargin-sm nobottommargin">
 
@@ -248,9 +249,9 @@
 
 				</div>
 
-				<a href="#" class="button button-full center tright footer-stick">
+				<a href="@routes.FormProcessingController.prepareQuotationRequest()" class="button button-full center tright footer-stick">
 					<div class="container clearfix">
-						Canvas comes with Unlimited Customizations &amp; Options. <strong>Check Out</strong> <i class="icon-caret-right" style="top:4px;"></i>
+						@Html(Messages("home.bottom.line.claim")) <strong>@Html(Messages("home.bottom.line.action")) </strong> <i class="icon-caret-right" style="top:4px;"></i>
 					</div>
 				</a>
 

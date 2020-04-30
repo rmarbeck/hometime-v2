@@ -7,7 +7,7 @@
 	
 	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
 	<meta name="author" content="Hometime" />
-	<link rel="shortcut icon" type="image/png" href="//d1qsyzkyf147s1.cloudfront.net/assets/images/favicon.ico"
+	<link rel="shortcut icon" type="image/png" href="@remote_assets("/images/favicon.ico")"
 
 	<!-- Stylesheets
 	============================================= -->
@@ -23,7 +23,7 @@
 			"stylesheets/responsive-proxy.css",
 			"css/components/radio-checkbox.css",
 			"one-page/css/et-line.css",
-			"stylesheets/custom.css").map { e =><link rel="stylesheet" href="@routes.Assets.versioned(e)" type="text/css" />
+			"stylesheets/custom.css").map { e =><link rel="stylesheet" href="@remote_assets(e)" type="text/css" />
 	}
 
 	<meta name="viewport" content="width=device-width, initial-scale=1" />

@@ -1,4 +1,4 @@
-@(key: String)(implicit messages: play.i18n.Messages)
+@(key: String)(implicit request: Http.Request, messages: play.i18n.Messages)
 
 @import scala.collection.immutable._
 @import tags._
@@ -16,8 +16,8 @@
 					<!-- Logo
 					============================================= -->
 					<div id="logo">
-						<a href="/" class="standard-logo" data-dark-logo="@routes.Assets.versioned("images/url-avec-logo-1500-white-high.png")"><img src="@routes.Assets.versioned("images/url-avec-logo-1500-black-high.png")" alt="Hometime Logo"></a>
-						<a href="/" class="retina-logo" data-dark-logo="@routes.Assets.versioned("images/url-avec-logo-1500-white-high.png")"><img src="@routes.Assets.versioned("images/url-avec-logo-1500-black-high.png")" alt="Hometime Logo"></a>
+						<a href="/" class="standard-logo" data-dark-logo="@remote_assets("images/url-avec-logo-1500-white-high.png")"><img src="@remote_assets("images/url-avec-logo-1500-black-high.png")" alt="Hometime Logo"></a>
+						<a href="/" class="retina-logo" data-dark-logo="@remote_assets("images/url-avec-logo-1500-white-high.png")"><img src="@remote_assets("images/url-avec-logo-1500-black-high.png")" alt="Hometime Logo"></a>
 					</div><!-- #logo end -->
 					
 					@layouts.fragments.menu(key)(messages)
