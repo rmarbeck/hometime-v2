@@ -19,6 +19,10 @@ GET     /devis-interactif-immediat	           								controllers.FormProcessing
 GET     /devis-interactif-immediat/montre/entretien/revision/:brand    		controllers.FormProcessingController.prepareAutoQuotationWithBrand(request: Request, brand)
 POST    /devis-interactif-immediat							         		controllers.FormProcessingController.processAutoQuotation(request: Request)
 
+GET     /changement-de-pile/etancheite         								controllers.FormProcessingController.prepareQuartzPrice(request: Request)
+GET     /changement-de-pile/etancheite/montre/:brand    					controllers.FormProcessingController.prepareQuartzPriceWithBrand(request: Request, brand)
+GET     /changement-de-pile         										controllers.Default.redirect(to = "/changement-de-pile/etancheite")
+
 GET     /demande-de-rappel													controllers.FormProcessingController.prepareCallBackRequest(request: Request)
 POST    /demande-de-rappel													controllers.FormProcessingController.processCallBackRequest(request: Request)
 

@@ -1,0 +1,17 @@
+@*
+ * Main template Helper : Key generates title, description and keywords
+ *@
+@(key: String, brand: Optional[Brand], forcedValues: (Symbol, Any)*)(content: Html)(implicit request: Http.Request, messages: play.i18n.Messages)
+
+@keyIncludingBrand = {@key.@brand.map(_.getInternalName).getOrElse("undefined")}
+
+@defining(brand.map(b => b.display_name).orElse(Messages(keyIncludingBrand.toString+".brand.name"))) { brandName =>
+	@defining(
+		Messages(key+".html.title", brandName),
+		Messages(key+".html.description", brandName, Messages(keyIncludingBrand.toString+".brand.models")),
+		Messages(key+".html.keywords", brandName, Messages(keyIncludingBrand.toString+".brand.models"))) { case (title, description, keywords) =>
+	@layouts.main(key, title, description, keywords, forcedValues:_*) {
+		@layouts.fragments.canvas_with_header_and_disclaimer(key, (Seq(Symbol("_head_intro_key") -> Messages(key+".head.intro", brandName)) ++ forcedValues):_*)(content)
+		}
+	}
+}

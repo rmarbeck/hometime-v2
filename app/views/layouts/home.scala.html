@@ -7,6 +7,7 @@
 @()(content: Html)(implicit request: Http.Request, messages: play.i18n.Messages)
 
 @import scala.collection.immutable._
+@import tags._
 
 
 @layouts.main_helper("home") {
@@ -17,7 +18,7 @@
 
 				<div class="swiper-container swiper-parent">
 					<div class="swiper-wrapper">
-						<div class="swiper-slide dark" style="background-image: url('@routes.Assets.versioned("images/home/bg3c.jpg")');">
+						<div class="swiper-slide dark" style="background-image: url('@remote_assets("images/home/bg3c.jpg")');">
 							<div class="container clearfix">
 								<div class="slider-caption slider-caption-center slider-1">
 									<h2 data-animate="fadeInUp">
@@ -36,13 +37,13 @@
 								</div>
 							</div>
 							<div class="video-wrap">
-								<video poster="@routes.Assets.versioned("images/home/videos/bg-snap.png")" preload="auto" loop autoplay muted>
-									<source src='@routes.Assets.versioned("images/home/videos/bg.webm")' type='video/webm' />
+								<video poster="@remote_assets("images/home/videos/bg-snap.png")" preload="auto" loop autoplay muted>
+									<source src='@remote_assets("images/home/videos/bg.webm")' type='video/webm' />
 								</video>
 								<div class="video-overlay" style="background-color: rgba(0,0,0,0.55);"></div>
 							</div>
 						</div>
-						<div class="swiper-slide" style="background-image: url('@routes.Assets.versioned("images/home/bg2.jpg")'); background-position: center middle;">
+						<div class="swiper-slide" style="background-image: url('@remote_assets("images/home/bg2.jpg")'); background-position: center middle;">
 							<div class="container clearfix">
 								<div class="slider-caption slider-caption-right slider-3">
 									<h2 data-animate="fadeInUp">@Html(Messages("home.main.header.3.title"))</h2>

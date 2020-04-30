@@ -1500,6 +1500,59 @@ page.prices.inner.disclaimer=* Montres de catégorie 3 : Victorinox, Tissot, Swa
 ** Montres de catégorie 2 : Zenith, Tudor, Tag&nbsp;Heuer, Rado, Montblanc, Longines, Hermès, Frédérique Constant, Ebel, Chopard, Chanel, B.R.M, Breitling, Bell&nbsp;&&nbsp;Ross, Baume&nbsp;&&nbsp;Mercier<br/>\
 *** Montres de catégorie 1 : Vacheron&nbsp;Constantin, Ulysse&nbsp;Nardin, Rolex, Patek&nbsp;Philippe, Panerai, Omega, A Lange&nbsp;&&nbsp;Söhne, Jaeger LeCoultre, IWC, Hublot, Girard Perregaux, Concord, Cartier, Bulgari, Breguet, Blancpain, Audemars&nbsp;Piguet<br/>
 
+
+quartz.prices.html.title=Les tarifs pour les montres à quartz
+quartz.prices.html.description=Liste des tarifs des prestations sur les montres à quartz pour intervention sur Paris et proche banlieue.
+quartz.prices.html.keywords=tarifs, quartz, prix, devis, paris, yvelines, hauts de seine
+
+quartz.prices.head=Tarifs pour les montres à quartz
+quartz.prices.head.subtitle=Découvrez les tarifs pour nos prestations couvrant les montres à pile
+quartz.prices.head.intro=Sélectionnez la marque de votre montre à quartz ci-dessous pour déterminer le tarif des entretiens proposés par Hometime
+quartz.prices.disclaimer=Dans certains cas précis, nos prix peuvent différer à la baisse ou à la hausse. Les devis que nous établissons une fois la montre en mains nous engagent.
+
+quartz.prices.brand.label=Marque de votre montre
+quartz.prices.brand.default=Sélectionnez la marque de votre montre pour trouver le tarif correspondant
+
+quartz.prices.pricing.box.title.1=Forfait Pile
+quartz.prices.pricing.box.sub.title.1=Changement de pile simple
+
+quartz.prices.pricing.box.item.1.1=Garantie de fonctionnement de la pile pendant <b>2 ans</b>
+quartz.prices.pricing.box.item.1.2=Fait sur place en <b>30 minutes environ</b>
+quartz.prices.pricing.box.item.1.3=
+quartz.prices.pricing.box.item.1.4=
+
+quartz.prices.pricing.box.title.2=Forfait pile + étanchéité
+quartz.prices.pricing.box.sub.title.2=Changement de pile + étanchéité
+
+quartz.prices.pricing.box.item.2.1=Garantie de fonctionnement de la pile pendant <b>2 ans</b>
+quartz.prices.pricing.box.item.2.2=Garantie d''étanchéité pendant <b>2 ans</b>
+quartz.prices.pricing.box.item.2.3=Fait sur place en <b>45 minutes environ</b>
+quartz.prices.pricing.box.item.2.4=
+
+
+quartz.prices.pricing.box.title.3=Forfait complet
+quartz.prices.pricing.box.sub.title.3=Changement de pile + étanchéité + polissage
+quartz.prices.pricing.box.item.3.1=Garantie de fonctionnement de la pile pendant <b>2 ans</b>
+quartz.prices.pricing.box.item.3.2=Garantie d''étanchéité pendant <b>2 ans</b>
+quartz.prices.pricing.box.item.3.3=Fait sur place en 2/3 jours
+quartz.prices.pricing.box.item.3.4=
+
+quartz.prices.price.from=à partir de
+quartz.prices.visit.us=Venir nous voir
+
+quartz.prices.quartz.head=Les tarifs pour les montres à quartz
+quartz.prices.table.quartz.pack.1=Forfait simple<br/>(changement de la pile)
+quartz.prices.table.quartz.pack.2=Forfait étanchéité<br/>(pile + étanchéité)
+quartz.prices.table.quartz.pack.3=Forfait complet<br/>(pile + étanchéité + polissage)
+quartz.prices.table.quartz.feature.1=Changement de la pile
+quartz.prices.table.quartz.feature.2=Etanchéité
+quartz.prices.table.quartz.feature.3=Polissage
+
+quartz.prices.table.quartz.working.waranty.label=Garantie de fonctionnement
+quartz.prices.table.quartz.working.waranty.value=Fonctionnement de la pile garanti pendant 2 ans
+quartz.prices.table.body.price.fixed={0} TTC
+quartz.prices.table.body.price.on.quotation=environ {0} TTC (sur devis)
+
 # Prices page
 prices.html.title=Les tarifs
 prices.html.description=Liste des tarifs des prestations pour intervention sur Paris et proche banlieue.

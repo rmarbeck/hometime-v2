@@ -216,6 +216,34 @@ public class FormProcessingController extends Controller implements WSBodyReadab
 	
 	/*************************************
 	 * 
+	 * Quartz Pricing Management
+	 * 
+	 *************************************/
+	
+	public Result prepareQuartzPrice(Http.Request request) {
+		return preparedQuartzPrice(request, Optional.empty());
+	}
+	
+	public Result prepareQuartzPriceWithBrand(Http.Request request, String brandSeoName) {
+		return preparedQuartzPrice(request, Optional.of(brandSeoName));
+	}	
+	
+	private Result preparedQuartzPrice(Http.Request request, Optional<String> brandSeoName) {
+		return ok(views.html.quartz_prices.render(fillQuartzPriceRequestWithDefaultData(brandSeoName), brandProvider.retrieveBrandsOrderedByName(), getBrand(brandSeoName), request, messagesApi.preferred(request)));
+	}
+	
+	private DynamicForm fillQuartzPriceRequestWithDefaultData(Optional<String> brandSeoName) {
+		Map<String, Object> prefilled = new HashMap();
+		brandSeoName.ifPresent(seoName -> {
+			Optional<Brand> brandFound = brandProvider.getBrandBySeoName(seoName);
+			brandFound.ifPresent(brand -> prefilled.put("brand", brand.id.toString()) );
+		});
+
+		return formFactory.form().fill(prefilled);
+	}
+	
+	/*************************************
+	 * 
 	 * Quotation Request Management
 	 * 
 	 *************************************/

@@ -12,8 +12,6 @@
 
 @formKey = {auto.quotation.form}
 
-@keyIncludingBrand = {@formKey.@brand.map(_.getInternalName).getOrElse("undefined")}
-
 @*****************************************
  * Style Helpers
  *****************************************@
@@ -367,12 +365,7 @@ $(document).ready(function(){
 									</div>
 }
 
-@defining(brand.map(b => b.display_name).orElse(Messages(keyIncludingBrand.toString+".brand.name"))) { brandName =>
-@defining(
-	Messages(formKey.toString+".html.title", brandName),
-	Messages(formKey.toString+".html.description", brandName, Messages(keyIncludingBrand.toString+".brand.models")),
-	Messages(formKey.toString+".html.keywords", brandName, Messages(keyIncludingBrand.toString+".brand.models"))) { case (title, description, keywords) =>
-@layouts.main_helper_with_head_block(formKey.toString, Symbol("_html_title") -> title, Symbol("_html_description") -> description, Symbol("_html_keywords") -> keywords, Symbol("_head_intro_key") -> Messages(formKey.toString+".head.intro", brandName), Symbol("_end_script") -> end_script){
+@layouts.main_helper_with_head_block_and_brand(formKey.toString, brand, Symbol("_end_script") -> end_script){
 						<ul class="d-none d-md-block process-steps process-5 bottommargin clearfix ui-tabs-nav ui-corner-all ui-helper-reset ui-helper-clearfix ui-widget-header " role="tablist">
 						@List.range(1, 6).map{ value => 
 							<li role="tab" tabindex="@if(value==1) {0} else {-1}" class="ui-tabs-tab ui-corner-top ui-state-default ui-tab @if(value==1) {ui-tabs-active ui-state-active}" aria-controls="ptab@value" aria-labelledby="ui-id-@value" aria-selected=""@if(value==1) {true} else {false}" aria-expanded="@if(value==1) {true} else {false}">
@@ -437,6 +430,4 @@ $(document).ready(function(){
 	}		
 	
 
-}
-}
 }

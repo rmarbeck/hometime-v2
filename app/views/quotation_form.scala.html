@@ -11,8 +11,6 @@
 
 @formKey = {quotation.form}
 
-@keyIncludingBrand = {@formKey.@brand.map(_.getInternalName).getOrElse("undefined")}
-
 @*****************************************
  * Style Helpers
  *****************************************@
@@ -65,13 +63,7 @@
  * End of Form Helpers
  *****************************************@
 
-
-@defining(brand.map(b => b.display_name).orElse(Messages(keyIncludingBrand.toString+".brand.name"))) { brandName =>
-@defining(
-	Messages(formKey.toString+".html.title", brandName),
-	Messages(formKey.toString+".html.description", brandName, Messages(keyIncludingBrand.toString+".brand.models")),
-	Messages(formKey.toString+".html.keywords", brandName, Messages(keyIncludingBrand.toString+".brand.models"))) { case (title, description, keywords) =>
-@layouts.main_helper_with_head_block(formKey.toString, Symbol("_html_title") -> title, Symbol("_html_description") -> description, Symbol("_html_keywords") -> keywords, Symbol("_head_intro_key") -> Messages(formKey.toString+".head.intro", brandName)){
+@layouts.main_helper_with_head_block_and_brand(formKey.toString, brand){
 		
 		@helper.form(action = routes.FormProcessingController.processQuotationRequest(), Symbol("id") -> "website-cost", Symbol("class") -> "row mb-0") {
 			@helper.CSRF.formField
@@ -127,6 +119,5 @@
 									</div>
 
 			}
-	}
-}
+
 }

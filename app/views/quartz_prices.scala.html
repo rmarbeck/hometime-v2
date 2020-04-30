@@ -1,0 +1,222 @@
+@(form: DynamicForm, brands: Optional[List[Brand]], brand: Optional[Brand])(implicit request: Http.Request, messages: play.i18n.Messages)
+
+@import scala.collection.immutable._
+@import tags._
+@import fr.hometime.utils._
+
+@formKey = {quartz.prices}
+
+@*****************************************
+ * Style Helpers
+ *****************************************@
+
+@inputDiv(size: Int, addedClass: String="")(content: Html) = {
+	<div class="col-md-@size form-group mb-4 @addedClass">
+		@content
+	</div>
+}
+
+@fullWidth(addedClass: String="")(content: Html) = {
+	@inputDiv(12, addedClass) {@content}
+}
+
+@halfWidth(addedClass: String="")(content: Html) = {
+	@inputDiv(6, addedClass) {@content}
+}
+
+@computeClassForInput(isRequired: Boolean, isInError: Boolean, args: (Symbol,Any)*) = {form-control @if(isRequired) {required} @if(isInError) {error} @args.toMap.get(Symbol("_body_class")).map(_.toString)}
+
+@selectLabelClassCss(size: Int) = {btn btn-outline-secondary px-@size t600 ls0 nott}
+
+@*****************************************
+ * End of Style Helpers
+ *****************************************@
+ 
+@*****************************************
+ * Form Helpers
+ *****************************************@
+
+@computeMessageKey(fieldName: String, suffix: String) = {@{formKey}.@{fieldName.toString.toLowerCase.replace('_','.')}.@{suffix}}
+
+
+@*****************************************
+ * End of Form Helpers
+ *****************************************@
+ 
+@end_script = {
+ <script>
+$(document).ready(function(){
+    
+    function displayPriceForBrand(idOfBrand) {
+    		brandValue = $('#'+idOfBrand).attr("data_quot").split(',');
+    		factor = 100;
+    		$('span#price-1-value').html(brandValue[1]);
+    		$('span#price-2-value').html(brandValue[2]);
+    		$('span#price-3-value').html(roundValue(brandValue[2]*2,factor));
+			$( '.dynamic-result' ).removeClass('hidden');
+     		$( '.default-result' ).addClass('hidden');
+    }
+    
+    function roundValue(value, factor) {
+    	return Math.round( value * (factor/100) / 10 ) * 10;
+    }
+    
+    function resetDisplay() {
+     		$( '.dynamic-result' ).addClass('hidden');
+     		$( '.default-result' ).removeClass('hidden');
+    }
+
+		if ($("#brand option:selected").val() != "") {
+        	displayPriceForBrand($("#brand option:selected").val());
+    	}
+    	
+    	if ($("#brand option:selected").val() == "" || $("#brand option:selected").val() == "20") {
+        	resetDisplay();
+    	}
+    	
+         $('#brand').change(function() {
+			resetDisplay()
+         	if ($(this).find('option:selected').val() != "" && $("#brand option:selected").val() != "20") {
+         		displayPriceForBrand($(this).find('option:selected').val());
+         	}
+ 		 });
+         
+    })
+</script>
+}
+ 
+ 
+ 
+ 
+@pricing(index: Int) = {
+						<div class="col-md-4">
+
+							<div class="pricing-box @if(index==2) {best-price}">
+								<div class="pricing-title">
+									<h3>@Html(Messages(formKey.toString+".pricing.box.title."+index))</h3>
+									<span>@Html(Messages(formKey.toString+".pricing.box.sub.title."+index))</span>
+								</div>
+								<div class="pricing-price">
+									@if(index==3) {<span class="price-tenure">@Html(Messages(formKey.toString+".price.from"))</span>}<span id="price-@{index}-value" class="price-value">NAN</span><span class="price-unit">€ TTC</span>
+								</div>
+								<div class="pricing-features">
+									<ul>
+										@List.range(1,5).map{value =>
+										<li>@Html(Messages(formKey.toString+".pricing.box.item."+index+"."+value))</li>
+										}
+									</ul>
+								</div>
+							</div>
+
+						</div>
+} 
+ 
+ 
+ 
+ 
+ 
+ 
+@defining(formKey.toString) { key =>
+@layouts.main_helper_with_head_block_and_brand(formKey.toString, brand, Symbol("_end_script") -> end_script){
+
+	@helper.form(action = routes.FormProcessingController.processAutoQuotation(), Symbol("id") -> "website-cost", Symbol("class") -> "row mb-0") {
+		<div id="data">
+	        @for(s <- brands.get) {
+	      	<div id="@s.id" data_quot='@s.display_name@PriceHelper.getPricesForAutoOrder(s)'></div>
+	      	}
+	    </div>  
+	
+			@helper.CSRF.formField
+									<div class="form-process"></div>
+									
+									@fullWidth("step1") {
+										@helper.select(form("brand"), options = brands.get().map(brand => (brand.id.toString, brand.display_name)).toSeq, Symbol("_class") -> "not-clickable", Symbol("class") -> computeClassForInput(true, form("brand").hasErrors, Symbol("_body_class") -> "").toString, Symbol("_default") -> Html(Messages(computeMessageKey("brand", "default").toString)), Symbol("_label") -> Html(Messages(computeMessageKey("brand", "label").toString)), Symbol("_showConstraints") -> false)
+									}
+	}
+	
+				<div class="dynamic-result">
+					<div class="row pricing bottommargin clearfix">
+						@List.range(1,4).map{value =>
+							@pricing(value)
+						}
+					</div>
+				</div>
+	
+				<div class="default-result">
+					<div class="fancy-title title-dotted-border title-center">
+						<h3>@Html(Messages(key+".quartz.head"))</h3>
+					</div>
+
+					<table class="table table-hover table-comparison nobottommargin">
+					  <thead>
+						<tr>
+						  <th>&nbsp;</th>
+						  <th>@Html(Messages(key+".table.quartz.pack.1"))</th>
+						  <th>@Html(Messages(key+".table.quartz.pack.2"))</th>
+						  <th>@Html(Messages(key+".table.quartz.pack.3"))</th>
+						</tr>
+					  </thead>
+					  <tbody>
+					  	<tr>
+						  <td>@Html(Messages(key+".table.quartz.feature.1"))</td>
+						  <td><i class="icon-ok"></i></td>
+						  <td><i class="icon-ok"></i></td>
+						  <td><i class="icon-ok"></i></td>
+						</tr>
+						<tr>
+						  <td>@Html(Messages(key+".table.quartz.working.waranty.label"))</td>
+						  <td colspan="3">@Html(Messages(key+".table.quartz.working.waranty.value"))</td>
+						</tr>
+						<tr>
+						  <td>@Html(Messages(key+".table.quartz.feature.2"))</td>
+						  <td><i class="icon-remove"></i></td>
+						  <td><i class="icon-ok"></i></td>
+						  <td><i class="icon-ok"></i></td>
+						</tr>
+						<tr>
+						  <td>@Html(Messages(key+".table.quartz.feature.3"))</td>
+						  <td><i class="icon-remove"></i></td>
+						  <td><i class="icon-remove"></i></td>
+						  <td><i class="icon-ok"></i></td>
+						</tr>
+						<tr>
+						  <td>@Html(Messages(key+".table.body.watch.of.category", "3*"))</td>
+						  <td>@Html(Messages(key+".table.body.price.fixed", "20€"))</td>
+						  <td>@Html(Messages(key+".table.body.price.fixed", "49€"))</td>
+						  <td>@Html(Messages(key+".table.body.price.on.quotation", "100€"))</td>
+						</tr>
+						<tr>
+						  <td>@Html(Messages(key+".table.body.watch.of.category", "2**"))</td>
+						  <td>@Html(Messages(key+".table.body.price.fixed", "25€"))</td>
+						  <td>@Html(Messages(key+".table.body.price.fixed", "69€"))</td>
+						  <td>@Html(Messages(key+".table.body.price.on.quotation", "140€"))</td>
+						</tr>
+						
+						<tr>
+						  <td>@Html(Messages(key+".table.body.watch.of.category", "1***"))</td>
+						  <td>@Html(Messages(key+".table.body.price.fixed", "35€"))</td>
+						  <td>@Html(Messages(key+".table.body.price.fixed", "89€"))</td>
+						  <td>@Html(Messages(key+".table.body.price.on.quotation", "180€"))</td>
+						</tr>
+						<tr>
+						  <td>@Html(Messages(key+".table.body.moving"))</td>
+						  <td colspan="3">@Html(Messages(key+".table.body.moving.prices"))</td>
+						</tr>
+						<tr>
+							<td colspan="4">&nbsp;</td>
+						</tr>
+					  </tbody>
+					</table>
+					
+					<div class="disclaimer">
+						@Html(Messages("page.prices.inner.disclaimer"))
+					</div>
+				</div>
+				
+				<div class="center">
+						<a href="@routes.HomeController.visit()" class="button button-3d button-dark button-large "><i class="icon-location"></i> @Html(Messages(key.toString+".visit.us"))</a>
+				</div>
+}
+				
+					
+}
