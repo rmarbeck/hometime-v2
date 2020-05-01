@@ -12,7 +12,7 @@ libraryDependencies ++= Seq(
   javaWs
 )
 
-includeFilter in (Assets, LessKeys.less) := "style.less" | "responsive-proxy.less" | "dark-proxy.less" | "custom.less"
+includeFilter in (Assets, LessKeys.less) := "merged.less" | "style.less" | "responsive-proxy.less" | "dark-proxy.less" | "custom.less"
 
 // Compile the project before generating Eclipse files, so that generated .scala or .class files for views and routes are present
 EclipseKeys.preTasks := Seq(compile in Compile, compile in Test)

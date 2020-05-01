@@ -11,9 +11,9 @@
 
 	<!-- Stylesheets
 	============================================= -->
-	<link href="https://fonts.googleapis.com/css?family=Lato:300,400,400i,700|Raleway:300,400,500,600,700|Crete+Round:400i" rel="stylesheet" type="text/css" />
+	<!--<link href="https://fonts.googleapis.com/css?family=Lato:300,400,400i,700|Raleway:300,400,500,600,700|Crete+Round:400i" rel="stylesheet" type="text/css" />-->
 
-	@List("css/bootstrap.css",
+	<!--@List("css/bootstrap.css",
 			"stylesheets/style.css",
 			"css/swiper.css",
 			"stylesheets/dark-proxy.css",
@@ -24,6 +24,16 @@
 			"css/components/radio-checkbox.css",
 			"one-page/css/et-line.css",
 			"stylesheets/custom.css").map { e =><link rel="stylesheet" href="@remote_assets(e)" type="text/css" />
+	}-->
+	
+	@List("css/bootstrap.css",
+			"css/swiper.css",
+			"css/font-icons.css",
+			"css/animate.css",
+			/*"css/magnific-popup.css",
+			"css/components/radio-checkbox.css",
+			"one-page/css/et-line.css",*/
+			"stylesheets/merged.css").map { e =><link rel="stylesheet" href="@remote_assets(e)" type="text/css" />
 	}
 
 	<meta name="viewport" content="width=device-width, initial-scale=1" />
