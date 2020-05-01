@@ -3,13 +3,14 @@ organization := "fr.hometime"
 
 version := "1.0-SNAPSHOT"
 
-lazy val root = (project in file(".")).enablePlugins(PlayJava)
+lazy val root = (project in file(".")).enablePlugins(PlayJava, SbtWeb)
 
 scalaVersion := "2.13.1"
 
 libraryDependencies ++= Seq(
   guice,
-  javaWs
+  javaWs,
+  "org.webjars" % "bootstrap" % "4.3.1"
 )
 
 includeFilter in (Assets, LessKeys.less) := "merged.less" | "style.less" | "responsive-proxy.less" | "dark-proxy.less" | "custom.less"
@@ -21,3 +22,7 @@ EclipseKeys.projectFlavor := EclipseProjectFlavor.Java           // Java project
 EclipseKeys.createSrc := EclipseCreateSrc.ValueSet(EclipseCreateSrc.ManagedClasses, EclipseCreateSrc.ManagedResources)  // Use .class files instead of generated .scala files for views and routes
 
 herokuAppName in Compile := "hometime-v2"
+
+pipelineStages := Seq(digest)
+
+
