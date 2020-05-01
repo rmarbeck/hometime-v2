@@ -68,7 +68,7 @@ public class FormProcessingController extends Controller implements WSBodyReadab
         this.messagesApi = messagesApi;
         this.brandProvider = brandProvider;
         this.priceProvider = priceProvider;
-        this.injectedPriceProvider = priceProvider;
+        injectedPriceProvider = priceProvider;
         this.ws = ws;
         this.config = config;
     }
@@ -233,7 +233,7 @@ public class FormProcessingController extends Controller implements WSBodyReadab
 	}
 	
 	private DynamicForm fillQuartzPriceRequestWithDefaultData(Optional<String> brandSeoName) {
-		Map<String, Object> prefilled = new HashMap();
+		Map<String, Object> prefilled = new HashMap<String, Object>();
 		brandSeoName.ifPresent(seoName -> {
 			Optional<Brand> brandFound = brandProvider.getBrandBySeoName(seoName);
 			brandFound.ifPresent(brand -> prefilled.put("brand", brand.id.toString()) );

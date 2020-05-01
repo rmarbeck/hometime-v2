@@ -179,53 +179,7 @@
 
 				</div>
 				
-				<div class="row clearfix align-items-stretch">
 
-					<div class="col-lg-6 center col-padding" style="background: url('@remote_assets("images/home/bg3.jpg")') center center no-repeat; background-size: cover;">
-					</div>
-
-					<div class="col-lg-6 center col-padding" style="background-color: #F5F5F5;">
-						<div class="heading-block nobottomborder">
-							<span class="before-heading color">@Html(Messages("home.video.claim"))</span>
-							<h3>@Html(Messages("home.video.baseline"))</h3>
-						</div>
-
-						<div class="center bottommargin">
-			  				<iframe style="border:none;" class="embed-responsive-item" src="//www.youtube.com/embed/6XruLNvzZCM?rel=0&amp;controls=1&amp;showinfo=0&amp;autoplay=0&amp;modestbranding=1" allowfullscreen=""></iframe>
-							
-						</div>
-						<p class="lead nobottommargin">@Html(Messages("home.video.sub"))</p>
-					</div>
-
-				</div>
-
-				<div class="row clearfix align-items-stretch bottommargin-lg">
-				
-					@List((0, 5, 1, 600, "icon-calendar-1", "#124931;"),
-							(1, 1475, 100, 2000, "icon-users1", "#1c6348;"),
-							(1, 3000, 250, 2500, "icon-line-watch", "#3b916d;"),
-							(60, 500, 30, 2700, "icon-dollar-sign", "#3ab884;")).zipWithIndex.map { case (value,index) => @stats(value._1, value._2, value._3, value._4, value._5, value._6, index+1) }
-
-				</div>
-				
-				<div class="topmargin nobottommargin nobottomborder">
-					<div class="container clearfix">
-						<div class="heading-block center">
-							<h3>@Html(Messages("home.portfolio.claim"))</h3>
-						</div>
-					</div>
-				</div>
-
-				<div id="portfolio" class="portfolio portfolio-nomargin grid-container portfolio-full grid-container clearfix">
-				
-					@for(index <- 1 to 8) {
-					<article class="portfolio-item pf-media pf-icons">
-						<div class="portfolio-image">
-							<img src="@remote_assets("images/home/grid-"+index+".jpg")" alt="@Html(Messages("home.grid"+index+".alt"))">
-						</div>
-					</article>
-					}
-				</div>
 				
 
 				<div class="section notopmargin nobottommargin">
