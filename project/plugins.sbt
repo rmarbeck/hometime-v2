@@ -8,6 +8,8 @@ addSbtPlugin("org.foundweekends.giter8" % "sbt-giter8-scaffold" % "0.11.0")
 
 addSbtPlugin("com.typesafe.sbt" % "sbt-digest" % "1.1.4")
 
+addSbtPlugin("com.typesafe.sbt" % "sbt-gzip" % "1.0.2")
+
 // Less compilation
 addSbtPlugin("com.typesafe.sbt" % "sbt-less" % "1.1.2")
 

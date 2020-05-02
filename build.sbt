@@ -3,7 +3,7 @@ organization := "fr.hometime"
 
 version := "1.0-SNAPSHOT"
 
-lazy val root = (project in file(".")).enablePlugins(PlayJava, SbtWeb)
+lazy val root = (project in file(".")).enablePlugins(PlayJava)
 
 scalaVersion := "2.13.1"
 
@@ -23,6 +23,6 @@ EclipseKeys.createSrc := EclipseCreateSrc.ValueSet(EclipseCreateSrc.ManagedClass
 
 herokuAppName in Compile := "hometime-v2"
 
-pipelineStages := Seq(digest)
+pipelineStages := Seq(digest, gzip)
 
 

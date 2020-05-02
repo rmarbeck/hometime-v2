@@ -61,7 +61,7 @@
 									<li><a href="@routes.HomeController.content("content.who.are.we").url">@Html(Messages("footer.who.are.we"))</a></li>
 									<li><a href="@routes.HomeController.visit()">@Html(Messages("footer.visit.us"))</a></li>
 									<li><a href="@routes.FormProcessingController.prepareQuotationRequest()">@Html(Messages("footer.quotation.request"))</a></li>
-									<li><a href="/assets/CGV - Hometime.pdf">@Html(Messages("footer.site.plan"))</a></li>
+									<li><a href="@remote_assets("/CGV - Hometime.pdf")">@Html(Messages("footer.site.plan"))</a></li>
 									<li><a href="@routes.HomeController.feedbacks()">@Html(Messages("footer.testimonials")) <span class="icon-star3"/><span class="icon-star3"/><span class="icon-star3"/><span class="icon-star3"/><span class="icon-star3"/></a></li>
 									<li><a href="@routes.HomeController.faq()">@Html(Messages("footer.faq"))</a></li>
 									<li><a href="@routes.FormProcessingController.prepareContactRequest()">@Html(Messages("footer.contact.us"))&nbsp;<span class="icon-line-mail"/></a></li>
