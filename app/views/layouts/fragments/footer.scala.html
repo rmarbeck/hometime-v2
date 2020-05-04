@@ -61,11 +61,11 @@
 									<li><a href="@routes.HomeController.content("content.who.are.we").url">@Html(Messages("footer.who.are.we"))</a></li>
 									<li><a href="@routes.HomeController.visit()">@Html(Messages("footer.visit.us"))</a></li>
 									<li><a href="@routes.FormProcessingController.prepareQuotationRequest()">@Html(Messages("footer.quotation.request"))</a></li>
-									<li><a href="@remote_assets("/CGV - Hometime.pdf")">@Html(Messages("footer.site.plan"))</a></li>
-									<li><a href="@routes.HomeController.feedbacks()">@Html(Messages("footer.testimonials")) <span class="icon-star3"/><span class="icon-star3"/><span class="icon-star3"/><span class="icon-star3"/><span class="icon-star3"/></a></li>
+									<li><a href="@remote_assets("CGV%20-%20Hometime.pdf")">@Html(Messages("footer.site.plan"))</a></li>
+									<li><a href="@routes.HomeController.feedbacks()">@Html(Messages("footer.testimonials")) <span class="icon-star3"></span><span class="icon-star3"></span><span class="icon-star3"></span><span class="icon-star3"></span><span class="icon-star3"></span></a></li>
 									<li><a href="@routes.HomeController.faq()">@Html(Messages("footer.faq"))</a></li>
-									<li><a href="@routes.FormProcessingController.prepareContactRequest()">@Html(Messages("footer.contact.us"))&nbsp;<span class="icon-line-mail"/></a></li>
-									<li><a href="@routes.FormProcessingController.prepareCallBackRequest()">@Html(Messages("footer.call.back"))&nbsp;<span class="icon-line2-call-in"/></a></li>
+									<li><a href="@routes.FormProcessingController.prepareContactRequest()">@Html(Messages("footer.contact.us"))&nbsp;<span class="icon-line-mail"></span></a></li>
+									<li><a href="@routes.FormProcessingController.prepareCallBackRequest()">@Html(Messages("footer.call.back"))&nbsp;<span class="icon-line2-call-in"></span></a></li>
 								</ul>
 
 							</div>
@@ -140,7 +140,7 @@
 
 					<div class="col_half">
 						@Html(Messages("footer.copyright",java.time.Year.now.getValue))<br>
-						<div class="copyright-links"><a href="@routes.HomeController.content("content.legal").url">@Html(Messages("footer.legal"))</a> / <a href="@routes.HomeController.content("content.privacy").url">@Html(Messages("footer.private"))</a> / <a href="/assets/CGV - Hometime.pdf">@Html(Messages("footer.cgv"))</a></div>
+						<div class="copyright-links"><a href="@routes.HomeController.content("content.legal").url">@Html(Messages("footer.legal"))</a> / <a href="@routes.HomeController.content("content.privacy").url">@Html(Messages("footer.private"))</a> / <a href="@remote_assets("CGV%20-%20Hometime.pdf")">@Html(Messages("footer.cgv"))</a></div>
 					</div>
 
 					<div class="col_half col_last tright">
