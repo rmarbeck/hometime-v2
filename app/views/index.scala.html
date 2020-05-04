@@ -181,7 +181,7 @@
 				
 				<div class="row clearfix align-items-stretch">
 
-					<div class="col-lg-6 center col-padding" style="background: url('@remote_assets("images/home/bg3.jpg")') center center no-repeat; background-size: cover;">
+					<div class="col-lg-6 center col-padding" style="background: url('@remote_assets("images/home/newbg.webp")') center center no-repeat; background-size: cover;">
 					</div>
 
 					<div class="col-lg-6 center col-padding" style="background-color: #F5F5F5;">
@@ -221,7 +221,10 @@
 					@for(index <- 1 to 8) {
 					<article class="portfolio-item pf-media pf-icons">
 						<div class="portfolio-image">
-							<img class="lazyload" data-src="@remote_assets("images/home/grid-"+index+".jpg")" alt="@Html(Messages("home.grid"+index+".alt"))">
+							<picture>
+								<source type="image/webp" data-srcset="@remote_assets("images/home/grid-"+index+".webp")">
+								<img class="lazyload" data-src="@remote_assets("images/home/grid-"+index+".jpg")" alt="@Html(Messages("home.grid"+index+".alt"))">
+							</picture>
 						</div>
 					</article>
 					}
