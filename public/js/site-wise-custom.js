@@ -15,6 +15,7 @@ if(video_wrapper.length){
 $('.play-youtube-video').on('click', function(){
 /* Dynamically inject the iframe on demand of the user.
  Pull the youtube url from the data attribute on the wrapper element. */
-video_wrapper.html('<iframe allowfullscreen frameborder="0" class="embed-responsive-item" src="' + video_wrapper.data('yt-url') + '"></iframe>');
+video_wrapper.addClass("embed-responsive-16by9");
+video_wrapper.html('<iframe style="border:none;"  allowfullscreen class="embed-responsive-item" src="' + video_wrapper.data('yt-url') + '"></iframe>');
 });
 }
