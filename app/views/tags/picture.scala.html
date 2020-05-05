@@ -1,0 +1,5 @@
+@(webp_url: String, alternate_url: String, alt: String, args: (Symbol,String)*)
+<picture>
+	<source type="image/webp" data-srcset="@webp_url">		
+	<img class="lazyload @args.toMap.get(Symbol("_class"))" data-src="@alternate_url" alt="@alt">
+</picture>

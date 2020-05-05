@@ -333,6 +333,9 @@ dd.error {
 	}
 }
 
+.no_break {
+	white-space: nowrap;
+}
 
 .home {
 	.portfolio-image {
@@ -346,4 +349,25 @@ dd.error {
 		    position: absolute;
 		}
 	}
+	.pseudo-background-img-container {
+	  position: relative;
+	}
+	.pseudo-background-img {
+	  position: absolute;
+	  top: 0;
+	  left: 0;
+	  width: 100%;
+	  height: 100%;
+	  object-fit: cover;
+	}
+	
+	.hulk i {
+		background-color: @like-rolex-green;
+	}
+	
+	.datejust i  {
+		background-color: @darker-blue;
+	}
 }
+
+

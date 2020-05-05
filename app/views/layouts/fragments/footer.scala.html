@@ -33,12 +33,11 @@
 						<div class="col_one_third">
 
 							<div class="widget clearfix">
-
-								<img src="/assets/images/footer-widget-logo.png" alt="" class="footer-logo">
+								@picture(remote_assets("images/footer-widget-logo.webp").toString, remote_assets("images/footer-widget-logo.png").toString, "", Symbol("_class") -> "footer-logo")
 
 								<p>@Html(Messages("footer.claim"))</p>
 
-								<div style="background: url('/assets/images/world-map.png') no-repeat center center; background-size: 100%;">
+								<div style="background: url('@remote_assets("/images/world-map.png")') no-repeat center center; background-size: 100%;">
 									<address>
 										<strong>@Html(Messages("footer.location"))</strong><br>
 										@Html(Messages("footer.address"))

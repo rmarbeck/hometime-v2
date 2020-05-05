@@ -18,7 +18,8 @@
 
 				<div class="swiper-container swiper-parent">
 					<div class="swiper-wrapper">
-						<div class="swiper-slide dark" style="background-image: url('@remote_assets("images/home/bg3c.jpg")'); background-image: -webkit-image-set(url('@remote_assets("images/home/bg3c.webp")') 1x);">
+						<div class="swiper-slide dark pseudo-background-img-container">
+							<img class="pseudo-background-img" src="@remote_assets("images/home/bg1-1000.jpg")" srcset="@remote_assets("images/home/bg1-500.webp") 500w, @remote_assets("images/home/bg1-1000.webp") 1000w, @remote_assets("images/home/bg1-2000.webp") 2000w, @remote_assets("images/home/bg1-4000.webp") 4000w, @remote_assets("images/home/bg1-5000.webp") 5000w" sizes="100vw">
 							<div class="container clearfix">
 								<div class="slider-caption slider-caption-center slider-1">
 									<h2 data-animate="fadeInUp">
@@ -44,7 +45,8 @@
 							</div>
 							
 						</div>
-						<div class="swiper-slide" style="background-image: url('@remote_assets("images/home/bg3c.jpg")'); background-image: -webkit-image-set(url('@remote_assets("images/home/bg2.webp")') 1x, url('@remote_assets("images/home/bg22x2.webp")') 2x, url('@remote_assets("images/home/bg23x2.webp")') 3x); background-position: center middle;">
+						<div class="swiper-slide pseudo-background-img-container">
+							<img class="pseudo-background-img" src="@remote_assets("images/home/bg2.jpg")" srcset="@remote_assets("images/home/bg2-500.webp") 500w, @remote_assets("images/home/bg2-1000.webp") 1000w, @remote_assets("images/home/bg2-2000.webp") 2000w, @remote_assets("images/home/bg2-4000.webp") 4000w, @remote_assets("images/home/bg2-6000.webp") 6000w" sizes="100vw">
 							<div class="container clearfix">
 								<div class="slider-caption slider-caption-right slider-3">
 									<h2 data-animate="fadeInUp">@Html(Messages("home.main.header.3.title"))</h2>

@@ -15,10 +15,10 @@
 							</div>
 }
 
-@feature(icon: String, index: Int, pushRight: Boolean) = {
-							<div class="feature-box @if(pushRight) {fbox-right} topmargin" data-animate="fadeIn">
+@feature(icon: String, index: Int, pushRight: Boolean, watch: String="hulk") = {
+							<div class="feature-box @if(pushRight) {fbox-right} topmargin @{watch}" data-animate="fadeIn">
 								<div class="fbox-icon">
-									<i class="@icon" style="background-color:#3b916d"></i>
+									<i class="@icon"></i>
 								</div>
 								<h3>@Html(Messages("home.feature."+index+".head"))</h3>
 								<p>@Html(Messages("home.feature."+index+".body"))</p>
@@ -26,7 +26,7 @@
 }
 
 @stats(valueFrom: Int, valueTo: Int, valueRefresh: Int, valueSpeed: Int, icon: String, color: String, index: Int) = {
-					<div class="col-lg-3 col-md-6 dark center col-padding" style="background-color: @color">
+					<div class="col-lg-3 col-6 dark center col-padding" style="background-color: @color">
 						<i class="i-plain i-xlarge divcenter @icon"></i>
 						<div class="counter counter-lined"><span data-from="@valueFrom" data-to="@valueTo" data-refresh-interval="@valueRefresh" data-speed="@valueSpeed"></span>&nbsp;@Html(Messages("home.stats."+index+".unit"))</div>
 						<h5>@Html(Messages("home.stats."+index+".text"))</h5>
@@ -67,6 +67,7 @@
 									</div>
 								</div>
 }
+
 
 @layouts.home() {
   <div class="content-wrap">
@@ -152,30 +153,32 @@
 						</div>
 
 					</div>
-
+					@List(scala.util.Random.shuffle(List(("hulk", "images/home/m116610lv-0002", "Rolex Hulk"), ("datejust", "images/home/m126334-0002", "Rolex datejust"))).head).map{ value => 
 					<div class="d-none d-md-flex  row bottommargin-sm">
 
 						<div class="col-lg-4 col-md-6 bottommargin">
 						
 							@List("icon-home",
 									"icon-thumbs-up21",
-									"icon-euro-sign").zipWithIndex.map { case (e, index) => @feature(e, index, true) }
+									"icon-euro-sign").zipWithIndex.map { case (e, index) => @feature(e, index, true, value._1) }
 
 						</div>
 
 						<div class="col-lg-4 d-md-none d-lg-block bottommargin center">
-							<img src="@remote_assets("images/home/m116610lv-0002.webp")" alt="Rolex Hulk">
+							@picture(remote_assets(value._2+".webp").toString, remote_assets(value._2+".png").toString, value._3)
 						</div>
 
 						<div class="col-lg-4 col-md-6 bottommargin">
 						
 							@List("icon-calendar-alt",
 									"icon-leaf",
-									"icon-certificate").zipWithIndex.map { case (e, index) => @feature(e, index+3, false) }
+									"icon-certificate").zipWithIndex.map { case (e, index) => @feature(e, index+3, false, value._1) }
 
 						</div>
 
 					</div>
+					}
+					
 
 				</div>
 				
@@ -221,10 +224,7 @@
 					@for(index <- 1 to 8) {
 					<article class="portfolio-item pf-media pf-icons">
 						<div class="portfolio-image">
-							<picture>
-								<source type="image/webp" data-srcset="@remote_assets("images/home/grid-"+index+".webp")">
-								<img class="lazyload" data-src="@remote_assets("images/home/grid-"+index+".jpg")" alt="@Html(Messages("home.grid"+index+".alt"))">
-							</picture>
+							@picture(remote_assets("images/home/grid-"+index+".webp").toString, remote_assets("images/home/grid-"+index+".jpg").toString, Messages("home.grid"+index+".alt"))
 						</div>
 					</article>
 					}
@@ -254,7 +254,7 @@
 
 				<a href="@routes.FormProcessingController.prepareQuotationRequest()" class="button button-full center tright footer-stick">
 					<div class="container clearfix">
-						@Html(Messages("home.bottom.line.claim")) <strong>@Html(Messages("home.bottom.line.action")) </strong> <i class="icon-caret-right" style="top:4px;"></i>
+						@Html(Messages("home.bottom.line.claim")) <span class="no_break"><strong>@Html(Messages("home.bottom.line.action"))</strong><i class="icon-caret-right" style="top:4px;"></i></span>
 					</div>
 				</a>
 
