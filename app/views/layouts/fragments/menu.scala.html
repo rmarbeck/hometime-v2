@@ -26,6 +26,8 @@
 					.getParentIfExists()
 				.addSubMenu("prices", Optional.of(routes.HomeController.prices().url), Optional.empty(), Optional.empty())
 					.getParentIfExists()
+				.addSubMenu("quartz.prices", Optional.of(routes.FormProcessingController.prepareQuartzPrice().url), Optional.empty(), Optional.empty())
+					.getParentIfExists()
 				.addSubMenu("feedbacks", Optional.of(routes.HomeController.feedbacks().url), Optional.empty(), Optional.empty())
 				.getHighestParentIfExists());
 				
