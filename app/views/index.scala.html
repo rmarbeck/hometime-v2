@@ -194,8 +194,12 @@
 						</div>
 
 						<div class="center bottommargin">
-			  				<iframe style="border:none;" class="embed-responsive-item" src="//www.youtube.com/embed/6XruLNvzZCM?rel=0&amp;controls=1&amp;showinfo=0&amp;autoplay=0&amp;modestbranding=1" allowfullscreen=""></iframe>
-							
+			  				<div class="youtube-video-place embed-responsive embed-responsive-4by3 " data-yt-url="//www.youtube.com/embed/6XruLNvzZCM?rel=0&amp;controls=1&amp;showinfo=0&amp;autoplay=0&amp;modestbranding=1">
+			  					<picture>
+			  						<source type="image/webp" data-srcset="@remote_assets("images/home/videoyoutube.webp")">
+			  						<img src="@remote_assets("images/home/videoyoutube.jpg")" async class="play-youtube-video">
+			  					</picture>
+							</div>
 						</div>
 						<p class="lead nobottommargin">@Html(Messages("home.video.sub"))</p>
 					</div>

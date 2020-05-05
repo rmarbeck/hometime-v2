@@ -2433,6 +2433,56 @@ contact.us.error.head.intro=Veuillez nous excuser, une erreur s''est produite.<b
 contact.us.error.disclaimer=Nous avons enregistré cette erreur et allons essayer de la résoudre rapidement. Merci de votre compréhension.
 
 
+
+#------ Accept Quotation Form ------------------
+#------ accept.quotation.form
+accept.quotation.form.html.title=Acceptation de devis
+accept.quotation.form.html.description=Acceptation de devis envoyé par email
+accept.quotation.form.html.keywords=Accord devis, entretien, montre
+
+accept.quotation.form.head=Acceptation de devis
+accept.quotation.form.head.subtitle=Nous avons besoin de quelques informations supplémentaires
+accept.quotation.form.head.intro=En validant ce formulaire, vous indiquez que vous souhaitez un devis formel pour lancer le processus de réparation de votre montre. Vous n''êtes pas engagé à l''issue de cette démarche.
+accept.quotation.form.disclaimer=Après validation de ce formulaire, nous rentreront en contact avec vous pour formaliser notre devis et initier la processus de prise en charge de votre montre. 
+
+accept.quotation.form.orderid.label=Numéro de la demande
+accept.quotation.form.orderid.placeholder=
+
+accept.quotation.form.orderid.label=Prix prévisionnel
+accept.quotation.form.orderid.placeholder=
+
+accept.quotation.form.orderid.label=Délai prévu
+accept.quotation.form.orderid.placeholder=
+
+accept.quotation.form.address.label=Votre adresse postale (nécessaire pour la rédaction du devis formel)
+accept.quotation.form.address.placeholder=
+accept.quotation.request.validation.error.address.spam.detected=Notre système a détecté un contenu correspondant à du SPAM, veuillez contrôler la valeur saisie
+
+accept.quotation.form.submit=Envoyer
+
+#------ Accept Quotation Success Page ------------------
+#------ accept.quotation.success
+accept.quotation.success.html.title=Acceptation de devis
+accept.quotation.success.html.description=Acceptation de devis envoyé par email
+accept.quotation.success.html.keywords=Accord devis, entretien, montre
+accept.quotation.success.head=Acceptation de devis
+accept.quotation.success.head.subtitle=Nous avons besoin de quelques informations supplémentaires
+
+accept.quotation.success.head.intro=Votre demande a bien été enregistrée, nous allons la traiter dans les plus brefs délais. Merci de votre confiance&nbsp;!
+
+accept.quotation.success.disclaimer=
+
+accept.quotation.error.html.title=Erreur dans notre traitement
+accept.quotation.error.html.description=Demande d''acceptation de devis en échec
+accept.quotation.error.html.keywords=demande, acceptation de devis, ko
+
+accept.quotation.error.head=Erreur
+accept.quotation.error.head.subtitle=Problème rencontré lors de la validation de votre acceptation de devis
+accept.quotation.error.head.intro=Veuillez nous excuser, une erreur s''est produite.<br/>Peut-être celle-ci est transitoire, alors n''hésitez pas à réessayer ou à nous appeler&nbsp;!<br /><br />Nous allons essayer de résoudre le problème au plus vite.
+accept.quotation.error.disclaimer=Nous avons enregistré cette erreur et allons essayer de la résoudre rapidement. Merci de votre compréhension.
+
+
+
 order.form.label.type.of.service=Type d''entretien <br />(<a href="{0}">quand faire une révision&nbsp;?</a>)
 order.form.value.type.of.service.repair=Réparation ou <abbr class="" title="Pour les montres anciennes ou très abîmées" >restauration</abbr>
 order.form.value.type.of.service.service=Révision complète (démontage, nettoyage, huilage, <abbr class="" title="Si vous le souhaitez" >polissage</abbr>), à prévoir tous les 5 ans environ

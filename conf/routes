@@ -4,6 +4,7 @@
 
 # An example controller showing a sample home page
 GET     /																	controllers.HomeController.index(request: Request)
+GET     /revision-reparation-de-montres										controllers.Default.redirect(to = "/")
 
 GET     /test																controllers.HomeController.test(request: Request)
 
@@ -35,6 +36,10 @@ POST    /nous-contacter														controllers.FormProcessingController.proces
 GET     /quand-faire-la-revision											controllers.FormProcessingController.prepareServiceTestRequest(request: Request)
 POST    /quand-faire-la-revision											controllers.FormProcessingController.processServiceTestRequest(request: Request)
 
+GET 	/accepter-le-devis													controllers.FormProcessingController.prepareAcceptQuotationRequest(request: Request, orderId: Long, price: String, delay: String)
+POST	/accepter-le-devis													controllers.FormProcessingController.processAcceptQuotationRequest(request: Request)
+
+
 GET		/test/:type/:bool													controllers.FormProcessingController.testServiceTestResult(request: Request, type, bool)
 
 GET     /les-services/l-offre												controllers.HomeController.offers(request: Request)
@@ -52,7 +57,9 @@ GET		/avis-clients														controllers.HomeController.feedbacks(request: Re
 POST	/abonnement															controllers.FormProcessingController.processRegister(request: Request)
 
 GET     /entretien-reparation												controllers.HomeController.content(request: Request, key = "content.service.repairing")
+GET     /service															controllers.Default.redirect(to = "/entretien-reparation")
 GET     /nos-horlogers														controllers.HomeController.content(request: Request, key = "content.watchmakers")
+GET     /watchmakers														controllers.Default.redirect(to = "/nos-horlogers")
 GET     /reparation/montre/rolex											controllers.HomeController.content(request: Request, key = "content.rolex.repairing")
 GET     /reparation/montre/omega											controllers.HomeController.content(request: Request, key = "content.omega.repairing")
 GET     /prise-en-charge-urgente-probleme-etancheite    					controllers.HomeController.content(request: Request, key = "content.water.repairing")

@@ -1,0 +1,88 @@
+@(form: Form[AcceptQuotationRequestData])(implicit request: Http.Request, messages: play.i18n.Messages)
+
+@import scala.collection.immutable._
+@import tags._
+
+@implicitField = @{ helper.FieldConstructor(canvasFieldTemplate.f) }
+
+@*****************************************
+ * Keys
+ *****************************************@
+
+@formKey = {accept.quotation.form}
+
+@*****************************************
+ * Style Helpers
+ *****************************************@
+
+@inputDiv(size: Int, addedClass: String="")(content: Html) = {
+	<div class="col-md-@size form-group mb-4 @addedClass">
+		@content
+	</div>
+}
+
+@fullWidth(addedClass: String="")(content: Html) = {
+	@inputDiv(12, addedClass) {@content}
+}
+
+@halfWidth(addedClass: String="")(content: Html) = {
+	@inputDiv(6, addedClass) {@content}
+}
+
+@computeClassForInput(isRequired: Boolean, isInError: Boolean, args: (Symbol,Any)*) = {form-control @if(isRequired) {required} @if(isInError) {error} @args.toMap.get(Symbol("_body_class")).map(_.toString)}
+
+@selectLabelClassCss(size: Int) = {btn btn-outline-secondary px-@size t600 ls0 nott}
+
+@*****************************************
+ * End of Style Helpers
+ *****************************************@
+ 
+@*****************************************
+ * Form Helpers
+ *****************************************@
+
+@computeMessageKey(fieldName: String, suffix: String) = {@{formKey}.@{fieldName.toString.toLowerCase.replace('_','.')}.@{suffix}}
+
+@inputText(fieldName: String, isRequired: Boolean, isInError: Boolean, args: (Symbol,Any)*) = {
+	@helper.inputText(form(fieldName), (Seq(Symbol("class") -> computeClassForInput(isRequired, isInError, args:_*).toString, Symbol("_showConstraints") -> false, Symbol("placeholder") -> Html(Messages(computeMessageKey(fieldName, "placeholder").toString)), Symbol("_label") -> Html(Messages(computeMessageKey(fieldName, "label").toString))) ++ args):_* )(tags.canvasFieldTemplate, messages)
+}
+
+@inputBox(fieldName: play.data.Form.Field, isRequired: Boolean, args: (Symbol,Any)*) = {
+	@fullWidth() {
+		@inputText(fieldName.name.get, isRequired, fieldName.hasErrors, args:_*)
+	}
+}
+
+@selectField(size: Int, id: String, name: String, value: Option[String], tuple: (String, play.twirl.api.Html), args: Map[Symbol,Any]) = {
+											<label for="@(id)_@tuple._1" class="@selectLabelClassCss(size) @if(value == Some(tuple._1)){active}">
+												<input type="radio" name="@name" id="@(id)_@tuple._1" autocomplete="off" value="@tuple._1" @if(value == Some(tuple._1)){checked="checked"} @toHtmlArgs(args)>@tuple._2</input>
+											</label>
+}
+
+@*****************************************
+ * End of Form Helpers
+ *****************************************@
+
+
+@layouts.main_helper_with_head_block(formKey.toString){
+		
+		@helper.form(action = routes.FormProcessingController.processAcceptQuotationRequest(), Symbol("id") -> "contact-us", Symbol("class") -> "row mb-0") {
+				@helper.CSRF.formField
+									<div class="form-process"></div>
+									
+									@inputBox(form("orderId"), true, Symbol("readonly") -> "readonly")
+									
+									@inputBox(form("price"), true, Symbol("readonly") -> "readonly")
+									
+									@inputBox(form("delay"), true, Symbol("readonly") -> "readonly")
+									
+									@fullWidth() {
+										@helper.textarea(form("address"), Symbol("class") -> "form-control", Symbol("placeholder") -> Html(Messages(computeMessageKey("address", "placeholder").toString)), Symbol("_label") -> Html(Messages(computeMessageKey("address", "label").toString)), Symbol("cols") -> "30", Symbol("rows") -> "5", Symbol("_showConstraints") -> false)
+									}
+
+									<div class="col-12">
+										<button type="submit" name="contact-us-submit" class="btn btn-success btn-lg">@Html(Messages(formKey.toString+".submit"))</button>
+									</div>
+
+			}
+}
