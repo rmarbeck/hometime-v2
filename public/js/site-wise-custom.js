@@ -42,5 +42,9 @@ async function supportsWebp() {
     	var replaceStyle = $(this).attr("data-alt-style");
     	$(this).attr("style", replaceStyle);
     });
+    
+    $('.webp-alt-background').each(function() {
+    	$(this).removeAttr("srcset");
+    });	
   }
 })();
