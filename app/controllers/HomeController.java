@@ -101,6 +101,11 @@ public class HomeController extends Controller {
         return ok(contentTemplate.render(page, request,  messages));
     }
     
+    public Result error(Http.Request request) {
+    	Messages messages = messagesApi.preferred(request);
+        return ok(views.html.error.render("404", request,  messages));
+    }
+    
     public Result faq(Http.Request request) {
     	Messages messages = messagesApi.preferred(request);
         return ok(faq.render(request,  messages));

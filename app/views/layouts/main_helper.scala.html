@@ -1,7 +1,7 @@
 @*
  * Main template Helper : Key generates title, description and keywords
  *@
-@(key: String)(content: Html)(implicit request: Http.Request, messages: play.i18n.Messages)
+@(key: String, forcedValues: (Symbol, Any)*)(content: Html)(implicit request: Http.Request, messages: play.i18n.Messages)
 
 @title = {@Messages(key+".html.title")}
 @description = {@Messages(key+".html.description")}
@@ -11,5 +11,5 @@
 	Messages(key+".html.title"),
 	Messages(key+".html.description"),
 	Messages(key+".html.keywords")) { case (title, description, keywords) =>
-@layouts.main(key, title, description, keywords)(content)
+@layouts.main(key, title, description, keywords, forcedValues:_*)(content)
 }

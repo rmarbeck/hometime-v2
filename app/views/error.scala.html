@@ -1,0 +1,34 @@
+@(message: String="404")(implicit request: Http.Request, messages: play.i18n.Messages)
+
+@import scala.collection.immutable._
+@import tags._
+
+@defining("error.page") { case (key) =>
+	@layouts.main_helper(key) {
+			<section id="slider" class="slider-element slider-parallax full-screen dark error404-wrap">
+
+			<div class="slider-parallax-inner">
+
+				<div class="container-fluid vertical-middle center clearfix">
+
+					<div class="error404">@message</div>
+
+					<div class="heading-block nobottomborder">
+						<h4>@Html(Messages(key+"."+message+".head"))</h4>
+						<span>@Html(Messages(key+"."+message+".message"))</span>
+					</div>
+
+				</div>
+
+				<div class="video-wrap">
+					<video poster="@remote_assets("images/home/videos/bg-snap.webp")" preload="auto" loop autoplay muted>
+						<source src='@remote_assets("images/home/videos/bg.webm")' />
+					</video>
+					<div class="video-overlay" style="background-color: rgba(0,0,0,0.3);"></div>
+				</div>
+
+			</div>
+
+		</section>		
+	}
+}

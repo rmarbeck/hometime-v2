@@ -5,6 +5,8 @@
 
 	@precontent
 	
+	@args.toMap.get(Symbol("_head_pre_content"))
+	
 	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
 	<meta name="author" content="Hometime" />
 	<link rel="shortcut icon" type="image/png" href="@remote_assets("images/favicon.ico")" />
@@ -32,15 +34,8 @@
 	<title>@Html(Messages("global.title.prefix"))@title</title>
 	<meta name="description" content="@description">
 	<meta name="keywords" content="@keywords">
+
 	
-	<meta property="og:site_name" content="hometime" />
-    <meta property="og:title" content="Hometime" />
-    <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://www2.hometime.fr/" />
-    <meta property="og:image" content="https://www2.hometime.fr/assets/images/logo_for_facebook.jpg" />
-    <meta property="og:description" content="Hometime, révision, réparation, vente de montres de luxe" />
-    <meta property="forsearch:image" content="https://www2.hometime.fr/assets/images/revision-reparation-montre-paris-small.webp" />
-    <meta property="forsearch:image" content="https://www2.hometime.fr/assets/images/revision-reparation-montre-paris-small.png" />
-    <meta property="forsearch:image" content="https://www2.hometime.fr/assets/images/revision-reparation-montre-paris-small.jpg" />
+	@args.toMap.get(Symbol("_head_post_content"))
 	
 	@postcontent

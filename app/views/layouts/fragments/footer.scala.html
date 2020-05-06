@@ -71,7 +71,7 @@
 
 						</div>
 
-						<div class="col_one_third col_last">
+						<div class="col_one_third col_last d-none d-md-flex ">
 
 							<div class="widget clearfix">
 								<h4>@Html(Messages("footer.category.news"))</h4>
@@ -139,7 +139,7 @@
 
 					<div class="col_half">
 						@Html(Messages("footer.copyright",java.time.Year.now.getValue))<br>
-						<div class="copyright-links"><a href="@routes.HomeController.content("content.legal").url">@Html(Messages("footer.legal"))</a> / <a href="@routes.HomeController.content("content.privacy").url">@Html(Messages("footer.private"))</a> / <a href="@remote_assets("CGV%20-%20Hometime.pdf")">@Html(Messages("footer.cgv"))</a></div>
+						<div class="copyright-links"><a href="@routes.HomeController.content("content.legal").url" title="@Html(Messages("footer.legal.title"))">@Html(Messages("footer.legal"))</a> / <a href="@routes.HomeController.content("content.privacy").url" title="@Html(Messages("footer.private.title"))">@Html(Messages("footer.private"))</a> / <a href="@remote_assets("CGV%20-%20Hometime.pdf")" title="@Html(Messages("footer.cgv.title"))">@Html(Messages("footer.cgv"))</a></div>
 					</div>
 
 					<div class="col_half col_last tright">

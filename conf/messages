@@ -29,6 +29,11 @@ footer.site.plan=Plan du site
 footer.legal=Mentions légales
 footer.private=Vie privée
 footer.cgv=CGV
+footer.legal.title=Les mentions légales du site
+footer.private.title=Nous respectons votre vie privée
+footer.cgv.title=Nos conditions générales de vente
+
+
 footer.who.are.we=Qui sommes nous&nbsp;?
 footer.testimonials=Avis clients
 footer.faq=Questions fréquentes&nbsp;(FAQ)
@@ -520,6 +525,8 @@ choose.quotation.head=Choix du type de devis
 choose.quotation.head.subtitle=Choisissez comment évaluer le coût d''entretien de votre montre&nbsp;!
 choose.quotation.head.intro=Vous avez besoin d''un entretien sur votre montre {0}, choisissez ci-dessous le type de devis qui vous convient. Dans un cas vous êtes autonome et pouvez évaluer le coût en quelques secondes. Dans le deuxième cas, un de nos horlogers établira un devis en quelques heures.
 choose.quotation.disclaimer=Vous pouvez très bien choisir un type de devis puis un autre par la suite, alors n''hésitez pas !
+
+choose.quotation.undefined.brand.name=
 
 choose.quotation.order.title=Devis prévisionnel
 choose.quotation.order.subtitle=En détaillant votre besoin, nos horlogers<br/>analysent votre demande et vous répondent.
@@ -1501,6 +1508,21 @@ more.body=A l''occasion d''un déplacement au domicile pour la prise en charge o
 more.accessories.nato.alt=Bracelet nato
 more.accessories.box.alt=Boite à montre
 more.accessories.winder.alt=Remontoir à montre
+
+#------ Error page ------------------
+#------ error.page
+error.page.html.title=Page d''erreur
+error.page.html.keywords=Erreur
+error.page.html.description=Erreur
+
+error.page.404.head=Page introuvable
+error.page.404.message=La page à laquelle vous tentez d''accéder n''existe pas.
+
+error.page.erreur.head=Une erreur s''est produite
+error.page.erreur.message=Veuillez nous excuser, l''erreur est peut-être transitoire vous pouvez réessayer
+
+error.page.interdit.head=Accès interdit
+error.page.interdit.message=Vous ne pouvez pas accéder à la page demandée, l''accès y est interdit
 
 #------ Prices page ------------------
 #------ page.prices

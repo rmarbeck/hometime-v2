@@ -9,8 +9,20 @@
 @import scala.collection.immutable._
 @import tags._
 
+@opengraph() = {
+	<meta property="og:site_name" content="hometime" />
+    <meta property="og:title" content="Hometime" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://www.hometime.fr/" />
+    <meta property="og:image" content="https://www.hometime.fr/assets/images/logo_for_facebook.jpg" />
+    <meta property="og:description" content="Hometime, révision, réparation, vente de montres de luxe" />
+    <meta property="forsearch:image" content="https://www.hometime.fr/assets/images/revision-reparation-montre-paris-small.webp" />
+    <meta property="forsearch:image" content="https://www.hometime.fr/assets/images/revision-reparation-montre-paris-small.png" />
+    <meta property="forsearch:image" content="https://www.hometime.fr/assets/images/revision-reparation-montre-paris-small.jpg" />
+}
 
-@layouts.main_helper("home") {
+
+@layouts.main_helper("home", Symbol("_head_post_content") -> opengraph()) {
 
 		<section id="slider" class="slider-element slider-parallax swiper_wrapper clearfix">
 
