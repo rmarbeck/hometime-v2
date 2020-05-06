@@ -80,6 +80,7 @@ GET		/faq																controllers.Default.redirect(to = "/questions-frequente
 
 GET		/perma/offre														controllers.Default.redirect(to = "/les-services/l-offre")
 GET		/perma/venir														controllers.Default.redirect(to = "/venir-nous-voir")
+GET		/perma/visit														controllers.Default.redirect(to = "/venir-nous-voir")
 GET		/perma/horlogers													controllers.Default.redirect(to = "/nos-horlogers")
 GET		/perma/entretien													controllers.Default.redirect(to = "/entretien-reparation")
 GET		/perma/rolex														controllers.Default.redirect(to = "/reparation/montre/rolex")
@@ -91,7 +92,12 @@ GET		/perma/water/action													controllers.Default.redirect(to = "/demande
 GET		/perma/news															controllers.Default.redirect(to = "/actualites/news")
 GET		/perma/legal														controllers.Default.redirect(to = "/mentions-legales")
 GET		/perma/contact														controllers.Default.redirect(to = "/nous-contacter")
+GET		/perma/when															controllers.Default.redirect(to = "/quand-faire-la-revision")
 
+
+# Map specifically to robots.txt
+GET     /robots.txt															controllers.Assets.at(path="/public", file="robots.txt")
 
 # Map static resources from the /public folder to the /assets URL path
-GET     /assets/*file               controllers.Assets.versioned(path="/public", file: Asset)
+GET     /assets/*file               										controllers.Assets.versioned(path="/public", file: Asset)
+

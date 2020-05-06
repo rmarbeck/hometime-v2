@@ -57,14 +57,14 @@
 
 								<h4>@Html(Messages("footer.category.important.links"))</h4>
 								<ul>
-									<li><a href="@routes.HomeController.content("content.who.are.we").url">@Html(Messages("footer.who.are.we"))</a></li>
-									<li><a href="@routes.HomeController.visit()">@Html(Messages("footer.visit.us"))</a></li>
-									<li><a href="@routes.FormProcessingController.prepareQuotationRequest()">@Html(Messages("footer.quotation.request"))</a></li>
-									<li><a href="@remote_assets("CGV%20-%20Hometime.pdf")">@Html(Messages("footer.site.plan"))</a></li>
-									<li><a href="@routes.HomeController.feedbacks()">@Html(Messages("footer.testimonials")) <span class="icon-star3"></span><span class="icon-star3"></span><span class="icon-star3"></span><span class="icon-star3"></span><span class="icon-star3"></span></a></li>
-									<li><a href="@routes.HomeController.faq()">@Html(Messages("footer.faq"))</a></li>
-									<li><a href="@routes.FormProcessingController.prepareContactRequest()">@Html(Messages("footer.contact.us"))&nbsp;<span class="icon-line-mail"></span></a></li>
-									<li><a href="@routes.FormProcessingController.prepareCallBackRequest()">@Html(Messages("footer.call.back"))&nbsp;<span class="icon-line2-call-in"></span></a></li>
+									<li><a href="@routes.HomeController.content("content.who.are.we").url" title="@Html(Messages("footer.who.are.we.title"))">@Html(Messages("footer.who.are.we"))</a></li>
+									<li><a href="@routes.HomeController.visit()" title="@Html(Messages("footer.visit.us.title"))">@Html(Messages("footer.visit.us"))</a></li>
+									<li><a href="@routes.FormProcessingController.prepareQuotationRequest()" title="@Html(Messages("footer.quotation.request.title"))">@Html(Messages("footer.quotation.request"))</a></li>
+									<li><a href="@remote_assets("CGV%20-%20Hometime.pdf")" title="@Html(Messages("footer.site.plan.title"))">@Html(Messages("footer.site.plan"))</a></li>
+									<li><a href="@routes.HomeController.feedbacks()" title="@Html(Messages("footer.testimonials.title"))">@Html(Messages("footer.testimonials")) <span class="icon-star3"></span><span class="icon-star3"></span><span class="icon-star3"></span><span class="icon-star3"></span><span class="icon-star3"></span></a></li>
+									<li><a href="@routes.HomeController.faq()" title="@Html(Messages("footer.faq.title"))">@Html(Messages("footer.faq"))</a></li>
+									<li><a href="@routes.FormProcessingController.prepareContactRequest()" title="@Html(Messages("footer.contact.us.title"))">@Html(Messages("footer.contact.us"))&nbsp;<span class="icon-line-mail"></span></a></li>
+									<li><a href="@routes.FormProcessingController.prepareCallBackRequest()" title="@Html(Messages("footer.call.back.title"))">@Html(Messages("footer.call.back"))&nbsp;<span class="icon-line2-call-in"></span></a></li>
 								</ul>
 
 							</div>
@@ -114,11 +114,11 @@
 								@List(("facebook", "https://www.facebook.com/HometimeFr/"),
 								("instagram", "https://www.instagram.com/watchnexthometime/")).zipWithIndex.map { case (value,index) => 
 								<div class="col-lg-6 clearfix @if(index==0) {bottommargin-sm}">
-									<a href="@value._2" class="social-icon si-dark si-colored si-@value._1 nobottommargin" style="margin-right: 10px;">
+									<a href="@value._2" title="@{value._1}.link.title" class="social-icon si-dark si-colored si-@value._1 nobottommargin" style="margin-right: 10px;">
 										<i class="icon-@value._1"></i>
 										<i class="icon-@value._1"></i>
 									</a>
-									<a href="@value._2"><small style="display: block; margin-top: 3px;">@Html(Messages("footer.follow.on."+value._1.toString))</a>
+									<a href="@value._2" title="@{value._1}.link.title"><small style="display: block; margin-top: 3px;">@Html(Messages("footer.follow.on."+value._1.toString))</a>
 								</div>
 								}
 							</div>
@@ -149,7 +149,7 @@
 								("google", "https://www.google.fr/maps/place/Hometime/@@48.8653845,2.3290163,17z/data=!3m1!4b1!4m5!3m4!1s0x47e66e044cc7bc6d:0xd0cd7665da91391f!8m2!3d48.865381!4d2.331205"),
 								("youtube", "https://www.youtube.com/channel/UC5Ejr-hgPxDZQxJbcSUsmbQ"),
 								("linkedin", "https://www.linkedin.com/company/watch-next/")).zipWithIndex.map { case (value,index) => 
-								<a href="@value._2" class="social-icon si-small si-borderless si-@value._1" target="_blank">
+								<a href="@value._2" title="@{value._1}.link.title"  class="social-icon si-small si-borderless si-@value._1" target="_blank">
 									<i class="icon-@value._1"></i>
 									<i class="icon-@value._1"></i>
 								</a>
@@ -158,7 +158,7 @@
 
 						<div class="clear"></div>
 
-						<a href="tel:@Messages("global.phone.number.raw")" rel="nofollow"><i class="icon-headphones"></i>&nbsp;<span class="middot">&middot;</span>&nbsp;@Html(Messages("footer.phone.number"))</a>
+						<a href="tel:@Messages("global.phone.number.raw")"  title="@Html(Messages("global.phone.number.link.title")) rel="nofollow"><i class="icon-headphones"></i>&nbsp;<span class="middot">&middot;</span>&nbsp;@Html(Messages("footer.phone.number"))</a>
 					</div>
 
 				</div>

@@ -70,7 +70,9 @@
  * End of Form Helpers
  *****************************************@
  
-@layouts.main_helper_with_head_block(formKey.toString){
+@css_link = {<link rel="stylesheet" href="@remote_assets("css/components/radio-checkbox.css")" type="text/css" />}
+ 
+@layouts.main_helper_with_head_block(formKey.toString, Symbol("_css_link") -> css_link){
 
 		@helper.form(action = routes.FormProcessingController.processServiceTestRequest(), Symbol("id") -> "website-cost", Symbol("class") -> "row mb-0") {
 			@helper.CSRF.formField

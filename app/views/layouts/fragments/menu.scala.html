@@ -7,7 +7,7 @@
 @displayMenu(menu:List[Menu], messageKey: String, level:Int) = {
 	@indent(level)<ul>@for(subMenu <- menu) {
 	@indent(level+1)<li class="@subMenu.getCssClass.getOrElse("") @if(subMenu.isHighlighted(key)) {current}">
-	@indent(level+2)<a href="@subMenu.getHref.getOrElse("#")"><div>@if(subMenu.hasImg) {<i class="@subMenu.getImg.get"></i>}@h_msg_key(messageKey, subMenu.getLabel)</div></a>@if(subMenu.hasSubMenus) {@displayMenu(subMenu.getSubMenus.get(), messageKey, level+2)}
+	@indent(level+2)<a href="@subMenu.getHref.getOrElse("#")" title="@h_msg_key(messageKey, subMenu.getLabel+".title")"><div>@if(subMenu.hasImg) {<i class="@subMenu.getImg.get"></i>}@h_msg_key(messageKey, subMenu.getLabel)</div></a>@if(subMenu.hasSubMenus) {@displayMenu(subMenu.getSubMenus.get(), messageKey, level+2)}
 	@indent(level+1)</li>}
 	@indent(level)</ul>}
 

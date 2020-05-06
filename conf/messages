@@ -4,6 +4,12 @@ global.title.prefix=Hometime -&nbsp;
 
 global.phone.number=07&nbsp;82&nbsp;43&nbsp;47&nbsp;51
 global.phone.number.raw=0782434751
+global.phone.number.link.title=Appelez-nous!
+
+global.home.title=Page d''accueil Hometime.fr
+
+global.visit.us.title=Comment venir à l''atelier&nbsp;?
+global.quotation.title=Demander un devis d''entretien
 
 top.bar.address.street=322 rue Saint Honoré,
 top.bar.address.zip=75001
@@ -34,6 +40,21 @@ footer.phone.number=07&nbsp;82&nbsp;43&nbsp;47&nbsp;51
 footer.phone.number.raw=0782434751
 footer.follow.on.facebook=<strong>Suivez-nous</strong><br>sur Facebook</small>
 footer.follow.on.instagram=<strong>Nos photos</strong><br>sur Instagram</small>
+
+facebook.link.title=Notre page facebook
+instagram.link.title=Notre page Instagram
+google.link.title=Où sommes nous sur Google Maps
+youtube.link.title=Notre chaine Youtube
+linkedin.link.title=Nous trouver sur LinkedIn
+
+footer.who.are.we.title=Tout savoir sur Hometime
+footer.visit.us.title=Comment venir à l''atelier&nbsp;?
+footer.quotation.request.title=Demander un devis d''entretien
+footer.site.plan.title=Toutes les pages du site</a></li>
+footer.testimonials.title=Quelques avis de nos clients
+footer.faq.title=Les questions que vous vous posez
+footer.contact.us.title=Rentrer en contact avec nous
+footer.call.back.title=Si vous voulez que nous vous rappelions
 
 footer.phonenumber.label=Numéro:
 footer.phonenumber.value=07&nbsp;82&nbsp;43&nbsp;47&nbsp;51
@@ -171,7 +192,10 @@ main.menu.service=Entretien
 main.menu.service.content=Tout savoir sur l''entretien des montres
 main.menu.service.service.test=Quand faire réviser ma montre ?
 main.menu.feedbacks=Avis clients
+main.menu.feedbacks.title=Quelques avis de nos clients
 main.menu.visit.us=Venir nous voir
+main.menu.visit.us.title=Comment venir à l''atelier&nbsp;?
+
 
 main.menu.watch.dealing.main=Achat / Vente
 main.menu.watch.purchasing=Trouver et acheter une montre
@@ -179,23 +203,37 @@ main.menu.watch.selling=Vendre sa montre
 main.menu.watch.estimate=Estimer sa collection
 
 main.menu.offer.main=Les services
+main.menu.offer.main.title=Tous les services
 main.menu.offer=Les services Horlogers
+main.menu.offer.title=Descrition des services Horlogers
 main.menu.offer.service=Entretien & révisions
+main.menu.offer.service.title=Entretien & révisions
 main.menu.offer.restore=Restauration
+main.menu.offer.restore.title=Restauration de montres anciennes
 main.menu.offer.quartz=Pile et étanchéité
+main.menu.offer.quartz.title=Changement de pile avec ou sans étanchéité
 main.menu.prices=Les tarifs
+main.menu.prices.title=Les tarifs des services Hometime
 main.menu.quartz.prices=Tarifs changement de pile
+main.menu.quartz.prices.title=Tarifs pour les interventions sur les montres à quartz
 main.menu.extra=Les services complémentaires
 
 main.menu.service.main=Entretien
+main.menu.service.main.title=Information sur les entretiens de montres
 main.menu.service.main.content=Comprendre l''entretien
+main.menu.service.main.content.title=Informations générales les entretiens de montres
 main.menu.service.main.content.all=L''entretien en général
+main.menu.service.main.content.all.title=Informations générales sur les entretiens de montres
 main.menu.service.main.content.rolex=L''entretien des montres Rolex
+main.menu.service.main.content.rolex.title=Informations sur les entretiens de montres Rolex
 main.menu.service.main.content.omega=L''entretien des montres Omega
-main.menu.service.main.watchmakers=Nos horlogers
+main.menu.service.main.content.omega.title=Informations sur les entretiens de montres Omega
 main.menu.service.main.content.water=Ma montre a pris l''eau
+main.menu.service.main.content.water.title=Que faire quand ma montre a pris l''eau
 main.menu.service.main.content.authenticating=Authentification
+main.menu.service.main.content.authenticating.title=L''expertise et l''authentification des montres
 main.menu.service.main.news=Notre actu
+main.menu.service.main.news.title=L''actualité Hometime
 
 
 main.menu.services.loan=Essai de montres
@@ -227,13 +265,14 @@ main.menu.omega.repairing.content=Réparations Omega
 main.menu.authentication.content=Authentification des montres
 main.menu.water.repairing.content=Ma montre a pris l''eau
 main.menu.service.main.content.watchmakers=Nos horlogers
+main.menu.service.main.content.watchmakers.title=Qui sont nos horlogers
 
 
 
 
 
 # Home page
-home.html.title=Révision, réparation et essai de montres à domicile sur Paris
+home.html.title=Révision, réparation, vente de montres à Paris
 home.html.description=Révision et réparation de montres de marque avec intervention à domicile sur Paris et sa région, avec possibilité d''essai prolongé d''une montre de légende.
 home.html.keywords=entretien, entretien montre, révision, réparation, révision montre, réparation montre, montre mécanique, montre automatique, sav, service après vente, rolex, omega, panerai, tag heuer, paris, région parisienne, 75, yvelines, hauts de seine, devis gratuit, essai, à domicile, devis en ligne, horloger, horlogerie
 
@@ -272,6 +311,11 @@ home.stats.3.unit=+
 home.stats.4.text=Montres vendues
 home.stats.4.unit=+
 
+home.video.alt=Comprendre Hometime en video
+home.main.header.1.alt=Services Hometime
+home.main.header.3.alt=Trouver votre prochaine montre
+
+
 #------------------------
 home.action.text.visit.us.action=Venir nous voir
 home.action.text.quotation.action=Demander un devis
@@ -306,13 +350,13 @@ home.caption.4.call.to.action=Cherchez une montre&nbsp;!
 home.baseline=<i>Ne perdez plus votre temps, gagnez&#8209;le&nbsp;!</i>
 home.baseline.alt=<i>Ne perdez plus votre temps, gagnez&#8209;le&nbsp;!</i>
 
-home.claim=Ne perdez plus votre temps, gagnez&#8209;le&nbsp;!
+home.claim=<i>Révision, réparation, entretien de montres&nbsp;:</i><br/>Ne perdez plus votre temps, gagnez&#8209;le&nbsp;!
 home.claim.more=Hometime propose depuis 2014 tous les services horlogers allant de l''<b>entretien de montres récentes ou anciennes</b>, l''<b>expertise</b>, jusqu''à la <b>vente de montres neuves ou d''occasion</b>.
 
 home.promise.0.alt=Mouvement de montre
 home.promise.0.claim=Votre montre est précieuse
 home.promise.0.head=Entretenez là
-home.promise.0.body=Une montre est conçue pour <b>durer longtemps</b> et se transmettre de génération en génération. Hometime vous dit tout ce que vous devez savoir sur l''entretien d''une montre mécanique.
+home.promise.0.body=Une montre est conçue pour <b>durer longtemps</b> et se transmettre de génération en génération. Hometime vous dit tout ce que vous devez savoir sur l''entretien d''une montre mécanique : révision, réparation...
 home.promise.0.call.to.action=Tout savoir sur l''entretien
 home.promise.0.call.to.action.title=Comprendre l''entretien et la révision d''une montre
 
@@ -360,6 +404,15 @@ home.feature.4.body=Nous adoptons une démarche de protection de l''environnemen
 home.feature.5.head=Des prestations garanties 
 home.feature.5.body=Toutes nos prestations sont garanties entre 1 an et 2 ans.
 
+home.grid1.alt=Hometime en images 
+home.grid2.alt=Hometime en images
+home.grid3.alt=Hometime en images
+home.grid4.alt=Hometime en images
+home.grid5.alt=Hometime en images
+home.grid6.alt=Hometime en images
+home.grid7.alt=Hometime en images
+home.grid8.alt=Hometime en images
+
 
 home.text.supports.brands=Hometime entretient les marques suivantes :
 home.text.supports.brands.notice=Hometime est indépendant et non affilié avec les marques entretenues
@@ -390,12 +443,14 @@ home.auto.order.links.by.brand=Devis interactif révision {0}
 
 
 home.auto.quotation.title=Devis interactif
+home.auto.quotation.link.title=Devis automatique en quelques clics
 home.auto.quotation.subtitle=En 5 étapes, évaluez le coût de l''entretien de votre montre.
 home.auto.quotation.promise.1=Devis immédiat
 home.auto.quotation.promise.2=Prix et délais approximatifs
 home.auto.quotation.promise.3=24h/24
 
 home.order.title=Devis prévisionnel
+home.order.link.title=Devis à distance rédigé par nos horlogers
 home.order.subtitle=Nos horlogers analysent votre besoin et vous répondent.
 home.order.promise.1=Devis détaillé
 home.order.promise.2=Un horloger vous répond
@@ -404,6 +459,7 @@ home.order.promise.3=Sous 48h maximum
 
 
 home.local.title=Devis définitif
+home.local.link.title=Devis définitif après auscultation
 home.local.subtitle=Sur place, nous établissons un devis ferme montre en main.
 home.local.promise.1=Nous auscultons votre montre
 home.local.promise.2=Le devis est gratuit
@@ -2860,7 +2916,8 @@ about.body.3=Vous pouvez nous joindre par téléphone au <b>07&nbsp;82&nbsp;43&n
      <br /><br />Par email : contact [@] hometime.fr, ou via notre <a href="hardCodedToContact">formulaire de contact</a>
  
 # Feedback page
-
+feedback.link.title=Détail de l''avis client
+feedback.link.alt=Avis client
 feedback.date.template={0, date,MMMM yyyy}
 
 page.feedbacks.head=Les avis de nos clients
@@ -6470,6 +6527,7 @@ check.certificate.date=Date du certificat : <b>{0, date,d MMMM yyyy}</b>
 
 
 #end
+
 
 
 

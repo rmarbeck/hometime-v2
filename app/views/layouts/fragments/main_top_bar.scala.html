@@ -11,9 +11,9 @@
 
 				<div class="nobottommargin">
 
-					<span class="nobottommargin"><a href="tel:@Messages("global.phone.number.raw")" rel="nofollow"><i class="icon-line2-call-end"></i> <strong>@Html(Messages("global.phone.number"))</strong></a></span>
+					<span class="nobottommargin"><a href="tel:@Messages("global.phone.number.raw")" title="@Html(Messages("global.phone.number.link.title"))" rel="nofollow"><i class="icon-line2-call-end"></i> <strong>@Html(Messages("global.phone.number"))</strong></a></span>
 
-					<span class="fright nobottommargin"><a href="@routes.HomeController.visit()"><i class="icon-location"></i> <strong>@Html(Messages("top.bar.address.street"))<span class="d-none d-md-inline"> @Html(Messages("top.bar.address.zip"))</span> @Html(Messages("top.bar.address.city"))</strong></a></span>
+					<span class="fright nobottommargin"><a href="@routes.HomeController.visit()" title="@Html(Messages("global.visit.us.title"))"><i class="icon-location"></i> <strong>@Html(Messages("top.bar.address.street"))<span class="d-none d-md-inline"> @Html(Messages("top.bar.address.zip"))</span> @Html(Messages("top.bar.address.city"))</strong></a></span>
 				</div>
 
 			</div>

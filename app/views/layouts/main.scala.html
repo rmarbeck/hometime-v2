@@ -9,10 +9,10 @@
 <!DOCTYPE html>
 <html dir="ltr" lang="fr">
 <head>
-	@layouts.fragments.main_head(title, description, keywords)(Html(""))(Html(""))(request, messages)
+	@layouts.fragments.main_head(title, description, keywords, args:_*)(Html(""))(Html(""))(request, messages)
 </head>
 
-<body class="stretched no-transition @key.replace(".", "-")">
+<body class="stretched @key.replace(".", "-")">
 
 	<!-- Document Wrapper
 	============================================= -->

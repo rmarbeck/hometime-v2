@@ -36,7 +36,7 @@
 @quotation(icon: String, url: String, key: String, index: Int) = {
 					@defining("home."+key)  { computedKey =>
 					<div class="col_one_third nobottommargin @if(index == 3) {col_last}">
-						<a href="@url">
+						<a href="@url" title="@Html(Messages(computedKey+".link.title"))">
 						<div class="quotation-option feature-box fbox-center fbox-dark fbox-dark fbox-bg fbox-effect bottommargin-lg">
 							<div class="fbox-icon">
 								<i class="i-alt noborder @icon"></i>
@@ -56,7 +56,7 @@
 @testimonial(feedback: Feedback) = {
 								<div class="testimonial">
 									<div class="testi-image">
-										<a href="@routes.HomeController.feedbacks()#feedback@feedback.id"><img src="@feedback.pictureUrl" alt="Customer Testimonails"></a>
+										<a href="@routes.HomeController.feedbacks()#feedback@feedback.id" title="@Html(Messages("feedback.link.title"))"><img src="@feedback.pictureUrl" alt="@Html(Messages("feedback.link.alt"))"></a>
 									</div>
 									<div class="testi-content">
 										<span class="testi-date">@Html(Messages("feedback.date.template",feedback.displayDate)).toString.trim.capitalize</span><p>@takeif_html(feedback.body, 100)</p>
@@ -72,11 +72,10 @@
 @layouts.home() {
   <div class="content-wrap">
   				<div class="claim divcenter center clearfix bottommargin-sm" style="max-width: 900px;">
-  					<!--<img class="bottommargin" src="/assets/images/url-avec-logo-375-black-high.png" alt="">-->
 					<h1>@Html(Messages("home.claim"))</h1>
 					<h2>@Html(Messages("home.claim.more"))</h2>
-					<a href="@routes.HomeController.visit()" class="button button-3d button-dark button-large ">@Html(Messages("home.action.visit.us"))</a>
-					<a href="@routes.FormProcessingController.prepareQuotationRequest()" class="button button-3d button-large">@Html(Messages("home.action.quotation.request"))</a>
+					<a href="@routes.HomeController.visit()" title="@Html(Messages("global.visit.us.title"))" class="button button-3d button-dark button-large ">@Html(Messages("home.action.visit.us"))</a>
+					<a href="@routes.FormProcessingController.prepareQuotationRequest()" title="@Html(Messages("global.quotation.title"))" class="button button-3d button-large">@Html(Messages("home.action.quotation.request"))</a>
 				</div>
 				
 				<div class="section nobottommargin padding-reduced">
@@ -123,10 +122,10 @@
 				
 				<div class="promo promo-light promo-full bottommargin-sm notopborder padding-reduced">
 					<div class="container clearfix">
-						<h3>@Html(Messages("global.text.call.us.reasons"))<span>&nbsp;<a href="tel:@Messages("global.href.phone.number")" rel="nofollow">@Html(Messages("global.text.phone.number"))</a></span></h3>
+						<h3>@Html(Messages("global.text.call.us.reasons"))<span>&nbsp;<a href="tel:@Messages("global.href.phone.number")" title="@Html(Messages("global.phone.number.link.title"))" rel="nofollow">@Html(Messages("global.text.phone.number"))</a></span></h3>
 						<span>@Html(Messages("global.text.footer.conditions.cost")), @Html(Messages("global.text.footer.conditions.when"))</span>
 						<div class="action">
-							<a href="@routes.HomeController.visit()" class="button button-dark button-xlarge button-rounded"><i class="icon-location"></i> @Html(Messages("home.action.text.visit.us.action"))</a>
+							<a href="@routes.HomeController.visit()" title="@Html(Messages("global.visit.us.title"))"  class="button button-dark button-xlarge button-rounded"><i class="icon-location"></i> @Html(Messages("home.action.text.visit.us.action"))</a>
 						</div>
 					</div>
 				</div>				
@@ -197,7 +196,7 @@
 			  				<div class="youtube-video-place embed-responsive" data-yt-url="//www.youtube.com/embed/6XruLNvzZCM?rel=0&amp;controls=1&amp;showinfo=0&amp;autoplay=0&amp;modestbranding=1">
 			  					<picture>
 			  						<source type="image/webp" data-srcset="@remote_assets("images/home/videoyoutube.webp")">
-			  						<img src="@remote_assets("images/home/videoyoutube.jpg")" async class="play-youtube-video">
+			  						<img src="@remote_assets("images/home/videoyoutube.jpg")" async class="play-youtube-video"  alt="@Html(Messages("home.video.alt"))">
 			  					</picture>
 							</div>
 						</div>
@@ -256,7 +255,7 @@
 
 				</div>
 
-				<a href="@routes.FormProcessingController.prepareQuotationRequest()" class="button button-full center tright footer-stick">
+				<a href="@routes.FormProcessingController.prepareQuotationRequest()" title="@Html(Messages("global.quotation.title"))"  class="button button-full center tright footer-stick">
 					<div class="container clearfix">
 						@Html(Messages("home.bottom.line.claim")) <span class="no_break"><strong>@Html(Messages("home.bottom.line.action"))</strong><i class="icon-caret-right" style="top:4px;"></i></span>
 					</div>

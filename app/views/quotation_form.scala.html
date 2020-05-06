@@ -70,7 +70,7 @@
 									<div class="form-process"></div>
 									
 									@fullWidth("my-forms") {
-										@helper.input(form("orderType"), Symbol("_class") -> "mb-3 group-label not-clickable", Symbol("_label") -> Html(Messages(computeMessageKey("orderType", "label").toString)), Symbol("_showConstraints") -> false) { (id, name, value, args) =>
+										@helper.input(form("orderType"), Symbol("_class") -> "mb-3 group-label not-clickable", Symbol("_label") -> Html(Messages(computeMessageKey("orderType", "label").toString, "/perma/when")), Symbol("_showConstraints") -> false) { (id, name, value, args) =>
 												@List.range(1, 6).map(option => (option.toString, Html(Messages(formKey.toString+"."+option.toString+".order.type")))).toSeq.map { v => @selectField(3, id, name, value, v, args) }
 										}(tags.canvasRadioGroupBoxedFieldTemplate, messages)
 									}

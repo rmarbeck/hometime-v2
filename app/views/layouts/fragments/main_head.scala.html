@@ -1,4 +1,4 @@
-@(title: String, description: String = "", keywords: String = "")(precontent: Html)(postcontent: Html)(implicit request: Http.Request, messages: play.i18n.Messages)
+@(title: String, description: String, keywords: String, args: (Symbol, Any)*)(precontent: Html)(postcontent: Html)(implicit request: Http.Request, messages: play.i18n.Messages)
 
 @import scala.collection.immutable._
 @import tags._
@@ -18,11 +18,13 @@
 			"css/font-icons.css",
 			"css/animate.css",
 			"css/magnific-popup.css",
-			"css/components/radio-checkbox.css",
 			"one-page/css/et-line.css",
 			"stylesheets/merged.css").map { e =><link rel="stylesheet" href="@remote_assets(e)" type="text/css" />
 	}
 
+	@args.toMap.get(Symbol("_css_link"))
+	
+	
 	<meta name="viewport" content="width=device-width, initial-scale=1" />
 
 	<!-- Document Title
@@ -30,5 +32,15 @@
 	<title>@Html(Messages("global.title.prefix"))@title</title>
 	<meta name="description" content="@description">
 	<meta name="keywords" content="@keywords">
+	
+	<meta property="og:site_name" content="hometime" />
+    <meta property="og:title" content="Hometime" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://www.hometime.fr/" />
+    <meta property="og:image" content="https://www.hometime.fr/assets/images/logo_for_facebook.jpg" />
+    <meta property="og:description" content="Hometime, révision, réparation, vente de montres de luxe" />
+    <meta property="forsearch:image" content="https://www.hometime.fr/assets/images/revision-reparation-montre-paris-small.webp" />
+    <meta property="forsearch:image" content="https://www.hometime.fr/assets/images/revision-reparation-montre-paris-small.png" />
+    <meta property="forsearch:image" content="https://www.hometime.fr/assets/images/revision-reparation-montre-paris-small.jpg" />
 	
 	@postcontent
