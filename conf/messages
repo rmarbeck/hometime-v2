@@ -746,7 +746,7 @@ content.water.repairing.content.1.body=<div class="sub-title"></div>Une montre �
  <br /><br />Si l''eau entre facilement dans le boitier, il est plus compliqué de la faire sortir et dans tous les cas la présence d''eau, même de courte durée, justifie une intervention horlogère (a fortiori dans le cas de l''eau de mer ou de l''eau de piscine).\
  <br /><br />Les symptômes sont simples, si vous voyez de la buée sur le verre ou sur le fond de la montre, ou pire des traces de rouille, alors votre montre a pris l''eau.
 
-content.water.repairing.content.1.image.url=https://d1qsyzkyf147s1.cloudfront.net/assets/images/water/leak-proof.jpg
+content.water.repairing.content.1.image.url=https://d3qxyg7adi2rw7.cloudfront.net/assets/images/water/leak-proof.jpg
 
 content.water.repairing.content.1.image.title=Monaco embuée
 content.water.repairing.content.1.image.alt=Photo d''une Monaco embuée
@@ -758,7 +758,7 @@ content.water.repairing.content.2.body=<div class="sub-title"></div>Le maître m
  Lors du remontage de la montre, les joints sont changés et l''étanchéité est contrôlée.\
  <br /><br />Hometime vous propose d''intervenir dès que vous détectez un problème d''étanchéité et s''engage à réaliser les travaux nécessaires en quelques heures seulement.
 
-content.water.repairing.content.2.image.url=https://d1qsyzkyf147s1.cloudfront.net/assets/images/water/service.jpg
+content.water.repairing.content.2.image.url=https://d3qxyg7adi2rw7.cloudfront.net/assets/images/water/service.jpg
 content.water.repairing.content.2.image.title=Monaco ouverte
 content.water.repairing.content.2.image.alt=Photo d''une Monaco ouverte
 content.water.repairing.content.2.default.to.action.text=Demander une intervention en urgence
@@ -923,7 +923,7 @@ content.authenticating.content.2.body=<div class="sub-title">Non authenticité :
  <br \><br \>En fonction du besoin, nous pouvons aussi informer gratuitement le client que la montre est authentique. \
  <div class="sub-title">Cas litigieux :</div>Dans certains cas, la montre est authentique mais certaines pièces ou accessoires ne sont pas conformes. De la même façon, nous pouvons alors établir un certificat détaillant les points litigieux.
 
-content.authenticating.content.2.image.url=https://d1qsyzkyf147s1.cloudfront.net/assets/images/authentication/analyse.jpg
+content.authenticating.content.2.image.url=https://d3qxyg7adi2rw7.cloudfront.net/assets/images/authentication/analyse.jpg
 content.authenticating.content.2.image.title=Horloger expertisant une montre
 content.authenticating.content.2.image.alt=Photo d''un horloger expertisant une montre
 
@@ -956,7 +956,7 @@ content.service.repairing.content.2.body=<div class="sub-title">Le mouvement :</
  A l''usage, le boitier reçoit des petits coups ou se retrouve en contact avec des objets susceptibles de le rayer. Cette usure est visible, cependant le boitier peut aussi souffrir d''une usure beaucoup moins visible, celle qui touche à l''<b>étanchéité de la montre</b>.\
  Les joints garantissant à la montre une parfaite résistance à l''humidité perdent de leur efficacité avec le temps. De même, dans le cas des chronographes par exemple, les boutons de déclenchement ou de remise à zéro peuvent s''user et perdre de leur étanchéité.\
 
-content.service.repairing.content.2.image.url=https://d1qsyzkyf147s1.cloudfront.net/assets/images/service/why.png
+content.service.repairing.content.2.image.url=https://d3qxyg7adi2rw7.cloudfront.net/assets/images/service/why.png
 content.service.repairing.content.2.image.title=Mouvement nu
 content.service.repairing.content.2.image.alt=Mouvement nu
 content.service.repairing.content.2.default.to.action.text=En savoir plus...
@@ -977,7 +977,7 @@ content.service.repairing.content.3.body=<div class="sub-title">L''entretien quo
  Si nécessaire, l''horloger peut remplacer une pièce défectueuse par une pièce rigoureusement identique. L''horloger peut aussi intervenir pour redonner au boitier et au verre (cas des verres non saphir) leur aspect neuf par un polissage approprié.\
  <br />Après une révision, <b>la montre fonctionne comme au premier jour</b>.
 
-content.service.repairing.content.3.image.url=https://d1qsyzkyf147s1.cloudfront.net/assets/images/service/how.jpg
+content.service.repairing.content.3.image.url=https://d3qxyg7adi2rw7.cloudfront.net/assets/images/service/how.jpg
 content.service.repairing.content.3.image.title=Horloger au travail
 content.service.repairing.content.3.image.alt=Horloger au travail
 content.service.repairing.content.3.default.to.action.text=En savoir plus...
@@ -1047,7 +1047,7 @@ content.rolex.repairing.content.3.body=<div class="sub-title">Les symptômes :</
  <br \><br \>Cet entretien est un acte simple et sans danger. \
  <div class="sub-title">Comment prévenir ce problème ?</div>Dans la mesure du possible, il est conseillé d''eviter de faire subir des vibrations à une Rolex automatique de façon prolongée (scooter, golf, tennis, bricolage...). Quoiqu''il en soit, l''usure de l''axe de masse est inévitable à long terme.
 
-content.rolex.repairing.content.3.image.url=https://d1qsyzkyf147s1.cloudfront.net/assets/images/repairing/rolex/movement.jpg
+content.rolex.repairing.content.3.image.url=https://d3qxyg7adi2rw7.cloudfront.net/assets/images/repairing/rolex/movement.jpg
 content.rolex.repairing.content.3.image.title=Masse automatique Rolex
 content.rolex.repairing.content.3.image.alt=Photo d''une masse automatique d''une montre Rolex
 content.rolex.repairing.content.3.default.to.action.text=Demander un devis
@@ -1063,7 +1063,7 @@ content.rolex.repairing.content.2.body=<div class="sub-title">Pourquoi la montre
 
 content.rolex.repairing.2.to.action=En savoir plus...
 
-content.rolex.repairing.content.2.image.url=https://d1qsyzkyf147s1.cloudfront.net/assets/images/repairing/rolex/water.jpg
+content.rolex.repairing.content.2.image.url=https://d3qxyg7adi2rw7.cloudfront.net/assets/images/repairing/rolex/water.jpg
 content.rolex.repairing.content.2.image.title=Mouvement de montre Rolex rouillé
 content.rolex.repairing.content.2.image.alt=Photo d''un mouvement de montre Rolex rouillé
 
@@ -1156,7 +1156,7 @@ content.paris.repairing.content.2.body=<div class="sub-title">La collecte de la 
  <div class="sub-title">Tests de bon fonctionnement :</div>Même si l''horloger teste partiellement la montre à la fin de l''entretien, c''est le responsable qualité qui déroule une procédure de test dépendant du type de montres (automatique ou mécanique, simple ou à complication...) une fois l''entretien terminé. <br /><br />Plusieurs critères sont évalués durant la phase de tests. En fonction de la complexité de la montre, plusieurs jours peuvent être nécessaires pour que la montre passe l''ensemble des cas de test (passage de date, fonctionnement avec ou sans chronographe).
 
 
-content.paris.repairing.content.2.image.url=https://d1qsyzkyf147s1.cloudfront.net/assets/images/content/repairing/paris.jpg
+content.paris.repairing.content.2.image.url=https://d3qxyg7adi2rw7.cloudfront.net/assets/images/content/repairing/paris.jpg
 content.paris.repairing.content.2.image.title=Notre plaque à Paris
 content.paris.repairing.content.2.image.alt=Photo de la plaque plaque de l''immeuble
 content.paris.repairing.content.2.default.to.action.text=Demander un devis
@@ -1197,7 +1197,7 @@ content.watchmakers.content.3.body=<div class="sub-title">Qui est-il ?</div>Simo
  <div class="sub-title">Son rôle chez Hometime :</div>Simon est associé chez Hometime. Il est le chef de l''atelier et à ce titre organise le travail, réalise les devis et se charge des réparations les plus compliquées.\
  <div class="sub-title">Il aime :</div>Tout ce qui est difficile... son surnom, <b>l''horloger de l''extrême</b>.
 
-content.watchmakers.content.3.image.url=https://d1qsyzkyf147s1.cloudfront.net/assets/images/watchmakers/simon.jpg
+content.watchmakers.content.3.image.url=https://d3qxyg7adi2rw7.cloudfront.net/assets/images/watchmakers/simon.jpg
 
 content.watchmakers.content.2.head=Lou
 content.watchmakers.content.2.body=<div class="sub-title">Qui est-elle ?</div>Lou a 24 ans, elle exerce depuis 6 mois, elle vit à Paris et vient de Bretagne. \
@@ -1205,7 +1205,7 @@ content.watchmakers.content.2.body=<div class="sub-title">Qui est-elle ?</div>Lo
  <div class="sub-title">Son rôle chez Hometime :</div>Lou travaille chez Hometime depuis Septembre 2018, elle répare les montres équipées de mouvements ETA, Valjoux et se forme aux mouvements plus complexes sous la conduite de Simon.\
  <div class="sub-title">Elle aime :</div>Se lever le matin pour venir travailler et apprendre de ses brillants patrons ;-)
 
-content.watchmakers.content.2.image.url=https://d1qsyzkyf147s1.cloudfront.net/assets/images/watchmakers/lou.jpg
+content.watchmakers.content.2.image.url=https://d3qxyg7adi2rw7.cloudfront.net/assets/images/watchmakers/lou.jpg
 
 content.watchmakers.content.3.default.to.action.text=Venir nous voir
 content.watchmakers.content.3.default.to.action.perma=/perma/venir
@@ -1259,7 +1259,7 @@ content.watch.purchasing.content.1.body=<div class="sub-title"></div>Vous cherch
 
 content.watch.purchasing.content.1.primary.to.action.text=Rechercher une montre
 content.watch.purchasing.content.1.primary.to.action.perma=/perma/buy
-content.watch.purchasing.content.1.image.url=https://d1qsyzkyf147s1.cloudfront.net/assets/images/content/purchasing/1.jpg
+content.watch.purchasing.content.1.image.url=https://d3qxyg7adi2rw7.cloudfront.net/assets/images/content/purchasing/1.jpg
 content.watch.purchasing.content.1.image.title=Rolex submariner
 content.watch.purchasing.content.1.image.alt=Photo d''une Rolex submariner
 
@@ -1274,7 +1274,7 @@ content.watch.purchasing.content.2.body=<div class="sub-title"></div>Si vous n'�
 
 content.watch.purchasing.content.2.primary.to.action.text=Besoin de conseils
 content.watch.purchasing.content.2.primary.to.action.perma=/perma/buy/advices
-content.watch.purchasing.content.2.image.url=https://d1qsyzkyf147s1.cloudfront.net/assets/images/content/purchasing/2.jpg
+content.watch.purchasing.content.2.image.url=https://d3qxyg7adi2rw7.cloudfront.net/assets/images/content/purchasing/2.jpg
 content.watch.purchasing.content.2.image.title=Jaeger LeCoultre Compressor
 content.watch.purchasing.content.2.image.alt=Photo d''une Jaeger LeCoultre Compressor
 
@@ -1291,7 +1291,7 @@ content.watch.purchasing.content.3.body=<div class="sub-title"></div>Pour nous a
  	 <li>Pour un besoin immédiat ou lorsque la bonne opportunité se présente...</li>\
  </ul>
 
-content.watch.purchasing.content.3.image.url=https://d1qsyzkyf147s1.cloudfront.net/assets/images/content/purchasing/3.jpg
+content.watch.purchasing.content.3.image.url=https://d3qxyg7adi2rw7.cloudfront.net/assets/images/content/purchasing/3.jpg
 content.watch.purchasing.content.3.image.title=Jaeger LeCoultre Reverso
 content.watch.purchasing.content.3.image.alt=Photo d''une Jaeger LeCoultre Reverso
 
@@ -1314,7 +1314,7 @@ content.watch.selling.content.1.body=<div class="sub-title"></div>Vous cherchez 
  </ul>\
  <br />Avec notre <b>structure de coûts légère</b>, nous apportons une solution intermédiaire entre les boutiques ayant pignon sur rue qui peuvent vendre vite mais qui font des marges importantes au détriment du montant revenant au vendeur (c''est à dire vous), et les solutions de vente entre particuliers aléatoires et chronophages.
 
-content.watch.selling.content.1.image.url=https://d1qsyzkyf147s1.cloudfront.net/assets/images/content/selling/2.jpg
+content.watch.selling.content.1.image.url=https://d3qxyg7adi2rw7.cloudfront.net/assets/images/content/selling/2.jpg
 content.watch.selling.content.1.image.title=Certificat
 content.watch.selling.content.1.image.alt=Photo d''un certificat
 
@@ -1323,7 +1323,7 @@ content.watch.selling.content.2.body=<div class="sub-title"></div>Quelque soit l
  <br /><br />Notre travail vous permet de donner confiance aux acheteurs potentiels qui pourraient être intéressés par votre montre mais inquiets de ne pas l''acheter à un professionnel.\
  <br /><br />Notre expertise nous permet de plus de <b>vous conseiller sur le prix de vente et sur le canal le plus adapté</b> pour réaliser la vente en fonction de vos attentes (rapidité, prix net vendeur, simplicité...). Nous pouvons aussi vous aider à rédiger votre annonce pour un maximum d''efficacité.
 
-content.watch.selling.content.2.image.url=https://d1qsyzkyf147s1.cloudfront.net/assets/images/content/selling/2.jpg
+content.watch.selling.content.2.image.url=https://d3qxyg7adi2rw7.cloudfront.net/assets/images/content/selling/2.jpg
 content.watch.selling.content.2.image.title=Certificat
 content.watch.selling.content.2.image.alt=Photo d''un certificat
 
@@ -1346,7 +1346,7 @@ content.watch.selling.content.3.body=<div class="sub-title"></div>Pour vous appo
  </ul>\
  <br />Vos seuls engagements, nous prévenir si vous vendez la montre et être disponible pour la collecte lorsque nous l'avons vendue.
 
-content.watch.selling.content.3.image.url=https://d1qsyzkyf147s1.cloudfront.net/assets/images/content/selling/3.jpg
+content.watch.selling.content.3.image.url=https://d3qxyg7adi2rw7.cloudfront.net/assets/images/content/selling/3.jpg
 content.watch.selling.content.3.image.title=Audemars Piguet Kasparov
 content.watch.selling.content.3.image.alt=Photo d''une Audemars Piguet Kasparov
 
@@ -3350,7 +3350,6 @@ site.plan.content.authentication.title=Authentification des montres de luxe
 
 site.plan.appointment.title.en=Visiting us - page in english
 site.plan.call.request.title.en=Being called back - page in english
-site.plan.quartz.title.en=Prices for battery replacement - page in english
 site.plan.quartz.brand.title.en=Prices for battery replacement for {0} watches - page in english
 
 
