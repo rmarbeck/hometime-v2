@@ -33,6 +33,7 @@
 						<h3>@Html(Messages(key+".service.section"))</h3>
 						
 						<ul class="iconlist">
+							@entry("content.paris.repairing", routes.HomeController.content("content.paris.repairing").url)
 							@entry("content.rolex.repairing", routes.HomeController.content("content.rolex.repairing").url)
 							@entry("content.omega.repairing", routes.HomeController.content("content.omega.repairing").url)
 							@entry("content.authenticating", routes.HomeController.content("content.authenticating").url)
@@ -40,6 +41,15 @@
 							@entry("content.water.repairing", routes.HomeController.content("content.water.repairing").url)
 							@entry("service.test", routes.FormProcessingController.prepareServiceTestRequest().url)
 							@entry("buy.request", routes.FormProcessingController.prepareBuyRequest().url)
+						</ul>
+						
+						<h3>@Html(Messages(key+".selling.section"))</h3>
+						
+						<ul class="iconlist">
+							@entry("content.watch.purchasing", routes.HomeController.content("content.watch.purchasing").url)
+							@entry("content.watch.selling", routes.HomeController.content("content.watch.selling").url)
+							@entry("content.watch.estimate", routes.HomeController.content("content.watch.estimate").url)
+
 						</ul>
 						
 						<h3>@Html(Messages(key+".us.section"))</h3>
@@ -64,6 +74,7 @@
 						<ul class="iconlist nobottommargin">
 							@entry("quotation.request", routes.FormProcessingController.prepareQuotationRequest().url)
 							@entry("auto.quotation", routes.FormProcessingController.prepareAutoQuotation().url)
+							@entry("water.quotation.request", routes.FormProcessingController.prepareQuotationRequestWater().url)
 							<ul class="iconlist nobottommargin">
 							@for(brand <- supported_brands.get) {
 								@entry("quotation.request.branded", routes.FormProcessingController.prepareQuotationRequestWithBrand(brand.seo_name).url, brand.getDisplayName)

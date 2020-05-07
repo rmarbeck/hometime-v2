@@ -19,7 +19,7 @@ GET		/actualites/news													controllers.HomeController.news(request: Reque
 
 GET     /reparation/montre/rolex											controllers.HomeController.content(request: Request, key = "content.rolex.repairing")
 GET     /reparation/montre/omega											controllers.HomeController.content(request: Request, key = "content.omega.repairing")
-#GET     /authentification/certification/montre/paris     controllers.Application.content_authentication()
+GET     /reparation/montre/paris											controllers.HomeController.content(request: Request, key = "content.paris.repairing")
 
 
 GET     /authentification/certification/montre/paris    					controllers.HomeController.content(request: Request, key = "content.authenticating")
@@ -55,7 +55,7 @@ GET     /rechercher-une-montre												controllers.FormProcessingController.p
 POST    /rechercher-une-montre												controllers.FormProcessingController.processBuyRequest(request: Request)
 
 GET     /nous-contacter														controllers.FormProcessingController.prepareContactRequest(request: Request)
-GET     /hardCodedToContact         controllers.Default.redirect(to = "/nous-contacter")
+GET     /hardCodedToContact        											controllers.Default.redirect(to = "/nous-contacter")
 POST    /nous-contacter														controllers.FormProcessingController.processContactRequest(request: Request)
 
 
@@ -77,7 +77,7 @@ GET     /about                      										controllers.Default.redirect(to = 
 
 GET     /mentions-legales													controllers.HomeController.content(request: Request, key = "content.legal")
 GET     /legal                      										controllers.Default.redirect(to = "/mentions-legales")
-GET     /hardCodedToLegal           controllers.Default.redirect(to = "/mentions-legales")
+GET     /hardCodedToLegal           										controllers.Default.redirect(to = "/mentions-legales")
 
 GET		/questions-frequentes												controllers.HomeController.faq(request: Request)
 GET		/faq																controllers.Default.redirect(to = "/questions-frequentes")
@@ -90,11 +90,13 @@ GET     /privacy                    										controllers.Default.redirect(to = 
 GET     /prise-en-charge-urgente-probleme-etancheite    					controllers.HomeController.content(request: Request, key = "content.water.repairing")
 GET     /urgence-buee-sur-le-verre                      					controllers.Default.redirect(to = "/prise-en-charge-rapide-probleme-etancheite")
 
-#GET     /achat-de-montres-au-meilleur-prix    			controllers.Application.broking()
-#GET     /courtier-en-montres-occasion         			controllers.Default.redirect(to = "/achat-de-montres-au-meilleur-prix")
+GET     /achat-de-montres-au-meilleur-prix    								controllers.HomeController.content(request: Request, key = "content.watch.purchasing")
+GET     /courtier-en-montres-occasion         								controllers.Default.redirect(to = "/achat-de-montres-au-meilleur-prix")
 
-#GET     /vendez-votre-montre			    			controllers.Application.sell()
-#GET     /mandat-de-depot-vente-virtuel-de-montre		controllers.Default.redirect(to = "/vendez-votre-montre")
+GET     /vendez-votre-montre			    								controllers.HomeController.content(request: Request, key = "content.watch.selling")
+GET     /mandat-de-depot-vente-virtuel-de-montre							controllers.Default.redirect(to = "/vendez-votre-montre")
+
+GET     /estimation/montre/luxe		    									controllers.HomeController.content(request: Request, key = "content.watch.estimate")
 
 GET		/lune																controllers.Default.redirect(to = "http://www.patek.com/contents/default/fr/MoonphaseIndicatorSetting.html")
 
@@ -132,6 +134,7 @@ GET		/perma/entretien													controllers.Default.redirect(to = "/entretien-
 GET		/perma/rolex														controllers.Default.redirect(to = "/reparation/montre/rolex")
 GET		/perma/omega														controllers.Default.redirect(to = "/reparation/montre/omega")
 GET		/perma/devis														controllers.Default.redirect(to = "/demande-de-devis")
+GET		/perma/auto/devis													controllers.Default.redirect(to = "/devis-interactif-immediat")
 GET		/perma/authent														controllers.Default.redirect(to = "/authentification/certification/montre/paris")
 GET		/perma/water														controllers.Default.redirect(to = "/prise-en-charge-urgente-probleme-etancheite")
 GET		/perma/water/action													controllers.Default.redirect(to = "/demande-de-devis/urgence/etancheite")
@@ -139,6 +142,12 @@ GET		/perma/news															controllers.Default.redirect(to = "/actualites/ne
 GET		/perma/legal														controllers.Default.redirect(to = "/mentions-legales")
 GET		/perma/contact														controllers.Default.redirect(to = "/nous-contacter")
 GET		/perma/when															controllers.Default.redirect(to = "/quand-faire-la-revision")
+GET		/perma/buy															controllers.Default.redirect(to = "/rechercher-une-montre")
+GET		/perma/buy/advices													controllers.Default.redirect(to = "/nous-contacter?title=J%27ai%20besoin%20de%20conseils%20pour%20acheter%20une%20montre")
+GET		/perma/selling/advices												controllers.Default.redirect(to = "/nous-contacter?title=Je%20souhaite%20bénéficier%20d%27une%20prestation%20d%27expertise")
+GET		/perma/selling/virtual												controllers.Default.redirect(to = "/nous-contacter?title=Je%20veux%20vendre%20ma%20montre%20par%20dépôt%20virtuel")
+GET		/perma/selling/now													controllers.Default.redirect(to = "/nous-contacter?title=Je%20veux%20vous%20vendre%20ma%20montre")
+GET		/perma/estimate														controllers.Default.redirect(to = "/nous-contacter?title=Je%20souhaite%20faire%20estimer%20ma%20collection")
 
 GET     /sitemap.xml														controllers.HomeController.sitemap(request: Request)
 GET     /plan-du-site														controllers.HomeController.siteplan(request: Request)

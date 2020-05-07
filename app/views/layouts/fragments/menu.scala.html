@@ -35,11 +35,11 @@
 				
 		mainMenu.add(
 			Menu.of("watch.dealing.main", Optional.empty(), Optional.empty(), Optional.of("icon-exchange-alt"))
-				.addSubMenu("watch.purchasing", Optional.of("#"), Optional.empty(), Optional.empty())
+				.addSubMenu("watch.purchasing", Optional.of(routes.HomeController.content("content.watch.purchasing").url), Optional.empty(), Optional.empty())
 					.getParentIfExists()
-				.addSubMenu("watch.selling", Optional.of("#"), Optional.empty(), Optional.empty())
+				.addSubMenu("watch.selling", Optional.of(routes.HomeController.content("content.watch.selling").url), Optional.empty(), Optional.empty())
 					.getParentIfExists()
-				.addSubMenu("watch.estimate", Optional.of("#"), Optional.empty(), Optional.empty())
+				.addSubMenu("watch.estimate", Optional.of(routes.HomeController.content("content.watch.estimate").url), Optional.empty(), Optional.empty())
 					.getParentIfExists()
 				.getHighestParentIfExists());
 				
@@ -47,6 +47,8 @@
 			Menu.of("service.main", Optional.empty(), Optional.empty(), Optional.of("icon-wrench"))
 				.addSubMenu("service.main.content", Optional.empty(), Optional.empty(), Optional.empty())
 					.addSubMenu("service.main.content.all", Optional.of(routes.HomeController.content("content.service.repairing").url), Optional.empty(), Optional.empty())
+						.getParentIfExists()
+					.addSubMenu("service.main.content.paris", Optional.of(routes.HomeController.content("content.paris.repairing").url), Optional.empty(), Optional.empty())
 						.getParentIfExists()
 					.addSubMenu("service.main.content.rolex", Optional.of(routes.HomeController.content("content.rolex.repairing").url), Optional.empty(), Optional.empty())
 						.getParentIfExists()

@@ -54,6 +54,8 @@ public class FormProcessingController extends Controller implements WSBodyReadab
 	public final static String SETTING_UP_ORDER_TYPE = "1";
 	public final static String WATER_ISSUE_ORDER_TYPE = "5";
 	public final static String ORDER_TYPE_PARAMETER_NAME = "type";
+	
+	public final static String CONTACT_TITLE_PARAMETER_NAME = "title";
 	private MessagesApi messagesApi;
 	private FormFactory formFactory;
 	private BrandProvider brandProvider;
@@ -129,7 +131,10 @@ public class FormProcessingController extends Controller implements WSBodyReadab
 	 * 
 	 *************************************/
 	public Result prepareContactRequest(Http.Request request) {
-		return ok(views.html.contact_us_form.render(formFactory.form(ContactRequestData.class).withDirectFieldAccess(true), request, messagesApi.preferred(request)));
+		ContactRequestData requestPrefilledIfNeeded = new ContactRequestData();
+		guessContactTitleFromRequest(request).ifPresent(title -> requestPrefilledIfNeeded.title = title);
+		
+		return ok(views.html.contact_us_form.render(formFactory.form(ContactRequestData.class).withDirectFieldAccess(true).fill(requestPrefilledIfNeeded), request, messagesApi.preferred(request)));
 	}
 	
 	public CompletionStage<Result> processContactRequest(Http.Request request) {
@@ -141,6 +146,10 @@ public class FormProcessingController extends Controller implements WSBodyReadab
 			CompletionStage<? extends WSResponse> responsePromise = wsWithSecret("https://www.hometime.fr/new-contact-request-from-outside").setContentType("application/x-www-form-urlencoded").post(request.body().asFormUrlEncoded().entrySet().stream().map(entry -> flattenValues(entry.getKey(), entry.getValue(), "&")).collect( Collectors.joining( "&" )));
 			return responsePromise.handle((response, error) -> handleFormResponse(response, error, request, "contact.us"));
 		}
+	}
+	
+	private Optional<String> guessContactTitleFromRequest(Http.Request request) {
+		return request.queryString(CONTACT_TITLE_PARAMETER_NAME);
 	}
 	
 	/*************************************

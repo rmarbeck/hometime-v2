@@ -203,9 +203,13 @@ main.menu.visit.us.title=Comment venir à l''atelier&nbsp;?
 
 
 main.menu.watch.dealing.main=Achat / Vente
+main.menu.watch.dealing.main.title=Acheter ou vendre des montres
 main.menu.watch.purchasing=Trouver et acheter une montre
+main.menu.watch.purchasing.title=Nous vous aidons à trouver une montre
 main.menu.watch.selling=Vendre sa montre
+main.menu.watch.selling.title=Nous vendons votre montre
 main.menu.watch.estimate=Estimer sa collection
+main.menu.watch.estimate.title=Estimez votre collection de montres
 
 main.menu.offer.main=Les services
 main.menu.offer.main.title=Tous les services
@@ -230,6 +234,8 @@ main.menu.service.main.content=Comprendre l''entretien
 main.menu.service.main.content.title=Informations générales les entretiens de montres
 main.menu.service.main.content.all=L''entretien en général
 main.menu.service.main.content.all.title=Informations générales sur les entretiens de montres
+main.menu.service.main.content.paris=L''entretien des montres sur Paris
+main.menu.service.main.content.paris.title=Informations sur les entretiens de montres à Paris
 main.menu.service.main.content.rolex=L''entretien des montres Rolex
 main.menu.service.main.content.rolex.title=Informations sur les entretiens de montres Rolex
 main.menu.service.main.content.omega=L''entretien des montres Omega
@@ -264,14 +270,8 @@ main.menu.order=Demander un devis
 main.menu.order.detailed=Demander un devis
 main.menu.auto.order=Devis interactif
 
-main.menu.content.paris=Réparation des montres sur Paris
-
-main.menu.rolex.repairing.content=Réparations Rolex
-main.menu.omega.repairing.content=Réparations Omega
-main.menu.authentication.content=Authentification des montres
-main.menu.water.repairing.content=Ma montre a pris l''eau
 main.menu.service.main.content.watchmakers=Nos horlogers
-main.menu.service.main.content.watchmakers.title=Qui sont nos horlogers
+main.menu.service.main.content.watchmakers.title=Qui sont nos horlogers&nbsp;?
 
 
 
@@ -1090,8 +1090,8 @@ content.rolex.repairing.content.4.body=<div class="sub-title">Deux types de verr
  <div class="sub-title">Puis-je changer mon verre plexiglass par un verre saphir ?</div>Cela n''est pas possible, dans un sens ou dans l''autre. Les boitiers sont conçus différemment et il n''est pas possible de passer d''un type de verre à un autre.
 
 
-#------ Rolex Repairing page ------------------
-#------ content.rolex.repairing
+#------ Omega Repairing page ------------------
+#------ content.omega.repairing
 content.omega.repairing.content.count=4
 content.omega.repairing.main.title=Réparation des montres Omega
 content.omega.repairing.html.title=Hometime vous parle de la réparation des montres Omega
@@ -1129,17 +1129,6 @@ content.omega.repairing.content.4.body=<div class="sub-title">La couronne de rem
 
 
 
-
-
-
-
-#Omega Repairing page
-content.omega.repairing.html.title=Hometime vous parle de la réparation des montres Omega
-content.omega.repairing.html.description=Hometime répare les montres Omega de toutes les époques et avec tous les types
-content.omega.repairing.html.keywords=réparation, montre, omega, entretien, vintage, restauration, seamaster, speedmaster, moonwatch, speed pro, planet ocean, 300m, coaxial
-
-
-
 content.omega.repairing.main.title=Réparation des montres Omega
 
 content.omega.repairing.1.title=Verre cassé sur une Omega Speedmaster mark IV
@@ -1148,17 +1137,15 @@ content.omega.repairing.1.alt=Photo du verre cassé sur une Omega Speedmaster ma
 content.omega.repairing.2.alt=Photo de la manipulation de la lunette tournante d''une Omega Seamaster
 
 
-#Paris Repairing page
+#------ Paris Repairing page ------------------
+#------ content.paris.repairing
+content.paris.repairing.content.count=2
 content.paris.repairing.html.title=Réparation des montres dans Paris, Hometime votre meilleure adresse
 content.paris.repairing.html.description=Hometime répare les montres de luxe dans son atelier situé à Paris dans le 1er arrondissement
 content.paris.repairing.html.keywords=réparation, montre, paris, entretien, vintage, réparation, révision, restauration, jaeger le coultre, audemars piguet, iwc, cartier, rado, panerai
 
-content.paris.repairing.content.1.head=Verre cassé ou rayé
-content.paris.repairing.content.1.body=<div class="sub-title">Les différents cas de verres rayés :</div>En fonction du modèle ou de l''âge de la montre, celle-ci peut être équipée d''un verre saphir ou bien d''un verre en plexiglass.<br \><br \>Les verres en plexiglass peuvent être polis s''ils sont légèrement rayés, dans le cas des verres en saphir, ils sont la plupart du temps traités par un antireflet qui peut être retiré s''il est rayé de façon superficielle. \
- <div class="sub-title">Si le verre est cassé :</div>Un verre en plexiglass peut se casser relativement facilement sans que cela soit dû à un choc violent. Si cela est le cas, le remplacement du verre n''est pas très onéreux et peut se faire dans le cadre d''un entretien partiel. \
- <br \><br \>Un verre saphir ne peut se casser qu''en subissant un choc violent. Ce choc crée souvent des dégâts au niveau du mouvement. Cela justifie le plus souvent une révision complète en plus du changement du verre. \
- <div class="sub-title">Changement de verre et étanchéité</div>La grande majorité des modèles de montre paris est étanche. Le changement de verre implique de refaire l''étanchéité de la montre.
-
+content.paris.repairing.content.head=Entretien des montres sur Paris
+content.paris.repairing.content.head.subtitle=Nous vous expliquons comment fonctionne l''entretien des montres dans nos ateliers
 
 content.paris.repairing.content.2.head=Comment se passe l''entretien chez Hometime
 content.paris.repairing.content.2.body=<div class="sub-title">La collecte de la montre :</div>Lors du dépôt de la montre dans nos locaux (ou dans le cas d''un envoi par colis sécurisé), nous éditons une fiche de collecte qui décrit l''état de la montre sur plusieurs critères. Cette fiche de collecte est remise au client, elle fait office de preuve de dépôt. Nous prenons la montre en photo au moment de la rédaction de la fiche de collecte. <br /><br />Dès la collecte, nous essayons de faire une première évaluation du coût de l''entretien. \
@@ -1169,28 +1156,23 @@ content.paris.repairing.content.2.body=<div class="sub-title">La collecte de la 
  <div class="sub-title">Tests de bon fonctionnement :</div>Même si l''horloger teste partiellement la montre à la fin de l''entretien, c''est le responsable qualité qui déroule une procédure de test dépendant du type de montres (automatique ou mécanique, simple ou à complication...) une fois l''entretien terminé. <br /><br />Plusieurs critères sont évalués durant la phase de tests. En fonction de la complexité de la montre, plusieurs jours peuvent être nécessaires pour que la montre passe l''ensemble des cas de test (passage de date, fonctionnement avec ou sans chronographe).
 
 
-content.paris.repairing.2.default.to.action=Demander un devis
-content.paris.repairing.2.primary.to.action=Devis interactif
+content.paris.repairing.content.2.image.url=https://d1qsyzkyf147s1.cloudfront.net/assets/images/content/repairing/paris.jpg
+content.paris.repairing.content.2.image.title=Notre plaque à Paris
+content.paris.repairing.content.2.image.alt=Photo de la plaque plaque de l''immeuble
+content.paris.repairing.content.2.default.to.action.text=Demander un devis
+content.paris.repairing.content.2.default.to.action.perma=/perma/devis
+content.paris.repairing.content.2.primary.to.action.text=Devis interactif
+content.paris.repairing.content.2.primary.to.action.perma=/perma/auto/devis
 
-content.paris.repairing.content.3.head=La réparation des montres chez Hometime
-content.paris.repairing.content.3.body= <br />Hometime dispose de son atelier dans le 1er arrondissement de Paris depuis Juin 2018. Nos horlogers sont sur place pour réaliser l''ensemble des entretiens courants ou plus complexes pour les marques de montres les plus prestigieuses. \
+content.paris.repairing.content.1.head=La réparation des montres chez Hometime
+content.paris.repairing.content.1.body= <br />Hometime dispose de son atelier dans le 1er arrondissement de Paris depuis Juin 2018. Nos horlogers sont sur place pour réaliser l''ensemble des entretiens courants ou plus complexes pour les marques de montres les plus prestigieuses. \
  <br /><br />Entre les restaurations complexes des montres anciennes ou ayant beaucoup souffert (prises d''eau, chutes par exemple), les révisions ou encore les changements de pile, nous nous occupons de plus de 500 montres par an. \
  <br /><br />Au delà d''un niveau de qualité le plus élevé possible, nous mettons un point d''honneur à réduire les délais le plus possible.
  
-content.paris.repairing.3.default.to.action=Venir nous voir
-content.paris.repairing.3.primary.to.action=Nos horlogers
- 
-content.paris.repairing.content.4.head=Couronne ou poussoirs cassés
-content.paris.repairing.content.4.body=<div class="sub-title">La couronne de remontoir :</div>Le problème n''est pas spécifique aux montres paris mais il s''agit d''une réparation relativement fréquente sur les modèles non équipés de couronnes vissées et notamment sur les modèles vintage. Si la couronne est détachée de la montre, il peut être parfois nécessaire de changer l''ensemble couronne/tige de couronne alors que dans les cas les moins graves il est possible de repostionner la couronne sur sa tige. \
- <br \><br \>Dans le cas des couronnes vissées, le tube de couronne peut lui aussi être défaillant et être remplacé. \
- <div class="sub-title">Les poussoirs des Speedmaster :</div>Comme sur de nombreux chronographes, les poussoirs des Speedmaster sont assez exposés aux chocs et peuvent se briser. Il peuvent aussi se dévisser mais cela est beaucoup plus rare. Dans ces cas là, il est forcément nécessaire de remplacer les poussoirs et cela peut s''effectuer dans le cadre d''un entretien partiel. \
- <br \><br \>En fonction des conditions d''utilisation de la montre, les poussoirs peuvent aussi simplement s''encrasser et se bloquer. Un nettoyage suffit alors pour permettre à la montre de refonctionner normalement.
-
-content.paris.repairing.4.to.action=En savoir plus...
-
-content.paris.repairing.1.default.to.action=Venir nous voir
-content.paris.repairing.1.primary.to.action=Demander un devis
-
+content.paris.repairing.content.1.default.to.action.text=Venir nous voir
+content.paris.repairing.content.1.default.to.action.perma=/perma/venir
+content.paris.repairing.content.1.primary.to.action.text=Nos horlogers
+content.paris.repairing.content.1.primary.to.action.perma=/perma/horlogers
 
 content.paris.repairing.main.title=Réparation des montres à Paris
 
@@ -1199,7 +1181,9 @@ content.paris.repairing.2.title=Lunette tournante d''une paris
 content.paris.repairing.1.alt=Photo du verre cassé sur une paris Speedmaster mark IV
 content.paris.repairing.2.alt=Photo de la manipulation de la lunette tournante d''une Omega Seamaster
 
-# Watchmakers page
+
+#------ Watchmakers page ------------------
+#------ content.watchmakers
 content.watchmakers.content.count=3
 content.watchmakers.content.head=Les horlogers Hometime
 content.watchmakers.content.head.subtitle=Qui sont nos horlogers ?
@@ -1233,10 +1217,6 @@ content.watchmakers.content.1.body= <br />Hometime dispose de sa propre équipe 
  <br /><br />Spécialisés dans le Service Après Vente, ils ont les connaissances leur permettant de travailler sur des mouvements récents ou plus anciens, avec ou sans complication.\
  <br /><br />De la réparation d''une montre de grande marque à complications ayant subi de gros dégâts à un simple changement de pile de montre plus ou moins basique, ils sont toujours opérationnels.
  
-content.watchmakers.1.default.to.action=Venir nous voir
-content.watchmakers.1.primary.to.action=Demander un devis
-
-
 content.watchmakers.main.title=Les horlogers Hometime
 
 # Water page
@@ -1257,12 +1237,18 @@ water.2.to.action=Demander une intervention en urgence
 water.1.alt=Monaco embuée
 water.2.alt=Monaco ouverte
 
-# Broking page
-broking.html.title=Hometime, courtier en montres de luxe
-broking.html.description=Nous trouvons pour vous les montres neuves ou d''occasion au meilleur prix, en vous offrant nos services à domicile et une garantie de 2 ans
-broking.html.keywords=courtage, montres, occasion, neuf, courtier, garantie, france
-broking.content.1.head=Nous cherchons <span class="text-muted">votre prochaine montre !</span>
-broking.content.1.body=<div class="sub-title"></div>Vous cherchez une montre en particulier et vous souhaitez <b>la payer son juste prix</b>. Qu''il s''agisse d''une montre <b>neuve</b>, une <b>occasion&nbsp;récente</b> ou une <b>montre&nbsp;vintage</b>, nous sommes là pour la trouver pour vous.\
+
+#------ Watch Purchasing page ------------------
+#------ watch.purchasing
+content.watch.purchasing.content.count=3
+content.watch.purchasing.content.html.title=Hometime, courtier en montres de luxe
+content.watch.purchasing.content.html.description=Nous trouvons pour vous les montres neuves ou d''occasion au meilleur prix, en vous offrant nos services à domicile et une garantie de 2 ans
+content.watch.purchasing.content.html.keywords=courtage, montres, occasion, neuf, courtier, garantie, france
+content.watch.purchasing.content.head=Vous recherchez une montre en particulier&nbsp;?
+content.watch.purchasing.content.head.subtitle=Nous agissons comme un courtier pour vous aider
+
+content.watch.purchasing.content.1.head=Nous cherchons <span class="text-muted">votre prochaine montre !</span>
+content.watch.purchasing.content.1.body=<div class="sub-title"></div>Vous cherchez une montre en particulier et vous souhaitez <b>la payer son juste prix</b>. Qu''il s''agisse d''une montre <b>neuve</b>, une <b>occasion&nbsp;récente</b> ou une <b>montre&nbsp;vintage</b>, nous sommes là pour la trouver pour vous.\
  <br /><br />Toutes les montres que nous vendons sont :\
  <ul><li>certifiées 100% authentiques</li>\
  	 <li>garanties au moins 2 ans</li>\
@@ -1270,16 +1256,30 @@ broking.content.1.body=<div class="sub-title"></div>Vous cherchez une montre en 
  </ul>\
  <br />Nous avons aussi des solutions pour la France entière.\
  <br /><br />Décrivez-nous la montre que vous recherchez, nous vous ferons des propositions très rapidement&nbsp;!
-broking.content.2.head=Vous souhaitez faire un cadeau ou vous avez besoin de conseils ?
-broking.content.2.body=<div class="sub-title"></div>Si vous n'êtes pas sûr du modèle que vous recherchez, que vous avez plutôt en tête une <b>forme&nbsp;de&nbsp;boitier</b>, une <b>couleur</b> dominante, une <b>complication&nbsp;horlogère</b>... nous vous guidons en étudiant ensemble ce qui vous plait et ce qui ne vous plaît pas.\
+
+content.watch.purchasing.content.1.primary.to.action.text=Rechercher une montre
+content.watch.purchasing.content.1.primary.to.action.perma=/perma/buy
+content.watch.purchasing.content.1.image.url=https://d1qsyzkyf147s1.cloudfront.net/assets/images/content/purchasing/1.jpg
+content.watch.purchasing.content.1.image.title=Rolex submariner
+content.watch.purchasing.content.1.image.alt=Photo d''une Rolex submariner
+
+content.watch.purchasing.content.2.head=Vous souhaitez faire un cadeau ou vous avez besoin de conseils ?
+content.watch.purchasing.content.2.body=<div class="sub-title"></div>Si vous n'êtes pas sûr du modèle que vous recherchez, que vous avez plutôt en tête une <b>forme&nbsp;de&nbsp;boitier</b>, une <b>couleur</b> dominante, une <b>complication&nbsp;horlogère</b>... nous vous guidons en étudiant ensemble ce qui vous plait et ce qui ne vous plaît pas.\
  <br /><br />Si vous voulez acheter une montre pour l''offrir à un proche dont vous connaissez les goûts ou la collection de montres.\
  <br /><br />Alors, nous sommes là pour vous guider, nous définissons ensemble :\
  <ul><li>le type de montres qui pourrait correspondre à vos critères et à votre budget,</li>\
  	<li>le temps maximum de la recherche, </li>\
  </ul>\
  ...et la recherche peut alors commencer.
-broking.content.3.head=Pour tout de suite ou pour plus tard ? Avec ou sans boite ?
-broking.content.3.body=<div class="sub-title"></div>Pour nous adapter à vos attentes, nous vous proposons de choisir différentes options :\
+
+content.watch.purchasing.content.2.primary.to.action.text=Besoin de conseils
+content.watch.purchasing.content.2.primary.to.action.perma=/perma/buy/advices
+content.watch.purchasing.content.2.image.url=https://d1qsyzkyf147s1.cloudfront.net/assets/images/content/purchasing/2.jpg
+content.watch.purchasing.content.2.image.title=Jaeger LeCoultre Compressor
+content.watch.purchasing.content.2.image.alt=Photo d''une Jaeger LeCoultre Compressor
+
+content.watch.purchasing.content.3.head=Pour tout de suite ou pour plus tard ? Avec ou sans boite ?
+content.watch.purchasing.content.3.body=<div class="sub-title"></div>Pour nous adapter à vos attentes, nous vous proposons de choisir différentes options :\
  <ul><li>Avec ou sans boite d''origine\
  		<ul><li>sans boite les montres sont souvent un peu moins chères</li></ul>\
  	 </li>\
@@ -1290,32 +1290,49 @@ broking.content.3.body=<div class="sub-title"></div>Pour nous adapter à vos att
  	 <li>D''une montre neuve, jusqu''à une montre à restaurer intégralement</li>\
  	 <li>Pour un besoin immédiat ou lorsque la bonne opportunité se présente...</li>\
  </ul>
-broking.1.to.action=Rechercher une montre
-broking.2.to.action=Besoin de conseils ?
-broking.1.alt=Submariner 16610
-broking.2.alt=Jaeger LeCoultre Master Compressor Memovox
-broking.3.alt=Jaeger LeCoultre Reverso Grande Date
-broking.action.contact.title=J''ai besoin de conseils pour acheter une montre
+
+content.watch.purchasing.content.3.image.url=https://d1qsyzkyf147s1.cloudfront.net/assets/images/content/purchasing/3.jpg
+content.watch.purchasing.content.3.image.title=Jaeger LeCoultre Reverso
+content.watch.purchasing.content.3.image.alt=Photo d''une Jaeger LeCoultre Reverso
 
 
-# Sell page
-sell.html.title=Hometime, vendez votre montre de luxe
-sell.html.description=Nous achetons vos montres de luxe ou les mettons en vente pour vous via notre méthode de dépôt vente virtuel
-sell.html.keywords=courtage, montres, occasion, neuf, courtier, garantie, france, vente, dépôt-vente
-sell.content.1.head=Nous vous accompagnons pour vendre <span class="text-muted">votre montre</span>
-sell.content.1.body=<div class="sub-title"></div>Vous cherchez à <b>vendre une montre</b> et souhaitez en tirer le <b>meilleur prix</b>. Nous pouvons vous accompagner de différentes façons, que vous soyez pressé ou non, que vous soyez expert ou novice en horlogerie.\
+#------ Watch Selling page ------------------
+#------ watch.selling
+content.watch.selling.content.count=4
+content.watch.selling.content.html.title=Hometime, vendez votre montre de luxe
+content.watch.selling.content.html.description=Nous achetons vos montres de luxe ou les mettons en vente pour vous via notre méthode de dépôt vente virtuel
+content.watch.selling.content.html.keywords=courtage, montres, occasion, neuf, courtier, garantie, france
+content.watch.selling.content.head=Vous vendez votre montre&nbsp;?
+content.watch.selling.content.head.subtitle=Nous avons des solutions pour vous aider
+
+content.watch.selling.content.1.head=Nous vous accompagnons pour vendre <span class="text-muted">votre montre</span>
+content.watch.selling.content.1.body=<div class="sub-title"></div>Vous cherchez à <b>vendre une montre</b> et souhaitez en tirer le <b>meilleur prix</b>. Nous pouvons vous accompagner de différentes façons, que vous soyez pressé ou non, que vous soyez expert ou novice en horlogerie.\
  <br /><br />Nous vous proposons les services suivants :\
  <ul><li>Expertise et diagnostic avant vente,</li>\
  	 <li>Dépôt vente virtuel,</li>\
  	 <li>Achat ferme.</b>\
  </ul>\
  <br />Avec notre <b>structure de coûts légère</b>, nous apportons une solution intermédiaire entre les boutiques ayant pignon sur rue qui peuvent vendre vite mais qui font des marges importantes au détriment du montant revenant au vendeur (c''est à dire vous), et les solutions de vente entre particuliers aléatoires et chronophages.
-sell.content.2.head=Expertise et diagnostic avant vente
-sell.content.2.body=<div class="sub-title"></div>Quelque soit le mode de vente que vous choisissez, nous pouvons <b>vous accompagner pour expertiser votre montre et produire des documents assurant son authenticité</b>.\
+
+content.watch.selling.content.1.image.url=https://d1qsyzkyf147s1.cloudfront.net/assets/images/content/selling/2.jpg
+content.watch.selling.content.1.image.title=Certificat
+content.watch.selling.content.1.image.alt=Photo d''un certificat
+
+content.watch.selling.content.2.head=Expertise et diagnostic avant vente
+content.watch.selling.content.2.body=<div class="sub-title"></div>Quelque soit le mode de vente que vous choisissez, nous pouvons <b>vous accompagner pour expertiser votre montre et produire des documents assurant son authenticité</b>.\
  <br /><br />Notre travail vous permet de donner confiance aux acheteurs potentiels qui pourraient être intéressés par votre montre mais inquiets de ne pas l''acheter à un professionnel.\
  <br /><br />Notre expertise nous permet de plus de <b>vous conseiller sur le prix de vente et sur le canal le plus adapté</b> pour réaliser la vente en fonction de vos attentes (rapidité, prix net vendeur, simplicité...). Nous pouvons aussi vous aider à rédiger votre annonce pour un maximum d''efficacité.
-sell.content.3.head=Dépôt vente virtuel
-sell.content.3.body=<div class="sub-title"></div>Pour vous apporter un service de vente au meilleur prix, <b>sans contrainte et sans risque</b>, nous vous proposons une solution exclusive de dépôt vente virtuelle.\
+
+content.watch.selling.content.2.image.url=https://d1qsyzkyf147s1.cloudfront.net/assets/images/content/selling/2.jpg
+content.watch.selling.content.2.image.title=Certificat
+content.watch.selling.content.2.image.alt=Photo d''un certificat
+
+content.watch.selling.content.2.primary.to.action.text=Besoin d''une expertise
+content.watch.selling.content.2.primary.to.action.perma=/perma/selling/advices
+
+
+content.watch.selling.content.3.head=Dépôt vente virtuel
+content.watch.selling.content.3.body=<div class="sub-title"></div>Pour vous apporter un service de vente au meilleur prix, <b>sans contrainte et sans risque</b>, nous vous proposons une solution exclusive de dépôt vente virtuelle.\
  <br /><br />Le principe est simple :\
  <ul><li>Votre montre est prise en photo (de belles photos vendeuses),</li>\
      <li>Nous prenons toutes les informations utiles sur celle-ci,</li>\
@@ -1327,20 +1344,39 @@ sell.content.3.body=<div class="sub-title"></div>Pour vous apporter un service d
  	 <li>Le mandat n''est pas exclusif, vous pouvez très bien essayer de la vendre par un autre moyen,</li>\
  	 <li>Vous définissez <b>librement le montant que vous souhaitez tirer de la vente</b>.\
  </ul>\
- <br />Vos seuls engagements, nous prévenir si vous vendez la montre et être disponible pour la collecte lorsque nous l'avons vendue. 
-sell.content.4.head=Achat ferme
-sell.content.4.body=<div class="sub-title"></div>Si vous êtes pressé de vendre votre montre, nous pouvons éventuellement vous la racheter.\
- <br /><br />N''hésitez pas à nous contacter pour nous décrire votre montre et nous vous ferons nos propositions rapidement ! 
-sell.3.to.action=Faire un dépôt virtuel
-sell.4.to.action=Obtenir une proposition ferme
-sell.2.to.action=Besoin d''une expertise ?
-sell.1.alt=IWC Mark XVI
-sell.2.alt=Certificat Patek Philippe
-sell.3.alt=Audemars Piguet Royal Oak Kasparov
-sell.action.expert.title=Je souhaite bénéficier d''une prestation d''expertise
-sell.action.virtual.sell.title=Je veux vendre ma montre par dépôt virtuel
-sell.action.direct.sell.title=Je veux vous vendre ma montre
+ <br />Vos seuls engagements, nous prévenir si vous vendez la montre et être disponible pour la collecte lorsque nous l'avons vendue.
 
+content.watch.selling.content.3.image.url=https://d1qsyzkyf147s1.cloudfront.net/assets/images/content/selling/3.jpg
+content.watch.selling.content.3.image.title=Audemars Piguet Kasparov
+content.watch.selling.content.3.image.alt=Photo d''une Audemars Piguet Kasparov
+
+content.watch.selling.content.3.primary.to.action.text=Faire un dépôt virtuel
+content.watch.selling.content.3.primary.to.action.perma=/perma/selling/virtual
+
+content.watch.selling.content.4.head=Achat ferme
+content.watch.selling.content.4.body=<div class="sub-title"></div>Si vous êtes pressé de vendre votre montre, nous pouvons éventuellement vous la racheter.\
+ <br /><br />N''hésitez pas à nous contacter pour nous décrire votre montre et nous vous ferons nos propositions rapidement !
+
+
+content.watch.selling.content.4.primary.to.action.text=Obtenir une proposition ferme
+content.watch.selling.content.4.primary.to.action.perma=/perma/selling/now
+
+
+#------ Watch estimate page ------------------
+#------ watch.estimate
+content.watch.estimate.content.count=1
+content.watch.estimate.html.title=Hometime, estimez votre collection de montres de luxe
+content.watch.estimate.html.description=Nous estimons votre collection de montres de luxe
+content.watch.estimate.html.keywords=courtage, estimation, montres, occasion, neuf, courtier, garantie, france
+
+content.watch.estimate.content.head=Estimation de collection
+content.watch.estimate.content.head.subtitle=Nous vous aidons à estimer votre collection de montres
+
+content.watch.estimate.content.1.head=Estimer une ou plusieurs montres
+content.watch.estimate.content.1.body=Vous avez besoin d''estimer une ou plusieurs montres en vue d''une vente ou pour votre assurance par exemple, nous pouvons vous aider.<br /><br />S''agissant de cas par cas, nous vous invitons à nous contacter pour que nous établissions ensemble une marche à suivre personnalisée.
+
+content.watch.estimate.content.1.primary.to.action.text=Estimer ma colleciton
+content.watch.estimate.content.1.primary.to.action.perma=/perma/estimate
 
 # Watch collection page
 watch.collection.html.title=Les montres disponibles pour un essai prolongé Hometime
@@ -3222,9 +3258,12 @@ siteplan.page.head.intro=
 siteplan.page.disclaimer=
 
 
+
+
 siteplan.page.quartz.price=Tarifs entretien montres à quartz
 siteplan.page.quartz.price.branded=Montres {0}
 
+siteplan.page.water.quotation.request=Devis en cas de problème d''étanchéité
 siteplan.page.quotation.request=Devis Horloger toutes marques
 siteplan.page.quotation.request.branded=Devis Horloger montres {0}
 siteplan.page.auto.quotation=Devis intetactif automatisé toutes marques
@@ -3233,6 +3272,8 @@ siteplan.page.auto.quotation.branded=Devis intetactif montres {0}
 siteplan.page.main.section=Pages principales
 siteplan.page.service.section=Comprendre l''entretien des montres
 siteplan.page.us.section=A propos de nous
+siteplan.page.selling.section=Achat/vente de montres
+
 
 siteplan.page.quotation.section=Estimation du coup d''entretien
 siteplan.page.prices.section=Montres à quartz
@@ -3241,6 +3282,7 @@ siteplan.page.homepage=Page d''accueil
 siteplan.page.offers=Services et prestations hometime
 siteplan.page.quotation.options=Différents types de devis
 siteplan.page.content.watchmakers=Nos Horlogers
+siteplan.page.content.paris.repairing=Réparation des montres sur Paris
 siteplan.page.content.rolex.repairing=Réparation des montres Rolex
 siteplan.page.content.omega.repairing=Réparation des montres Omega
 siteplan.page.content.authenticating=Authentification, expertise
@@ -3257,6 +3299,9 @@ siteplan.page.faq=Questions fréquentes
 siteplan.page.content.privacy=Vie privée
 siteplan.page.contact.request=Nous contacter
 siteplan.page.callback.request=Se faire rappeler
+siteplan.page.content.watch.purchasing=Rechercher une montre
+siteplan.page.content.watch.selling=Vendre sa montre
+siteplan.page.content.watch.estimate=Estimer sa collection
 
 
 site.plan.html.title=Plan du site
