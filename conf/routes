@@ -113,7 +113,7 @@ GET		/avis-clients														controllers.HomeController.feedbacks(request: Re
 #POST    /paiement/backoffice           					controllers.PaymentRequestsFreeOfLogin.manageBackOfficeAnswer()
 #GET     /paiement/:ak               					controllers.PaymentRequestsFreeOfLogin.displayForm(ak: String)
 
-#GET		/verification/certificat						controllers.Application.checkAuthentication(id1: Long, id2: Long, id3: Long)
+GET		/verification/certificat											controllers.FormProcessingController.checkAuthentication(request: Request, id1: Long, id2: Long, id3: Long)
 
 #GET     /notify			     							controllers.Application.newIncomingCall(secret: String, phonenumber: String, missed: Boolean ?= false)
 

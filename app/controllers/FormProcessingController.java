@@ -34,6 +34,7 @@ import play.mvc.*;
 import play.libs.Json;
 import play.libs.ws.*;
 import models.AcceptQuotationRequestData;
+import models.AuthenticationCheckRequestData;
 import models.AutoQuotationRequestData;
 import models.Brand;
 import models.BuyRequestData;
@@ -336,7 +337,25 @@ public class FormProcessingController extends Controller implements WSBodyReadab
 	 * End Of Quotation Request Management
 	 * 
 	 *************************************/
-
+	
+	/*************************************
+	 * 
+	 * Checking Authentication certificate
+	 * 
+	 *************************************/
+	
+    public CompletionStage<Result> checkAuthentication(Http.Request request, Long id1, Long id2, Long id3) {
+    	CompletionStage<? extends WSResponse> responsePromise = wsWithSecret("https://www.hometime.fr/check-authentication").addQueryParameter("id1", id1.toString()).addQueryParameter("id2", id2.toString()).addQueryParameter("id3", id3.toString()).get();
+		return responsePromise.handle((response, error) -> genericHandler(response, error, request, "check.authentication.test", () -> {
+			JsonNode json = response.asJson();
+			  if (json == null) {
+			    return badRequest("Expecting Json data");
+			  }
+			  return ok(views.html.authentication_result.render(new AuthenticationCheckRequestData(json), request, messagesApi.preferred(request)));
+		}));
+    }
+	
+	
 	/*************************************
 	 * 
 	 * Usefull helpers

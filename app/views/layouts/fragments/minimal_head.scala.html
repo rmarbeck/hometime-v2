@@ -1,0 +1,36 @@
+@(title: String, description: String, keywords: String, args: (Symbol, Any)*)(precontent: Html)(postcontent: Html)(implicit request: Http.Request, messages: play.i18n.Messages)
+
+@import scala.collection.immutable._
+@import tags._
+
+	@precontent
+	
+	@args.toMap.get(Symbol("_head_pre_content"))
+	
+	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+	<meta name="author" content="Hometime" />
+	<link rel="shortcut icon" type="image/png" href="@remote_assets("images/favicon.ico")" />
+
+	<!-- Stylesheets
+	============================================= -->
+	<link href="https://fonts.googleapis.com/css?family=Lato:300,400,400i,700|Raleway:300,400,500,600,700|Crete+Round:400i&display=swap" rel="stylesheet" type="text/css">	
+	
+	@List(	"lib/bootstrap/css/bootstrap.css",
+			"stylesheets/custom.css").map { e =><link rel="stylesheet" href="@remote_assets(e)" type="text/css" />
+	}
+
+	@args.toMap.get(Symbol("_css_link"))
+	
+	
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+	<!-- Document Title
+	============================================= -->
+	<title>@Html(Messages("global.title.prefix"))@title</title>
+	<meta name="description" content="@description">
+	<meta name="keywords" content="@keywords">
+
+	
+	@args.toMap.get(Symbol("_head_post_content"))
+	
+	@postcontent

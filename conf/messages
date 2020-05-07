@@ -2237,6 +2237,15 @@ call.back.error.head.intro=Veuillez nous excuser, une erreur s''est produite.<br
 call.back.error.disclaimer=Nous avons enregistré cette erreur et allons essayer de la résoudre rapidement. Merci de votre compréhension.
 
 
+check.authentication.test.error.html.title=Erreur
+check.authentication.test.error.html.description=Erreur dans l''affiche d''un certificat
+check.authentication.test.error.html.keywords=Erreur, certificat
+check.authentication.test.error.head=Impossible de vérifier ce certificat
+check.authentication.test.error.head.subtitle=
+check.authentication.test.error.head.intro=Veuillez vérfier l''adresse utilisée car le certificat est inconnu
+check.authentication.test.error.disclaimer=
+
+
 #------ Service Test Form ------------------
 #------ service.test.form
 service.test.form.html.title=Quand faire réviser ma montre ?
