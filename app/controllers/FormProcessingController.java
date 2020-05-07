@@ -27,6 +27,8 @@ import fr.hometime.utils.WebserviceHelper;
 import play.data.DynamicForm;
 import play.data.Form;
 import play.data.FormFactory;
+import play.i18n.Lang;
+import play.i18n.Messages;
 import play.i18n.MessagesApi;
 import play.mvc.*;
 import play.libs.Json;
@@ -104,6 +106,10 @@ public class FormProcessingController extends Controller implements WSBodyReadab
 	 *************************************/
 	public Result prepareCallBackRequest(Http.Request request) {
 		return ok(views.html.call_back_form.render(formFactory.form(CallBackRequestData.class).withDirectFieldAccess(true), request, messagesApi.preferred(request)));
+	}
+	
+	public Result prepareCallBackRequest_en(Http.Request request) {
+		return ok(views.html.call_back_form.render(formFactory.form(CallBackRequestData.class).withDirectFieldAccess(true), request, getMessagesForInEnglishPages(request)));
 	}
 	
 	public CompletionStage<Result> processCallBackRequest(Http.Request request) {
@@ -390,4 +396,8 @@ public class FormProcessingController extends Controller implements WSBodyReadab
 	private WSRequest wsWithSecret(String url) {
 		return WebserviceHelper.wsWithSecret(ws, url, config);
 	}
+    
+    private Messages getMessagesForInEnglishPages(Http.Request request) {
+    	return messagesApi.preferred(Arrays.asList(Lang.forCode("en")));
+    }
 }

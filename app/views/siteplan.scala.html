@@ -1,0 +1,98 @@
+@(supported_brands: Optional[List[Brand]])(implicit request: Http.Request, messages: play.i18n.Messages)
+
+@import scala.collection.immutable._
+@import tags._
+
+@pageKey = {siteplan.page}
+
+@entry(subkey: String, url: String, brand: String = "") = {
+	<li><i class="icon-file-alt"></i><a href="@url">@Html(Messages(pageKey.toString+"."+subkey, brand))</a>
+}
+
+@defining(pageKey.toString) { case (key) =>
+	@layouts.main_helper_with_head_block(key) {
+			<section id="content">
+
+			<div class="content-wrap">
+
+				<div class="container clearfix">
+
+					<div class="col_one_third nobottommargin">
+
+						<h3>@Html(Messages(key+".main.section"))</h3>
+
+						<ul class="iconlist">
+							@entry("homepage", routes.HomeController.index().url)
+							@entry("offers", routes.HomeController.offers().url)
+							@entry("quotation.options", routes.HomeController.quotationOptions().url)
+							@entry("prices", routes.HomeController.prices().url)
+							@entry("buy.request", routes.FormProcessingController.prepareBuyRequest().url)
+							@entry("feedbacks", routes.HomeController.feedbacks().url)
+						</ul>
+						
+						<h3>@Html(Messages(key+".service.section"))</h3>
+						
+						<ul class="iconlist">
+							@entry("content.rolex.repairing", routes.HomeController.content("content.rolex.repairing").url)
+							@entry("content.omega.repairing", routes.HomeController.content("content.omega.repairing").url)
+							@entry("content.authenticating", routes.HomeController.content("content.authenticating").url)
+							@entry("content.service.repairing", routes.HomeController.content("content.service.repairing").url)
+							@entry("content.water.repairing", routes.HomeController.content("content.water.repairing").url)
+							@entry("service.test", routes.FormProcessingController.prepareServiceTestRequest().url)
+							@entry("buy.request", routes.FormProcessingController.prepareBuyRequest().url)
+						</ul>
+						
+						<h3>@Html(Messages(key+".us.section"))</h3>
+						
+						<ul class="iconlist nobottommargin">
+							@entry("content.watchmakers", routes.HomeController.content("content.watchmakers").url)
+							@entry("content.who.are.we", routes.HomeController.content("content.who.are.we").url)
+							@entry("visit.us", routes.HomeController.visit().url)
+							@entry("content.legal", routes.HomeController.content("content.legal").url)
+							@entry("faq", routes.HomeController.faq().url)
+							@entry("content.privacy", routes.HomeController.content("content.privacy").url)
+							@entry("contact.request", routes.FormProcessingController.prepareContactRequest().url)
+							@entry("callback.request", routes.FormProcessingController.prepareCallBackRequest().url)
+						</ul>
+
+					</div>
+					
+					<div class="col_one_third nobottommargin">
+
+						<h3>@Html(Messages(key+".quotation.section"))</h3>
+
+						<ul class="iconlist nobottommargin">
+							@entry("quotation.request", routes.FormProcessingController.prepareQuotationRequest().url)
+							@entry("auto.quotation", routes.FormProcessingController.prepareAutoQuotation().url)
+							<ul class="iconlist nobottommargin">
+							@for(brand <- supported_brands.get) {
+								@entry("quotation.request.branded", routes.FormProcessingController.prepareQuotationRequestWithBrand(brand.seo_name).url, brand.getDisplayName)
+								@entry("auto.quotation.branded", routes.FormProcessingController.prepareAutoQuotationWithBrand(brand.seo_name).url, brand.getDisplayName)
+							}
+							</ul>
+						</ul>
+
+					</div>
+					
+					<div class="col_one_third nobottommargin col_last">
+
+						<h3>@Html(Messages(key+".prices.section"))</h3>
+
+						<ul class="iconlist nobottommargin">
+							@entry("quartz.price", routes.FormProcessingController.prepareQuartzPrice().url)
+							<ul class="iconlist nobottommargin">
+							@for(brand <- supported_brands.get) {
+								@entry("quartz.price.branded", routes.FormProcessingController.prepareQuartzPriceWithBrand(brand.seo_name).url, brand.getDisplayName)
+							}
+							</ul>
+						</ul>
+
+					</div>
+
+				</div>
+
+			</div>
+
+		</section><!-- #content end -->
+	}
+}

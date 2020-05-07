@@ -4,11 +4,11 @@
 @import tags._
 
 @service(key: String, imgUrl: String, align: String, index: Int, buttonsLinks: List[String], buttonsClasses: List[String], bodyParams: String*) = {
-					@if(align.equals("left")) {
+					@if(align.equals("left") && imgUrl != null) {
 						@service_img(key, imgUrl, false)
 					}
 
-					<div id="@key" class="class-@key service col_three_fifth nobottommargin @if(align.equals("left")) {col_last}">
+					<div id="@key" class="class-@key service @if(align.equals("left") || align.equals("right") ) {col_three_fifth} nobottommargin @if(align.equals("left")) {col_last}">
 
 						<div class="heading-block">
 							<h3>@h_msg_key(key, "head")</h3>
@@ -23,7 +23,7 @@
 						}
 					</div>
 
-					@if(align.equals("right")) {
+					@if(align.equals("right") && imgUrl != null) {
 						@service_img(key, imgUrl, true)
 					}
 
@@ -33,7 +33,7 @@
 
 @service_img(key: String, imgUrl: String, isLast: Boolean) = {
 					<div class="col_two_fifth topmargin nobottommargin center @if(isLast) {col_last}" style="min-height: 350px;">
-						<img class="img-responsive" src="@imgUrl" alt="@msg_key(key, "img.alt")">
+						<img class="img-responsive" src="@remote_assets(imgUrl)" alt="@msg_key(key, "img.alt")">
 					</div>
 }
 
@@ -42,29 +42,16 @@
 }
 
 
-@insight(key: String, imgUrl: String, index: Int) = {
-						<div class="col_one_third nobottommargin @if(index%3==0) {col_last}">
-							<div class="feature-box media-box">
-								<div class="fbox-media">
-									<img src="@imgUrl" alt="@h_msg_key(key, "insight.img.alt")">
-								</div>
-								<div class="fbox-desc">
-									<h3>@h_msg_key(key, "insight.head")<span class="subtitle">@h_msg_key(key, "insight.head.subtitle")</span></h3>
-									<p>@h_msg_key(key, "insight.body")</p>
-								</div>
-							</div>
-						</div>
-}
 
 @defining("offer") { case (key) =>
 
 	@layouts.main_helper_with_head_block(key){
 
-					@List((key+".service", "/assets/images/home/grid-6.jpg", "left", List(routes.HomeController.quotationOptions().url, routes.HomeController.quotationOptions().url), List("btn-outline-dark", "btn-outline-secondary"), brands.get.map(_.getDisplayName).mkString(", ")),
-						(key+".restore", "/assets/images/logo-ruuma.png", "right", List(routes.HomeController.quotationOptions().url), List("btn-outline-dark"), ""),
-						(key+".quartz", "/assets/images/logo-ruuma.png", "left", List.empty[String], List.empty[String], ""),
-						(key+".auth", "/assets/images/logo-ruuma.png", "right", List(routes.HomeController.quotationOptions().url), List("btn-outline-dark"), ""),
-						(key+".home", "/assets/images/logo-ruuma.png", "left", List(routes.HomeController.quotationOptions().url), List("btn-outline-dark"), ""),
-						(key+".other", "/assets/images/logo-ruuma.png", "right", List(routes.HomeController.quotationOptions().url), List("btn-outline-dark"), "")).zipWithIndex.map { case (value,index) => @service(value._1, value._2, value._3, index+1, value._4, value._5, value._6) }
+					@List((key+".service", "images/content/working-600.jpg", "left", List(routes.HomeController.content("content.service.repairing").url, routes.HomeController.quotationOptions().url), List("btn-outline-dark", "btn-outline-secondary"), brands.get.map(_.getDisplayName).mkString(", ")),
+						(key+".restore", "images/content/mvt-dayto-600.jpg", "right", List(routes.FormProcessingController.prepareQuotationRequest().url+"?"+FormProcessingController.ORDER_TYPE_PARAMETER_NAME+"="+FormProcessingController.REPAIR_ORDER_TYPE), List("btn-outline-dark"), ""),
+						(key+".quartz", "images/content/water-test-600.jpg", "left", List(routes.FormProcessingController.prepareQuartzPrice().url), List("btn-outline-dark"), ""),
+						(key+".auth", "images/content/authen-book-600.jpg", "right", List(routes.HomeController.content("content.authenticating").url), List("btn-outline-dark"), ""),
+						(key+".home", null, "none", List(routes.FormProcessingController.prepareCallBackRequest().url), List("btn-outline-dark"), ""),
+						(key+".other", null, "none", List(routes.HomeController.quotationOptions().url), List("btn-outline-dark"), "")).zipWithIndex.map { case (value,index) => @service(value._1, value._2, value._3, index+1, value._4, value._5, value._6) }
 	}
 }

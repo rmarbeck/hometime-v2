@@ -55,7 +55,7 @@ linkedin.link.title=Nous trouver sur LinkedIn
 footer.who.are.we.title=Tout savoir sur Hometime
 footer.visit.us.title=Comment venir à l''atelier&nbsp;?
 footer.quotation.request.title=Demander un devis d''entretien
-footer.site.plan.title=Toutes les pages du site</a></li>
+footer.site.plan.title=Toutes les pages du site
 footer.testimonials.title=Quelques avis de nos clients
 footer.faq.title=Les questions que vous vous posez
 footer.contact.us.title=Rentrer en contact avec nous
@@ -80,7 +80,7 @@ footer.subscribe.action.label=S''abonner
 global.code.lang.head=fr
 global.text.project.name=hometime
 global.home.html.title=Révision, réparation et essai de montres à domicile sur Paris
-global.home.html.description=Révision et réparation de montres de marque avec intervention à domicile sur Paris et sa région, avec possibilité d''essai prolongé d''une montre de légende.
+global.home.html.description=Révision et réparation de montres de marque avec intervention à domicile sur Paris et sa région.
 global.home.html.author=hometime
 global.text.brand.name=hometime
 global.text.brand.name.title=hometime
@@ -217,11 +217,12 @@ main.menu.offer.restore=Restauration
 main.menu.offer.restore.title=Restauration de montres anciennes
 main.menu.offer.quartz=Pile et étanchéité
 main.menu.offer.quartz.title=Changement de pile avec ou sans étanchéité
+main.menu.offer.auth=Authentification
+main.menu.offer.quartz.title=Expertise et authentification des montres
 main.menu.prices=Les tarifs
 main.menu.prices.title=Les tarifs des services Hometime
 main.menu.quartz.prices=Tarifs changement de pile
 main.menu.quartz.prices.title=Tarifs pour les interventions sur les montres à quartz
-main.menu.extra=Les services complémentaires
 
 main.menu.service.main=Entretien
 main.menu.service.main.title=Information sur les entretiens de montres
@@ -279,7 +280,7 @@ main.menu.service.main.content.watchmakers.title=Qui sont nos horlogers
 # Home page
 home.html.title=Révision, réparation, vente de montres à Paris
 home.html.description=Révision et réparation de montres de marque avec intervention à domicile sur Paris et sa région, avec possibilité d''essai prolongé d''une montre de légende.
-home.html.keywords=entretien, entretien montre, révision, réparation, révision montre, réparation montre, montre mécanique, montre automatique, sav, service après vente, rolex, omega, panerai, tag heuer, paris, région parisienne, 75, yvelines, hauts de seine, devis gratuit, essai, à domicile, devis en ligne, horloger, horlogerie
+home.html.keywords=entretien, entretien montre, révision, réparation, révision montre, réparation montre, montre mécanique, montre automatique, sav, service après vente, rolex, omega, panerai, tag heuer, paris, région parisienne, 75, yvelines, hauts de seine, devis gratuit, à domicile, devis en ligne, horloger, horlogerie
 
 
 home.bottom.line.claim=Besoin d''une évaluation pour une réparation&nbsp;?
@@ -395,7 +396,7 @@ home.feature.0.head=Partout en France
 home.feature.0.body=Hometime propose tous les services horlogers partout en France avec des solutions adaptées à chacun.
 
 home.feature.1.head=Pour tous vos besoins
-home.feature.1.body=Nous disposons de nos horlogers et par ailleurs nous sélectionnons les meilleurs acteurs du marché pour vous apporter tous nos services : entretien, essai, achat, vente.
+home.feature.1.body=Nous disposons de nos horlogers et par ailleurs nous sélectionnons les meilleurs acteurs du marché pour vous apporter tous nos services : entretien, achat, vente.
 
 home.feature.2.head=Au prix le plus juste
 home.feature.2.body=Nous faisons des choix nous permettant d''offrir les tarifs les plus justes et les délais les plus courts possible.
@@ -1414,8 +1415,8 @@ offer.service.body=Hometime prend en charge la révision ou la réparation de vo
 offer.service.action.0.text=Pourquoi réviser ?
 offer.service.action.1.text=Demander un devis
 
-offer.service.call.to.action.more=Pourquoi réviser ?
-offer.service.call.to.action.order=Demander un devis
+
+
 
 offer.restore.head=Service de restauration
 offer.restore.head.subtitle=Entretien de montres "vintage" ou accidentées
@@ -1428,7 +1429,7 @@ offer.restore.body=Hometime propose un service de <b>restauration de montres anc
  <br />Lors d''une restauration, nous fournissons sur demande un <b>certificat décrivant la montre et l''ensemble des opérations menées</b> pendant les travaux horlogers.\
  <br /><br />Le service de restauration peut aussi être réalisé sur une <b>montre récente qui aurait subi de lourds dommages</b> (gros chocs, présence prolongée d''eau dans le mouvement,...).
 
-offer.restore.call.to.action.order=Demander un devis de restauration
+offer.restore.action.0.text=Demander un devis de restauration
 
 offer.quartz.head=Changement de pile et étanchéité
 offer.quartz.head.subtitle=Entretien des montres à quartz
@@ -1437,7 +1438,7 @@ offer.quartz.body=Nous proposons un service de changement de vos piles de montre
  <br /><br />La majeure partie du temps, le changement de pile ne prend que <b>quelques minutes et vous repartez avec votre montre</b>.\
  <br /><br />Notre service de changement de pile est aussi bien sûr disponible pour nos clients en province par le bias de nos services de transport sécurisés.
 
-offer.quartz.call.to.action.order=Voir les tarifs de changement de pile
+offer.quartz.action.0.text=Voir les tarifs de changement de pile
 
 
 offer.auth.head=Authentification de montres
@@ -1453,22 +1454,11 @@ offer.auth.body=L''authentification des montres de marques de luxe devient un v�
  <li><b>La montre est 100% authentique et d''origine : </b>en fonction du besoin nous pouvons vous confirmer oralement l''authenticité ou formaliser l''authenticité par le biais d''un certificat,</li>\
  <li><b>La montre est authentique, mais certains éléments ne sont pas cohérents : </b>nous pouvons rédiger un certificat en ce sens.</li></ul>
 
-offer.auth.call.to.action.contact=Nous contacter
-offer.auth.call.to.action.call.request=Etre rappelé
-
-
-offer.loan.head=Essai de montres de luxe
-offer.loan.body=Parce que vous n''avez qu''une seule montre, ou que vous souhaitez porter une nouvelle montre, Hometime vous propose <b>d''essayer l''une de ses montres mythiques pendant toute la durée de l''intervention</b> (<a href="#service">révision ou réparation</a>) sur votre montre.\
- <br />Que l''opération dure 1 semaine ou quelques mois, <b>vous portez la montre que vous avez choisie tant que votre montre n''est pas prête.</b>\
- <br /><br />Pour que cela soit du <b>pur plaisir</b>, Hometime vous propose des montres en excellent état esthétique et fonctionnant parfaitement.\
- La grande majorité des montres proposées sont des icônes du monde horloger. Vous avez l''assurance de déclencher des discussions passionnées avec vos amis ou vos collègues.\
- <br /><br />Pour vous en convaincre, allez voir notre catalogue dès maintenant ! 
-
-offer.loan.call.to.action.collection=Nos montres !
+offer.auth.action.0.text=Tout savoir sur l''authentification
 
 offer.home.head=Déplacements à domicile
 offer.home.head.subtitle=En cas de difficulté, nous pouvons venir à vous
-offer.home.body=Toutes les prestations ont lieu à votre domicile.\
+offer.home.body=Pour toutes nos prestations nous pouvons intervenir à votre domicile pour la collecte de votre montre.\
  <br/><br/>Région couverte :\
  <br/>Hometime couvre aujourd''hui :\
  <ul><li>l''ensemble des arrondissements de <b>Paris</b></li>\
@@ -1476,11 +1466,9 @@ offer.home.body=Toutes les prestations ont lieu à votre domicile.\
  <p>Horaires :\
  <br/>Hometime vous propose des horaires étendus pour votre plus grand confort :</p>\
  <ul><li><b>Du Lundi au samedi</b>,</li>\
- <li><b>De 7h30 à 23h</b></li></ul>
+ <li><b>De 9h30 à 20h</b></li></ul>
 
-offer.home.call.to.action.contact=Nous contacter
-offer.home.call.to.action.call.request=Etre rappelé
-offer.home.call.to.action.order=Demander un devis
+offer.home.action.0.text=Etre rappelé
 
 offer.other.head=Achat et vente de montres
 offer.other.head.subtitle=Montres neuves ou d''occasion
@@ -1488,6 +1476,9 @@ offer.other.body=Vous souhaitez acheter une montre neuve ou d''occasion, vous so
 
 offer.other.call.to.action.broking=Achetez une montre
 offer.other.call.to.action.sell=Vendez votre montre
+
+offer.disclaimer=
+
 
 
 # More offer page
@@ -3221,6 +3212,53 @@ payment.back.to.website=Retour vers hometime.fr
 
 
 # Siteplan page
+siteplan.page.html.title=Plan du site
+siteplan.page.html.description=Le plan du site hometime avec l''ensemble des rubriques
+siteplan.page.html.keywords=plan, montres, révision, réparation, tarifs, devis gratuit
+
+siteplan.page.head=Plan du site
+siteplan.page.head.subtitle=Les pages principales du site
+siteplan.page.head.intro=
+siteplan.page.disclaimer=
+
+
+siteplan.page.quartz.price=Tarifs entretien montres à quartz
+siteplan.page.quartz.price.branded=Montres {0}
+
+siteplan.page.quotation.request=Devis Horloger toutes marques
+siteplan.page.quotation.request.branded=Devis Horloger montres {0}
+siteplan.page.auto.quotation=Devis intetactif automatisé toutes marques
+siteplan.page.auto.quotation.branded=Devis intetactif montres {0}
+
+siteplan.page.main.section=Pages principales
+siteplan.page.service.section=Comprendre l''entretien des montres
+siteplan.page.us.section=A propos de nous
+
+siteplan.page.quotation.section=Estimation du coup d''entretien
+siteplan.page.prices.section=Montres à quartz
+
+siteplan.page.homepage=Page d''accueil
+siteplan.page.offers=Services et prestations hometime
+siteplan.page.quotation.options=Différents types de devis
+siteplan.page.content.watchmakers=Nos Horlogers
+siteplan.page.content.rolex.repairing=Réparation des montres Rolex
+siteplan.page.content.omega.repairing=Réparation des montres Omega
+siteplan.page.content.authenticating=Authentification, expertise
+siteplan.page.prices=Les tarifs
+siteplan.page.content.service.repairing=L''entretien des montres
+siteplan.page.content.water.repairing=Que faire en cas d''eau dans ma montre&nbsp;?
+siteplan.page.service.test=Quand faire un entretien&nbsp;?
+siteplan.page.buy.request=Demande de recherche en vue d''un achat
+siteplan.page.feedbacks=Les avis clients
+siteplan.page.content.who.are.we=Qui sommes nous&nbsp;?
+siteplan.page.visit.us=Venir nous voir
+siteplan.page.content.legal=Mentions légales
+siteplan.page.faq=Questions fréquentes
+siteplan.page.content.privacy=Vie privée
+siteplan.page.contact.request=Nous contacter
+siteplan.page.callback.request=Se faire rappeler
+
+
 site.plan.html.title=Plan du site
 site.plan.html.description=Le plan du site hometime avec l''ensemble des rubriques
 site.plan.html.keywords=plan, montres, révision, réparation, tarifs, devis gratuit

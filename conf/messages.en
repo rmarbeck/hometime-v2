@@ -1,0 +1,39 @@
+#------ Visit us Page ------------------
+#------ page.visit.us
+page.visit.us.html.title=Visiting Hometime
+page.visit.us.html.description=How to visit us in our workshop to get your watch repaired, serviced, its battery changed or everything you could need for your high end watch.
+page.visit.us.html.keywords=Hometime workshop in Paris, full watch service, battery change, water resistance, certified watchmaker, repairing watch, paris
+page.visit.us.head=Visiting Hometime
+page.visit.us.head.subtitle=Learn how to come and visit us in Paris
+page.visit.us.head.intro=All you need to get an appointment or to visit our workshop located in the center of Paris.
+page.visit.us.disclaimer=We can answer all your questions to find the solution to any problem you may have on your watch.
+
+page.visit.us.title.0=Our Location
+page.visit.us.body.0=We are open from <b>Monday to Friday, from 10 am to 6.30 pm, on Saturday (appointment needed) from 11am to 5 pm</b>, our address is <b>322 rue Saint Honoré</b> 75001 Paris. Close to Le Louvre and Le Jardin des Tuileries.
+
+page.visit.us.title.1=When arrived
+page.visit.us.body.1=Once in front of the wooden door, <b>at the end of the corridor you have to take the stairway on the right and then to climb to the second floor</b>
+
+page.visit.us.title.2=Just call us&nbsp;!
+page.visit.us.body.2=Don''t hesitate to call us for any question or to schedule a visit&nbsp;: <a href="tel:0782434751" rel="nofollow"><span>07&nbsp;82&nbsp;43&nbsp;47&nbsp;51</span></a>
+
+
+#------ CallBack Form ------------------
+#------ call.back.form
+call.back.form.html.title=Being called back
+call.back.form.html.description=Contact form, ask a question or any information, we call you back.
+call.back.form.html.keywords=Contact us, question, information, phone, call back
+
+call.back.form.head=Ask us to call you back
+call.back.form.head.subtitle=It''s easy to get called back
+call.back.form.head.intro=You have a question or any information request, please fill the form, we will call you back as soon as possible. If you prefer to call us, just dial <b>+33&nbsp;7&nbsp;82&nbsp;43&nbsp;47&nbsp;51</b> (french mobile number).
+call.back.form.disclaimer=Depending on time of the day or any other constraint we may need time to call you back, we'll try to do our best.
+
+call.back.form.number.label=Your phone number
+call.back.form.number.placeholder=+xxx xxxxx
+call.back.request.validation.error.number.not.recognised=Unknown format, please try again 
+
+call.back.form.reason.label=Reason of your call
+call.back.form.reason.placeholder=The reason why you need us to contact you
+call.back.request.validation.error.reason.spam.detected=Span detected, this value is invalid
+call.back.form.submit=Submit

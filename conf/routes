@@ -4,13 +4,34 @@
 
 # An example controller showing a sample home page
 GET     /																	controllers.HomeController.index(request: Request)
-GET     /revision-reparation-de-montres										controllers.Default.redirect(to = "/")
+GET     /revision-reparation-de-montres										controllers.HomeController.indexAlternate(request: Request)
 
-GET     /test																controllers.HomeController.test(request: Request)
+GET     /entretien-reparation												controllers.HomeController.content(request: Request, key = "content.service.repairing")
+GET     /service															controllers.Default.redirect(to = "/entretien-reparation")
+
+GET     /les-services/l-offre												controllers.HomeController.offers(request: Request)
+GET     /offer																controllers.Default.redirect(to = "/les-services/l-offre")
+
+GET     /nos-horlogers														controllers.HomeController.content(request: Request, key = "content.watchmakers")
+GET     /watchmakers														controllers.Default.redirect(to = "/nos-horlogers")
+
+GET		/actualites/news													controllers.HomeController.news(request: Request)
+
+GET     /reparation/montre/rolex											controllers.HomeController.content(request: Request, key = "content.rolex.repairing")
+GET     /reparation/montre/omega											controllers.HomeController.content(request: Request, key = "content.omega.repairing")
+#GET     /authentification/certification/montre/paris     controllers.Application.content_authentication()
+
+
+GET     /authentification/certification/montre/paris    					controllers.HomeController.content(request: Request, key = "content.authenticating")
+GET     /expertise/montre/paris    											controllers.Default.redirect(to = "/authentification/certification/montre/paris")
+
+GET		/les-services/les-prix												controllers.HomeController.prices(request: Request)
+GET     /prices																controllers.Default.redirect(to = "/les-services/les-prix")
 
 GET     /estimation/prix/devis/reparation/revision/montre					controllers.HomeController.quotationOptions(request: Request)
 
 GET     /demande-de-devis													controllers.FormProcessingController.prepareQuotationRequest(request: Request)
+GET     /order                      										controllers.Default.redirect(to = "/demande-de-devis")
 POST    /demande-de-devis													controllers.FormProcessingController.processQuotationRequest(request: Request)
 GET     /demande-de-devis/montre/reparation/revision/:brand    				controllers.FormProcessingController.prepareQuotationRequestWithBrand(request: Request, brand)
 GET     /demande-de-devis/urgence/etancheite								controllers.FormProcessingController.prepareQuotationRequestWater(request: Request)
@@ -20,63 +41,88 @@ GET     /devis-interactif-immediat	           								controllers.FormProcessing
 GET     /devis-interactif-immediat/montre/entretien/revision/:brand    		controllers.FormProcessingController.prepareAutoQuotationWithBrand(request: Request, brand)
 POST    /devis-interactif-immediat							         		controllers.FormProcessingController.processAutoQuotation(request: Request)
 
+GET 	/accepter-le-devis													controllers.FormProcessingController.prepareAcceptQuotationRequest(request: Request, orderId: Long, price: String, delay: String)
+POST	/accepter-le-devis													controllers.FormProcessingController.processAcceptQuotationRequest(request: Request)
+
 GET     /changement-de-pile/etancheite         								controllers.FormProcessingController.prepareQuartzPrice(request: Request)
 GET     /changement-de-pile/etancheite/montre/:brand    					controllers.FormProcessingController.prepareQuartzPriceWithBrand(request: Request, brand)
 GET     /changement-de-pile         										controllers.Default.redirect(to = "/changement-de-pile/etancheite")
 
-GET     /demande-de-rappel													controllers.FormProcessingController.prepareCallBackRequest(request: Request)
-POST    /demande-de-rappel													controllers.FormProcessingController.processCallBackRequest(request: Request)
+#GET     /watch-battery-change/water-resistance         	controllers.Application.quartz_en(brand = null)
+#GET     /watch-battery-change/water-resistance/watch/:brand    controllers.Application.quartz_en(brand)
 
 GET     /rechercher-une-montre												controllers.FormProcessingController.prepareBuyRequest(request: Request)
 POST    /rechercher-une-montre												controllers.FormProcessingController.processBuyRequest(request: Request)
 
 GET     /nous-contacter														controllers.FormProcessingController.prepareContactRequest(request: Request)
+GET     /hardCodedToContact         controllers.Default.redirect(to = "/nous-contacter")
 POST    /nous-contacter														controllers.FormProcessingController.processContactRequest(request: Request)
+
+
+GET     /venir-nous-voir													controllers.HomeController.visit(request: Request)
+GET     /how-to-come-to-visit-hometime    									controllers.HomeController.visit_en(request: Request)
+GET     /hardCodedToAppointment     										controllers.Default.redirect(to = "/venir-nous-voir")
+
+GET     /demande-de-rappel													controllers.FormProcessingController.prepareCallBackRequest(request: Request)
+GET     /call-back			        										controllers.FormProcessingController.prepareCallBackRequest_en(request: Request)
+POST    /demande-de-rappel													controllers.FormProcessingController.processCallBackRequest(request: Request)
 
 GET     /quand-faire-la-revision											controllers.FormProcessingController.prepareServiceTestRequest(request: Request)
 POST    /quand-faire-la-revision											controllers.FormProcessingController.processServiceTestRequest(request: Request)
+GET		/checkResults/:type/:bool											controllers.FormProcessingController.testServiceTestResult(request: Request, type, bool)
 
-GET 	/accepter-le-devis													controllers.FormProcessingController.prepareAcceptQuotationRequest(request: Request, orderId: Long, price: String, delay: String)
-POST	/accepter-le-devis													controllers.FormProcessingController.processAcceptQuotationRequest(request: Request)
-
-
-GET		/test/:type/:bool													controllers.FormProcessingController.testServiceTestResult(request: Request, type, bool)
-
-GET     /les-services/l-offre												controllers.HomeController.offers(request: Request)
-GET     /venir-nous-voir													controllers.HomeController.visit(request: Request)
-
-GET     /choisir/type/devis/entretien/montre/:brand							controllers.HomeController.chooseQuotation(request: Request, brand)
-
-GET		/actualites/news													controllers.HomeController.news(request: Request)
-
-GET		/les-services/les-prix												controllers.HomeController.prices(request: Request)
-GET     /prices																controllers.Default.redirect(to = "/les-services/les-prix")
-
-GET		/avis-clients														controllers.HomeController.feedbacks(request: Request)
-
-POST	/abonnement															controllers.FormProcessingController.processRegister(request: Request)
-
-GET     /entretien-reparation												controllers.HomeController.content(request: Request, key = "content.service.repairing")
-GET     /service															controllers.Default.redirect(to = "/entretien-reparation")
-GET     /nos-horlogers														controllers.HomeController.content(request: Request, key = "content.watchmakers")
-GET     /watchmakers														controllers.Default.redirect(to = "/nos-horlogers")
-GET     /reparation/montre/rolex											controllers.HomeController.content(request: Request, key = "content.rolex.repairing")
-GET     /reparation/montre/omega											controllers.HomeController.content(request: Request, key = "content.omega.repairing")
-GET     /prise-en-charge-urgente-probleme-etancheite    					controllers.HomeController.content(request: Request, key = "content.water.repairing")
-GET     /authentification/certification/montre/paris    					controllers.HomeController.content(request: Request, key = "content.authenticating")
 GET     /qui-sommes-nous													controllers.HomeController.content(request: Request, key = "content.who.are.we")
-GET     /mentions-legales													controllers.HomeController.content(request: Request, key = "content.legal")
-GET     /vie-prive															controllers.HomeController.content(request: Request, key = "content.privacy")
-GET     /privacy                    										controllers.Default.redirect(to = "/vie-prive")
-GET     /legal                      										controllers.Default.redirect(to = "/mentions-legales")
-GET     /urgence-buee-sur-le-verre                      					controllers.Default.redirect(to = "/prise-en-charge-rapide-probleme-etancheite")
 GET     /a-propos                   										controllers.Default.redirect(to = "/qui-sommes-nous")
 GET     /about                      										controllers.Default.redirect(to = "/qui-sommes-nous")
 
-GET     /content/:page														controllers.HomeController.content(request: Request, page: String)
+GET     /mentions-legales													controllers.HomeController.content(request: Request, key = "content.legal")
+GET     /legal                      										controllers.Default.redirect(to = "/mentions-legales")
+GET     /hardCodedToLegal           controllers.Default.redirect(to = "/mentions-legales")
 
 GET		/questions-frequentes												controllers.HomeController.faq(request: Request)
 GET		/faq																controllers.Default.redirect(to = "/questions-frequentes")
+
+GET     /vie-prive															controllers.HomeController.content(request: Request, key = "content.privacy")
+GET     /privacy                    										controllers.Default.redirect(to = "/vie-prive")
+
+#GET     /cgv                        controllers.Application.cgv()
+
+GET     /prise-en-charge-urgente-probleme-etancheite    					controllers.HomeController.content(request: Request, key = "content.water.repairing")
+GET     /urgence-buee-sur-le-verre                      					controllers.Default.redirect(to = "/prise-en-charge-rapide-probleme-etancheite")
+
+#GET     /achat-de-montres-au-meilleur-prix    			controllers.Application.broking()
+#GET     /courtier-en-montres-occasion         			controllers.Default.redirect(to = "/achat-de-montres-au-meilleur-prix")
+
+#GET     /vendez-votre-montre			    			controllers.Application.sell()
+#GET     /mandat-de-depot-vente-virtuel-de-montre		controllers.Default.redirect(to = "/vendez-votre-montre")
+
+GET		/lune																controllers.Default.redirect(to = "http://www.patek.com/contents/default/fr/MoonphaseIndicatorSetting.html")
+
+GET		/chrono24															controllers.Default.redirect(to = "http://www.chrono24.fr/search/index.htm?dosearch=true&merchantName=watchnext")
+
+#GET		/links											controllers.Application.usefull_links()
+
+GET		/avis-clients														controllers.HomeController.feedbacks(request: Request)
+
+# Payment
+#GET	    /paiement/error               					controllers.PaymentRequestsFreeOfLogin.error()
+#POST    /paiement/error               					controllers.PaymentRequestsFreeOfLogin.errorPost()
+#GET   	/paiement/success              					controllers.PaymentRequestsFreeOfLogin.success()
+#POST    /paiement/backoffice           					controllers.PaymentRequestsFreeOfLogin.manageBackOfficeAnswer()
+#GET     /paiement/:ak               					controllers.PaymentRequestsFreeOfLogin.displayForm(ak: String)
+
+#GET		/verification/certificat						controllers.Application.checkAuthentication(id1: Long, id2: Long, id3: Long)
+
+#GET     /notify			     							controllers.Application.newIncomingCall(secret: String, phonenumber: String, missed: Boolean ?= false)
+
+GET     /choisir/type/devis/entretien/montre/:brand							controllers.HomeController.chooseQuotation(request: Request, brand)
+
+GET     /content/:page														controllers.HomeController.content(request: Request, page: String)
+
+GET     /test																controllers.HomeController.test(request: Request)
+
+POST	/abonnement															controllers.FormProcessingController.processRegister(request: Request)
+
 
 GET		/perma/offre														controllers.Default.redirect(to = "/les-services/l-offre")
 GET		/perma/venir														controllers.Default.redirect(to = "/venir-nous-voir")
@@ -94,6 +140,8 @@ GET		/perma/legal														controllers.Default.redirect(to = "/mentions-lega
 GET		/perma/contact														controllers.Default.redirect(to = "/nous-contacter")
 GET		/perma/when															controllers.Default.redirect(to = "/quand-faire-la-revision")
 
+GET     /sitemap.xml														controllers.HomeController.sitemap(request: Request)
+GET     /plan-du-site														controllers.HomeController.siteplan(request: Request)
 
 # Map specifically to robots.txt
 GET     /robots.txt															controllers.Assets.at(path="/public", file="robots.txt")
