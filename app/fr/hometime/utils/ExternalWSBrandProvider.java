@@ -41,7 +41,7 @@ public class ExternalWSBrandProvider implements BrandProvider, WSBodyReadables, 
 	}
 	
 	private Optional<List<Brand>> tryToLoadBrandsFromOutside() {
-		CompletionStage<Optional<List<Brand>>> resultPromise = ws.url("https://www.hometime.fr/ws/brands/get/all").addHeader("secretKey", "secretValue").get()
+		CompletionStage<Optional<List<Brand>>> resultPromise = ws.url("https://legacy.hometime.fr/ws/brands/get/all").addHeader("secretKey", "secretValue").get()
 				.exceptionally(e -> {
 					logger.error("Exception when trying to get Brands from webservice, call to external source failed: "+e.getMessage());
 					return null;

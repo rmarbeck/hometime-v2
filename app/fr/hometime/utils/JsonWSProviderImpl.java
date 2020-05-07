@@ -44,9 +44,9 @@ public class JsonWSProviderImpl implements JsonWSProvider, JsonListParser, JsonW
 	public JsonWSProviderImpl(WSClient ws, Config config) {
         this.ws = ws;
         this.config = config;
-        this.brandWSUrl = "https://www.hometime.fr/ws/brands/get/all";
-        this.feedbacksUrl = "https://www.hometime.fr/ws/feedbacks/get/all";
-        this.pricesUrl = "https://www.hometime.fr/ws/prices/get/all";
+        this.brandWSUrl = "https://legacy.hometime.fr/ws/brands/get/all";
+        this.feedbacksUrl = "https://legacy.hometime.fr/ws/feedbacks/get/all";
+        this.pricesUrl = "https://legacy.hometime.fr/ws/prices/get/all";
 	}
 	
 	public JsonWSProviderImpl of() {

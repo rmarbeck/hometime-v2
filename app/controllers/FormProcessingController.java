@@ -121,7 +121,7 @@ public class FormProcessingController extends Controller implements WSBodyReadab
 		if (boundForm.hasErrors()) {
 			return CompletableFuture.supplyAsync(() -> badRequest(views.html.call_back_form.render(boundForm, request, messagesApi.preferred(request))));
 		} else {
-			CompletionStage<? extends WSResponse> responsePromise = wsWithSecret("https://www.hometime.fr/new-call-back-request-from-outside").setContentType("application/x-www-form-urlencoded").post(request.body().asFormUrlEncoded().entrySet().stream().map(entry -> flattenValues(entry.getKey(), entry.getValue(), "&")).collect( Collectors.joining( "&" )));
+			CompletionStage<? extends WSResponse> responsePromise = wsWithSecret("https://legacy.hometime.fr/new-call-back-request-from-outside").setContentType("application/x-www-form-urlencoded").post(request.body().asFormUrlEncoded().entrySet().stream().map(entry -> flattenValues(entry.getKey(), entry.getValue(), "&")).collect( Collectors.joining( "&" )));
 			return responsePromise.handle((response, error) -> handleFormResponse(response, error, request, "call.back"));
 		}
 	}
@@ -144,7 +144,7 @@ public class FormProcessingController extends Controller implements WSBodyReadab
 		if (boundForm.hasErrors()) {
 			return CompletableFuture.supplyAsync(() -> badRequest(views.html.contact_us_form.render(boundForm, request, messagesApi.preferred(request))));
 		} else {
-			CompletionStage<? extends WSResponse> responsePromise = wsWithSecret("https://www.hometime.fr/new-contact-request-from-outside").setContentType("application/x-www-form-urlencoded").post(request.body().asFormUrlEncoded().entrySet().stream().map(entry -> flattenValues(entry.getKey(), entry.getValue(), "&")).collect( Collectors.joining( "&" )));
+			CompletionStage<? extends WSResponse> responsePromise = wsWithSecret("https://legacy.hometime.fr/new-contact-request-from-outside").setContentType("application/x-www-form-urlencoded").post(request.body().asFormUrlEncoded().entrySet().stream().map(entry -> flattenValues(entry.getKey(), entry.getValue(), "&")).collect( Collectors.joining( "&" )));
 			return responsePromise.handle((response, error) -> handleFormResponse(response, error, request, "contact.us"));
 		}
 	}
@@ -168,7 +168,7 @@ public class FormProcessingController extends Controller implements WSBodyReadab
 		if (boundForm.hasErrors()) {
 			return CompletableFuture.supplyAsync(() -> badRequest(views.html.buy_form.render(boundForm, brandProvider.retrieveBrandsOrderedByInternalName(), Optional.empty(), request, messagesApi.preferred(request))));
 		} else {
-			CompletionStage<? extends WSResponse> responsePromise = wsWithSecret("https://www.hometime.fr/new-buy-request-from-outside").setContentType("application/x-www-form-urlencoded").post(request.body().asFormUrlEncoded().entrySet().stream().map(entry -> flattenValues(entry.getKey(), entry.getValue(), "&")).collect( Collectors.joining( "&" )));
+			CompletionStage<? extends WSResponse> responsePromise = wsWithSecret("https://legacy.hometime.fr/new-buy-request-from-outside").setContentType("application/x-www-form-urlencoded").post(request.body().asFormUrlEncoded().entrySet().stream().map(entry -> flattenValues(entry.getKey(), entry.getValue(), "&")).collect( Collectors.joining( "&" )));
 			return responsePromise.handle((response, error) -> handleFormResponse(response, error, request, "buy"));
 		}
 	}
@@ -192,7 +192,7 @@ public class FormProcessingController extends Controller implements WSBodyReadab
 		if (boundForm.hasErrors()) {
 			return CompletableFuture.supplyAsync(() -> badRequest(views.html.service_test_form.render(boundForm, request, messagesApi.preferred(request))));
 		} else {
-			CompletionStage<? extends WSResponse> responsePromise = wsWithSecret("https://www.hometime.fr/new-service-test-from-outside").setContentType("application/x-www-form-urlencoded").post(request.body().asFormUrlEncoded().entrySet().stream().map(entry -> flattenValues(entry.getKey(), entry.getValue(), "&")).collect( Collectors.joining( "&" )));
+			CompletionStage<? extends WSResponse> responsePromise = wsWithSecret("https://legacy.hometime.fr/new-service-test-from-outside").setContentType("application/x-www-form-urlencoded").post(request.body().asFormUrlEncoded().entrySet().stream().map(entry -> flattenValues(entry.getKey(), entry.getValue(), "&")).collect( Collectors.joining( "&" )));
 			return responsePromise.handle((response, error) -> handleJsonFormResponse(response, error, request, "service.test"));
 		}
 	}
@@ -217,7 +217,7 @@ public class FormProcessingController extends Controller implements WSBodyReadab
 		if (boundForm.hasErrors()) {
 			return CompletableFuture.supplyAsync(() -> badRequest(views.html.accept_quotation_form.render(boundForm, request, messagesApi.preferred(request))));
 		} else {
-			CompletionStage<? extends WSResponse> responsePromise = wsWithSecret("https://www.hometime.fr/new-accept-quotation-from-outside").setContentType("application/x-www-form-urlencoded").post(request.body().asFormUrlEncoded().entrySet().stream().map(entry -> flattenValues(entry.getKey(), entry.getValue(), "&")).collect( Collectors.joining( "&" )));
+			CompletionStage<? extends WSResponse> responsePromise = wsWithSecret("https://legacy.hometime.fr/new-accept-quotation-from-outside").setContentType("application/x-www-form-urlencoded").post(request.body().asFormUrlEncoded().entrySet().stream().map(entry -> flattenValues(entry.getKey(), entry.getValue(), "&")).collect( Collectors.joining( "&" )));
 			return responsePromise.handle((response, error) -> handleFormResponse(response, error, request, "accept.quotation"));
 		}
 	}
@@ -327,7 +327,7 @@ public class FormProcessingController extends Controller implements WSBodyReadab
 			return CompletableFuture.supplyAsync(() -> badRequest(views.html.quotation_form.render(boundForm, brandProvider.retrieveSupportedBrandsOrderedByInternalName(), Optional.empty(), request, messagesApi.preferred(request))));
 		} else {
 			request.body().asFormUrlEncoded().entrySet().stream().map(entry -> flattenValues(entry.getKey(), entry.getValue(), "&")).collect( Collectors.joining( "&" ));
-			CompletionStage<? extends WSResponse> responsePromise = wsWithSecret("https://www.hometime.fr/new-order-from-outside").setContentType("application/x-www-form-urlencoded").post(request.body().asFormUrlEncoded().entrySet().stream().map(entry -> flattenValues(entry.getKey(), entry.getValue(), "&")).collect( Collectors.joining( "&" )));
+			CompletionStage<? extends WSResponse> responsePromise = wsWithSecret("https://legacy.hometime.fr/new-order-from-outside").setContentType("application/x-www-form-urlencoded").post(request.body().asFormUrlEncoded().entrySet().stream().map(entry -> flattenValues(entry.getKey(), entry.getValue(), "&")).collect( Collectors.joining( "&" )));
 			return responsePromise.handle((response, error) -> handleFormResponse(response, error, request, "quotation"));
 		}
 	}
@@ -345,7 +345,7 @@ public class FormProcessingController extends Controller implements WSBodyReadab
 	 *************************************/
 	
     public CompletionStage<Result> checkAuthentication(Http.Request request, Long id1, Long id2, Long id3) {
-    	CompletionStage<? extends WSResponse> responsePromise = wsWithSecret("https://www.hometime.fr/check-authentication").addQueryParameter("id1", id1.toString()).addQueryParameter("id2", id2.toString()).addQueryParameter("id3", id3.toString()).get();
+    	CompletionStage<? extends WSResponse> responsePromise = wsWithSecret("https://legacy.hometime.fr/check-authentication").addQueryParameter("id1", id1.toString()).addQueryParameter("id2", id2.toString()).addQueryParameter("id3", id3.toString()).get();
 		return responsePromise.handle((response, error) -> genericHandler(response, error, request, "check.authentication.test", () -> {
 			JsonNode json = response.asJson();
 			  if (json == null) {
