@@ -1314,7 +1314,7 @@ content.watch.selling.content.1.body=<div class="sub-title"></div>Vous cherchez 
  </ul>\
  <br />Avec notre <b>structure de coûts légère</b>, nous apportons une solution intermédiaire entre les boutiques ayant pignon sur rue qui peuvent vendre vite mais qui font des marges importantes au détriment du montant revenant au vendeur (c''est à dire vous), et les solutions de vente entre particuliers aléatoires et chronophages.
 
-content.watch.selling.content.1.image.url=https://d3qxyg7adi2rw7.cloudfront.net/assets/images/content/selling/2.jpg
+content.watch.selling.content.1.image.url=https://d3qxyg7adi2rw7.cloudfront.net/assets/images/content/selling/1.jpg
 content.watch.selling.content.1.image.title=Certificat
 content.watch.selling.content.1.image.alt=Photo d''un certificat
 
@@ -1613,7 +1613,7 @@ quartz.prices.html.keywords=tarifs, quartz, prix, devis, paris, yvelines, hauts 
 
 quartz.prices.head=Tarifs pour les montres à quartz
 quartz.prices.head.subtitle=Découvrez les tarifs pour nos prestations couvrant les montres à pile
-quartz.prices.head.intro=Sélectionnez la marque de votre montre à quartz ci-dessous pour déterminer le tarif des entretiens proposés par Hometime
+quartz.prices.head.intro=Pour réaliser le changement de la pile de votre montre d''une marque supportée par Hometime avec ou sans refaire l''étanchéité, nous vous accueillons dans nos locaux situés 322 rue Saint Honoré à Paris 1er arrondissement sans rendez-vous au 07&nbsp;82&nbsp;43&nbsp;47&nbsp;51.<br /><br />Sélectionnez la marque de votre montre à quartz ci-dessous pour déterminer le tarif des entretiens proposés par Hometime
 quartz.prices.disclaimer=Dans certains cas précis, nos prix peuvent différer à la baisse ou à la hausse. Les devis que nous établissons une fois la montre en mains nous engagent.
 
 quartz.prices.brand.label=Marque de votre montre

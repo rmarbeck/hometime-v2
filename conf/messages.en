@@ -37,3 +37,64 @@ call.back.form.reason.label=Reason of your call
 call.back.form.reason.placeholder=The reason why you need us to contact you
 call.back.request.validation.error.reason.spam.detected=Span detected, this value is invalid
 call.back.form.submit=Submit
+
+#------ Quartz Prices page ------------------
+#------ quartz.prices
+quartz.prices.html.title=Price for battery replacement for a {0} watch in Paris
+quartz.prices.html.description=Description of Hometime {0} quartz watch battery replacement, different models  {1}.
+quartz.prices.html.keywords=watch battery replacement, watch battery change, certified watchmaker, water resistance, watch repairing, watch, paris, {0}, {1}
+
+quartz.prices.head=Watch battery replacement
+quartz.prices.head.subtitle=Find the price for the service you need for your battery watch
+quartz.prices.head.intro=To have your battery changed for a {0} watch (or any other brand) with or without water resistance renewed, you can visit us at this address : 322 rue Saint Honoré, Paris 1st arrondissement, no appointment needed. You can reach us at +33&nbsp;7&nbsp;82&nbsp;43&nbsp;47&nbsp;51.<br /> <br />Please choose your brand to display the price for battery change
+quartz.prices.disclaimer=Beyond battery change for quartz watches, we are providing all reparing services for high end watches, full services, glass change. Don''t hesitate to call us to get helped with your watch&nbsp;!
+
+quartz.prices.brand.label=Watch brand
+quartz.prices.brand.default=Please choose the brand of your watch to reveal the price of services
+
+quartz.prices.pricing.box.title.1=Battery only
+quartz.prices.pricing.box.sub.title.1=Battery replacement only 
+
+quartz.prices.pricing.box.item.1.1=Battery life warranted for <b>2 years</b>
+quartz.prices.pricing.box.item.1.2=Done in workship within <b>30 minutes</b>
+quartz.prices.pricing.box.item.1.3=
+quartz.prices.pricing.box.item.1.4=
+
+quartz.prices.pricing.box.title.2=Battery + water resistance
+quartz.prices.pricing.box.sub.title.2=Battery replacement with water resistance
+
+quartz.prices.pricing.box.item.2.1=Battery life warranted for <b>2 years</b>
+quartz.prices.pricing.box.item.2.2=Water resistance warranted for <b>2 years</b>
+quartz.prices.pricing.box.item.2.3=Done in workship within <b>45 minutes</b>
+quartz.prices.pricing.box.item.2.4=
+
+
+quartz.prices.pricing.box.title.3=Full service
+quartz.prices.pricing.box.sub.title.3=Battery + water resistance + polishing
+quartz.prices.pricing.box.item.3.1=Battery life warranted for <b>2 years</b>
+quartz.prices.pricing.box.item.3.2=Water resistance warranted for <b>2 years</b>
+quartz.prices.pricing.box.item.3.3=Done in workship in 2 to 3 days
+quartz.prices.pricing.box.item.3.4=
+
+quartz.prices.price.from=from
+quartz.prices.visit.us=Visiting us
+
+quartz.prices.quartz.head=Prices for quartz watches (with battery)
+quartz.prices.table.quartz.pack.1=Battery only<br/>(battery only)
+quartz.prices.table.quartz.pack.2=Battery + water resistance<br/>(battery + water resistance)
+quartz.prices.table.quartz.pack.3=Full service<br/>(battery + water resistance)
+quartz.prices.table.quartz.feature.1=Battery change
+quartz.prices.table.quartz.feature.2=Water resistance
+quartz.prices.table.quartz.feature.3=Polishing
+
+quartz.prices.table.quartz.working.waranty.label=Working waranty
+quartz.prices.table.quartz.working.waranty.value=Battery life warranted for 2 years
+quartz.prices.table.body.price.fixed={0} TTC
+quartz.prices.table.body.price.on.quotation=environ {0} TTC (on quotation)
+quartz.prices.table.body.watch.of.category=Category {0}
+quartz.prices.table.body.moving=Travelling expenses
+quartz.prices.table.body.moving.prices=Free (in Paris and suburbs). <br /> For insured shipping we are invoicing without any charge postal fees.
+page.prices.inner.disclaimer=* Category 3 : Victorinox, Tissot, Swatch, Seiko, Nomos, Movado, Michel Herbelin, Ice&nbsp;Watch, Hamilton, Fortis, Festina, Certina, Alpina<br/>\
+** Category 2 : Zenith, Tudor, Tag&nbsp;Heuer, Rado, Montblanc, Longines, Hermès, Frédérique Constant, Ebel, Chopard, Chanel, B.R.M, Breitling, Bell&nbsp;&&nbsp;Ross, Baume&nbsp;&&nbsp;Mercier<br/>\
+*** Category 1 : Vacheron&nbsp;Constantin, Ulysse&nbsp;Nardin, Rolex, Patek&nbsp;Philippe, Panerai, Omega, A Lange&nbsp;&&nbsp;Söhne, Jaeger LeCoultre, IWC, Hublot, Girard Perregaux, Concord, Cartier, Bulgari, Breguet, Blancpain, Audemars&nbsp;Piguet<br/>
+

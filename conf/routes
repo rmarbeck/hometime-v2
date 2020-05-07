@@ -48,8 +48,8 @@ GET     /changement-de-pile/etancheite         								controllers.FormProcessin
 GET     /changement-de-pile/etancheite/montre/:brand    					controllers.FormProcessingController.prepareQuartzPriceWithBrand(request: Request, brand)
 GET     /changement-de-pile         										controllers.Default.redirect(to = "/changement-de-pile/etancheite")
 
-#GET     /watch-battery-change/water-resistance         	controllers.Application.quartz_en(brand = null)
-#GET     /watch-battery-change/water-resistance/watch/:brand    controllers.Application.quartz_en(brand)
+GET     /watch-battery-change/water-resistance         						controllers.FormProcessingController.prepareQuartzPrice_en(request: Request)
+GET     /watch-battery-change/water-resistance/watch/:brand    				controllers.FormProcessingController.prepareQuartzPriceWithBrand_en(request: Request, brand)
 
 GET     /rechercher-une-montre												controllers.FormProcessingController.prepareBuyRequest(request: Request)
 POST    /rechercher-une-montre												controllers.FormProcessingController.processBuyRequest(request: Request)
@@ -85,7 +85,7 @@ GET		/faq																controllers.Default.redirect(to = "/questions-frequente
 GET     /vie-prive															controllers.HomeController.content(request: Request, key = "content.privacy")
 GET     /privacy                    										controllers.Default.redirect(to = "/vie-prive")
 
-#GET     /cgv                        controllers.Application.cgv()
+
 
 GET     /prise-en-charge-urgente-probleme-etancheite    					controllers.HomeController.content(request: Request, key = "content.water.repairing")
 GET     /urgence-buee-sur-le-verre                      					controllers.Default.redirect(to = "/prise-en-charge-rapide-probleme-etancheite")

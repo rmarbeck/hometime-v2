@@ -264,15 +264,23 @@ public class FormProcessingController extends Controller implements WSBodyReadab
 	 *************************************/
 	
 	public Result prepareQuartzPrice(Http.Request request) {
-		return preparedQuartzPrice(request, Optional.empty());
+		return preparedQuartzPrice(request, Optional.empty(), false);
 	}
 	
 	public Result prepareQuartzPriceWithBrand(Http.Request request, String brandSeoName) {
-		return preparedQuartzPrice(request, Optional.of(brandSeoName));
-	}	
+		return preparedQuartzPrice(request, Optional.of(brandSeoName), false);
+	}
 	
-	private Result preparedQuartzPrice(Http.Request request, Optional<String> brandSeoName) {
-		return ok(views.html.quartz_prices.render(fillQuartzPriceRequestWithDefaultData(brandSeoName), brandProvider.retrieveBrandsOrderedByName(), getBrand(brandSeoName), request, messagesApi.preferred(request)));
+	public Result prepareQuartzPrice_en(Http.Request request) {
+		return preparedQuartzPrice(request, Optional.empty(), true);
+	}
+	
+	public Result prepareQuartzPriceWithBrand_en(Http.Request request, String brandSeoName) {
+		return preparedQuartzPrice(request, Optional.of(brandSeoName), true);
+	}
+	
+	private Result preparedQuartzPrice(Http.Request request, Optional<String> brandSeoName, boolean inEnglish) {
+		return ok(views.html.quartz_prices.render(fillQuartzPriceRequestWithDefaultData(brandSeoName), brandProvider.retrieveBrandsOrderedByName(), getBrand(brandSeoName), request, inEnglish?getMessagesForInEnglishPages(request):messagesApi.preferred(request)));
 	}
 	
 	private DynamicForm fillQuartzPriceRequestWithDefaultData(Optional<String> brandSeoName) {
