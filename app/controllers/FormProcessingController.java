@@ -158,14 +158,14 @@ public class FormProcessingController extends Controller implements WSBodyReadab
 	 * 
 	 *************************************/
 	public Result prepareBuyRequest(Http.Request request) {
-		return ok(views.html.buy_form.render(formFactory.form(BuyRequestData.class).withDirectFieldAccess(true), brandProvider.retrieveBrandsOrderedByName(), Optional.empty(), request, messagesApi.preferred(request)));
+		return ok(views.html.buy_form.render(formFactory.form(BuyRequestData.class).withDirectFieldAccess(true), brandProvider.retrieveBrandsOrderedByInternalName(), Optional.empty(), request, messagesApi.preferred(request)));
 	}
 	
 	public CompletionStage<Result> processBuyRequest(Http.Request request) {
 		final Form<BuyRequestData> boundForm = formFactory.form(BuyRequestData.class).withDirectFieldAccess(true).bindFromRequest(request);
 		
 		if (boundForm.hasErrors()) {
-			return CompletableFuture.supplyAsync(() -> badRequest(views.html.buy_form.render(boundForm, brandProvider.retrieveBrandsOrderedByName(), Optional.empty(), request, messagesApi.preferred(request))));
+			return CompletableFuture.supplyAsync(() -> badRequest(views.html.buy_form.render(boundForm, brandProvider.retrieveBrandsOrderedByInternalName(), Optional.empty(), request, messagesApi.preferred(request))));
 		} else {
 			CompletionStage<? extends WSResponse> responsePromise = wsWithSecret("https://www.hometime.fr/new-buy-request-from-outside").setContentType("application/x-www-form-urlencoded").post(request.body().asFormUrlEncoded().entrySet().stream().map(entry -> flattenValues(entry.getKey(), entry.getValue(), "&")).collect( Collectors.joining( "&" )));
 			return responsePromise.handle((response, error) -> handleFormResponse(response, error, request, "buy"));
@@ -244,7 +244,7 @@ public class FormProcessingController extends Controller implements WSBodyReadab
 	}
 	
 	private Result preparedAutoQuotation(Http.Request request, Optional<String> brandSeoName) {
-		return ok(views.html.auto_quotation.render(fillAutoQuotationRequestWithDefaultData(brandSeoName), brandProvider.retrieveBrandsOrderedByName(), getBrand(brandSeoName), request, messagesApi.preferred(request)));
+		return ok(views.html.auto_quotation.render(fillAutoQuotationRequestWithDefaultData(brandSeoName), brandProvider.retrieveSupportedBrandsOrderedByInternalName(), getBrand(brandSeoName), request, messagesApi.preferred(request)));
 	}
 	
 	private Form<AutoQuotationRequestData> fillAutoQuotationRequestWithDefaultData(Optional<String> brandSeoName) {
@@ -280,7 +280,7 @@ public class FormProcessingController extends Controller implements WSBodyReadab
 	}
 	
 	private Result preparedQuartzPrice(Http.Request request, Optional<String> brandSeoName, boolean inEnglish) {
-		return ok(views.html.quartz_prices.render(fillQuartzPriceRequestWithDefaultData(brandSeoName), brandProvider.retrieveBrandsOrderedByName(), getBrand(brandSeoName), request, inEnglish?getMessagesForInEnglishPages(request):messagesApi.preferred(request)));
+		return ok(views.html.quartz_prices.render(fillQuartzPriceRequestWithDefaultData(brandSeoName), brandProvider.retrieveSupportedBrandsOrderedByInternalName(), getBrand(brandSeoName), request, inEnglish?getMessagesForInEnglishPages(request):messagesApi.preferred(request)));
 	}
 	
 	private DynamicForm fillQuartzPriceRequestWithDefaultData(Optional<String> brandSeoName) {
@@ -316,14 +316,14 @@ public class FormProcessingController extends Controller implements WSBodyReadab
 	}
 	
 	private Result preparedQuotation(Http.Request request, Optional<String> brandSeoName, Optional<String> typeOfOrder) {
-		return ok(views.html.quotation_form.render(fillQuotationRequestWithDefaultData(brandSeoName, typeOfOrder, request), brandProvider.retrieveBrandsOrderedByName(), getBrand(brandSeoName), request, messagesApi.preferred(request)));
+		return ok(views.html.quotation_form.render(fillQuotationRequestWithDefaultData(brandSeoName, typeOfOrder, request), brandProvider.retrieveSupportedBrandsOrderedByInternalName(), getBrand(brandSeoName), request, messagesApi.preferred(request)));
 	}
 	
 	public CompletionStage<Result> processQuotationRequest(Http.Request request) {
 		final Form<QuotationRequestData> boundForm = getQuotationRequestForm().bindFromRequest(request);
 		
 		if (boundForm.hasErrors()) {
-			return CompletableFuture.supplyAsync(() -> badRequest(views.html.quotation_form.render(boundForm, brandProvider.retrieveBrandsOrderedByName(), Optional.empty(), request, messagesApi.preferred(request))));
+			return CompletableFuture.supplyAsync(() -> badRequest(views.html.quotation_form.render(boundForm, brandProvider.retrieveSupportedBrandsOrderedByInternalName(), Optional.empty(), request, messagesApi.preferred(request))));
 		} else {
 			request.body().asFormUrlEncoded().entrySet().stream().map(entry -> flattenValues(entry.getKey(), entry.getValue(), "&")).collect( Collectors.joining( "&" ));
 			CompletionStage<? extends WSResponse> responsePromise = wsWithSecret("https://www.hometime.fr/new-order-from-outside").setContentType("application/x-www-form-urlencoded").post(request.body().asFormUrlEncoded().entrySet().stream().map(entry -> flattenValues(entry.getKey(), entry.getValue(), "&")).collect( Collectors.joining( "&" )));

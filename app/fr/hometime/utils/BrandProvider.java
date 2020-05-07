@@ -19,8 +19,16 @@ public interface BrandProvider extends DataProvider {
 		return Hidden.getBrandsOrderedByString(Comparator.comparing(Brand::getSeoName), retrieveBrands());
 	}
 	
+	public default Optional<List<Brand>> retrieveBrandsOrderedByInternalName() {
+		return Hidden.getBrandsOrderedByString(Comparator.comparing(Brand::getInternalName), retrieveBrands());
+	}
+	
 	public default Optional<List<Brand>> retrieveSupportedBrandsOrderedByInternalName() {
 		return Hidden.getBrandsOrderedAndFilteredByString(Comparator.comparing(Brand::getInternalName), Brand::isSupported, retrieveBrands());
+	}
+	
+	public default Optional<List<Brand>> retrieveSupportedBrandsOrderedByInternalNameWithoutFakeBrands() {
+		return Hidden.getBrandsOrderedAndFilteredByString(Comparator.comparing(Brand::getInternalName), Hidden::supportedAndNotFakeBrand, retrieveBrands());
 	}
 	
 	public default Optional<Brand> getBrandById(long id) {
@@ -36,6 +44,8 @@ public interface BrandProvider extends DataProvider {
 	}
 	
 	class Hidden {
+		private static final String INTERNAL_NAME_FAKE_BRAND_PATTERN = "zz";
+		
         private static Optional<Brand> getBrandByFilter(Predicate<Brand> tester, Optional<List<Brand>> brands) {
         	return brands.map(list -> list.stream().filter(tester).findFirst()).orElseGet(() -> Optional.empty());
         }
@@ -46,6 +56,16 @@ public interface BrandProvider extends DataProvider {
         
         private static Optional<List<Brand>> getBrandsOrderedAndFilteredByString(Comparator<Brand> comparator, Predicate<Brand> tester, Optional<List<Brand>> brands) {
         	return brands.map(list -> list.stream().filter(tester).sorted(comparator).collect(Collectors.toList()));
+        }
+        
+        private static boolean isFakeBrand(Brand brand) {
+        	return brand.internal_name.contains(INTERNAL_NAME_FAKE_BRAND_PATTERN);
+        	
+        }
+        
+        private static boolean supportedAndNotFakeBrand(Brand brand) {
+        	return !isFakeBrand(brand) && brand.isSupported();
+        	
         }
     }
 }

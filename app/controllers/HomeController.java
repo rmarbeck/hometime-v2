@@ -113,15 +113,15 @@ public class HomeController extends Controller {
     }
 
     public Result offers(Http.Request request) {
-        return ok(views.html.offers.render(brandProvider.retrieveBrandsOrderedByName(), request, getDefaultMessages(request)));
+        return ok(views.html.offers.render(brandProvider.retrieveSupportedBrandsOrderedByInternalNameWithoutFakeBrands(), request, getDefaultMessages(request)));
     }
     
     public Result sitemap(Http.Request request) {
-        return ok(views.xml.sitemap.render(brandProvider.retrieveBrandsOrderedByName(), request, getDefaultMessages(request)));
+        return ok(views.xml.sitemap.render(brandProvider.retrieveSupportedBrandsOrderedByInternalNameWithoutFakeBrands(), request, getDefaultMessages(request)));
     }
     
     public Result siteplan(Http.Request request) {
-    	return ok(views.html.siteplan.render(brandProvider.retrieveBrandsOrderedByName(), request, getDefaultMessages(request)));
+    	return ok(views.html.siteplan.render(brandProvider.retrieveSupportedBrandsOrderedByInternalNameWithoutFakeBrands(), request, getDefaultMessages(request)));
     }
 
     public Result visit_en(Http.Request request) {
