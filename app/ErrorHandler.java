@@ -46,4 +46,9 @@ public class ErrorHandler extends DefaultHttpErrorHandler {
 		return CompletableFuture.completedFuture(Results.notFound(views.html.error.render("404", request.withBody(null),  messagesApi.preferred(request))));
 	}
 
+	@Override
+	public CompletionStage<Result> onClientError(RequestHeader request, int statusCode, String message) {
+		return CompletableFuture.completedFuture(Results.badRequest(views.html.error.render(""+statusCode, request.withBody(null),  messagesApi.preferred(request))));
+	}
+
 }
