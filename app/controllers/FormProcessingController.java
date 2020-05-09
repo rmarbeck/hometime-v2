@@ -398,7 +398,7 @@ public class FormProcessingController extends Controller implements WSBodyReadab
 	}
 	
 	private String flattenValues(String key, String[] values, String separator) {
-		return Arrays.asList(values).stream().map(value -> { logger.error(key+"="+value); return key+"="+value;}).collect(Collectors.joining( "&" ));
+		return Arrays.asList(values).stream().map(value -> { logger.debug(key+"="+value); return key+"="+value;}).collect(Collectors.joining( "&" ));
 	}
 	
 	private Form<QuotationRequestData> fillQuotationRequestWithDefaultData(Optional<String> brandSeoName, Optional<String> typeOfOrder, Http.Request request) {

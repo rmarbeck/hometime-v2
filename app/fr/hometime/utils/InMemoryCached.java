@@ -77,11 +77,21 @@ public class InMemoryCached<T> implements Cachable<T> {
 				log("Retrieved value is null, no update");	
 			}	
 		});
-		log("Unable to retrieve a way to get the value, no update");	
+		if (!this.supplier.isPresent()) {
+			logError("Unable to retrieve a way to get the value, no update");	
+		}
 	}
 	
 	private void log(String message) {
-		logger.warn(message+" of type {}", getTypeOfClassCached());
+		logger.warn(getLogMessage(message));
+	}
+	
+	private void logError(String message) {
+		logger.error(getLogMessage(message));
+	}
+	
+	private String getLogMessage(String message) {
+		return message+" of type "+getTypeOfClassCached();
 	}
 	
 	private String getTypeOfClassCached() {
