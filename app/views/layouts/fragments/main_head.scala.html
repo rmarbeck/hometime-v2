@@ -5,6 +5,10 @@
 
 	@precontent
 	
+	@layouts.fragments.google_analytics()
+	
+	@args.toMap.get(Symbol("_in_head_script"))
+	
 	@args.toMap.get(Symbol("_head_pre_content"))
 	
 	<meta http-equiv="content-type" content="text/html; charset=utf-8" />

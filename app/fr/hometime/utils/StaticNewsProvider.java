@@ -18,9 +18,8 @@ public class StaticNewsProvider implements NewsProvider {
 	public Optional<List<News>> retrieveNews() {
 		if (!news.isPresent()) {
 			news = Optional.of(Arrays.asList(
-					new News("Titre1", "Contenu 1", News.NewsType.ONE_PICTURE, Date.from(Instant.now()), "General" , "https://s3.eu-central-1.amazonaws.com/images.watchnext.fr/sub-folder/1.jpg", Optional.of("toto"), Optional.empty(), true),
-					new News("Titre2", "Contenu 2", News.NewsType.ONE_PICTURE, Date.from(Instant.now()), "General" , "/assets/images/demo-parallax.jpg", Optional.of("toto"), Optional.of("blog-single.html"), true),
-					new News("Titre Video", "Contenu Video", News.NewsType.VIDEO, Date.from(Instant.now()), "General" , "http://player.vimeo.com/video/87701971", Optional.empty(), Optional.empty(), true)
+					new News("Réouverture le 11 mai", "<b>Déconfinement</b> : nous réouvrons le 11 mai à 10h après près de 2 mois de fermeture suite à la situation sanitaire. Nous avons adapté nos locaux et pris des mesures pour tous nous protéger. A très bientôt !<br /><br />L'équipe Hometime.", News.NewsType.ONE_PICTURE, Date.from(Instant.ofEpochSecond(1589025893)), "General" , "https://s3.eu-west-3.amazonaws.com/images.hometime.fr/news/working-1000.jpg", Optional.of("Facebook"), Optional.of("https://www.facebook.com/HometimeFr"), true),
+					new News("Nouveau site Web", "Hometime.fr se modernise. Notre nouveau site est en ligne !", News.NewsType.ONE_PICTURE, Date.from(Instant.ofEpochSecond(1589025893)), "General" , "https://s3.eu-west-3.amazonaws.com/images.hometime.fr/news/web-home-1000.jpg", Optional.of("Homepage"), Optional.of("https://www.hometime.fr/"), true)
 					));
 		}
 		return news;

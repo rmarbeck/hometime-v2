@@ -683,6 +683,7 @@ auto.quotation.form.html.title=Devis pour l''entretien d''une montre {0}
 auto.quotation.form.html.description=Formulaire de devis interactif immédiat pour révision, réparation ou restauration d''une montre à quartz, automatique ou manuelle {0}, différents modèles  {1}.
 auto.quotation.form.html.keywords=devis interactif, devis gratuit,devis en ligne, entretien, horloger agréé, évaluation, horloger indépendant, révision, réparation, montre, paris, yvelines, hauts de seine, {0}, {1}
 
+auto.quotation.form.undefined.brand.name=
 
 auto.quotation.form.head=Devis interactif immédiat
 auto.quotation.form.head.subtitle=Votre devis en quelques clics&nbsp;!
@@ -1544,6 +1545,9 @@ error.page.html.description=Erreur
 
 error.page.404.head=Page introuvable
 error.page.404.message=La page à laquelle vous tentez d''accéder n''existe pas.
+
+error.page.400.head=Erreur 400
+error.page.400.message=Une erreur s''est produite, veuillez réessayer
 
 error.page.erreur.head=Une erreur s''est produite
 error.page.erreur.message=Veuillez nous excuser, l''erreur est peut-être transitoire vous pouvez réessayer

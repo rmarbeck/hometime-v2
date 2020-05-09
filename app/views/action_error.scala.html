@@ -3,8 +3,18 @@
 @import scala.collection.immutable._
 @import tags._
 
+@in_head_script = {
+<script>
+	   gtag('event', '@error_key', {
+	    'event_category': 'forms',
+	    'event_label': 'error',
+	    'value': 1
+		});
+</script>
+}
+
 @defining(error_key+".error") { case (key) =>
-	@layouts.main_helper_with_head_block(key, Symbol("_css_content_div_class") -> "action-result") {
+	@layouts.main_helper_with_head_block(key, Symbol("_css_content_div_class") -> "action-result", Symbol("_in_head_script") -> in_head_script) {
 		<div class="action-error center topmargin-lg">
 			<i class="i-plain i-xlarge icon-frown2 divcenter"></i>
 		</div>			

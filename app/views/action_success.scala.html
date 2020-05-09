@@ -3,8 +3,19 @@
 @import scala.collection.immutable._
 @import tags._
 
+@in_head_script = {
+<script>
+	   gtag('event', '@success_key', {
+	    'event_category': 'forms',
+	    'event_label': 'success',
+	    'value': 1
+		});
+</script>
+}
+
+
 @defining(success_key+".success") { case (key) =>
-	@layouts.main_helper_with_head_block(key, Symbol("_css_content_div_class") -> "action-result") {
+	@layouts.main_helper_with_head_block(key, Symbol("_css_content_div_class") -> "action-result", Symbol("_in_head_script") -> in_head_script) {
 		<div class="action-successfull center topmargin-lg">
 			<i class="i-plain i-xlarge icon-check-circle divcenter"></i>
 		</div>			

@@ -1,0 +1,19 @@
+@()(implicit request: Http.Request, messages: play.i18n.Messages)
+@**
+ * Generate the code for pushing custom vars in flash scope for Google analytics.
+ *
+ *@
+@if(!request.flash.get("push_ga_vars").isEmpty) {
+    @defining(request.flash.get("pgv_size").get.toInt) { size =>
+        @if(size == 0) {
+          gtag('config', 'UA-46512956-1');
+        } else {
+          gtag('config', 'UA-46512956-1', {
+        @for(index <- 0 to (size-1)) {@if(index != 0) {,
+        }'	@request.flash.get("pgv_"+index+".slot")': '@request.flash.get("pgv_"+index+".value")'}
+        });
+        }
+    }
+} else {
+          gtag('config', 'UA-46512956-1');
+}

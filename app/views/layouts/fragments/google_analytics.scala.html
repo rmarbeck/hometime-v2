@@ -1,0 +1,11 @@
+@()(implicit request: Http.Request, messages: play.i18n.Messages)
+@import tags._
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-46512956-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  @ga_send()
+</script>
