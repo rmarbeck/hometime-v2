@@ -102,7 +102,7 @@ GET		/lune																controllers.Default.redirect(to = "http://www.patek.co
 
 GET		/chrono24															controllers.Default.redirect(to = "http://www.chrono24.fr/search/index.htm?dosearch=true&merchantName=watchnext")
 
-#GET		/links															controllers.Default.redirect(to = "https://legacy.hometime.fr/links")
+GET		/links																controllers.Default.redirect(to = "https://legacy.hometime.fr/links")
 
 GET		/avis-clients														controllers.HomeController.feedbacks(request: Request)
 
@@ -149,6 +149,7 @@ GET		/perma/selling/virtual												controllers.Default.redirect(to = "/nous-
 GET		/perma/selling/now													controllers.Default.redirect(to = "/nous-contacter?title=Je%20veux%20vous%20vendre%20ma%20montre")
 GET		/perma/estimate														controllers.Default.redirect(to = "/nous-contacter?title=Je%20souhaite%20faire%20estimer%20ma%20collection")
 
+
 GET     /sitemap.xml														controllers.HomeController.sitemap(request: Request)
 GET     /plan-du-site														controllers.HomeController.siteplan(request: Request)
 
@@ -157,4 +158,12 @@ GET     /robots.txt															controllers.Assets.at(path="/public", file="ro
 
 # Map static resources from the /public folder to the /assets URL path
 GET     /assets/*file               										controllers.Assets.versioned(path="/public", file: Asset)
+
+# Forward to legacy
+GET     /admin/*file               											controllers.RedirectController.redirect(request: Request, file: String, startingUri: String="https://legacy.hometime.fr/admin/")
+GET     /private/*file               										controllers.RedirectController.redirect(request: Request, file: String, startingUri: String="https://legacy.hometime.fr/private/")
+GET     /notify					     										controllers.RedirectController.redirect(request: Request, file="", startingUri: String="https://legacy.hometime.fr/notify")
+GET     /login		    	              		    						controllers.RedirectController.redirect(request: Request, file="", startingUri: String="https://legacy.hometime.fr/login")
+GET     /quick-login    		               								controllers.RedirectController.redirect(request: Request, file="", startingUri: String="https://legacy.hometime.fr/quick-login*params")
+GET     /logout			                     								controllers.RedirectController.redirect(request: Request, file="", startingUri: String="https://legacy.hometime.fr/logout")
 
