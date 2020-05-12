@@ -160,6 +160,8 @@ GET     /robots.txt															controllers.Assets.at(path="/public", file="ro
 GET     /assets/*file               										controllers.Assets.versioned(path="/public", file: Asset)
 
 # Forward to legacy
+GET     /admin               												controllers.RedirectController.redirect(request: Request, file="", startingUri: String="https://legacy.hometime.fr/admin/")
+GET     /admin/               												controllers.RedirectController.redirect(request: Request, file="", startingUri: String="https://legacy.hometime.fr/admin/")
 GET     /admin/*file               											controllers.RedirectController.redirect(request: Request, file: String, startingUri: String="https://legacy.hometime.fr/admin/")
 GET     /private/*file               										controllers.RedirectController.redirect(request: Request, file: String, startingUri: String="https://legacy.hometime.fr/private/")
 GET     /notify					     										controllers.RedirectController.redirect(request: Request, file="", startingUri: String="https://legacy.hometime.fr/notify")
