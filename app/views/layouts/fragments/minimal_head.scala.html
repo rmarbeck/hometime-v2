@@ -4,6 +4,8 @@
 @import tags._
 
 	@precontent
+		
+	@args.toMap.get(Symbol("_in_head_script"))
 	
 	@args.toMap.get(Symbol("_head_pre_content"))
 	
@@ -15,8 +17,14 @@
 	============================================= -->
 	<link href="https://fonts.googleapis.com/css?family=Lato:300,400,400i,700|Raleway:300,400,500,600,700|Crete+Round:400i&display=swap" rel="stylesheet" type="text/css">	
 	
+		
 	@List(	"lib/bootstrap/css/bootstrap.css",
-			"stylesheets/custom.css").map { e =><link rel="stylesheet" href="@remote_assets(e)" type="text/css" />
+			"css/swiper.css",
+			"css/font-icons.css",
+			"css/animate.css",
+			"css/magnific-popup.css",
+			"one-page/css/et-line.css",
+			"stylesheets/merged.css").map { e =><link rel="stylesheet" async href="@remote_assets(e)" type="text/css" />
 	}
 
 	@args.toMap.get(Symbol("_css_link"))
@@ -29,7 +37,6 @@
 	<title>@Html(Messages("global.title.prefix"))@title</title>
 	<meta name="description" content="@description">
 	<meta name="keywords" content="@keywords">
-
 	
 	@args.toMap.get(Symbol("_head_post_content"))
 	

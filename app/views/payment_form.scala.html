@@ -1,0 +1,75 @@
+@(isResult: Boolean, isSuccess: Boolean, paymentRequest: Optional[PaymentRequestProxy], paymentForm: Optional[PaymentFormProxy])(implicit request: Http.Request, messages: play.i18n.Messages)
+
+@import scala.collection.immutable._
+@import tags._
+
+@key={payment}
+
+@title = {@Messages(key.toString+".html.title")}
+@description = {@Messages(key.toString+".html.description")}
+@keywords = {@Messages(key.toString+".html.keywords")}
+
+@hm(value: String) = {@Html(Messages(key.toString+".page."+value))}
+
+@layouts.minimal(key.toString, title.toString, description.toString, keywords.toString){
+
+		<section id="content" class="with-page-title-pattern ">
+			<div class="content-wrap">
+				<div class="container clearfix">
+					<div class="heading-block center topmargin-lg nobottomborder">
+						<h1>@hm("title")</h1>
+						<span>@hm("header")</span>
+						<div class="divider divider-center divider-short divider-margin"><i class="icon-time"></i></div>
+						@if(!isResult) {
+						<div class="table-responsive">
+							<table class="table cart">
+								<tbody>
+									<tr class="cart_item">
+										<td class="cart-product-name">@hm("table.order.label")</td>
+										<td class="cart-product-name"><span class="amount">@paymentRequest.get.orderNumber</span></td>
+									</tr>
+									<tr class="cart_item">
+										<td class="cart-product-name">@hm("table.description.label")</td>
+										<td class="cart-product-name"><span class="amount">@paymentRequest.get.description</span></td>
+									</tr>
+									<tr class="cart_item">
+										<td class="cart-product-name">@hm("table.amount.label")</td>
+										<td class="cart-product-name"><span class="amount">@Html(Messages(key.toString+".page.table.amount.value", paymentRequest.get.priceInEuros))</span></td>
+									</tr>
+									<tr class="cart_item">
+										<td>&nbsp;</td>
+										<td>&nbsp;</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>	
+
+						<form method="POST" action="https://paiement.systempay.fr/vads-payment/">
+							@paymentForm.get.getParameters.asScala.map{ case (key, value) =>
+								<input type="hidden" name="@key" value="@value" />
+							}
+							<input type="hidden" name="signature" value="@paymentForm.get.getSignature"/>
+							<div class="bottommargin-sm">
+								<button class="btn btn-primary" type="submit"><span class="glyphicon glyphicon-lock"></span>@hm("form.button.label")</button>
+							</div>
+							<span>@hm("form.button.disclaimer")</span>
+							<div class="divider divider-center divider-short divider-margin"><i class="icon-time"></i></div>
+						</form>
+						} else {
+							<div>
+							@if(isSuccess) {
+								<h4>@hm("success.message")</h4>
+							} else {
+								<h4>@hm("error.message")</h4>
+							}
+							</div>
+						}
+						
+						
+					</div>
+				</div>
+			</div>
+		</section>
+
+}
+		

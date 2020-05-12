@@ -199,12 +199,22 @@ dd.error {
     background-color: @theme-color;
 }
 
-.action-successfull i.i-plain {
+.action-successfull i.i-plain, .certificate-successfull i.i-plain {
 	color: #3b916d;
 }
 
-.action-error i.i-plain {
+.action-error i.i-plain, .certificate-error i.i-plain {
 	color: #dc3545;
+}
+
+.certificate-successfull, .certificate-error  {
+	h5 {
+		font-size: 1.2rem;
+	}
+	
+	div {
+		font-size: 1.1rem;
+	}
 }
 
 .my-forms {

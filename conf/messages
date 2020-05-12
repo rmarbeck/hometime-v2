@@ -2242,7 +2242,7 @@ call.back.error.disclaimer=Nous avons enregistré cette erreur et allons essayer
 
 
 check.authentication.test.error.html.title=Erreur
-check.authentication.test.error.html.description=Erreur dans l''affiche d''un certificat
+check.authentication.test.error.html.description=Erreur dans l''affichage d''un certificat
 check.authentication.test.error.html.keywords=Erreur, certificat
 check.authentication.test.error.head=Impossible de vérifier ce certificat
 check.authentication.test.error.head.subtitle=
@@ -2592,7 +2592,14 @@ accept.quotation.success.head.intro=Votre demande a bien été enregistrée, nou
 accept.quotation.success.disclaimer=
 
 accept.quotation.error.html.title=Erreur dans notre traitement
-accept.quotation.error.html.description=Demande d''acceptation de devis en échec
+accept.quotation.error.html.description=Demande d''acceptation de devis en écheccheck.certificate.result=Résultat de l''auscultation :
+check.certificate.result.false=Montre non authentique, il s''agit d''une contrefaçon
+check.certificate.result.true=Montre authentique
+check.certificate.explanation=Cette page certifie que les informations présentées ci-dessus sont issues d''une auscultation de la pièce en question par les équipes de Watch Next et que le résultat de l''authentification est celui présenté sur cette page. Une version imprimée de cette page n''a aucune valeur.
+
+check.certificate.watch=Montre : <b>{0} - {1}</b>
+check.certificate.ref=Numéros : <b>{0} - {1}</b>
+check.certificate.date=Date du certificat : <b>{0, date,d MMMM yyyy}</b>
 accept.quotation.error.html.keywords=demande, acceptation de devis, ko
 
 accept.quotation.error.head=Erreur
@@ -3240,6 +3247,44 @@ quotation.choices.request.call.to.action=Devis horloger
 quotation.choices.local.call.to.action=Venir nous voir
 
 quotation.choices.disclaimer=Nous essayons de toujours fournir un maximum d''informations à nos clients avant de voir la montre. Cependant, dans certains cas cela n''est pas possible et seule l''auscultation de la montre permet de déterminer précisément le tarif de l''entretien. Nos devis permettent de répondre aux demandes de prix sur les entretiens les plus fréquents que sont les changemenents de pile avec ou sans étanchéité, les révisions complètes ou les réparations plus complexes.
+
+# Payment pages
+payment.page.title=Watch Next SAS
+payment.page.header=Accès au processus de paiement sécurisé
+payment.html.title=Accès au paiement
+payment.html.description=Processus de paiement CB watch next
+payment.html.keywords=paiement, CB, watch next, sécurisé
+
+payment.page.table.order.label=Bon de commande
+payment.page.table.description.label=Description
+payment.page.table.amount.label=Montant
+payment.page.table.amount.value=<b>{0,number}&nbsp;€</b>
+
+payment.page.form.button.label=Accèder au processus de paiement*
+payment.page.form.button.disclaimer=* en cliquant sur ce lien, vous serez redirigé vers la page de paiement de notre banque. Il s''agit d'un processus sécurisé.
+
+payment.page.error.message=Une erreur s'est produite ou le paiement a déjà été effectué.<br /><br /> Veuillez nous contacter pour plus de précisions.
+payment.page.success.message=Félicitations&nbsp!<br/><br/>Votre paiement a bien été enregistré<br/><br/>merci de votre confiance.				
+
+
+authentication.page.title=Vérification de certificat
+authentication.page.header=Détail du certificat
+authentication.page.table.watch.label=Montre auscultée
+authentication.page.table.watch.value=<b>{0} - {1}</b>
+authentication.page.table.description.label=Numéros
+authentication.page.table.description.value=<b>{0} - {1}</b>
+authentication.page.table.date.label=Date du certificat
+authentication.page.table.date.value=<b>{0, date,d MMMM yyyy}</b>
+
+authentication.page.result.header=Résultat de l''auscultation :
+authentication.page.result.false=Montre non authentique, il s''agit d''une contrefaçon
+authentication.page.result.true=Montre authentique
+authentication.page.result.disclaimer=Cette page certifie que les informations présentées ci-dessus sont issues d''une auscultation de la pièce en question par les équipes de Watch Next et que le résultat de l''authentification est celui présenté sur cette page. Une version imprimée de cette page n''a aucune valeur.
+
+authentication.html.title=Vérification de certificat
+authentication.html.description=Vérification de certificat d''authenticité
+authentication.html.keywords=certificat, authenticité,watch next 
+
 
 # Payment pages
 payment.header=watchNext

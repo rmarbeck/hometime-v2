@@ -3,59 +3,59 @@
 @import scala.collection.immutable._
 @import tags._
 
-@import scala.collection.immutable._
-@import tags._
+@key={authentication}
 
-<!DOCTYPE html>
-<html dir="ltr" lang="fr">
-<head>
-	@layouts.fragments.minimal_head("", "", "")(Html(""))(Html(""))(request, messages)
-</head>
+@title = {@Messages(key.toString+".html.title")}
+@description = {@Messages(key.toString+".html.description")}
+@keywords = {@Messages(key.toString+".html.keywords")}
 
-<body class="stretched">
+@hm(value: String) = {@Html(Messages(key.toString+".page."+value))}
 
-	<!-- Document Wrapper
-	============================================= -->
-	<div id="wrapper" class="clearfix">
+@layouts.minimal(key.toString, title.toString, description.toString, keywords.toString){
 		<section id="content" class="with-page-title-pattern ">
 			<div class="content-wrap">
 				<div class="container clearfix">
-		<div class="row">
-			<div class="col-xs-12">
-				<h1>@Html(Messages("check.certificate.header"))</h1>
-			</div>
-		</div>
-		<div class="row">
-			<div class="col-xs-12">
-				<h3>@Html(Messages("check.certificate.main.title"))</h3>
-			</div>
-		</div>
-		<div class="row">
-			<div class="col-xs-12">
-				<ul class="certificate-details">
-					<li>@Html(Messages("check.certificate.watch", auth.brand, auth.model))</li>
-					<li>@Html(Messages("check.certificate.ref", auth.reference, auth.serial))</li>
-					<li>@Html(Messages("check.certificate.date", auth.getDate))</li>
-					
-				</ul>
-			</div>
-		</div>
-		<div class="row">
-			<div class="col-xs-12 text-center result-title">
-				@Html(Messages("check.certificate.result"))
-			</div>
-			<div class="col-xs-12 text-center result-title-@auth.result">
-				@Html(Messages("check.certificate.result."+auth.result))
-			</div>
-			
-			<div class="col-xs-12 text-left">
-				<div class="explanation">@Html(Messages("check.certificate.explanation"))</div>
-			</div>
-		</div>
+					<div class="heading-block center topmargin-lg nobottomborder">
+						<h1>@hm("title")</h1>
+						<span>@hm("header")</span>
+						<div class="table-responsive topmargin-lg nobottommargin">
+							<table class="table cart">
+								<tbody>
+									<tr class="cart_item">
+										<td class="cart-product-name">@hm("table.watch.label")</td>
+										<td class="cart-product-name"><span class="amount">@Html(Messages(key.toString+".page.table.watch.value", auth.brand, auth.model))</span></td>
+									</tr>
+									<tr class="cart_item">
+										<td class="cart-product-name">@hm("table.description.label")</td>
+										<td class="cart-product-name"><span class="amount">@Html(Messages(key.toString+".page.table.description.value", auth.reference, auth.serial))</span></td>
+									</tr>
+									<tr class="cart_item">
+										<td class="cart-product-name">@hm("table.date.label")</td>
+										<td class="cart-product-name"><span class="amount">@Html(Messages(key.toString+".page.table.date.value", auth.getDate))</span></td>
+									</tr>
+									<tr class="cart_item">
+										<td>&nbsp;</td>
+										<td>&nbsp;</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+						<div class="divider divider-center divider-short"><i class="icon-time"></i></div>
+						<h4>@hm("result.header")</h4>
+						@if(auth.result) {
+						<div class="certificate-successfull center topmargin-sm bottommargin-sm">
+							<i class="i-plain i-xlarge icon-check-circle divcenter"></i>
+						} else {
+						<div class="certificate-error center topmargin-sm bottommargin-sm">
+							<i class="i-plain i-xlarge icon-remove divcenter"></i>
+						}
+							<h5>@hm("result."+auth.result)</h5>
+							<div class="topmargin-lg">@hm("result.disclaimer")</div>
+						</div>
+					</div>
 				</div>
 			</div>
-		</section>		
-	</div><!-- #wrapper end -->
-
-</body>
-</html>
+		</div>			
+		</section>
+				
+}

@@ -102,16 +102,16 @@ GET		/lune																controllers.Default.redirect(to = "http://www.patek.co
 
 GET		/chrono24															controllers.Default.redirect(to = "http://www.chrono24.fr/search/index.htm?dosearch=true&merchantName=watchnext")
 
-#GET		/links											controllers.Application.usefull_links()
+#GET		/links															controllers.Default.redirect(to = "https://legacy.hometime.fr/links")
 
 GET		/avis-clients														controllers.HomeController.feedbacks(request: Request)
 
 # Payment
-#GET	    /paiement/error               					controllers.PaymentRequestsFreeOfLogin.error()
-#POST    /paiement/error               					controllers.PaymentRequestsFreeOfLogin.errorPost()
-#GET   	/paiement/success              					controllers.PaymentRequestsFreeOfLogin.success()
-#POST    /paiement/backoffice           					controllers.PaymentRequestsFreeOfLogin.manageBackOfficeAnswer()
-#GET     /paiement/:ak               					controllers.PaymentRequestsFreeOfLogin.displayForm(ak: String)
+GET	    /paiement/error               										controllers.PaymentProcessingController.displayErrorPage(request: Request)
+POST    /paiement/error               										controllers.PaymentProcessingController.displayErrorPage(request: Request)
+GET   	/paiement/success              										controllers.PaymentProcessingController.displaySuccessPage(request: Request)
+POST    /paiement/backoffice           										controllers.PaymentProcessingController.manageBackOfficeAnswer(request: Request)
+GET     /paiement/:ak               										controllers.PaymentProcessingController.preparePayment(request: Request, ak: String)
 
 GET		/verification/certificat											controllers.FormProcessingController.checkAuthentication(request: Request, id1: Long, id2: Long, id3: Long)
 

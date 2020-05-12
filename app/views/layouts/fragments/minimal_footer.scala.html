@@ -1,0 +1,35 @@
+@()(implicit request: Http.Request, messages: play.i18n.Messages)
+
+@import fr.hometime.utils._
+@import controllers._
+@import scala.collection.immutable._
+@import tags._
+
+	
+		<!-- Footer
+		============================================= -->
+		<footer id="footer" class="dark">
+
+			<div class="">
+
+			<!-- Copyrights
+			============================================= -->
+			<div id="copyrights">
+
+				<div class="container clearfix">
+
+					<div class="col_half">
+						@Html(Messages("footer.copyright",java.time.Year.now.getValue))<br>
+						<div class="copyright-links"><a href="@routes.HomeController.content("content.legal").url" title="@Html(Messages("footer.legal.title"))">@Html(Messages("footer.legal"))</a> / <a href="@routes.HomeController.content("content.privacy").url" title="@Html(Messages("footer.private.title"))">@Html(Messages("footer.private"))</a> / <a href="@remote_assets("CGV%20-%20Hometime.pdf")" title="@Html(Messages("footer.cgv.title"))">@Html(Messages("footer.cgv"))</a></div>
+					</div>
+
+					<div class="col_half col_last tright">
+						<a href="tel:@Messages("global.phone.number.raw")"  title="@Html(Messages("global.phone.number.link.title")) rel="nofollow"><i class="icon-headphones"></i>&nbsp;<span class="middot">&middot;</span>&nbsp;@Html(Messages("footer.phone.number"))</a>
+					</div>
+
+				</div>
+
+			</div><!-- #copyrights end -->
+
+		</footer><!-- #footer end -->
+
