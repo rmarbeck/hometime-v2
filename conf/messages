@@ -1511,8 +1511,8 @@ offer.other.head=Achat et vente de montres
 offer.other.head.subtitle=Montres neuves ou d''occasion
 offer.other.body=Vous souhaitez acheter une montre neuve ou d''occasion, vous souhaitez vendre votre montre ou l''expertiser, nous sommes là !
 
-offer.other.call.to.action.broking=Achetez une montre
-offer.other.call.to.action.sell=Vendez votre montre
+offer.other.action.0.text=Achetez une montre
+offer.other.action.1.text=Vendez votre montre
 
 offer.disclaimer=
 

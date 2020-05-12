@@ -52,6 +52,6 @@
 						(key+".quartz", "images/content/water-test-600.jpg", "left", List(routes.FormProcessingController.prepareQuartzPrice().url), List("btn-outline-dark"), ""),
 						(key+".auth", "images/content/authen-book-600.jpg", "right", List(routes.HomeController.content("content.authenticating").url), List("btn-outline-dark"), ""),
 						(key+".home", null, "none", List(routes.FormProcessingController.prepareCallBackRequest().url), List("btn-outline-dark"), ""),
-						(key+".other", null, "none", List(routes.HomeController.quotationOptions().url), List("btn-outline-dark"), "")).zipWithIndex.map { case (value,index) => @service(value._1, value._2, value._3, index+1, value._4, value._5, value._6) }
+						(key+".other", null, "none", List(routes.HomeController.content("content.watch.purchasing").url, routes.HomeController.content("content.watch.selling").url), List("btn-outline-dark", "btn-outline-secondary"), "")).zipWithIndex.map { case (value,index) => @service(value._1, value._2, value._3, index+1, value._4, value._5, value._6) }
 	}
 }
