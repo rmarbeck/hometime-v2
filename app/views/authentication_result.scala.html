@@ -18,6 +18,8 @@
 					<div class="heading-block center topmargin-lg nobottomborder">
 						<h1>@hm("title")</h1>
 						<span>@hm("header")</span>
+					</div>
+					<div class="center">
 						<div class="table-responsive topmargin-lg nobottommargin">
 							<table class="table cart">
 								<tbody>
@@ -33,10 +35,6 @@
 										<td class="cart-product-name">@hm("table.date.label")</td>
 										<td class="cart-product-name"><span class="amount">@Html(Messages(key.toString+".page.table.date.value", auth.getDate))</span></td>
 									</tr>
-									<tr class="cart_item">
-										<td>&nbsp;</td>
-										<td>&nbsp;</td>
-									</tr>
 								</tbody>
 							</table>
 						</div>
@@ -50,7 +48,7 @@
 							<i class="i-plain i-xlarge icon-remove divcenter"></i>
 						}
 							<h5>@hm("result."+auth.result)</h5>
-							<div class="topmargin-lg">@hm("result.disclaimer")</div>
+							<span class="topmargin-lg">@hm("result.disclaimer")</span>
 						</div>
 					</div>
 				</div>

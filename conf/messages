@@ -3276,7 +3276,7 @@ authentication.page.table.description.value=<b>{0} - {1}</b>
 authentication.page.table.date.label=Date du certificat
 authentication.page.table.date.value=<b>{0, date,d MMMM yyyy}</b>
 
-authentication.page.result.header=Résultat de l''auscultation :
+authentication.page.result.header=Résultat de l''auscultation&nbsp;:
 authentication.page.result.false=Montre non authentique, il s''agit d''une contrefaçon
 authentication.page.result.true=Montre authentique
 authentication.page.result.disclaimer=Cette page certifie que les informations présentées ci-dessus sont issues d''une auscultation de la pièce en question par les équipes de Watch Next et que le résultat de l''authentification est celui présenté sur cette page. Une version imprimée de cette page n''a aucune valeur.
