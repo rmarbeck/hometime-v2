@@ -222,7 +222,7 @@ main.menu.offer.restore.title=Restauration de montres anciennes
 main.menu.offer.quartz=Pile et étanchéité
 main.menu.offer.quartz.title=Changement de pile avec ou sans étanchéité
 main.menu.offer.auth=Authentification
-main.menu.offer.quartz.title=Expertise et authentification des montres
+main.menu.offer.auth.title=Expertise et authentification des montres
 main.menu.prices=Les tarifs
 main.menu.prices.title=Les tarifs des services Hometime
 main.menu.quartz.prices=Tarifs changement de pile
@@ -1242,9 +1242,9 @@ water.2.alt=Monaco ouverte
 #------ Watch Purchasing page ------------------
 #------ watch.purchasing
 content.watch.purchasing.content.count=3
-content.watch.purchasing.content.html.title=Hometime, courtier en montres de luxe
-content.watch.purchasing.content.html.description=Nous trouvons pour vous les montres neuves ou d''occasion au meilleur prix, en vous offrant nos services à domicile et une garantie de 2 ans
-content.watch.purchasing.content.html.keywords=courtage, montres, occasion, neuf, courtier, garantie, france
+content.watch.purchasing.html.title=Hometime, courtier en montres de luxe
+content.watch.purchasing.html.description=Nous trouvons pour vous les montres neuves ou d''occasion au meilleur prix, en vous offrant nos services à domicile et une garantie de 2 ans
+content.watch.purchasing.html.keywords=courtage, montres, occasion, neuf, courtier, garantie, france
 content.watch.purchasing.content.head=Vous recherchez une montre en particulier&nbsp;?
 content.watch.purchasing.content.head.subtitle=Nous agissons comme un courtier pour vous aider
 
@@ -1300,9 +1300,9 @@ content.watch.purchasing.content.3.image.alt=Photo d''une Jaeger LeCoultre Rever
 #------ Watch Selling page ------------------
 #------ watch.selling
 content.watch.selling.content.count=4
-content.watch.selling.content.html.title=Hometime, vendez votre montre de luxe
-content.watch.selling.content.html.description=Nous achetons vos montres de luxe ou les mettons en vente pour vous via notre méthode de dépôt vente virtuel
-content.watch.selling.content.html.keywords=courtage, montres, occasion, neuf, courtier, garantie, france
+content.watch.selling.html.title=Hometime, vendez votre montre de luxe
+content.watch.selling.html.description=Nous achetons vos montres de luxe ou les mettons en vente pour vous via notre méthode de dépôt vente virtuel
+content.watch.selling.html.keywords=courtage, montres, occasion, neuf, courtier, garantie, france
 content.watch.selling.content.head=Vous vendez votre montre&nbsp;?
 content.watch.selling.content.head.subtitle=Nous avons des solutions pour vous aider
 
