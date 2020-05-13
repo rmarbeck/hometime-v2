@@ -25,9 +25,9 @@
 @defining("quotation.options") { case (key) =>
 
 	@layouts.main_helper_with_head_block(key){
-		@List(("icon-line-pie-graph", "#", "Devis interactif", "En 5 étapes, évaluez le coût de l'entretien de votre montre.", List("Devis immédiat", "Prix et délais approximatifs", "24h/24")),
-				("icon-eye", "#", "Devis horloger", "Nos horlogers analysent votre besoin et vous répondent.", List("Devis détaillé", "Un horloger vous répond", "Sous 48h maximum")),
-				("icon-shop", "#", "Devis formel", "Sur place, nous établissons un devis ferme montre en main.", List("Nous auscultons votre montre", "Le devis est gratuit", "Il nous engage"))).zipWithIndex.map { case (value,index) => @quotation(value._1, value._2, value._3, value._4, index+1, value._5) }
+		@List(("icon-line-pie-graph", routes.FormProcessingController.prepareAutoQuotation().url, "Devis interactif", "En 5 étapes, évaluez le coût de l'entretien de votre montre.", List("Devis immédiat", "Prix et délais approximatifs", "24h/24")),
+				("icon-eye", routes.FormProcessingController.prepareQuotationRequest().url, "Devis horloger", "Nos horlogers analysent votre besoin et vous répondent.", List("Devis détaillé", "Un horloger vous répond", "Sous 48h maximum")),
+				("icon-shop", routes.HomeController.visit().url, "Devis formel", "Sur place, nous établissons un devis ferme montre en main.", List("Nous auscultons votre montre", "Le devis est gratuit", "Il nous engage"))).zipWithIndex.map { case (value,index) => @quotation(value._1, value._2, value._3, value._4, index+1, value._5) }
 	}
 	
 }

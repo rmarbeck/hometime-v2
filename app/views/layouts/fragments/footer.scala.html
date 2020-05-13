@@ -114,7 +114,7 @@
 								@List(("facebook", "https://www.facebook.com/HometimeFr/"),
 								("instagram", "https://www.instagram.com/watchnexthometime/")).zipWithIndex.map { case (value,index) => 
 								<div class="col-lg-6 clearfix @if(index==0) {bottommargin-sm}">
-									<a href="@value._2" title="@{value._1}.link.title" class="social-icon si-dark si-colored si-@value._1 nobottommargin" style="margin-right: 10px;">
+									<a href="@value._2" title="@Messages(value._1+".link.title")" class="social-icon si-dark si-colored si-@value._1 nobottommargin" style="margin-right: 10px;">
 										<i class="icon-@value._1"></i>
 										<i class="icon-@value._1"></i>
 									</a>
