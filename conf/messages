@@ -536,7 +536,7 @@ choose.quotation.order.promise.2=Un horloger vous répond
 choose.quotation.order.promise.3=Sous 48h maximum
 
 choose.quotation.quotation.alternative=Vous préférez venir nous voir&nbsp?
-choose.quotation.quotation.alternative.subtitle=Nous auculterons votre montre attentivement pour vous établir un devis
+choose.quotation.quotation.alternative.subtitle=Nous ausculterons votre montre attentivement pour vous établir un devis
 choose.quotation.visit.us=Venir nous voir
 
 
@@ -578,7 +578,7 @@ page.visit.us.html.description=Comment venir dans nos locaux à Paris pour dépo
 page.visit.us.html.keywords=Locaux Hometime Paris, révision complète montre, démagnétisation, changement de pile, changement de batterie, horloger agréé, étanchéité, horloger indépendant, réparation, montre, paris
 page.visit.us.head=Venir chez Hometime
 page.visit.us.head.subtitle=Comment venir nous voir ?
-page.visit.us.head.intro=Toutes les informations pour prendre rendez-vous et nous rencontrer dans nos locaux situés dans le 1er arrondissement de Paris. Nos horlogers pourront vous donner un premier avis avant une aucultation plus détaillée de votre montre.
+page.visit.us.head.intro=Toutes les informations pour prendre rendez-vous et nous rencontrer dans nos locaux situés dans le 1er arrondissement de Paris. Nos horlogers pourront vous donner un premier avis avant une auscultation plus détaillée de votre montre.
 page.visit.us.disclaimer=Nous pouvons vous recevoir pour répondre à l''ensemble de vos questions et pour vous proposer tous nos services horlogers, avec ou sans rendez-vous du Lundi au vendredi de 10h à 18h30.
 
 
@@ -586,7 +586,7 @@ page.visit.us.title.0=Notre adresse
 page.visit.us.body.0=Nous vous recevons dans nos locaux situés <b>322 rue Saint Honoré</b> dans le 1er arrondissement de Paris <b>tous les jours de la semaine de 10h à 18h30 et le samedi sur rendez-vous</b>.
 
 page.visit.us.title.1=Une fois sur place
-page.visit.us.body.1=Nos locaux sont sur cour, après la porte sur la rue : <b>au fond du couloir, prendre l'escalier à droite, puis 1er étage à droite</b>.
+page.visit.us.body.1=Nos locaux sont sur cour, après la porte sur la rue : <b>au fond du couloir, prendre l''escalier à droite, puis 1er étage à droite</b>.
 
 page.visit.us.title.2=Appelez-nous&nbsp;!
 page.visit.us.body.2=Appelez-nous pour prendre rendez-vous ou pour plus de précisions&nbsp;: <a href="tel:0782434751" rel="nofollow"><span>07&nbsp;82&nbsp;43&nbsp;47&nbsp;51</span></a> 
@@ -1376,7 +1376,7 @@ content.watch.estimate.content.head.subtitle=Nous vous aidons à estimer votre c
 content.watch.estimate.content.1.head=Estimer une ou plusieurs montres
 content.watch.estimate.content.1.body=Vous avez besoin d''estimer une ou plusieurs montres en vue d''une vente ou pour votre assurance par exemple, nous pouvons vous aider.<br /><br />S''agissant de cas par cas, nous vous invitons à nous contacter pour que nous établissions ensemble une marche à suivre personnalisée.
 
-content.watch.estimate.content.1.primary.to.action.text=Estimer ma colleciton
+content.watch.estimate.content.1.primary.to.action.text=Estimer ma collection
 content.watch.estimate.content.1.primary.to.action.perma=/perma/estimate
 
 # Watch collection page
@@ -1796,7 +1796,7 @@ auto.order.quotation.body.service.prices=compris entre <strong><span id="lowerpr
 
 appointment.generic.baseline=Venir chez Hometime
 appointment.text.pre.explanation=<b><a href="{0}">Hometime</a></b> est un service d''entretien des <b>montres de grandes marques</b>, dans le réseau officiel ou auprès d''horlogers indépendants diplômés, avec prise en charge à domicile sur Paris et sa région ou par envoi sécurisé. Vous souhaitez connaître <b>les délais</b> et <b>le coût de l''entretien</b> d''une montre, <b>Hometime</b> vous répond. <a href="{1}"><i>Qui sommes-nous ?</i></a>
-appointment.generic.text.explanation=Toutes les informations pour prendre rendez-vous et nous rencontrer dans nos locaux situés dans le 1er arrondissement de Paris. Nos horlogers pourront vous donner un premier avis avant une aucultation plus détaillée de votre montre.
+appointment.generic.text.explanation=Toutes les informations pour prendre rendez-vous et nous rencontrer dans nos locaux situés dans le 1er arrondissement de Paris. Nos horlogers pourront vous donner un premier avis avant une auscultation plus détaillée de votre montre.
 appointment.generic.html.title=Venir chez Hometime
 appointment.generic.html.description=Comment venir dans nos locaux à Paris pour déposer une montre pour une révision complète, un entretien partiel, un polissage, un changement de pile ou tout autre service horloger
 appointment.generic.html.keywords=Locaux Hometime Paris, révision complète montre, démagnétisation, changement de pile, changement de batterie, horloger agréé, étanchéité, horloger indépendant, réparation, montre, paris
