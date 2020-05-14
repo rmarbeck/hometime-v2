@@ -42,6 +42,7 @@ import models.CallBackRequestData;
 import models.ContactRequestData;
 import models.QuotationRequestData;
 import models.ServiceTestRequestData;
+import static fr.hometime.utils.ControllerHelper.flattenValues;
 
 /**
  * Controller for forms processing
@@ -395,10 +396,6 @@ public class FormProcessingController extends Controller implements WSBodyReadab
 		logger.error("Error when trying to manage form '{}' with calling external webservice : {}", formKey, error.getLocalizedMessage());
 		error.printStackTrace();
 		return displayFormUnknownError(request, formKey);
-	}
-	
-	private String flattenValues(String key, String[] values, String separator) {
-		return Arrays.asList(values).stream().map(value -> { logger.debug(key+"="+value); return key+"="+value;}).collect(Collectors.joining( "&" ));
 	}
 	
 	private Form<QuotationRequestData> fillQuotationRequestWithDefaultData(Optional<String> brandSeoName, Optional<String> typeOfOrder, Http.Request request) {

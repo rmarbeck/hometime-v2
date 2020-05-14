@@ -1,5 +1,6 @@
 package controllers;
 
+import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 import java.util.Arrays;
@@ -23,6 +24,7 @@ import com.fasterxml.jackson.databind.node.ObjectNode;
 import com.typesafe.config.Config;
 
 import fr.hometime.utils.BrandProvider;
+import fr.hometime.utils.ControllerHelper;
 import fr.hometime.utils.NewsProvider;
 import fr.hometime.utils.PriceProvider;
 import fr.hometime.utils.WebserviceHelper;
@@ -75,7 +77,7 @@ public class PaymentProcessingController extends Controller implements WSBodyRea
 	 * 
 	 *************************************/
 	public CompletionStage<Result> manageBackOfficeAnswer(Http.Request request) {
-		CompletionStage<? extends WSResponse> responsePromise = ws.url("https://legacy.hometime.fr/paiement/backoffice").setContentType("application/x-www-form-urlencoded").post(request.body().asFormUrlEncoded().entrySet().stream().map(entry -> flattenValues(entry.getKey(), entry.getValue(), "&")).collect( Collectors.joining( "&" )));
+		CompletionStage<? extends WSResponse> responsePromise = ws.url("https://legacy.hometime.fr/paiement/backoffice").setContentType("application/x-www-form-urlencoded").post(request.body().asFormUrlEncoded().entrySet().stream().map(entry -> ControllerHelper.flattenValues(entry.getKey(), entry.getValue(), "&")).collect( Collectors.joining( "&" )));
 		return responsePromise.handle((response, error) -> {
 			if(response != null) {
 				return ok(response.asByteArray());
@@ -116,11 +118,7 @@ public class PaymentProcessingController extends Controller implements WSBodyRea
 		
 
 	}
-		
-	private String flattenValues(String key, String[] values, String separator) {
-		return Arrays.asList(values).stream().map(value -> { logger.debug(key+"="+URLEncoder.encode(value, StandardCharsets.UTF_8.toString())); return key+"="+URLEncoder.encode(value, StandardCharsets.UTF_8.toString());}).collect(Collectors.joining( "&" ));
-	}
-	
+
 	private WSRequest wsWithSecret(String url) {
 		return WebserviceHelper.wsWithSecret(ws, url, config);
 	}
