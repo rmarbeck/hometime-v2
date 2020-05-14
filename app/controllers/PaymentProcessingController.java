@@ -1,5 +1,7 @@
 package controllers;
 
+import java.net.URLEncoder;
+import java.nio.charset.StandardCharsets;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
@@ -116,7 +118,7 @@ public class PaymentProcessingController extends Controller implements WSBodyRea
 	}
 		
 	private String flattenValues(String key, String[] values, String separator) {
-		return Arrays.asList(values).stream().map(value -> { logger.debug(key+"="+value); return key+"="+value;}).collect(Collectors.joining( "&" ));
+		return Arrays.asList(values).stream().map(value -> { logger.debug(key+"="+URLEncoder.encode(value, StandardCharsets.UTF_8.toString())); return key+"="+URLEncoder.encode(value, StandardCharsets.UTF_8.toString());}).collect(Collectors.joining( "&" ));
 	}
 	
 	private WSRequest wsWithSecret(String url) {
