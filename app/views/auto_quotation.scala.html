@@ -429,7 +429,7 @@ $(document).ready(function(){
 									}
 									
 									@result_block(Html(Messages(formKey.toString+".quotation.header.service.prices")), Html(Messages(formKey.toString+".quotation.body.service.prices")), false, "quotation") {
-									<button type="submit" class="btn btn-primary">@Html(Messages("auto.order.action.submit"))</button>
+									@form_btn("website-cost", Messages("auto.order.action.submit"))
 									}
 									
 									@result_block(Html(Messages(formKey.toString+".quartz.header.service.prices")), Html(Messages(formKey.toString+".quartz.body.service.prices")), false, "quartz") {

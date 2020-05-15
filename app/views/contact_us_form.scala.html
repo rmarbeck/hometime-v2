@@ -85,7 +85,7 @@
 									@inputBox(form("email"), true)
 
 									<div class="col-12">
-										<button type="submit" name="contact-us-submit" class="btn btn-success btn-lg">@Html(Messages(formKey.toString+".submit"))</button>
+										@form_btn("contact-us", Messages(formKey.toString+".submit"))
 									</div>
 
 			}

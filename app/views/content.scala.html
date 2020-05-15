@@ -32,7 +32,7 @@
 
 @articleImage(index: Int) = {
 	@if(contentProvider.exists("content."+index+".image.url")) {
-			<img class="@if(index%2==1) {alignleft} else {alignright} img-responsive" src="@contentProvider.get("content."+index+".image.url")" title="@contentProvider.getOrElse("content."+index+".image.title", "")" alt="@contentProvider.getOrElse("content."+index+".image.alt", "")">
+			<img class="@if(index%2==1) {alignleft} else {alignright} img-responsive" src="@contentProvider.get("content."+index+".image.url")" title="@Html(contentProvider.getOrElse("content."+index+".image.title", ""))" alt="@Html(contentProvider.getOrElse("content."+index+".image.alt", ""))">
 	}
 }
 
@@ -40,10 +40,10 @@
 	@if(contentProvider.exists("content."+index+".default.to.action.text") || contentProvider.exists("content."+index+".primary.to.action.text")) {
 			<div class="center">
 				@if(contentProvider.exists("content."+index+".default.to.action.text")) {
-				<a href="@contentProvider.get("content."+index+".default.to.action.perma")" class="btn btn-outline-secondary noleftmargin topmargin-sm">@contentProvider.get("content."+index+".default.to.action.text")</a>
+				<a href="@contentProvider.get("content."+index+".default.to.action.perma")" class="btn btn-outline-secondary noleftmargin topmargin-sm">@Html(contentProvider.get("content."+index+".default.to.action.text"))</a>
 				}
 				@if(contentProvider.exists("content."+index+".primary.to.action.text")) {
-				<a href="@contentProvider.get("content."+index+".primary.to.action.perma")" class="btn btn-outline-dark noleftmargin topmargin-sm">@contentProvider.get("content."+index+".primary.to.action.text")</a>
+				<a href="@contentProvider.get("content."+index+".primary.to.action.perma")" class="btn btn-outline-dark noleftmargin topmargin-sm">@Html(contentProvider.get("content."+index+".primary.to.action.text"))</a>
 				}
 			</div>
 	}

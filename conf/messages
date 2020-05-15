@@ -994,6 +994,10 @@ content.service.repairing.content.4.body=<div class="sub-title"></div>Le délai 
  <li>Arrêt rapide de la montre après remontage (cas d''une montre manuelle) ou après l''avoir portée (cas d''une montre automatique),</li></ul>\
  <br />De plus, si vous devenez propriétaire d''une montre sans connaitre la date de sa dernière révision, une révision est hautement recommandée.
 
+content.service.repairing.content.4.primary.to.action.text=Quand entretenir ma montre&nbsp;?
+content.service.repairing.content.4.primary.to.action.perma=/perma/when
+
+
 content.service.repairing.content.5.head=Combien <span class="text-muted">ça coûte ?</span> Combien de temps <span class="text-muted">cela dure-t-il ?</span>
 content.service.repairing.content.5.body=<div class="sub-title">Le prix :</div>Chaque acteur (horloger, marque) est libre de fixer le prix de ses prestations, cependant il est fréquent de constater des prix compris entre <b>200€ et 500€</b>.\
  <br/><br/>Le prix dépend de la complexité de la montre et de son raffinement, aussi le prix des révisions est souvent proportionnel au prix de vente neuf de la montre. Dans tous les cas, des tarifs excédant 20% du prix neuf de la montre pour une simple révision sont considérés comme très élevés.\
@@ -1020,7 +1024,7 @@ content.service.repairing.content.6.body=<div class="sub-title"></div>Il n''y a 
 
 content.service.repairing.content.6.default.to.action.text=En savoir plus...
 content.service.repairing.content.6.default.to.action.perma=http://watchnext.fr/blog/2014/01/existe-t-il-des-risques-a-faire-entretenir-sa-montre/?utm_source=hometime.fr
-content.service.repairing.content.6.primary.to.action.text=Entretenir ma montre !
+content.service.repairing.content.6.primary.to.action.text=Entretenir ma montre&nbsp;!
 content.service.repairing.content.6.primary.to.action.perma=/perma/devis
 
 content.service.repairing.content.1.head=Votre montre est précieuse&nbsp;!

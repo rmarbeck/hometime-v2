@@ -74,8 +74,11 @@
   				<div class="claim divcenter center clearfix bottommargin-sm" style="max-width: 900px;">
 					<h1>@Html(Messages("home.claim"))</h1>
 					<h2>@Html(Messages("home.claim.more"))</h2>
-					<a href="@routes.HomeController.visit()" title="@Html(Messages("global.visit.us.title"))" class="button button-3d button-dark button-large ">@Html(Messages("home.action.visit.us"))</a>
-					<a href="@routes.FormProcessingController.prepareQuotationRequest()" title="@Html(Messages("global.quotation.title"))" class="button button-3d button-large">@Html(Messages("home.action.quotation.request"))</a>
+					
+					<a href="@routes.HomeController.visit()" title="@Html(Messages("global.visit.us.title"))"  class="button button-rounded button-reveal button-large button-dark"><i class="icon-map-marker2"></i><span>@Html(Messages("home.action.visit.us"))</span></a>
+					<a href="@routes.FormProcessingController.prepareQuotationRequest()" title="@Html(Messages("global.quotation.title"))" class="button button-3d button-reveal button-large"><i class="icon-line2-calculator"></i><span>@Html(Messages("home.action.quotation.request"))</span></a>
+					
+
 				</div>
 				
 				<div class="section nobottommargin padding-reduced">
