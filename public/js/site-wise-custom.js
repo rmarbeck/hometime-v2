@@ -48,3 +48,13 @@ async function supportsWebp() {
     });	
   }
 })();
+
+(async () => {
+$('.modal').on('shown.bs.modal', function (e) {
+      	gtag('event', 'modal-displayed', {
+		    'event_category': 'modal',
+		    'event_label': $( this ).attr('data-id'),
+		    'value': 1
+    		});
+})
+})();

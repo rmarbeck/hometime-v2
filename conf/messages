@@ -558,13 +558,13 @@ quotation.error.html.title=Demande de devis en erreur
 quotation.error.html.description=Demande de devis en échec
 quotation.error.html.keywords=demande, devis, ko
 
-quotation.success.head=Erreur
+quotation.success.head=Demande de devis
 quotation.success.head.subtitle=Demande de devis prise en compte avec succès
 quotation.success.head.intro=Merci de votre confiance.<br/><br/>Nous avons bien enregistré votre demande. Nous allons tout mettre en oeuvre pour vous répondre en moins de 24h.<br /><br />A très bientôt.
 quotation.success.disclaimer=Au delà des entretiens classiques comme la révision complète, les changements de verres, de poussoirs ou de lunette, ou des restaurations de montres ayant subi de graves dommages (rouille causée par une perte d''étanchéité, chute violente...), nous pouvons proposer des services "à la carte" correspondant à des besoins très spécifiques. N''hésitez par à nous contacter pour réviser, réparer, restaurer ou même personnaliser votre montre !\
   <br />Dans certains cas, il est possible que nous ne soyons pas en mesure de vous proposer des devis comparatifs mais uniquement un devis dans le SAV officiel ou un devis chez un horloger partenaire. Nous vous en informons dans notre réponse.
 
-quotation.error.head=Demande de devis
+quotation.error.head=Erreur
 quotation.error.head.subtitle=Problème rencontré lors de la demande de devis
 quotation.error.head.intro=Veuillez nous excuser, une erreur s''est produite.<br/>Peut-être celle-ci est transitoire, alors n''hésitez pas à réessayer ou à nous appeler&nbsp;!<br /><br />Nous allons essayer de résoudre le problème au plus vite.
 quotation.error.disclaimer=Nous avons enregistré cette erreur et allons essayer de la résoudre rapidement. Merci de votre compréhension.
@@ -2182,6 +2182,9 @@ quotation.form.brand.default=Sélectionnez la marque de votre montre
 quotation.form.model.label=Modèle
 quotation.form.model.placeholder=Nom du modèle - Année
 quotation.form.method.label=Réseau
+quotation.form.method.label.help=comment choisir&nbsp;?
+quotation.form.method.label.help.modal.title=Choisir le mode d''entretien
+quotation.form.method.label.help.modal.content=Vous pouvez choisir un devis pour un entretien auprès :<br/><br/>du <b>SAV de la marque :</b> la montre est confiée au service après vente de son fabricant, Hometime se charge de la prise en charge.<br/><br/>d''un <b>horloger interne Hometime :</b> la montre est entretenue par l''un de nos horlogers.<br/><br/>en <b>comparant les deux options :</b> si vous souhaitez avoir une comparaison des deux solutions en termes de tarifs et de délais. 
 
 quotation.form.nameofcustomer.label=Vos nom et prénom
 quotation.form.nameofcustomer.placeholder=Prénom Nom

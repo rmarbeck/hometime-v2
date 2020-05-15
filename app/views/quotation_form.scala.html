@@ -86,7 +86,24 @@
 									@inputBox(form("model"), true)
 									
 									@fullWidth("my-forms") {
-										@helper.input(form("method"), Symbol("_class") -> "mb-3 not-clickable", Symbol("_label") -> Html(Messages(computeMessageKey("method", "label").toString)), Symbol("_showConstraints") -> false) { (id, name, value, args) =>
+
+										<div data-id="method-help" class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+											<div class="modal-dialog modal-sm">
+												<div class="modal-body">
+													<div class="modal-content">
+														<div class="modal-header">
+															<h4 class="modal-title" id="myModalLabel">@Html(Messages("quotation.form.method.label.help.modal.title"))</h4>
+															<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+														</div>
+														<div class="modal-body">
+															<p class="nobottommargin">@Html(Messages("quotation.form.method.label.help.modal.content"))</p>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+									
+										@helper.input(form("method"), Symbol("_class") -> "mb-3 not-clickable", Symbol("_label") -> Html(Messages(computeMessageKey("method", "label").toString)+"&nbsp;(<a href='#' data-toggle='modal' data-target='.bs-example-modal-sm'>"+Html(Messages(computeMessageKey("method", "label.help").toString))+"</a>)"), Symbol("_showConstraints") -> false) { (id, name, value, args) =>
 												@List.range(1, 4).map(value => (value.toString, Html(Messages(formKey.toString+"."+value.toString+".method")))).toSeq.map { v => @selectField(5, id, name, value, v, args) }
 										}(tags.canvasRadioGroupBoxedFieldTemplate, messages)
 									}
