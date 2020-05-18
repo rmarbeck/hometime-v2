@@ -55,6 +55,15 @@ $(document).ready(function(){
     		$('span#price-3-value').html(roundValue(brandValue[2]*2,factor));
 			$( '.dynamic-result' ).removeClass('hidden');
      		$( '.default-result' ).addClass('hidden');
+     		
+     		var brandName = brandValue[0];
+     		
+     		gtag('event', 'quartz-price-choosen', {
+		    'event_category': 'quartz-price',
+		    'event_label': brandName,
+		    'value': 1
+    		});
+     		
     }
     
     function roundValue(value, factor) {
