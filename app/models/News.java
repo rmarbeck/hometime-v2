@@ -5,6 +5,13 @@ import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+
+import fr.hometime.utils.NewsDeserializer;
+import sun.rmi.runtime.NewThreadAction;
+
+@JsonDeserialize(using = NewsDeserializer.class)
 public class News {
 	public enum NewsType {
 	    ONE_PICTURE ("ONE_PICTURE"),
@@ -55,9 +62,22 @@ public class News {
 	public Optional<String> privateInfos;
 		
 	private News() {
+		System.out.println("??????????");
 	}
 	
 	public News(String title, String body, NewsType type, Date date, String category, String previewUrl, Optional<String> previewAlt, Optional<String> readMoreUrl, boolean active) {
+		this.title = title;
+		this.body = body;
+		this.type = type;
+		this.date = date;
+		setCategories(category);
+		setPreviewUrl(previewUrl);
+		previewAlt.ifPresent(value -> setPreviewAlt(value));
+		this.readMoreUrl = readMoreUrl;
+		this.active = active;
+	}
+	
+	public News(String title, String body, NewsType type, Date date, List<String> category, List<String> previewUrl, Optional<List<String>> previewAlt, Optional<String> readMoreUrl, boolean active) {
 		this.title = title;
 		this.body = body;
 		this.type = type;
@@ -91,5 +111,39 @@ public class News {
 
 	public boolean isActive() {
 		return active;
+	}
+	
+	public void setNewsType(String value) {
+		type = NewsType.fromString(value);
+	}
+	
+	public void setCategories(List<String> values) {
+		categories = Optional.empty();
+		if (values != null && values.size() != 0)
+			categories = Optional.of(values);
+	}
+	
+	public void setPreviewAlt(List<String> values) {
+		previewAlt = Optional.empty();
+		if (values != null && values.size() != 0)
+			previewAlt = Optional.of(values);
+	}
+	
+	public void setPreviewUrl(List<String> values) {
+		previewUrl = Optional.empty();
+		if (values != null && values.size() != 0)
+			previewUrl = Optional.of(values);
+	}
+	
+	public void setReadMoreUrl(String value) {
+		readMoreUrl = Optional.empty();
+		if (value != null)
+			readMoreUrl = Optional.of(value);
+	}
+	
+	public void setPrivateInfos(String value) {
+		readMoreUrl = Optional.empty();
+		if (value != null)
+			readMoreUrl = Optional.of(value);
 	}
 }

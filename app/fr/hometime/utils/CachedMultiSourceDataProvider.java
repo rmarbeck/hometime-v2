@@ -14,39 +14,45 @@ import org.slf4j.LoggerFactory;
 
 import models.Brand;
 import models.Feedback;
+import models.News;
 import models.Price;
 
 @Singleton
-public class CachedMultiSourceDataProvider implements  BrandProvider, FeedbackProvider, PriceProvider  {
+public class CachedMultiSourceDataProvider implements  BrandProvider, FeedbackProvider, PriceProvider, NewsProvider  {
 	private final static long DEFAULT_VALIDITY_DURATION = 30l;
 	private final static ChronoUnit DEFAULT_VALIDITY_UNIT = ChronoUnit.MINUTES;
 	
 	private final Cachable<List<Brand>> cacheBrands;
 	private final Cachable<List<Feedback>> cacheFeedbacks;
 	private final Cachable<List<Price>> cachePrices;
+	private final Cachable<List<News>> cacheNews;
 	private Optional<Cachable<List<Brand>>> brands = Optional.empty();
 	private Optional<Cachable<List<Feedback>>> feedbacks = Optional.empty();
 	private Optional<Cachable<List<Price>>> prices = Optional.empty();
+	private Optional<Cachable<List<News>>> news = Optional.empty();
 	private final List<ProviderListPrioritized> providersByImportance;
 	private int bestProviderIndex = -1;
 	
 	private final Logger logger = LoggerFactory.getLogger(getClass()) ;
 
 	@Inject
-	public CachedMultiSourceDataProvider(Cachable<List<Brand>> cacheBrands, Cachable<List<Feedback>> cacheFeedbacks, Cachable<List<Price>> cachePrices, JsonWSProvider wsprovider, JsonLocalFileProvider lfprovider) {
+	public CachedMultiSourceDataProvider(Cachable<List<Brand>> cacheBrands, Cachable<List<Feedback>> cacheFeedbacks, Cachable<List<Price>> cachePrices, Cachable<List<News>> cacheNews, JsonWSProvider wsprovider, JsonLocalFileProvider lfprovider) {
         this.cacheBrands = cacheBrands;
         this.cacheFeedbacks = cacheFeedbacks;
         this.cachePrices = cachePrices;
+        this.cacheNews = cacheNews;
         
         providersByImportance = Arrays.asList(
         		new ProviderListPrioritized(1)
         			.add(Brand.class.getTypeName(), wsprovider.of(), bprovider -> ((BrandProvider) bprovider).retrieveBrands())
         			.add(Feedback.class.getTypeName(), wsprovider.of(), provider -> ((FeedbackProvider) provider).retrieveFeedbacks())
-        			.add(Price.class.getTypeName(), wsprovider.of(), provider -> ((PriceProvider) provider).retrievePrices()),
+        			.add(Price.class.getTypeName(), wsprovider.of(), provider -> ((PriceProvider) provider).retrievePrices())
+        			.add(News.class.getTypeName(), wsprovider.of(), provider -> ((NewsProvider) provider).retrieveNews()),
         		new ProviderListPrioritized(2)
         			.add(Brand.class.getTypeName(), lfprovider.of(), provider -> ((BrandProvider) provider).retrieveBrands())
         			.add(Feedback.class.getTypeName(), lfprovider.of(), provider -> ((FeedbackProvider) provider).retrieveFeedbacks())
-        			.add(Price.class.getTypeName(), lfprovider.of(), provider -> ((PriceProvider) provider).retrievePrices()));
+        			.add(Price.class.getTypeName(), lfprovider.of(), provider -> ((PriceProvider) provider).retrievePrices())
+        			.add(News.class.getTypeName(), lfprovider.of(), provider -> ((NewsProvider) provider).retrieveNews()));
     }
 	
 	@SuppressWarnings("unchecked")
@@ -76,6 +82,15 @@ public class CachedMultiSourceDataProvider implements  BrandProvider, FeedbackPr
 		return feedbacks.map(feedbacks -> feedbacks.get()).orElse(Optional.empty());
 	}
 
+
+	@SuppressWarnings("unchecked")
+	@Override
+	public Optional<List<News>> retrieveNews() {
+		if (!news.isPresent()) {
+			news = Optional.ofNullable(cacheNews.of(() -> (List<News>) tryToGetValues(News.class.getTypeName()).get(), DEFAULT_VALIDITY_DURATION, DEFAULT_VALIDITY_UNIT));
+		}
+		return news.map(news -> news.get()).orElse(Optional.empty());
+	}
 	
 	private Optional<?> tryToGetValues(String typeOfData) {
 		Optional<?> result = Optional.empty();
@@ -95,5 +110,4 @@ public class CachedMultiSourceDataProvider implements  BrandProvider, FeedbackPr
 		
 		return result;
 	}
-
 }

@@ -15,18 +15,23 @@ import com.typesafe.config.Config;
 
 import models.Brand;
 import models.Feedback;
+import models.News;
 import models.Price;
 import play.libs.ws.WSBodyReadables;
 import play.libs.ws.WSBodyWritables;
 import play.libs.ws.WSClient;
 
 @Singleton
-public class JsonWSProviderImpl implements JsonWSProvider, JsonListParser, JsonWSLoader, BrandProvider, FeedbackProvider, PriceProvider, WSBodyReadables, WSBodyWritables {
+public class JsonWSProviderImpl implements JsonWSProvider, JsonListParser, JsonWSLoader, BrandProvider, FeedbackProvider, PriceProvider, NewsProvider, WSBodyReadables, WSBodyWritables {
+	private static final String DISTANT_HOST = "legacy.hometime.fr";
+	private static final String DISTANT_PROT = "https://";
+	private static final String URL_START = DISTANT_PROT+DISTANT_HOST;
 	private final WSClient ws;
 	private final Config config;
 	private String brandWSUrl;
 	private String feedbacksUrl;
 	private String pricesUrl;
+	private String newsUrl;
 	
 	private final Logger logger = LoggerFactory.getLogger(getClass());
 	
@@ -44,9 +49,10 @@ public class JsonWSProviderImpl implements JsonWSProvider, JsonListParser, JsonW
 	public JsonWSProviderImpl(WSClient ws, Config config) {
         this.ws = ws;
         this.config = config;
-        this.brandWSUrl = "https://legacy.hometime.fr/ws/brands/get/all";
-        this.feedbacksUrl = "https://legacy.hometime.fr/ws/feedbacks/get/all";
-        this.pricesUrl = "https://legacy.hometime.fr/ws/prices/get/all";
+        this.brandWSUrl = "/ws/brands/get/all";
+        this.feedbacksUrl = "/ws/feedbacks/get/all";
+        this.pricesUrl = "/ws/prices/get/all";
+        this.newsUrl = "/ws/news/get/all";
 	}
 	
 	public JsonWSProviderImpl of() {
@@ -69,6 +75,11 @@ public class JsonWSProviderImpl implements JsonWSProvider, JsonListParser, JsonW
 		return tryToLoadJsonNode(feedbacksUrl).map(json -> tryToParseJsonNode(json, new TypeReference<List<Feedback>>(){})).orElse(Optional.empty());
 	}
 	
+	@Override
+	public Optional<List<News>> retrieveNews() {
+		return tryToLoadJsonNode(newsUrl).map(json -> tryToParseJsonNode(json, new TypeReference<List<News>>(){})).orElse(Optional.empty());
+	}
+	
 	private <T> Optional<List<T>> tryToParseJsonNode(JsonNode json, TypeReference<List<T>> type) {
 		try {
 		    return parseJsonNode(json, type);
@@ -80,9 +91,9 @@ public class JsonWSProviderImpl implements JsonWSProvider, JsonListParser, JsonW
 	
 	private Optional<JsonNode> tryToLoadJsonNode(String url) {
 		try {
-			return loadJson(url);
+			return loadJson(URL_START+url);
 		} catch(Exception e){
-		    logger.error("Exception when getting data from webservice ({}), call to external source failed : {}", url ,e.getMessage());
+		    logger.error("Exception when getting data from webservice ({}), call to external source failed : {}", URL_START+url ,e.getMessage());
 		}
 		return Optional.empty();
 	}

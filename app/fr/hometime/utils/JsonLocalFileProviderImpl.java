@@ -13,13 +13,15 @@ import com.fasterxml.jackson.databind.JsonNode;
 
 import models.Brand;
 import models.Feedback;
+import models.News;
 import models.Price;
 
 @Singleton
-public class JsonLocalFileProviderImpl implements JsonLocalFileProvider, JsonListParser, JsonLocalFileLoader, BrandProvider, FeedbackProvider, PriceProvider {
+public class JsonLocalFileProviderImpl implements JsonLocalFileProvider, JsonListParser, JsonLocalFileLoader, BrandProvider, FeedbackProvider, PriceProvider, NewsProvider {
 	private String brandFile;
 	private String feedbacksFile;
 	private String pricesFile;
+	private String newsFile;
 	
 	private final Logger logger = LoggerFactory.getLogger(getClass());
 	
@@ -27,6 +29,7 @@ public class JsonLocalFileProviderImpl implements JsonLocalFileProvider, JsonLis
         this.brandFile = "conf/brands-default.json";
         this.feedbacksFile = "conf/feedbacks-default.json";
         this.pricesFile = "conf/prices-default.json";
+        this.newsFile = "conf/news-default.json";
 	}
 	
 	public JsonLocalFileProviderImpl of() {
@@ -49,6 +52,11 @@ public class JsonLocalFileProviderImpl implements JsonLocalFileProvider, JsonLis
 		return tryToLoadJsonNode(feedbacksFile).map(json -> tryToParseJsonNode(json, new TypeReference<List<Feedback>>(){})).orElse(Optional.empty());
 	}
 	
+	@Override
+	public Optional<List<News>> retrieveNews() {
+		return tryToLoadJsonNode(newsFile).map(json -> tryToParseJsonNode(json, new TypeReference<List<News>>(){})).orElse(Optional.empty());
+	}
+	
 	private <T> Optional<List<T>> tryToParseJsonNode(JsonNode json, TypeReference<List<T>> type) {
 		try {
 		    return parseJsonNode(json, type);
@@ -66,4 +74,6 @@ public class JsonLocalFileProviderImpl implements JsonLocalFileProvider, JsonLis
 		}
 		return Optional.empty();
 	}
+
+
 }
