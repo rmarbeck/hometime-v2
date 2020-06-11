@@ -2170,10 +2170,10 @@ quotation.form.rolex.brand.models=Submariner, Daytona, GMT Master, Datejust
 quotation.form.head.intro=Pour obtenir un devis pour l''entretien d''une montre {0} (ou une autre marque), veuillez renseigner les informations ci-dessous. L''équipe Hometime vous répondra le plus vite possible pour établir un devis personnalisé.
 
 
-quotation.form.1.order.type=Simple réglage
-quotation.form.2.order.type=Entretien partiel
-quotation.form.3.order.type=Révision complète
-quotation.form.4.order.type=Réparation/restauration
+quotation.form.4.order.type=Simple réglage
+quotation.form.3.order.type=Entretien partiel
+quotation.form.1.order.type=Révision complète
+quotation.form.2.order.type=Réparation/restauration
 quotation.form.5.order.type=Urgence étanchéité
 
 quotation.form.1.method=SAV de la marque
