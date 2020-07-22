@@ -3267,7 +3267,7 @@ payment.page.table.description.label=Description
 payment.page.table.amount.label=Montant
 payment.page.table.amount.value=<b>{0,number}&nbsp;€</b>
 
-payment.page.form.button.label=Accèder au processus de paiement*
+payment.page.form.button.label=Accèder au <span class="d-none d-md-inline">processus de </span>paiement*
 payment.page.form.button.disclaimer=* en cliquant sur ce lien, vous serez redirigé vers la page de paiement de notre banque. Il s''agit d'un processus sécurisé.
 
 payment.page.error.message=Une erreur s'est produite ou le paiement a déjà été effectué.<br /><br /> Veuillez nous contacter pour plus de précisions.
