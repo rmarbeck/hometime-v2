@@ -2,6 +2,8 @@
 
 @import scala.collection.immutable._
 @import tags._
+@import fr.hometime.utils._
+
 
 @defining("page.prices") { case (key) =>
 
@@ -108,21 +110,21 @@
 						</tr>
 						<tr>
 						  <td>@Html(Messages(key+".table.body.watch.of.category", "3*"))</td>
-						  <td>@Html(Messages(key+".table.body.price.fixed", "20€"))</td>
-						  <td>@Html(Messages(key+".table.body.price.fixed", "49€"))</td>
+						  <td>@Html(Messages(key+".table.body.price.fixed", PriceHelper.getBatteryChangePrice("3")+"€"))</td>
+						  <td>@Html(Messages(key+".table.body.price.fixed", PriceHelper.getBatteryChangeAndWaterPrice("3")+"€"))</td>
 						  <td>@Html(Messages(key+".table.body.price.on.quotation", "100€"))</td>
 						</tr>
 						<tr>
 						  <td>@Html(Messages(key+".table.body.watch.of.category", "2**"))</td>
-						  <td>@Html(Messages(key+".table.body.price.fixed", "25€"))</td>
-						  <td>@Html(Messages(key+".table.body.price.fixed", "69€"))</td>
+						  <td>@Html(Messages(key+".table.body.price.fixed", PriceHelper.getBatteryChangePrice("2")+"€"))</td>
+						  <td>@Html(Messages(key+".table.body.price.fixed", PriceHelper.getBatteryChangeAndWaterPrice("2")+"€"))</td>
 						  <td>@Html(Messages(key+".table.body.price.on.quotation", "140€"))</td>
 						</tr>
 						
 						<tr>
 						  <td>@Html(Messages(key+".table.body.watch.of.category", "1***"))</td>
-						  <td>@Html(Messages(key+".table.body.price.fixed", "35€"))</td>
-						  <td>@Html(Messages(key+".table.body.price.fixed", "89€"))</td>
+						  <td>@Html(Messages(key+".table.body.price.fixed", PriceHelper.getBatteryChangePrice("1")+"€"))</td>
+						  <td>@Html(Messages(key+".table.body.price.fixed", PriceHelper.getBatteryChangeAndWaterPrice("1")+"€"))</td>
 						  <td>@Html(Messages(key+".table.body.price.on.quotation", "180€"))</td>
 						</tr>
 						<tr>

@@ -41,6 +41,28 @@ public class PriceHelper {
 		return result.toString();
 	}
 	
+	public static String getPricesForCategory(String categoryNumber) {
+		StringBuilder result = new StringBuilder();
+		Optional<Price> priceFound = getCategoryPrice(categoryNumber);
+		
+		if (priceFound.isPresent()) {
+			appendWithLeadingSeparator(getBatteryChangePrice(priceFound), result);
+			appendWithLeadingSeparator(getBatteryChangeAndWaterPrice(priceFound), result);
+			appendWithLeadingSeparator(getLowServicePriceSimplePrice(priceFound), result);
+			appendWithLeadingSeparator(getHighServicePriceSimplePrice(priceFound), result);
+			appendWithLeadingSeparator(getLowServicePriceChronoPrice(priceFound), result);
+			appendWithLeadingSeparator(getHighServicePriceChronoPrice(priceFound), result);
+			appendWithLeadingSeparator(getLowServicePriceGmtPrice(priceFound), result);
+			appendWithLeadingSeparator(getHighServicePriceGmtPrice(priceFound), result);
+			appendWithLeadingSeparator(getLowServicePriceComplexPrice(priceFound), result);
+			appendWithLeadingSeparator(getHighServicePriceComplexPrice(priceFound), result);
+			appendWithLeadingSeparator(getHighEmergencyFactorPrice(priceFound), result);
+			appendWithLeadingSeparator(getLowEmergencyFactorPrice(priceFound), result);
+		}
+		
+		return result.toString();
+	}
+	
 	private static void appendWithLeadingSeparator(Long value, StringBuilder result) {
 		result.append(",");
 		result.append(value);
@@ -99,11 +121,61 @@ public class PriceHelper {
 	}
 	
 	
+	public static Long getBatteryChangePrice(String categoryNumber) {
+		return getBatteryChangePrice(getCategoryPrice(categoryNumber));
+	}
+	
+	public static Long getBatteryChangeAndWaterPrice(String categoryNumber) {
+		return getBatteryChangeAndWaterPrice(getCategoryPrice(categoryNumber));
+	}
+	
+	public static Long getBatteryChangeAndWaterAndPolishPrice(String categoryNumber) {
+		return getBatteryChangeAndWaterAndPolishPrice(getCategoryPrice(categoryNumber));
+	}
+	
+	public static Long getLowServicePriceSimplePrice(String categoryNumber) {
+		return getLowServicePriceSimplePrice(getCategoryPrice(categoryNumber));
+	}
+	
+	public static Long getHighServicePriceSimplePrice(String categoryNumber) {
+		return getHighServicePriceSimplePrice(getCategoryPrice(categoryNumber));
+	}
+	
+	public static Long getLowServicePriceChronoPrice(String categoryNumber) {
+		return getLowServicePriceChronoPrice(getCategoryPrice(categoryNumber));
+	}
+	
+	public static Long getHighServicePriceChronoPrice(String categoryNumber) {
+		return getHighServicePriceChronoPrice(getCategoryPrice(categoryNumber));
+	}
+	
+	public static Long getLowServicePriceGmtPrice(String categoryNumber) {
+		return getLowServicePriceGmtPrice(getCategoryPrice(categoryNumber));
+	}
+	
+	public static Long getHighServicePriceGmtPrice(String categoryNumber) {
+		return getHighServicePriceGmtPrice(getCategoryPrice(categoryNumber));
+	}
+	
+	public static Long getLowServicePriceComplexPrice(String categoryNumber) {
+		return getLowServicePriceComplexPrice(getCategoryPrice(categoryNumber));
+	}
+	
+	public static Long getHighServicePriceComplexPrice(String categoryNumber) {
+		return getHighServicePriceComplexPrice(getCategoryPrice(categoryNumber));
+	}
+
+	public static Long getLowEmergencyFactorPrice(String categoryNumber) {
+		return getLowEmergencyFactorPrice(getCategoryPrice(categoryNumber));
+	}
+	
+	public static Long getHighEmergencyFactorPrice(String categoryNumber) {
+		return getHighEmergencyFactorPrice(getCategoryPrice(categoryNumber));
+	}
 	
 	public static Long getBatteryChangePrice(Brand brand) {
 		return getBatteryChangePrice(getBrandPrice(brand));
 	}
-	
 	
 	public static Long getBatteryChangeAndWaterPrice(Brand brand) {
 		return getBatteryChangeAndWaterPrice(getBrandPrice(brand));
@@ -184,6 +256,12 @@ public class PriceHelper {
 	
 	private static Optional<Price> getPriceForCategoryOfBrand(Brand brand) {
 		return getPriceForBrand(brand, priceProvider::findByBrandQuartzCategory);
+	}
+	
+	private static Optional<Price> getCategoryPrice(String categoryNumber) {
+		if (categoryNumber == null)
+			return Optional.empty();
+		return priceProvider.findByCategory(categoryNumber);
 	}
 	
 	private static Optional<Price> getPriceForBrand(Brand brand, Function<Brand, Optional<Price>> priceSelector) {
