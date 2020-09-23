@@ -1189,33 +1189,41 @@ content.paris.repairing.2.alt=Photo de la manipulation de la lunette tournante d
 
 #------ Watchmakers page ------------------
 #------ content.watchmakers
-content.watchmakers.content.count=3
+content.watchmakers.content.count=4
 content.watchmakers.content.head=Les horlogers Hometime
 content.watchmakers.content.head.subtitle=Qui sont nos horlogers ?
 content.watchmakers.html.title=Les horlogers Hometime
 content.watchmakers.html.description=Connaitre les horlogers travaillant chez watch next, leur expérience, leur parcours, leurs spécialités
 content.watchmakers.html.keywords=horlogers, expérience, diplomes,spécialités 
 
-content.watchmakers.content.3.head=Simon <span class="text-muted">- chef d''atelier</span>
-content.watchmakers.content.3.body=<div class="sub-title">Qui est-il ?</div>Simon a 39 ans, il exerce depuis 20 ans, il vit en région parisienne. \
+content.watchmakers.content.3.head=Andy
+content.watchmakers.content.3.body=<div class="sub-title">Qui est-il ?</div>Andy est notre dernier arrivé, il vient d''être dipômé, il vit en région parisienne. \
+ <div class="sub-title">Son parcours :</div>Titulaire d''un BMA et d''un Certificat de Qualification Professionnelle en horlogerie, il débute sa carrière chez Hometime depuis Octobre 2020. Lors de son cursus, Andy a obtenu notamment la médaille d''argent régionale au concours de Meilleur Apprenti de France en 2017. \
+ <div class="sub-title">Son rôle chez Hometime :</div>Disposant d''une agilité déjà très affirmée, il prend en charge les montres d''entrée et de milieu de gamme équipées de mouvements récents. \
+ <div class="sub-title">Il aime :</div>Découvrir de nouvelles choses et la diversité du métier.</b>.
+
+content.watchmakers.content.3.image.url=https://static.licdn.com/scds/common/u/images/themes/katy/ghosts/person/ghost_person_40x40_v1.png
+
+content.watchmakers.content.4.head=Simon <span class="text-muted">- chef d''atelier</span>
+content.watchmakers.content.4.body=<div class="sub-title">Qui est-il ?</div>Simon a 40 ans, il exerce depuis plus de 20 ans, il vit en région parisienne. \
  <div class="sub-title">Son parcours :</div>Après avoir travaillé pour les plus grandes maisons en SAV : Audemars Piguet, Jaeger LeCoultre... Simon a ouvert son propre atelier pendant 2 ans à Saint Germain en Laye. Après quelques expériences chez des horlogers prestigieux dans Paris, il a rejoint l''équipe en 2017. \
  <div class="sub-title">Son rôle chez Hometime :</div>Simon est associé chez Hometime. Il est le chef de l''atelier et à ce titre organise le travail, réalise les devis et se charge des réparations les plus compliquées.\
  <div class="sub-title">Il aime :</div>Tout ce qui est difficile... son surnom, <b>l''horloger de l''extrême</b>.
 
-content.watchmakers.content.3.image.url=https://d3qxyg7adi2rw7.cloudfront.net/assets/images/watchmakers/simon.jpg
+content.watchmakers.content.4.image.url=https://d3qxyg7adi2rw7.cloudfront.net/assets/images/watchmakers/simon.jpg
 
 content.watchmakers.content.2.head=Lou
-content.watchmakers.content.2.body=<div class="sub-title">Qui est-elle ?</div>Lou a 24 ans, elle exerce depuis 6 mois, elle vit à Paris et vient de Bretagne. \
+content.watchmakers.content.2.body=<div class="sub-title">Qui est-elle ?</div>Lou a 25 ans, elle vit à Paris et vient de Bretagne. \
  <div class="sub-title">Son parcours :</div>Lou a étudié l''horlogerie au Lycée Jean Jaurès à Rennes. Elle y a obtenu en 2018 un diplôme des métiers d''Art, après 4 ans d''apprentissage théorique et pratique. Lors de sa formation Lou a effectué des stages chez Jaeger LeCoultre, Seiko ou encore chez des horlogers indépendants.\
  <div class="sub-title">Son rôle chez Hometime :</div>Lou travaille chez Hometime depuis Septembre 2018, elle répare les montres équipées de mouvements ETA, Valjoux et se forme aux mouvements plus complexes sous la conduite de Simon.\
  <div class="sub-title">Elle aime :</div>Se lever le matin pour venir travailler et apprendre de ses brillants patrons ;-)
 
 content.watchmakers.content.2.image.url=https://d3qxyg7adi2rw7.cloudfront.net/assets/images/watchmakers/lou.jpg
 
-content.watchmakers.content.3.default.to.action.text=Venir nous voir
-content.watchmakers.content.3.default.to.action.perma=/perma/venir
-content.watchmakers.content.3.primary.to.action.text=Demander un devis
-content.watchmakers.content.3.primary.to.action.perma=/perma/devis
+content.watchmakers.content.4.default.to.action.text=Venir nous voir
+content.watchmakers.content.4.default.to.action.perma=/perma/venir
+content.watchmakers.content.4.primary.to.action.text=Demander un devis
+content.watchmakers.content.4.primary.to.action.perma=/perma/devis
 
 content.watchmakers.content.1.head=Notre équipe d''horlogers
 content.watchmakers.content.1.body= <br />Hometime dispose de sa propre équipe d''horlogers dédiés. Ils travaillent sur place et peuvent faire un premier diagnostic lors du dépôt de la montre avant de l''ausculter plus attentivement lorsque cela est nécessaire. \
