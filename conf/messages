@@ -4123,6 +4123,7 @@ admin.customer.head.watches.stored.by.registered.partner=Montres chez un partena
 admin.customer.head.watches.stored.by.us=Montres chez nous
 admin.customer.head.watches.other=Autres montres
 
+
 admin.customer.order.documents.no.order.document.to.display=Aucun bon de commande pour ce client
 admin.customer.head.order.documents=Ses bons de commande
 admin.customer.action.add.order.document=&nbsp;Nouveau bon de commande
