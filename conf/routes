@@ -63,6 +63,8 @@ GET     /venir-nous-voir													controllers.HomeController.visit(request: R
 GET     /how-to-come-to-visit-hometime    									controllers.HomeController.visit_en(request: Request)
 GET     /hardCodedToAppointment     										controllers.Default.redirect(to = "/venir-nous-voir")
 
+GET     /prendre-rendez-vous												controllers.HomeController.appointment(request: Request)
+
 GET     /demande-de-rappel													controllers.FormProcessingController.prepareCallBackRequest(request: Request)
 GET     /call-back			        										controllers.FormProcessingController.prepareCallBackRequest_en(request: Request)
 POST    /demande-de-rappel													controllers.FormProcessingController.processCallBackRequest(request: Request)

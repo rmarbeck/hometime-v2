@@ -76,6 +76,10 @@ public class HomeController extends Controller {
         return ok(views.html.visit_us.render(request, getDefaultMessages(request)));
     }
     
+    public Result appointment(Http.Request request) {
+        return ok(views.html.appointment.render(request, getDefaultMessages(request)));
+    }
+    
     public Result news(Http.Request request) {
         return ok(views.html.news.render(newsProvider.retrieveNews(), request, getDefaultMessages(request)));
     }

@@ -17,25 +17,19 @@
 						</div>
 }
 
-@defining("page.visit.us") { case (key) =>
+@defining("appointment") { case (key) =>
 
 	@layouts.main_helper_with_head_block(key) {
 	
 					<div class="topmargin-lg">
 					
-					<div class="full-width">										
-						@layouts.fragments.appointment_bar()
-					</div>
-						
-						<div class="topmargin-lg">
-						@List("icon-location",
-									"icon-walking",
-									"icon-line2-call-out").zipWithIndex.map { case (value, index) => @feature(value, key, index) }
-						</div>
+						@List("icon-calendar-check",
+									"icon-question-sign",
+									"icon-ok").zipWithIndex.map { case (value, index) => @feature(value, key, index) }
 	
-						<div class="col_full">
+						<div class="col_full center">
 
-							<iframe width="600" height="450" frameborder="0" style="border:0" src="https://www.google.com/maps/embed/v1/place?q=place_id:ChIJawfbyi9u5kcR9cL5oxLwnNo&key=AIzaSyBILpKrEOIAOcjVBa9-ownlM_oiEQqBTyc" allowfullscreen></iframe>
+							<h2>Disponible très bientôt</h2>
 
 						</div>
 					</div>

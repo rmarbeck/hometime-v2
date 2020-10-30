@@ -1,0 +1,20 @@
+@()(implicit messages: play.i18n.Messages)
+
+@import scala.collection.immutable._
+@import tags._
+
+		<!-- Appointment Bar
+		============================================= -->
+		<div id="appointment-bar">
+
+			<div class="promo promo-full notopborder padding-reduced warning-background">
+						<div class="container clearfix">
+							<h3><i class="icon-warning-sign"></i> @Html(Messages("global.text.covid.reasons"))<span></h3>
+							<span>@Html(Messages("global.text.covid.footer"))&nbsp;<a href="tel:@Messages("global.href.phone.number")" title="@Html(Messages("global.phone.number.link.title"))" rel="nofollow">@Html(Messages("global.text.phone.number"))</a></span></span>
+							<div class="action">
+								<a href="@routes.HomeController.appointment()" title="@Html(Messages("global.appointment.title"))"  class="button button-rounded button-reveal button-large"><i class="icon-calendar3"></i><span>@Html(Messages("global.action.text.appointment.action"))</span></a>
+							</div>
+						</div>
+				</div>	
+				
+		</div><!-- #appointment-bar end -->

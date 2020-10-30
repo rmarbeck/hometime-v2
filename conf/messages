@@ -11,6 +11,10 @@ global.home.title=Page d''accueil Hometime.fr
 global.visit.us.title=Comment venir à l''atelier&nbsp;?
 global.quotation.title=Demander un devis d''entretien
 
+global.action.text.appointment.action=Prendre RDV
+global.text.covid.reasons=Rendez-vous obligatoires pendant le confinement 
+global.text.covid.footer=Prenez rendez-vous en ligne, ou appelez-nous si nécessaire pour que nous nous déplacions&nbsp;:
+
 top.bar.address.street=322 rue Saint Honoré,
 top.bar.address.zip=75001
 top.bar.address.city=Paris
@@ -589,7 +593,28 @@ page.visit.us.title.1=Une fois sur place
 page.visit.us.body.1=Nos locaux sont sur cour, après la porte sur la rue : <b>au fond du couloir, prendre l''escalier à droite, puis 1er étage à droite</b>.
 
 page.visit.us.title.2=Appelez-nous&nbsp;!
-page.visit.us.body.2=Appelez-nous pour prendre rendez-vous ou pour plus de précisions&nbsp;: <a href="tel:0782434751" rel="nofollow"><span>07&nbsp;82&nbsp;43&nbsp;47&nbsp;51</span></a> 
+page.visit.us.body.2=Appelez-nous pour prendre rendez-vous ou pour plus de précisions&nbsp;: <a href="tel:0782434751" rel="nofollow"><span>07&nbsp;82&nbsp;43&nbsp;47&nbsp;51</span></a>  
+
+
+#------ Appointment page ------------------
+#------ appointment
+appointment.html.title=Prendre un rendez-vous
+appointment.html.description=Prise de rendez vous type click and collect pendant le confinement pour déposer ou venir chercher une montre. Laissez-vous guider. 
+appointment.html.keywords=Rendez-vous, confinement, covid, click and collect, livraison, locaux Hometime Paris, révision complète montre, démagnétisation, changement de pile, changement de batterie, horloger agréé, étanchéité, horloger indépendant, réparation, montre, paris
+appointment.head=Prendre un rendez-vous
+appointment.head.subtitle=Choisissez un créneau de 30 minutes pour venir chercher ou déposer une montre&nbsp;!
+appointment.head.intro=Pendant le confinement, nous vous recevons uniquement sur rendez-vous pour déposer ou venir chercher une montre.<br/>Laissez-vous guider pour choisir votre créneau&nbsp;!
+appointment.disclaimer=N''hésitez pas à prendre contact avec nous pour plus de précisions&nbsp;!
+
+
+appointment.title.0=Choisissez un créneau
+appointment.body.0=Dans la liste des créneaux disponibles, choisissez la fenêtre de <strong>30 minutes</strong> qui vous convient.
+
+appointment.title.1=Indiquez le motif
+appointment.body.1=Indiquez nous le <strong>motif de votre venue</strong> ainsi que <strong>vos coordonnées</strong>.
+
+appointment.title.2=Confirmez
+appointment.body.2=Vous recevrez un sms vous permettant de confirmer votre rendez-vous puis de l''annuler si nécessaire.<br /><strong>Munissez-vous de votre attestation&nbsp;!</strong>
 
 
 #------ News page ------------------
@@ -742,7 +767,7 @@ content.water.repairing.html.keywords=entretien, réparation, montre mécanique,
 content.water.repairing.content.head=Problème d''étanchéité
 content.water.repairing.content.head.subtitle=Que faire en cas d''entrée d''eau dans une montre
 
-content.water.repairing.content.1.head=Je vois <span class="text-muted">de la buée sur mon verre !</span>
+content.water.repairing.content.1.head=Je vois <span class="text-muted">de la buée sur mon verre&nbsp;!</span>
 content.water.repairing.content.1.body=<div class="sub-title"></div>Une montre étanche est conçue pour empêcher toute entrée d''eau à l''intérieur du boitier. Il arrive malgré tout que de l''eau puisse pénétrer dans la montre à cause d''une mauvaise manipulation ou bien d''une défaillance ou d''une usure d''une des pièces.\
  <br /><br />Si l''eau entre facilement dans le boitier, il est plus compliqué de la faire sortir et dans tous les cas la présence d''eau, même de courte durée, justifie une intervention horlogère (a fortiori dans le cas de l''eau de mer ou de l''eau de piscine).\
  <br /><br />Les symptômes sont simples, si vous voyez de la buée sur le verre ou sur le fond de la montre, ou pire des traces de rouille, alors votre montre a pris l''eau.
@@ -752,7 +777,7 @@ content.water.repairing.content.1.image.url=https://d3qxyg7adi2rw7.cloudfront.ne
 content.water.repairing.content.1.image.title=Monaco embuée
 content.water.repairing.content.1.image.alt=Photo d''une Monaco embuée
 
-content.water.repairing.content.2.head=Que faire <span class="text-muted">si ma montre a pris l''eau ?</span>
+content.water.repairing.content.2.head=Que faire <span class="text-muted">si ma montre a pris l''eau&nbsp;?</span>
 content.water.repairing.content.2.body=<div class="sub-title"></div>Le maître mot lorsque de l''eau entre dans le boitier de votre montre : <b>AGIR VITE !</b>\
  <br /><br />Les dégâts occasionnés par l''eau peuvent être vite importants, surtout s''il s''agit d''eau de mer ou d''eau chlorée, mais si l''<b>intervention est très rapide il est possible d''éviter toute conséquence</b>.\
  <br /><br />Une fois dans l''atelier horloger, la cause de l''intrusion d''eau est détectée puis la montre est démontée, séchée, nettoyée (pour être débarrassée de toute source de corrosion).\
