@@ -73,11 +73,7 @@ public class HomeController extends Controller {
     }
     
     public Result visit(Http.Request request) {
-        return ok(views.html.visit_us.render(request, getDefaultMessages(request)));
-    }
-    
-    public Result appointment(Http.Request request) {
-        return ok(views.html.appointment.render(request, getDefaultMessages(request)));
+        return ok(views.html.visit_us.render(Optional.empty(), request, getDefaultMessages(request)));
     }
     
     public Result news(Http.Request request) {
@@ -129,7 +125,7 @@ public class HomeController extends Controller {
     }
 
     public Result visit_en(Http.Request request) {
-        return ok(views.html.visit_us.render(request, getMessagesForInEnglishPages(request)));
+        return ok(views.html.visit_us.render(Optional.empty(), request, getMessagesForInEnglishPages(request)));
     }
     
     private Messages getDefaultMessages(Http.Request request) {

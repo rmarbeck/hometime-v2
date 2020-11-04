@@ -1,5 +1,6 @@
 package controllers;
 
+import java.time.Instant;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
@@ -20,6 +21,7 @@ import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 import com.typesafe.config.Config;
 
+import fr.hometime.utils.AppointmentOptionsProvider;
 import fr.hometime.utils.BrandProvider;
 import fr.hometime.utils.NewsProvider;
 import fr.hometime.utils.PriceProvider;
@@ -34,6 +36,8 @@ import play.mvc.*;
 import play.libs.Json;
 import play.libs.ws.*;
 import models.AcceptQuotationRequestData;
+import models.AppointmentOptionProxy;
+import models.AppointmentRequestData;
 import models.AuthenticationCheckRequestData;
 import models.AutoQuotationRequestData;
 import models.Brand;
@@ -62,6 +66,7 @@ public class FormProcessingController extends Controller implements WSBodyReadab
 	private FormFactory formFactory;
 	private BrandProvider brandProvider;
 	private PriceProvider priceProvider;
+	private AppointmentOptionsProvider appointmentOptionsProvider;
 	private final WSClient ws;
 	private final Config config;
 	
@@ -70,12 +75,13 @@ public class FormProcessingController extends Controller implements WSBodyReadab
 	private final Logger logger = LoggerFactory.getLogger(getClass());
 	
 	@Inject
-    public FormProcessingController(FormFactory formFactory, MessagesApi messagesApi, WSClient ws, BrandProvider brandProvider, PriceProvider priceProvider, Config config) {
+    public FormProcessingController(FormFactory formFactory, MessagesApi messagesApi, WSClient ws, BrandProvider brandProvider, PriceProvider priceProvider, AppointmentOptionsProvider appointmentOptionsProvider, Config config) {
         this.formFactory = formFactory;
         this.messagesApi = messagesApi;
         this.brandProvider = brandProvider;
         this.priceProvider = priceProvider;
         injectedPriceProvider = priceProvider;
+        this.appointmentOptionsProvider = appointmentOptionsProvider;
         this.ws = ws;
         this.config = config;
     }
@@ -224,6 +230,62 @@ public class FormProcessingController extends Controller implements WSBodyReadab
 	}
 	
 	
+	/*************************************
+	 * 
+	 * Appointment
+	 * 
+	 *************************************/
+    
+    public Result prepareAppointment(Http.Request request) {
+        return ok(views.html.appointment.render(formFactory.form(AppointmentRequestData.class).withDirectFieldAccess(true), appointmentOptionsProvider.retrieveAvailableOptions(), false, request, messagesApi.preferred(request)));
+    }
+    
+    public Result confirmedAppointment(Http.Request request) {
+        return ok(views.html.appointment.render(formFactory.form(AppointmentRequestData.class).withDirectFieldAccess(true), appointmentOptionsProvider.retrieveAvailableOptions(), true, request, messagesApi.preferred(request)));
+    }
+	
+	public CompletionStage<Result> processAppointment(Http.Request request) {
+		final Form<AppointmentRequestData> boundForm = formFactory.form(AppointmentRequestData.class).withDirectFieldAccess(true).bindFromRequest(request);
+		
+		if (boundForm.hasErrors()) {
+			return CompletableFuture.supplyAsync(() -> badRequest(views.html.appointment.render(formFactory.form(AppointmentRequestData.class).withDirectFieldAccess(true), appointmentOptionsProvider.retrieveAvailableOptions(), false, request, messagesApi.preferred(request))));
+		} else {
+			CompletionStage<? extends WSResponse> responsePromise = wsWithSecret("https://legacy.hometime.fr/new-appointment-from-outside").setContentType("application/x-www-form-urlencoded").post(request.body().asFormUrlEncoded().entrySet().stream().map(entry -> flattenValues(entry.getKey(), entry.getValue(), "&")).collect( Collectors.joining( "&" )));
+			return responsePromise.handle((response, error) -> handleFormResponse(response, error, request, "appointment"));
+		}
+	}
+	
+	public CompletionStage<Result> validateAppointment(Http.Request request, String uniqueKey) {
+		CompletionStage<? extends WSResponse> responsePromise = wsWithSecret("https://legacy.hometime.fr/a/v/"+uniqueKey).get();
+		return responsePromise.handle((response, error) -> genericHandler(response, error, request, "appointment", () -> {
+			JsonNode json = response.asJson();
+			  if (json == null) {
+			    return badRequest("Expecting Json data");
+			  }
+			  return ok(views.html.visit_us.render(appointmentRequestfromJson(json), request, messagesApi.preferred(request)));
+		}));
+	}
+	
+	public CompletionStage<Result> cancelAppointment(Http.Request request, String uniqueKey) {
+		CompletionStage<? extends WSResponse> responsePromise = wsWithSecret("https://legacy.hometime.fr/a/c/"+uniqueKey).get();
+		return CompletableFuture.supplyAsync(() -> ok(views.html.visit_us.render(Optional.empty(), request, messagesApi.preferred(request))));
+	}
+	
+	private Optional<AppointmentRequestData> appointmentRequestfromJson(JsonNode root) {
+		if (root != null) {
+			AppointmentRequestData fromJson = new AppointmentRequestData();
+			fromJson.datetimeAsString = root.findPath("appointment").textValue();
+			fromJson.uniqueKey = root.findPath("uniqueKey").textValue();
+			fromJson.datetimeAsStringNiceToDisplay = root.findPath("appointmentNiceToDisplay").textValue();
+			fromJson.customerName = root.findPath("customerDetails").textValue();
+			fromJson.phoneNumber = root.findPath("customerPhoneNumber").textValue();
+			fromJson.reason = AppointmentRequestData.Reason.fromString(root.findPath("reason").textValue());
+			fromJson.status = root.findPath("status").textValue();
+					
+			return Optional.of(fromJson);
+		}
+		return Optional.empty();
+	}
 	
 	/*************************************
 	 * 

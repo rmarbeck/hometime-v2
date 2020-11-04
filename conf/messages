@@ -12,7 +12,7 @@ global.visit.us.title=Comment venir à l''atelier&nbsp;?
 global.quotation.title=Demander un devis d''entretien
 
 global.action.text.appointment.action=Prendre RDV
-global.text.covid.reasons=Rendez-vous obligatoires pendant le confinement 
+global.text.covid.reasons=Rendez-vous obligatoire pendant le confinement 
 global.text.covid.footer=Prenez rendez-vous en ligne, ou appelez-nous si nécessaire pour que nous nous déplacions&nbsp;:
 
 top.bar.address.street=322 rue Saint Honoré,
@@ -616,6 +616,36 @@ appointment.body.1=Indiquez nous le <strong>motif de votre venue</strong> ainsi 
 appointment.title.2=Confirmez
 appointment.body.2=Vous recevrez un sms vous permettant de confirmer votre rendez-vous puis de l''annuler si nécessaire.<br /><strong>Munissez-vous de votre attestation&nbsp;!</strong>
 
+global.text.appointment.validated=Votre rendez vous est validé pour le <b>{0}</b>
+global.text.appointment.cancel=Si vous souhaitez l''annuler, veuillez cliquer
+global.text.appointment.cancel.title=Annulation du rendez-vous
+global.text.cancel.action.text=sur ce lien
+
+
+#------ Appointment Success Page ------------------
+#------ appointment.success
+appointment.success.html.title=Prise de rendez-vous en cours
+appointment.success.html.description=Formulaire de prise de rendez vous, rendez-vous à confirmer.
+appointment.success.html.keywords=Prendez rendez-vous
+appointment.success.head=Prendre un rendez-vous
+appointment.success.head.subtitle=Demande de rendez-vous en cours de validation
+
+appointment.success.head.intro=Votre demande a bien été enregistrée, vous allez recevoir par SMS un lien vous permettant de valider votre venue. <br>ATTENTION il est obligatoire de cliquer sur ce lien pour valider définitivement votre rendez vous&nbsp;!<br><br>\
+Une fois le rendez-vous confirmé, vous pourrez l''annuler si nécessaire.<br><br>\
+Munissez vous de votre <strong>attestation de déplacement dérogatoire</strong> dûment remplie. Il vous faut remplir la mention faisant référence à un déplacement pour un <strong>"RETRAIT DE COMMANDE"</strong>.
+
+appointment.success.disclaimer=N''hésitez pas à nous contacter si vous avez la moindre question&nbsp;!
+
+
+appointment.error.html.title=Demande de rappel en erreur
+appointment.error.html.description=Demande de rappel en échec
+appointment.error.html.keywords=demande, rappel, ko
+
+appointment.error.head=Erreur
+appointment.error.head.subtitle=Problème rencontré lors de la demande de rappel
+appointment.error.head.intro=Veuillez nous excuser, une erreur s''est produite.<br/>Peut-être celle-ci est transitoire, alors n''hésitez pas à réessayer ou à nous appeler&nbsp;!<br /><br />Nous allons essayer de résoudre le problème au plus vite.
+appointment.error.disclaimer=Nous avons enregistré cette erreur et allons essayer de la résoudre rapidement. Merci de votre compréhension.
+
 
 #------ News page ------------------
 #------ page.news
@@ -700,6 +730,40 @@ page.faq.content.15.answer=Même s''il n''est pas possible d''être sûr à 100%
 page.faq.content.16.question=Peut-on vous joindre par téléphone&nbsp;?
 page.faq.content.16.answer=Nous sommes joignables au 07&nbsp;82&nbsp;43&nbsp;47&nbsp;51 (numéro de mobile standard).
 
+
+#------ Appointment form ------------------
+#------ appointment.form
+
+appointment.form.reason.label=Motif de votre venue
+appointment.form.deposit.reason=Je viens déposer une&nbsp;montre
+appointment.form.pickup.reason=Je viens chercher une&nbsp;montre
+
+appointment.form.datetime.label=Choix du créneau horaire
+appointment.form.datetime.default=Choisissez parmi les créneaux disponibles
+appointment.form.group.label.customer=Vos coordonnées
+appointment.form.customername.label=Vos nom et prenom
+appointment.form.customername.placeholder=Prénom Nom
+appointment.form.phonenumber.label=Votre numéro de téléphone
+appointment.form.phonenumber.placeholder=06xxxxxxxx
+appointment.form.remark.label=Remarque
+appointment.form.remark.placeholder=...
+
+appointment.form.submit=Envoyer la demande
+
+
+appointment.form.action.alternative.separator=Vous préférez que nous vous rappelions&nbsp;?
+
+appointment.form.process.step.1=Créneau
+appointment.form.process.step.2=Motif
+appointment.form.process.step.3=Coordonnées
+appointment.form.process.step.4=Attestation
+
+appointment.form.action.alternative=Etre rappelé
+
+appointment.form.header.legal=<b>Pensez à remplir votre attestation de déplacement dérogatoire !</b>
+appointment.form.body.legal=Pendant le confinement, il est possible de se déplacer pour aller chercher une commande chez un commerçant.<br/>Pour cela, vous devez remplir l''<a href="https://www.google.com/search?q=attestation+de+d%C3%A9placement+d%C3%A9rogatoire">attestation de déplacement dérogatoire</a> mise à disposition par le gouvernement.<br><br>\
+Le motif de déplacement choisi doit être celui contenant la mention <b>"RETRAIT DE COMMANDE"</b>.<br/><br/><br/><br/>\
+Si vous avez besoin de précisions vous pouvez nous envoyer un email à <a href="mailto:contact@hometime.fr">contact@hometime.fr</a> ou bien nous appeler au <b>07&nbsp;82&nbsp;43&nbsp;47&nbsp;51</b>
 
 
 #------ Auto quotation form ------------------

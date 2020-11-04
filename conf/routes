@@ -63,7 +63,9 @@ GET     /venir-nous-voir													controllers.HomeController.visit(request: R
 GET     /how-to-come-to-visit-hometime    									controllers.HomeController.visit_en(request: Request)
 GET     /hardCodedToAppointment     										controllers.Default.redirect(to = "/venir-nous-voir")
 
-GET     /prendre-rendez-vous												controllers.HomeController.appointment(request: Request)
+GET     /prendre-rendez-vous												controllers.FormProcessingController.prepareAppointment(request: Request)
+POST    /prendre-rendez-vous												controllers.FormProcessingController.processAppointment(request: Request)
+GET     /rendez-vous-confirme												controllers.FormProcessingController.confirmedAppointment(request: Request)
 
 GET     /demande-de-rappel													controllers.FormProcessingController.prepareCallBackRequest(request: Request)
 GET     /call-back			        										controllers.FormProcessingController.prepareCallBackRequest_en(request: Request)
@@ -117,7 +119,7 @@ GET     /paiement/:ak               										controllers.PaymentProcessingContr
 
 GET		/verification/certificat											controllers.FormProcessingController.checkAuthentication(request: Request, id1: Long, id2: Long, id3: Long)
 
-#GET     /notify			     							controllers.Application.newIncomingCall(secret: String, phonenumber: String, missed: Boolean ?= false)
+#GET     /notify			     											controllers.Application.newIncomingCall(secret: String, phonenumber: String, missed: Boolean ?= false)
 
 GET     /choisir/type/devis/entretien/montre/:brand							controllers.HomeController.chooseQuotation(request: Request, brand)
 
@@ -126,6 +128,10 @@ GET     /content/:page														controllers.HomeController.content(request: 
 GET     /test																controllers.HomeController.test(request: Request)
 
 POST	/abonnement															controllers.FormProcessingController.processRegister(request: Request)
+
+# Appointment
+GET	    /a/v/:uniqueKey               										controllers.FormProcessingController.validateAppointment(request: Request, uniqueKey: String)
+GET	    /a/c/:uniqueKey               										controllers.FormProcessingController.cancelAppointment(request: Request, uniqueKey: String)
 
 
 GET		/perma/offre														controllers.Default.redirect(to = "/les-services/l-offre")

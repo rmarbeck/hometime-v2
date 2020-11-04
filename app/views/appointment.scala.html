@@ -1,7 +1,259 @@
-@()(implicit request: Http.Request, messages: play.i18n.Messages)
+@(form: Form[AppointmentRequestData], appointments: Optional[List[AppointmentOptionProxy]], validated: Boolean)(implicit request: Http.Request, messages: play.i18n.Messages)
 
 @import scala.collection.immutable._
 @import tags._
+@import fr.hometime.utils._
+
+@implicitField = @{ helper.FieldConstructor(canvasFieldTemplate.f) }
+
+@*****************************************
+ * Keys
+ *****************************************@
+
+@formKey = {appointment.form}
+
+@*****************************************
+ * Style Helpers
+ *****************************************@
+
+@inputDiv(size: Int, addedClass: String="")(content: Html) = {
+	<div class="col-md-@size form-group mb-4 @addedClass">
+		@content
+	</div>
+}
+
+@fullWidth(addedClass: String="")(content: Html) = {
+	@inputDiv(12, addedClass) {@content}
+}
+
+@halfWidth(addedClass: String="")(content: Html) = {
+	@inputDiv(6, addedClass) {@content}
+}
+
+@computeClassForInput(isRequired: Boolean, isInError: Boolean, args: (Symbol,Any)*) = {form-control @if(isRequired) {required} @if(isInError) {error} @args.toMap.get(Symbol("_body_class")).map(_.toString)}
+
+@selectLabelClassCss(size: Int) = {btn btn-outline-secondary px-@size t600 ls0 nott}
+
+@*****************************************
+ * End of Style Helpers
+ *****************************************@
+ 
+ @*****************************************
+ * Form Helpers
+ *****************************************@
+
+@computeMessageKey(fieldName: String, suffix: String) = {@{formKey}.@{fieldName.toString.toLowerCase.replace('_','.')}.@{suffix}}
+
+@inputText(fieldName: String, isRequired: Boolean, isInError: Boolean, args: (Symbol,Any)*) = {
+	@helper.inputText(form(fieldName), (Seq(Symbol("class") -> computeClassForInput(isRequired, isInError, args:_*).toString, Symbol("_showConstraints") -> false, Symbol("placeholder") -> Html(Messages(computeMessageKey(fieldName, "placeholder").toString)), Symbol("_label") -> Html(Messages(computeMessageKey(fieldName, "label").toString))) ++ args):_* )(tags.canvasFieldTemplate, messages)
+}
+
+@inputBox(fieldName: play.data.Form.Field, isRequired: Boolean, args: (Symbol,Any)*) = {
+	@halfWidth() {
+		@inputText(fieldName.name.get, isRequired, fieldName.hasErrors, args:_*)
+	}
+}
+
+@selectField(size: Int, id: String, name: String, value: Option[String], tuple: (String, play.twirl.api.Html), args: Map[Symbol,Any]) = {
+											<label for="@(id)_@tuple._1" class="@selectLabelClassCss(size) @if(value == Some(tuple._1)){active}">
+												<input type="radio" name="@name" id="@(id)_@tuple._1" autocomplete="off" value="@tuple._1" @if(value == Some(tuple._1)){checked="checked"} @toHtmlArgs(args)>@tuple._2</input>
+											</label>
+}
+
+@*****************************************
+ * End of Form Helpers
+ *****************************************@
+ 
+ 
+ 
+@end_script = {
+<script>
+$(document).ready(function(){
+    function resetToStep(stepNumber) {
+		if (stepNumber <= 1)
+ 			$( '.reason' ).addClass('hidden');
+ 		if (stepNumber <= 2)
+ 			$( '.details' ).addClass('hidden');
+ 		if (stepNumber <= 3)
+     		$( '.remark' ).addClass('hidden');
+	    
+ 		$( '.result' ).addClass('hidden');
+
+
+ 		updateStepInHeader(stepNumber);
+    }
+    
+    function displayReason() {
+    		$( '.reason' ).removeClass('hidden');
+     		$( '.details' ).addClass('hidden');
+     		$( '.remark' ).addClass('hidden');
+     		$( '.result' ).addClass('hidden');
+     		scroller('.reason');
+     		
+     		updateStepInHeader(2);
+    }
+    
+    function displayDetails() {
+     		$( '.details' ).removeClass('hidden');
+     		$( '.remark' ).addClass('hidden');
+     		$( '.result' ).addClass('hidden');
+     		scroller('.details');
+     		
+     		updateStepInHeader(3);
+    }
+    
+    function displaySubmit() {
+     		$( '.remark' ).removeClass('hidden');
+     		$( '.result' ).addClass('hidden');
+     		scroller('.remark');
+    }
+    
+    function hideSubmit() {
+    	if (!$( '.remark' ).hasClass('hidden')) {
+	    	$( '.remark' ).addClass('hidden');
+     		$( '.result' ).addClass('hidden');
+     		scroller('.details');
+    	}
+    }
+    
+    function displayLegalForm() {
+		    $( '.steps-description' ).addClass('hidden');
+    		$( '.step1' ).addClass('hidden');
+    		$( '.reason' ).addClass('hidden');
+     		$( '.details' ).addClass('hidden');
+     		$( '.remark' ).addClass('hidden');
+     		$( '.result' ).removeClass('hidden');
+     		scroller('.result');
+     		
+     		updateStepInHeader(4);
+    }
+    
+    function displayResult() {
+    		updateStepInHeader(5);
+     		$( '.result' ).addClass('hidden');
+    		$( '.quotation' ).removeClass('hidden');
+     		displayChoices();
+     		$('#privateInfos').val($('#quotation-price').text().trim());
+     		scroller('.quotation');
+    }
+    
+    
+	function scroller(classToScrollTo) {
+	    var scrollOffset = 0;
+		if (window.matchMedia("(min-width: 768px)").matches) {
+			scrollOffset = -700;
+		} else {
+			scrollOffset = -100;
+		}
+    	$('html, body').animate({scrollTop: $(classToScrollTo).offset().top + scrollOffset }, 'slow');
+    }
+    
+    function updateStepInHeader(step) {
+    		var i;
+		    for (i = 1; i <= step; i++) {
+			    $('#ui-id-'+i).parent().removeClass('ui-tabs-active ui-state-active');
+			    $('#ui-id-'+i).parent().addClass('ui-tabs-active ui-state-active');
+		    }
+		    for (i = step + 1 ; i < 5; i++) {
+			    $('#ui-id-'+i).parent().removeClass('ui-tabs-active ui-state-active');
+		    }
+    }
+    
+    function checkDetails() {
+    	activeCustomerName=$('input[name="customerName"]').val();
+    	activePhoneNumber=$('input[name="phoneNumber"]').val();
+    	if ( activePhoneNumber.length > 9 &&  activeCustomerName != "") {
+    		displaySubmit();
+    	} else {
+    		hideSubmit();
+    	}
+    }
+    
+
+    function manageDatetimeSelection() {
+    	if ($('#datetimeAsString').find('option:selected').val() != "") {
+     		$('input[name="reason"]').removeAttr("checked");
+     		activeDatetime = $('#datetimeAsString').find('option:selected').val();
+     		activeDatetimeName = $('#datetimeAsString').find('option:selected').text();
+     		if (activeDatetimeName == 'Autre marque') {
+     			resetToStep(1);
+	     		displayActionContact();
+	     	} else {
+	     		$( '.result' ).addClass('hidden');
+	     	   	displayReason();
+	     	}
+     	} else {
+     		$( '.result' ).addClass('hidden');
+    		resetToStep(1); 	
+     	}	
+    }
+        	
+	//$('h1').append(" - étape <span id='step-value'>1</span> sur <span id='step-out-of'>5</span>");
+
+	if(@validated == true) {
+		displayLegalForm();
+	} else {    
+    	resetToStep(1);
+    	manageDatetimeSelection();
+    }
+	
+	$('#datetimeAsString').change(function() {
+     	manageDatetimeSelection();																																															
+ 	});
+    
+    $('input[name="reason"]').change(function() {
+		selected_value = $('input[name="reason"]:checked').val();
+		displayDetails()
+    });
+    
+    $('input[name="customerName"]').change(function(){
+    	checkDetails();
+    });
+    
+    $('input[name="phoneNumber"]').keyup(function(){
+    	checkDetails();
+    });
+         
+})
+</script>
+}
+
+@result_block(title: Html, body: Html, displayDisclaimer: Boolean, cssCass: String = "")(action : Html) = {
+									<div class="col-12 mt-2 mb-3 result hidden @cssCass">
+										<div class="card p-3 bg-light text-center">
+											<div class="my-forms">
+												<h3 class="mb-2 auto-quotation-result-title">@title</h3>
+												<div class="auto-quotation-result-title-body">@body</div>
+												<div class="auto-quotation-result-actions form-group">
+								                  <div class="main-action">
+								                  	@action
+								                  </div>
+								                  <div class="separator">
+								                    @Html(Messages(formKey.toString+".action.alternative.separator"))
+								                  </div>
+								                  <div class="action-alternative">
+								                    <a class="btn btn-outline-secondary noleftmargin" href="@routes.FormProcessingController.prepareCallBackRequest()" title="@Messages("global.text.call.request.title")"><i class="icon-line2-call-end"></i>&nbsp;&nbsp;@Html(Messages(formKey.toString+".action.alternative"))</a>
+								                  </div>
+								            	</div>
+								            	@if(displayDisclaimer) {
+										        	@Html(Messages(formKey.toString+".disclaimer.service.prices"))
+										        }
+											</div>
+										</div>
+									</div>
+									<div class="topmargin-lg result">
+										@List("icon-location",
+													"icon-walking",
+													"icon-line2-call-out").zipWithIndex.map { case (value, index) => @feature(value, "page.visit.us", index) }
+										</div>
+					
+									<div class="col_full result">
+				
+											<iframe width="600" height="450" frameborder="0" style="border:0" src="https://www.google.com/maps/embed/v1/place?q=place_id:ChIJawfbyi9u5kcR9cL5oxLwnNo&key=AIzaSyBILpKrEOIAOcjVBa9-ownlM_oiEQqBTyc" allowfullscreen></iframe>
+				
+									</div>
+}
+
 
 @feature(icon: String, key: String, index: Int) = {
 						<div class="col_one_third bottommargin-xl @if(index == 2) {col_last}">
@@ -19,20 +271,69 @@
 
 @defining("appointment") { case (key) =>
 
-	@layouts.main_helper_with_head_block(key) {
+	@layouts.main_helper_with_head_block(key, Symbol("_end_script") -> end_script) {
 	
 					<div class="topmargin-lg">
 					
+						<div class="steps-description">
 						@List("icon-calendar-check",
 									"icon-question-sign",
 									"icon-ok").zipWithIndex.map { case (value, index) => @feature(value, key, index) }
 	
+						</div>
 						<div class="col_full center">
 
-							<h2>Disponible très bientôt</h2>
+							<ul class="d-none d-md-block process-steps process-4 bottommargin clearfix ui-tabs-nav ui-corner-all ui-helper-reset ui-helper-clearfix ui-widget-header " role="tablist">
+						@List.range(1, 5).map{ value => 
+							<li role="tab" tabindex="@if(value==1) {0} else {-1}" class="ui-tabs-tab ui-corner-top ui-state-default ui-tab @if(value==1) {ui-tabs-active ui-state-active}" aria-controls="ptab@value" aria-labelledby="ui-id-@value" aria-selected=""@if(value==1) {true} else {false}" aria-expanded="@if(value==1) {true} else {false}">
+								<a href="#ptab@value" class="i-circled i-bordered i-alt divcenter ui-tabs-anchor" role="presentation" tabindex="-1" id="ui-id-@value">@value</a>
+								<h5>@Html(Messages(formKey.toString+".process.step."+value))</h5>
+							</li>
+						}
+						</ul>
+						@helper.form(action = routes.FormProcessingController.processAppointment(), Symbol("id") -> "website-cost", Symbol("class") -> "row mb-0") {
+							@helper.CSRF.formField
+									<div class="form-process"></div>
+									
+									@fullWidth("step1") {
+										@helper.select(form("datetimeAsString"), options = appointments.get().map(appointment => (appointment.id.toString, appointment.getNiceDisplayableDatetime)).toSeq, Symbol("_class") -> "not-clickable", Symbol("_disabled") -> appointments.get().filter(a => !a.available).map(appointment => (appointment.id.toString)).toSeq, Symbol("class") -> computeClassForInput(true, form("datetime").hasErrors, Symbol("_body_class") -> "").toString, Symbol("_default") -> Html(Messages(computeMessageKey("datetime", "default").toString)), Symbol("_label") -> Html(Messages(computeMessageKey("datetime", "label").toString)), Symbol("_showConstraints") -> false)
+									}
+
+									@fullWidth("my-forms reason") {
+										@helper.input(form("reason"), Symbol("_class") -> "mb-3 not-clickable", Symbol("_label") -> Html(Messages(computeMessageKey("reason", "label").toString)), Symbol("_showConstraints") -> false) { (id, name, value, args) =>
+												@AppointmentRequestData.Reason.values.map(value => (value.toString, Html(Messages(formKey.toString+"."+value.toString.toLowerCase.replace('_','.')+".reason")))).toSeq.map { v => @selectField(5, id, name, value, v, args) }
+										}(tags.canvasRadioGroupBoxedFieldTemplate, messages)
+									}
+									
+									<div class="col-12 mt-2 mb-3 details">
+										<div class="card p-3 bg-light">
+											<div class="my-forms">
+												<h3 class="mb-2">@Html(Messages(formKey.toString+".group.label.customer"))</h3>
+												<div class="row">
+													@List(("customerName", true),
+														("phoneNumber", true)).map { value => @inputBox(form(value._1), value._2) }
+												</div>
+												@fullWidth("remark") {
+													@helper.textarea(form("optionnalMessage"), Symbol("class") -> "form-control", Symbol("placeholder") -> Html(Messages(computeMessageKey("remark", "placeholder").toString)), Symbol("_label") -> Html(Messages(computeMessageKey("remark", "label").toString)), Symbol("cols") -> "30", Symbol("rows") -> "5", Symbol("_showConstraints") -> false)
+													@form_btn("website-cost", Messages(formKey.toString+".submit"))
+												}
+												<div class="col-12">
+													
+												</div>
+											</div>
+										</div>
+									</div>
+
+									@fullWidth("hidden") {
+										@helper.textarea(form("privateInfos"))
+									}
+									
+									@result_block(Html(Messages(formKey.toString+".header.legal")), Html(""), false, "contact") {
+									<span class="text-action">@Html(Messages(formKey.toString+".body.legal"))</span>
+									}
+	}
 
 						</div>
 					</div>
-	
 	}
 }

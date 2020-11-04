@@ -1,7 +1,32 @@
-@()(implicit request: Http.Request, messages: play.i18n.Messages)
+@(appointmentOption: java.util.Optional[AppointmentRequestData])(implicit request: Http.Request, messages: play.i18n.Messages)
 
 @import scala.collection.immutable._
 @import tags._
+
+@document_block(title: Html, body: Html, displayDisclaimer: Boolean, cssCass: String = "")(action : Html) = {
+									<div class="col-12 mt-2 mb-3 result @cssCass">
+										<div class="card p-3 bg-light text-center">
+											<div class="my-forms">
+												<h3 class="mb-2 auto-quotation-result-title">@title</h3>
+												<div class="auto-quotation-result-title-body">@body</div>
+												<div class="auto-quotation-result-actions form-group">
+								                  <div class="main-action">
+								                  	@action
+								                  </div>
+								                  <div class="separator">
+								                    @Html(Messages("appointment.form.action.alternative.separator"))
+								                  </div>
+								                  <div class="action-alternative topmargin-sm">
+								                    <a class="btn btn-outline-secondary noleftmargin" href="@routes.FormProcessingController.prepareCallBackRequest()" title="@Messages("global.text.call.request.title")"><i class="icon-line2-call-end"></i>&nbsp;&nbsp;@Html(Messages("appointment.form.action.alternative"))</a>
+								                  </div>
+								            	</div>
+								            	@if(displayDisclaimer) {
+										        	@Html(Messages("appointment.form.disclaimer.service.prices"))
+										        }
+											</div>
+										</div>
+									</div>
+}
 
 @feature(icon: String, key: String, index: Int) = {
 						<div class="col_one_third bottommargin-xl @if(index == 2) {col_last}">
@@ -21,11 +46,31 @@
 
 	@layouts.main_helper_with_head_block(key) {
 	
-					<div class="topmargin-lg">
+								
+						@if(appointmentOption.isPresent && appointmentOption.get.status.equals("VALIDATED")) {
+						<div class="full-width">	
+							<!-- Appointment Bar
+							============================================= -->
+							<div id="appointment-bar">
 					
-					<div class="full-width">										
-						@layouts.fragments.appointment_bar()
-					</div>
+								<div class="promo promo-full notopborder padding-reduced warning-background">
+											<div class="container clearfix">
+												<h3><i class="icon-check"></i>&nbsp;@Html(Messages("global.text.appointment.validated", appointmentOption.get.datetimeAsStringNiceToDisplay))<span></h3>
+												<span>@Html(Messages("global.text.appointment.cancel"))&nbsp;<a href="/a/c/@appointmentOption.get.uniqueKey" title="@Html(Messages("global.text.appointment.cancel.title"))" rel="nofollow">@Html(Messages("global.text.cancel.action.text"))</a></span></span>
+											</div>
+									</div>	
+									
+							</div><!-- #appointment-bar end -->
+						</div>
+						@document_block(Html(Messages("appointment.form.header.legal")), Html(""), false, "contact") {
+								<span class="text-action">@Html(Messages("appointment.form.body.legal"))</span>
+						}
+						} else {
+						<div class="full-width">						
+							@layouts.fragments.appointment_bar()
+						</div>
+						}
+					
 						
 						<div class="topmargin-lg">
 						@List("icon-location",
@@ -38,7 +83,6 @@
 							<iframe width="600" height="450" frameborder="0" style="border:0" src="https://www.google.com/maps/embed/v1/place?q=place_id:ChIJawfbyi9u5kcR9cL5oxLwnNo&key=AIzaSyBILpKrEOIAOcjVBa9-ownlM_oiEQqBTyc" allowfullscreen></iframe>
 
 						</div>
-					</div>
 	
 	}
 }

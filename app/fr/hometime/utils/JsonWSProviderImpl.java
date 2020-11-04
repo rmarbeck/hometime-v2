@@ -13,6 +13,7 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.typesafe.config.Config;
 
+import models.AppointmentOptionProxy;
 import models.Brand;
 import models.Feedback;
 import models.News;
@@ -22,7 +23,7 @@ import play.libs.ws.WSBodyWritables;
 import play.libs.ws.WSClient;
 
 @Singleton
-public class JsonWSProviderImpl implements JsonWSProvider, JsonListParser, JsonWSLoader, BrandProvider, FeedbackProvider, PriceProvider, NewsProvider, WSBodyReadables, WSBodyWritables {
+public class JsonWSProviderImpl implements JsonWSProvider, JsonListParser, JsonWSLoader, BrandProvider, FeedbackProvider, PriceProvider, NewsProvider, AppointmentOptionsProvider, WSBodyReadables, WSBodyWritables {
 	private static final String DISTANT_HOST = "legacy.hometime.fr";
 	private static final String DISTANT_PROT = "https://";
 	private static final String URL_START = DISTANT_PROT+DISTANT_HOST;
@@ -32,6 +33,7 @@ public class JsonWSProviderImpl implements JsonWSProvider, JsonListParser, JsonW
 	private String feedbacksUrl;
 	private String pricesUrl;
 	private String newsUrl;
+	private String appointmentOptionsUrl;
 	
 	private final Logger logger = LoggerFactory.getLogger(getClass());
 	
@@ -53,6 +55,7 @@ public class JsonWSProviderImpl implements JsonWSProvider, JsonListParser, JsonW
         this.feedbacksUrl = "/ws/feedbacks/get/all";
         this.pricesUrl = "/ws/prices/get/all";
         this.newsUrl = "/ws/news/get/all";
+        this.appointmentOptionsUrl = "/ws/appointment/options/get/all";
 	}
 	
 	public JsonWSProviderImpl of() {
@@ -78,6 +81,11 @@ public class JsonWSProviderImpl implements JsonWSProvider, JsonListParser, JsonW
 	@Override
 	public Optional<List<News>> retrieveNews() {
 		return tryToLoadJsonNode(newsUrl).map(json -> tryToParseJsonNode(json, new TypeReference<List<News>>(){})).orElse(Optional.empty());
+	}
+	
+	@Override
+	public Optional<List<AppointmentOptionProxy>> retrieveAvailableOptions() {
+		return tryToLoadJsonNode(appointmentOptionsUrl).map(json -> tryToParseJsonNode(json, new TypeReference<List<AppointmentOptionProxy>>(){})).orElse(Optional.empty());
 	}
 	
 	private <T> Optional<List<T>> tryToParseJsonNode(JsonNode json, TypeReference<List<T>> type) {
