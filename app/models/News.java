@@ -62,7 +62,7 @@ public class News {
 	public Optional<String> privateInfos;
 		
 	private News() {
-		System.out.println("??????????");
+		
 	}
 	
 	public News(String title, String body, NewsType type, Date date, String category, String previewUrl, Optional<String> previewAlt, Optional<String> readMoreUrl, boolean active) {

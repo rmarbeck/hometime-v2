@@ -12,6 +12,7 @@ import com.typesafe.config.Config;
 import fr.hometime.utils.BrandProvider;
 import fr.hometime.utils.ConfigWrapper;
 import fr.hometime.utils.FeedbackProvider;
+import fr.hometime.utils.LiveConfigProvider;
 import fr.hometime.utils.NewsProvider;
 import play.i18n.Lang;
 import play.i18n.Messages;
@@ -30,20 +31,25 @@ public class HomeController extends Controller {
 	private FeedbackProvider feedbackProvider;
 	private NewsProvider newsProvider;
 	private BrandProvider brandProvider;
+	private LiveConfigProvider liveConfigProvider;
 	private ConfigWrapper configWrapper;
 	
 	public static NewsProvider injectedNewsProvider;
 	
+	public static LiveConfigProvider injectedLiveConfigProvider;
+	
 	public static ConfigWrapper injectedConfigWrapper;
 	
     @Inject
-    public HomeController(MessagesApi messagesApi, views.html.content contentTemplate, views.html.faq faq, FeedbackProvider feedbackProvider, NewsProvider newsProvider, BrandProvider brandProvider, ConfigWrapper configWrapper) {
+    public HomeController(MessagesApi messagesApi, views.html.content contentTemplate, views.html.faq faq, FeedbackProvider feedbackProvider, NewsProvider newsProvider, BrandProvider brandProvider, LiveConfigProvider liveConfigProvider, ConfigWrapper configWrapper) {
         this.messagesApi = messagesApi;
         this.contentTemplate = contentTemplate;
         this.faq = faq;
         this.feedbackProvider = feedbackProvider;
         this.newsProvider = newsProvider;
         injectedNewsProvider = this.newsProvider;
+        this.liveConfigProvider = liveConfigProvider;
+        injectedLiveConfigProvider = this.liveConfigProvider;
         this.brandProvider = brandProvider;
         this.configWrapper = configWrapper;
         injectedConfigWrapper = configWrapper;

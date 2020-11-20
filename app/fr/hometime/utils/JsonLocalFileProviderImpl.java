@@ -13,15 +13,17 @@ import com.fasterxml.jackson.databind.JsonNode;
 
 import models.Brand;
 import models.Feedback;
+import models.LiveConfig;
 import models.News;
 import models.Price;
 
 @Singleton
-public class JsonLocalFileProviderImpl implements JsonLocalFileProvider, JsonListParser, JsonLocalFileLoader, BrandProvider, FeedbackProvider, PriceProvider, NewsProvider {
+public class JsonLocalFileProviderImpl implements JsonLocalFileProvider, JsonListParser, JsonLocalFileLoader, BrandProvider, FeedbackProvider, PriceProvider, NewsProvider, LiveConfigProvider {
 	private String brandFile;
 	private String feedbacksFile;
 	private String pricesFile;
 	private String newsFile;
+	private String liveConfigsFile;
 	
 	private final Logger logger = LoggerFactory.getLogger(getClass());
 	
@@ -30,6 +32,7 @@ public class JsonLocalFileProviderImpl implements JsonLocalFileProvider, JsonLis
         this.feedbacksFile = "conf/feedbacks-default.json";
         this.pricesFile = "conf/prices-default.json";
         this.newsFile = "conf/news-default.json";
+        this.liveConfigsFile = "conf/live-configs-default.json";
 	}
 	
 	public JsonLocalFileProviderImpl of() {
@@ -55,6 +58,12 @@ public class JsonLocalFileProviderImpl implements JsonLocalFileProvider, JsonLis
 	@Override
 	public Optional<List<News>> retrieveNews() {
 		return tryToLoadJsonNode(newsFile).map(json -> tryToParseJsonNode(json, new TypeReference<List<News>>(){})).orElse(Optional.empty());
+	}
+	
+	
+	@Override
+	public Optional<List<LiveConfig>> retrieveLiveConfigs() {
+		return tryToLoadJsonNode(liveConfigsFile).map(json -> tryToParseJsonNode(json, new TypeReference<List<LiveConfig>>(){})).orElse(Optional.empty());
 	}
 	
 	private <T> Optional<List<T>> tryToParseJsonNode(JsonNode json, TypeReference<List<T>> type) {
