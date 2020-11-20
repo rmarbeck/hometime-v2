@@ -11,7 +11,7 @@
 		============================================= -->
 		<div id="alert-bar-unstyled">
 				<div class="alert @AlertHelper.cssClass(provider).orElse("alert-warning") nobottommargin center">
-					<i class="@AlertHelper.leadingSign(provider).orElse("icon-warning-sign")"></i>@AlertHelper.message(HomeController.injectedLiveConfigProvider)
+					<i class="@AlertHelper.leadingSign(provider).orElse("icon-warning-sign")"></i>@Html(AlertHelper.message(provider))
 				</div>
 		</div><!-- #top-bar end -->
 }
