@@ -25,6 +25,7 @@ register.message.ok=Merci, nous avons bien enregistré votre adresse.
 #------ footer
 footer.category.important.links=Liens importants
 footer.category.news=Dernières actus
+footer.news.title=Notre actualité
 footer.contact.us=Nous envoyer un email
 footer.call.back=Etre rappelé
 footer.visit.us=Venir chez Hometime

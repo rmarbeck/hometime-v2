@@ -52,7 +52,7 @@
 									@videoPost(news.title, news.body, news.previewUrl.map(list => list.stream.findFirst.get).orElse(""), news.date, news.categories.map(list => list.stream.findFirst.get).orElse(""), news.readMoreUrl.orElse(""))
 								}
 							}
-						}
+						}.reverse
 					</div>
 					<!-- Pagination
 					============================================= -->

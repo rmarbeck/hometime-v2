@@ -74,13 +74,13 @@
 						<div class="col_one_third col_last d-none d-md-flex ">
 
 							<div class="widget clearfix">
-								<h4>@Html(Messages("footer.category.news"))</h4>
+								<h4><a href="@routes.HomeController.news.url" title="@Html(Messages("footer.news.title"))">@Html(Messages("footer.category.news"))</a></h4>
 
 								<div id="post-list-footer">
 									
 									@HomeController.injectedNewsProvider.retrieveNews().get.map{ news =>
 												@smallPost(news.title, news.body, news.date, news.readMoreUrl.orElse(""))
-									}
+									}.reverse.slice(0,3)
 									
 								</div>
 							</div>
