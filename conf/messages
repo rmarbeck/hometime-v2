@@ -2664,10 +2664,13 @@ accept.quotation.form.html.title=Acceptation de devis
 accept.quotation.form.html.description=Acceptation de devis envoyé par email
 accept.quotation.form.html.keywords=Accord devis, entretien, montre
 
+accept.quotation.form.price.label=Tarif prévisionnel 
+accept.quotation.form.delay.label=Délai prévu
+
 accept.quotation.form.head=Acceptation de devis
 accept.quotation.form.head.subtitle=Nous avons besoin de quelques informations supplémentaires
 accept.quotation.form.head.intro=En validant ce formulaire, vous indiquez que vous souhaitez un devis formel pour lancer le processus de réparation de votre montre. Vous n''êtes pas engagé à l''issue de cette démarche.
-accept.quotation.form.disclaimer=Après validation de ce formulaire, nous rentreront en contact avec vous pour formaliser notre devis et initier la processus de prise en charge de votre montre. 
+accept.quotation.form.disclaimer=Après validation de ce formulaire, nous rentrerons en contact avec vous pour formaliser notre devis et initier la processus de prise en charge de votre montre. 
 
 accept.quotation.form.orderid.label=Numéro de la demande
 accept.quotation.form.orderid.placeholder=
