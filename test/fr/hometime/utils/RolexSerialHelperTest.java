@@ -11,7 +11,6 @@ import org.junit.Test;
 
 
 public class RolexSerialHelperTest {
-
 	@Test
 	public void serialTester() {
 		assertTrue((RolexSerialHelper.serialMandatoryTests(Optional.of("12345"))));
@@ -39,9 +38,13 @@ public class RolexSerialHelperTest {
 		assertTrue((RolexSerialHelper.referenceMandatoryTests(Optional.of("14060"))));
 		assertTrue((RolexSerialHelper.referenceMandatoryTests(Optional.of("114060"))));
 		
+		assertTrue((RolexSerialHelper.referenceMandatoryTests(Optional.of("116710BLNR"))));
+		assertTrue((RolexSerialHelper.referenceMandatoryTests(Optional.of("m116710BLNR"))));
 		
 		assertFalse((RolexSerialHelper.referenceMandatoryTests(Optional.of("123"))));
 		assertFalse((RolexSerialHelper.referenceMandatoryTests(Optional.of("1234567"))));
+		assertFalse((RolexSerialHelper.referenceMandatoryTests(Optional.of("1234567LN"))));
+		
 	}
 	
 	@Test
@@ -619,7 +622,7 @@ public class RolexSerialHelperTest {
 		assertTrue("18026",(RolexSerialHelper.referenceOptionalTests(Optional.of("18026"))));
 		assertTrue("6611",(RolexSerialHelper.referenceOptionalTests(Optional.of("6611"))));
 		assertTrue("6511",(RolexSerialHelper.referenceOptionalTests(Optional.of("6511"))));
-		assertTrue("1803",(RolexSerialHelper.referenceOptionalTests(Optional.of("1803"))));		
+		assertTrue("1803",(RolexSerialHelper.referenceOptionalTests(Optional.of("1803"))));
 		
 	}
 	

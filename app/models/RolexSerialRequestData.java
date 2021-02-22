@@ -23,7 +23,7 @@ public class RolexSerialRequestData implements Validatable<List<ValidationError>
 	@Formats.NonEmpty
 	@Constraints.MaxLength(8)
 	public String serial;
-	@Constraints.MaxLength(7)
+	@Constraints.MaxLength(16)
 	public String reference;
 
 	@Override

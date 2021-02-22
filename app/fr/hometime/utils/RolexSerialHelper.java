@@ -11,7 +11,8 @@ public class RolexSerialHelper {
 	private static int MIN_SERIAL_NUMBER_OF_CHARS_INCLUDED = 5;
 	private static int MAX_SERIAL_NUMBER_OF_CHARS_INCLUDED = 8;
 	private static int MIN_REFERENCE_NUMBER_OF_CHARS_INCLUDED = 4;
-	private static int MAX_REFERENCE_NUMBER_OF_CHARS_INCLUDED = 6;
+	private static int MAX_REFERENCE_NUMBER_OF_CHARS_INCLUDED = 11;
+	private static int MAX_REFERENCE_NUMBER_OF_DIGITS_INCLUDED = 6;
 	    
     public static boolean serialMandatoryTests(Optional<String> serialCandidate) {
     	return doTest(serialCandidate, RolexSerialHelper::buildSerialMandatoryTests);
@@ -39,6 +40,7 @@ public class RolexSerialHelper {
     private static List<Predicate<Optional<String>>> buildReferenceMandatoryTests() {
     	return Arrays.asList(
     				RolexSerialHelper::referenceIsLongEnough,
+    				RolexSerialHelper::referenceDigitsAreNotTooLong,
     				RolexSerialHelper::referenceIsNotTooLong,
     				RolexSerialHelper::doesNotContainSpecialChars);
     }
@@ -68,6 +70,11 @@ public class RolexSerialHelper {
     private static boolean referenceIsNotTooLong(Optional<String> serialCandidate) {
     	return serialCandidate.orElse("").length() <= MAX_REFERENCE_NUMBER_OF_CHARS_INCLUDED;
     }
+    
+    private static boolean referenceDigitsAreNotTooLong(Optional<String> serialCandidate) {
+    	return serialCandidate.orElse("").replaceAll("[^0-9]", "").length() <= MAX_REFERENCE_NUMBER_OF_DIGITS_INCLUDED;
+    }
+
     
     private static boolean referenceStartsAsModelsWeKnow(Optional<String> serialCandidate) {
     	return Arrays.asList(
