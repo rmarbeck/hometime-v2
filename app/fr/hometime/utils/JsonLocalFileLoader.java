@@ -18,12 +18,16 @@ public interface JsonLocalFileLoader {
 			Logger.error(pathname);
         }
 		
-		f = new File("./");
+		f = new File("./target/universal/stage");
 		pathnames = f.list();
 		for (String pathname : pathnames) {
 			Logger.error("-> "+pathname);
         }
+		File file = new File(filePath);
 		
+		if (!file.canRead()) {
+			file = new File("target/universal/stage/"+filePath); 
+		}
 		
 		JsonNode json = Json.mapper().readTree(new File(filePath));
 		return Optional.of(json);
