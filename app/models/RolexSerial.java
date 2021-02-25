@@ -9,7 +9,6 @@ import java.util.function.Predicate;
 import fr.hometime.utils.RolexSerialHelper;
 import fr.hometime.utils.RolexSerialYearHelper;
 import fr.hometime.utils.RolexYearFromSerialResolver;
-import fr.hometime.utils.RolexYearFromSerialResolver.Result;
 import fr.hometime.utils.RolexYearFromSerialResolverDefault;
 
 public class RolexSerial {
@@ -34,7 +33,7 @@ public class RolexSerial {
 		return of(Optional.ofNullable(serialCandidate));
 	}
 	
-	public Optional<Result> getYears() {
+	public Optional<RolexYearFromSerialResult> getYears() {
 		return 	this.resolvers.stream().filter(resolver -> resolver.doFilter(Optional.of(this))).findFirst().map(resolver -> resolver.doResolveIfMatches(Optional.of(this))).orElse(Optional.empty());
 	}
 	
@@ -42,7 +41,11 @@ public class RolexSerial {
 		return (instance) -> serialTester.test(instance.strSerialNumber);
 	}
 	
-	public static Function<RolexSerial, Result> doResolve(Function<String, Optional<Result>> serialResolver) {
+	public static Function<RolexSerial, RolexYearFromSerialResult> doResolve(Function<String, Optional<RolexYearFromSerialResult>> serialResolver) {
 		return (instance) -> serialResolver.apply(instance.strSerialNumber).get();
+	}
+	
+	public String getSerialAsString() {
+		return strSerialNumber;
 	}
 }

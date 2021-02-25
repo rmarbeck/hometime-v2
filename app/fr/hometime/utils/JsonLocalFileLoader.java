@@ -5,6 +5,7 @@ import java.util.Optional;
 
 import com.fasterxml.jackson.databind.JsonNode;
 
+import play.api.Play;
 import play.libs.Json;
 
 public interface JsonLocalFileLoader {

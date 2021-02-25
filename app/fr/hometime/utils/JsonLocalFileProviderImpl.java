@@ -28,11 +28,11 @@ public class JsonLocalFileProviderImpl implements JsonLocalFileProvider, JsonLis
 	private final Logger logger = LoggerFactory.getLogger(getClass());
 	
 	public JsonLocalFileProviderImpl() {
-        this.brandFile = "conf/brands-default.json";
-        this.feedbacksFile = "conf/feedbacks-default.json";
-        this.pricesFile = "conf/prices-default.json";
-        this.newsFile = "conf/news-default.json";
-        this.liveConfigsFile = "conf/live-configs-default.json";
+        this.brandFile = "/conf/brands-default.json";
+        this.feedbacksFile = "/conf/feedbacks-default.json";
+        this.pricesFile = "/conf/prices-default.json";
+        this.newsFile = "/conf/news-default.json";
+        this.liveConfigsFile = "/conf/live-configs-default.json";
 	}
 	
 	public JsonLocalFileProviderImpl of() {
