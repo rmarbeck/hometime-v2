@@ -29,7 +29,7 @@ public interface JsonLocalFileLoader {
 			file = new File("target/universal/stage/"+filePath); 
 		}
 		
-		JsonNode json = Json.mapper().readTree(new File(filePath));
+		JsonNode json = Json.mapper().readTree(new File("./target/universal/stage/"+filePath));
 		return Optional.of(json);
 	}
 }
