@@ -18,16 +18,10 @@ public interface JsonLocalFileLoader {
 			Logger.error(pathname);
         }
 		
-		f = new File("/conf/");
+		f = new File("./");
 		pathnames = f.list();
 		for (String pathname : pathnames) {
-			Logger.error(pathname);
-        }
-		
-		f = new File("conf/");
-		pathnames = f.list();
-		for (String pathname : pathnames) {
-			Logger.error(pathname);
+			Logger.error("-> "+pathname);
         }
 		
 		
