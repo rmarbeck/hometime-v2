@@ -1,10 +1,17 @@
 package models;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collector;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class RolexYearFromSerialResult {
+	private int MAX_YEAR = 9999;
+	private int MIN_YEAR = 0;
+	
 	public class Range {
 		private Optional<Integer> startYear = Optional.empty();
 		private Optional<Integer> endYear = Optional.empty();
@@ -42,16 +49,65 @@ public class RolexYearFromSerialResult {
 			return startYear.isPresent() && endYear.equals(startYear);
 		}
 		
-		public List<Range> merge(Range toMergeWith) {
+		public List<Range> merge(Range toMergeWith) {		
+			if (this.isOpenRange())
+				return mergeFromOpenRange(toMergeWith);
+			
+			if (toMergeWith.isOpenRange())
+				return toMergeWith.mergeFromOpenRange(this);
+			
 			List<Range> result = new ArrayList<Range>();
-		
-			if (this.isOpenRange() && toMergeWith.isOpenRange()) {
-				result.add(new Range(Math.min(this.startYear.get(), toMergeWith.startYear.get())));
+			
+			if (doesOverlapWith(toMergeWith)) {
+				result.add(new Range(minOf(this.startYear, toMergeWith.startYear), maxOf(this.endYear, toMergeWith.endYear)));
 			} else {
-				if (this.isOpenRange() && toMergeWith.startYear.get() >= this.startYear.get())
-					result.add(this);
+				result.add(toMergeWith);
+				result.add(this);
 			}
-			return null;	
+			
+			return result;	
+		}
+		
+		private List<Range> mergeFromOpenRange(Range toMergeWith) {
+			List<Range> result = new ArrayList<Range>();
+			if (toMergeWith.isOpenRange()) {
+				result.add(mergeOpenRangesAsOne(toMergeWith));
+			} else {
+				if (this.doesOpenRangeOverlapWith(toMergeWith)) {
+					result.add(new Range(minOf(this.startYear, toMergeWith.startYear)));
+				} else {
+					result.add(toMergeWith);
+					result.add(this);
+				}
+			}
+			
+			return result;
+		}
+		
+		private Range mergeOpenRangesAsOne(Range toMergeWith) {
+			return new Range(minOf(this.startYear, toMergeWith.startYear));
+		}
+		
+		private boolean doesOpenRangeOverlapWith(Range toCompare) {
+			return isFirstBeforeOrSameThanSecond(this.startYear, toCompare.endYear);
+		}
+		
+		private boolean doesOverlapWith(Range toCompare) {
+			if (maxOf(this.startYear, toCompare.startYear) > minOf(this.endYear, toCompare.endYear))
+				return false;
+			return true;
+		}
+		
+		private boolean isFirstBeforeOrSameThanSecond(Optional<Integer> first, Optional<Integer> second) {
+			return first.map(firstValue -> firstValue <= second.orElse(MIN_YEAR)).orElse(false);
+		}
+		
+		private int minOf(Optional<Integer> first, Optional<Integer> second) {
+			return Math.min(first.orElse(MAX_YEAR), second.orElse(MAX_YEAR));
+		}
+		
+		private int maxOf(Optional<Integer> first, Optional<Integer> second) {
+			return Math.max(first.orElse(MIN_YEAR), second.orElse(MIN_YEAR));
 		}
 	}
 	
@@ -116,6 +172,8 @@ public class RolexYearFromSerialResult {
 	}
 	
 	private RolexYearFromSerialResult mergeWith(RolexYearFromSerialResult toMergeWith) {
-		return null;//return ranges.parallelStream().flatMap(range -> toMergeWith.ranges.parallelStream().map(innerRange -> ));
+		List<Range> mergedRanges = ranges.parallelStream().flatMap(range -> toMergeWith.ranges.parallelStream().map(innerRange -> range.merge(innerRange))).flatMap(Collection::stream).collect(Collectors.toList());
+		
+		return new RolexYearFromSerialResult(mergedRanges);
 	}
 }

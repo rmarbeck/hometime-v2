@@ -5,11 +5,9 @@ import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 
 import fr.hometime.utils.NewsDeserializer;
-import sun.rmi.runtime.NewThreadAction;
 
 @JsonDeserialize(using = NewsDeserializer.class)
 public class News {
