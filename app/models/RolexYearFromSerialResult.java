@@ -4,25 +4,89 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 import java.util.Optional;
-import java.util.stream.Collector;
 import java.util.stream.Collectors;
-import java.util.stream.Stream;
+import java.util.stream.IntStream;
 
 public class RolexYearFromSerialResult {
-	private int MAX_YEAR = 9999;
-	private int MIN_YEAR = 0;
+	private static int MAX_YEAR = 9999;
+	private static int MIN_YEAR = 0;
 	
-	public class Range {
+	public static class Years {
+		private List<Integer> years;
+		private boolean isOpenRange = false;
+		
+		private Years() {
+			super();
+			this.years = new ArrayList<Integer>();
+		}
+		
+		public static Years of() {
+			return new Years();
+		}
+		
+		public static Years from(List<Range> ranges) {
+			return of().add(ranges);
+		}
+		
+		public Years add(List<Range> ranges) {
+			ranges.stream().forEach(this::add);
+			return this;
+		}
+		
+		public Years add(Range range) {
+			if (range.isOpenRange()) {
+				this.isOpenRange = true;
+				this.years.add(range.getStartYear().get());
+			} else {
+				IntStream.range(range.getStartYear().get(), range.getEndYear().get()+1).forEach(this::addSingleYear);
+			}
+			return this;
+		}
+		
+		public Years addSingleYear(Integer year) {
+			years.add(year);
+			return this;
+		}
+		
+		public List<Integer> getYears() {
+			return years.parallelStream().mapToInt(Integer::intValue).distinct().sorted().boxed().collect(Collectors.toList());
+		}
+		
+		public boolean isOpenRange() {
+			return isOpenRange;
+		}
+		
+		public boolean isSingleYear() {
+			return !isOpenRange && years.size() == 1; 
+		}
+		
+		public Optional<Integer> getSingleYear() {
+			if (isSingleYear())
+				return Optional.of(years.get(0));
+			return Optional.empty();
+		}
+	}
+	
+	
+	public static class Range {
 		private Optional<Integer> startYear = Optional.empty();
 		private Optional<Integer> endYear = Optional.empty();
 		
-		Range(Integer startYear) {
+		private Range(Integer startYear) {
 			this.startYear = Optional.of(startYear);
 		}
 		
-		Range(Integer startYear, Integer endYear) {
+		private Range(Integer startYear, Integer endYear) {
 			this.startYear = Optional.of(startYear);
 			this.endYear = Optional.of(endYear);
+		}
+		
+		public static Range of(Integer startYear) {
+			return new Range(startYear);
+		}
+		
+		public static Range of(Integer startYear, Integer endYear) {
+			return new Range(startYear, endYear);
 		}
 		
 		public Optional<Integer> getStartYear() {
@@ -123,12 +187,12 @@ public class RolexYearFromSerialResult {
 	
 	private RolexYearFromSerialResult(Integer year) {
 		this();
-		this.ranges.add(this.new Range(year));
+		this.ranges.add(Range.of(year));
 	}
 	
 	private RolexYearFromSerialResult(Integer startYear, Integer endYear) {
 		this.ranges = new ArrayList<Range>();
-		this.ranges.add(this.new Range(startYear, endYear));
+		this.ranges.add(Range.of(startYear, endYear));
 	}
 	
 	private RolexYearFromSerialResult(Range range) {
@@ -154,15 +218,31 @@ public class RolexYearFromSerialResult {
 	}
 	
 	public RolexYearFromSerialResult addRange(Integer startYear, Integer endYear) {
-		return addRange(this.new Range(startYear, endYear));
+		return addRange(Range.of(startYear, endYear));
 	}
 	
 	public RolexYearFromSerialResult addSingleYear(Integer year) {
-		return addRange(this.new Range(year));
+		return addRange(Range.of(year));
 	}
 
 	public List<Range> getResults() {
 		return ranges;
+	}
+	
+	public Years getYears() {
+		return Years.from(ranges);
+	}
+	
+	public boolean isSingleYear() {
+		return getYears().isSingleYear();
+	}
+	
+	public Optional<Integer> getSingleYear() {
+		return getYears().getSingleYear();
+	}
+	
+	public boolean isOpenRange() {
+		return getYears().isOpenRange();
 	}
 	
 	public Optional<RolexYearFromSerialResult> mergeWith(Optional<RolexYearFromSerialResult> toMergeWith) {
@@ -175,5 +255,9 @@ public class RolexYearFromSerialResult {
 		List<Range> mergedRanges = ranges.parallelStream().flatMap(range -> toMergeWith.ranges.parallelStream().map(innerRange -> range.merge(innerRange))).flatMap(Collection::stream).collect(Collectors.toList());
 		
 		return new RolexYearFromSerialResult(mergedRanges);
+	}
+	
+	public String toString() {
+		return this.getClass() + " : "+ getYears().years.stream().map(Object::toString).collect(Collectors.joining(", ")) + (isOpenRange()?"+":"");
 	}
 }

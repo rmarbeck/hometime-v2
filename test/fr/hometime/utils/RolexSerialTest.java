@@ -5,36 +5,50 @@ import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertThat;
 import static org.junit.Assert.assertTrue;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 import java.util.Optional;
 
 import org.junit.Test;
 
-import fr.hometime.utils.RolexYearFromSerialResolver.Result;
 import models.RolexSerial;
+import models.RolexYearFromSerialResult;
+import models.RolexYearFromSerialResult.Years;
 
 
 public class RolexSerialTest {
 	
 	@Test
 	public void rolexSerialTester() {
-		assertTrue(RolexSerial.of(Optional.of("12345")).isPresent());
+		assertTrue("1", RolexSerial.of(Optional.of("12345")).isPresent());
 		
-		assertTrue(RolexSerial.of(Optional.of("r512345")).flatMap(RolexSerial::getYears).flatMap(Result::getStartYear).orElse(0) == 1987);
-		assertFalse(RolexSerial.of(Optional.of("r512345")).flatMap(RolexSerial::getYears).map(Result::isSingleYear).orElse(false));
-		assertTrue(RolexSerial.of(Optional.of("a512345")).flatMap(RolexSerial::getYears).flatMap(Result::getStartYear).orElse(0) == 1999);
-		assertTrue(RolexSerial.of(Optional.of("G512345")).flatMap(RolexSerial::getYears).flatMap(Result::getStartYear).orElse(0) == 2009);
+		
+		
+		assertFalse("10", RolexSerial.of(Optional.of("r512345")).flatMap(RolexSerial::getYears).map(RolexYearFromSerialResult::isSingleYear).orElse(true));
+		assertTrue("11", RolexSerial.of(Optional.of("r512345")).flatMap(RolexSerial::getYears).map(RolexYearFromSerialResult::getYears).map(Years::getYears).orElse(new ArrayList<Integer>()).contains(1987));
+		assertTrue("12", RolexSerial.of(Optional.of("r512345")).flatMap(RolexSerial::getYears).map(RolexYearFromSerialResult::getYears).map(Years::getYears).orElse(new ArrayList<Integer>()).contains(1988));
+		assertTrue("13", RolexSerial.of(Optional.of("r512345")).flatMap(RolexSerial::getYears).map(RolexYearFromSerialResult::getYears).map(Years::getYears).orElse(new ArrayList<Integer>()).contains(1989));
+		
+	
+		assertTrue("14", RolexSerial.of(Optional.of("a512345")).flatMap(RolexSerial::getYears).map(RolexYearFromSerialResult::getYears).map(Years::getYears).orElse(new ArrayList<Integer>()).contains(1999));
+		assertTrue("15", RolexSerial.of(Optional.of("a512345")).flatMap(RolexSerial::getYears).map(RolexYearFromSerialResult::getYears).map(Years::getYears).orElse(new ArrayList<Integer>()).contains(2000));
+		
+		assertTrue("14", RolexSerial.of(Optional.of("G512345")).flatMap(RolexSerial::getYears).map(RolexYearFromSerialResult::getYears).map(Years::getYears).orElse(new ArrayList<Integer>()).contains(2009));
+		assertTrue("15", RolexSerial.of(Optional.of("G512345")).flatMap(RolexSerial::getYears).map(RolexYearFromSerialResult::getYears).map(Years::getYears).orElse(new ArrayList<Integer>()).contains(2010));
 
-		assertTrue(RolexSerial.of(Optional.of("w512345")).flatMap(RolexSerial::getYears).flatMap(Result::getStartYear).orElse(0) == 1995);
-		assertTrue(RolexSerial.of(Optional.of("w512345")).flatMap(RolexSerial::getYears).map(Result::isSingleYear).orElse(false));
+		assertTrue("21", RolexSerial.of(Optional.of("w512345")).flatMap(RolexSerial::getYears).flatMap(RolexYearFromSerialResult::getSingleYear).orElse(0) == 1995);
+		assertTrue("22", RolexSerial.of(Optional.of("w512345")).flatMap(RolexSerial::getYears).map(RolexYearFromSerialResult::isSingleYear).orElse(false));
 		
-		assertTrue(RolexSerial.of(Optional.of("OT23Q257")).flatMap(RolexSerial::getYears).flatMap(Result::getStartYear).orElse(0) == 2010);
-		assertFalse(RolexSerial.of(Optional.of("OT23Q257")).flatMap(RolexSerial::getYears).map(Result::isSingleYear).orElse(false));
-		assertTrue(RolexSerial.of(Optional.of("OT23Q257")).flatMap(RolexSerial::getYears).map(Result::isOpenRange).orElse(false));
+		System.err.println(RolexSerial.of(Optional.of("OT23Q257")).get().getYears().get().toString());
 		
-		assertFalse(RolexSerial.of((String) null).isPresent());
-		assertFalse(RolexSerial.of(Optional.ofNullable(null)).isPresent());
-		assertFalse(RolexSerial.of("").isPresent());
+		assertTrue("31", RolexSerial.of(Optional.of("OT23Q257")).flatMap(RolexSerial::getYears).flatMap(RolexYearFromSerialResult::getSingleYear).orElse(0) == 2010);
+		assertFalse("32", RolexSerial.of(Optional.of("OT23Q257")).flatMap(RolexSerial::getYears).map(RolexYearFromSerialResult::isSingleYear).orElse(false));
+		assertTrue("33", RolexSerial.of(Optional.of("OT23Q257")).flatMap(RolexSerial::getYears).map(RolexYearFromSerialResult::isOpenRange).orElse(false));
+		
+		assertFalse("41", RolexSerial.of((String) null).isPresent());
+		assertFalse("42", RolexSerial.of(Optional.ofNullable(null)).isPresent());
+		assertFalse("43", RolexSerial.of("").isPresent());
 	}
 	
 	@Test
