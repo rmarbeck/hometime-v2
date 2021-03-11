@@ -11,18 +11,7 @@
 						@feedbacks.get.map{ feedback =>
 						<li>
 							<div id="feedback@feedback.id"></div>
-							<div class="testimonial">
-								<div class="testi-image">
-									<img src="@feedback.pictureUrl" alt="Customer Testimonails">
-								</div>
-								<div class="testi-content">
-									<span class="testi-date">@Html(Messages("feedback.date.template",feedback.displayDate)).toString.trim.capitalize</span><p>@takeif_html(feedback.body, 300)</p>
-									<div class="testi-meta">
-										@feedback.author
-										<span>@feedback.typeOfFeedback</span>
-									</div>
-								</div>
-							</div>
+							@layouts.fragments.testimonial(feedback)
 						</li>
 						}
 					</ul>

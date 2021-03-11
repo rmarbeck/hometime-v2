@@ -54,18 +54,7 @@
 }
 
 @testimonial(feedback: Feedback) = {
-								<div class="testimonial">
-									<div class="testi-image">
-										<a href="@routes.HomeController.feedbacks()#feedback@feedback.id" title="@Html(Messages("feedback.link.title"))"><img src="@feedback.pictureUrl" alt="@Html(Messages("feedback.link.alt"))"></a>
-									</div>
-									<div class="testi-content">
-										<span class="testi-date">@Html(Messages("feedback.date.template",feedback.displayDate)).toString.trim.capitalize</span><p>@takeif_html(feedback.body, 100)</p>
-										<div class="testi-meta">
-											@feedback.author
-											<span>@feedback.typeOfFeedback</span>
-										</div>
-									</div>
-								</div>
+								@layouts.fragments.testimonial(feedback, 100)
 }
 
 
