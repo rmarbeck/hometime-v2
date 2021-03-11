@@ -31,6 +31,8 @@
 				.addSubMenu("quartz.prices", Optional.of(routes.FormProcessingController.prepareQuartzPrice().url), Optional.empty(), Optional.empty())
 					.getParentIfExists()
 				.addSubMenu("feedbacks", Optional.of(routes.HomeController.feedbacks().url), Optional.empty(), Optional.empty())
+					.getParentIfExists()
+				.addSubMenu("rolex.serial", Optional.of(routes.FormProcessingController.prepareRolexSerialRequest().url), Optional.empty(), Optional.empty())
 				.getHighestParentIfExists());
 				
 		mainMenu.add(

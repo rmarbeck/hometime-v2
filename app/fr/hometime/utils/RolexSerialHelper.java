@@ -8,7 +8,7 @@ import java.util.function.Supplier;
 import java.util.regex.Pattern;
 
 public class RolexSerialHelper {
-	private static int MIN_SERIAL_NUMBER_OF_CHARS_INCLUDED = 5;
+	private static int MIN_SERIAL_NUMBER_OF_CHARS_INCLUDED = 1;
 	private static int MAX_SERIAL_NUMBER_OF_CHARS_INCLUDED = 8;
 	private static int MIN_REFERENCE_NUMBER_OF_CHARS_INCLUDED = 4;
 	private static int MAX_REFERENCE_NUMBER_OF_CHARS_INCLUDED = 11;

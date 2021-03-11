@@ -98,3 +98,27 @@ page.prices.inner.disclaimer=* Category 3 : Victorinox, Tissot, Swatch, Seiko, N
 ** Category 2 : Zenith, Tudor, Tag&nbsp;Heuer, Rado, Montblanc, Longines, Hermès, Frédérique Constant, Ebel, Chopard, Chanel, B.R.M, Breitling, Bell&nbsp;&&nbsp;Ross, Baume&nbsp;&&nbsp;Mercier<br/>\
 *** Category 1 : Vacheron&nbsp;Constantin, Ulysse&nbsp;Nardin, Rolex, Patek&nbsp;Philippe, Panerai, Omega, A Lange&nbsp;&&nbsp;Söhne, Jaeger LeCoultre, IWC, Hublot, Girard Perregaux, Concord, Cartier, Bulgari, Breguet, Blancpain, Audemars&nbsp;Piguet<br/>
 
+
+
+rolex.serial.form.html.title=Build year of a Rolex watch by serial number
+rolex.serial.form.html.description=Finding build year of your Rolex watch from its serial number
+rolex.serial.form.html.keywords=Year, Rolex, serial number, random
+rolex.serial.form.head=Build year of a Rolex
+rolex.serial.form.head.subtitle=From its serial number, it is possible to guess when a Rolex was built. Depending on building periods, it can be more difficult to define precisely when the watch was built and we can only give an approximate date.
+rolex.serial.form.head.intro=Your Rolex serial number
+rolex.serial.form.serial.label=serial number
+rolex.serial.form.serial.placeholder=(digits and letters only)
+rolex.serial.form.submit=Calculate year of production
+rolex.serial.form.disclaimer=It can be difficult to find production year on old models. If so, other elements can help finding production period of the watch.
+
+rolex.serial.request.validation.error.serial.not.recognised=Serial number is not recognized as a valid Rolex serial number, please try again.
+
+rolex.serial.success.html.title=Build year of a Rolex watch by serial number
+rolex.serial.success.html.description=Finding build year of your Rolex watch from its serial number
+rolex.serial.success.html.keywords=Year, Rolex, serial number, random
+rolex.serial.success.head=Rolex watch production year
+rolex.serial.success.head.subtitle=Please find the result of your request
+rolex.serial.success.head.intro=Based upon serial number, your Rolex was produced in 
+rolex.serial.success.disclaimer=It can be difficult to find production year on old models. If so, other elements can help finding production period of the watch.
+
+

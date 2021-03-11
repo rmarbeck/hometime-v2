@@ -90,6 +90,10 @@ GET     /vie-prive															controllers.HomeController.content(request: Req
 GET     /privacy                    										controllers.Default.redirect(to = "/vie-prive")
 
 
+GET     /annee-numero-de-serie-rolex										controllers.FormProcessingController.prepareRolexSerialRequest(request: Request)
+GET     /rolex-serial-number-year			        						controllers.FormProcessingController.prepareRolexSerialRequest_en(request: Request)
+POST    /calcule-numero-de-serie-rolex										controllers.FormProcessingController.processRolexSerialRequest(request: Request)
+
 
 GET     /prise-en-charge-urgente-probleme-etancheite    					controllers.HomeController.content(request: Request, key = "content.water.repairing")
 GET     /urgence-buee-sur-le-verre                      					controllers.Default.redirect(to = "/prise-en-charge-rapide-probleme-etancheite")

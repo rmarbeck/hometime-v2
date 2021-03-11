@@ -45,6 +45,9 @@ import models.BuyRequestData;
 import models.CallBackRequestData;
 import models.ContactRequestData;
 import models.QuotationRequestData;
+import models.RolexSerial;
+import models.RolexSerialRequestData;
+import models.RolexYearFromSerialResult;
 import models.ServiceTestRequestData;
 import static fr.hometime.utils.ControllerHelper.flattenValues;
 
@@ -130,6 +133,34 @@ public class FormProcessingController extends Controller implements WSBodyReadab
 		} else {
 			CompletionStage<? extends WSResponse> responsePromise = wsWithSecret("https://legacy.hometime.fr/new-call-back-request-from-outside").setContentType("application/x-www-form-urlencoded").post(request.body().asFormUrlEncoded().entrySet().stream().map(entry -> flattenValues(entry.getKey(), entry.getValue(), "&")).collect( Collectors.joining( "&" )));
 			return responsePromise.handle((response, error) -> handleFormResponse(response, error, request, "call.back"));
+		}
+	}
+	
+	/*************************************
+	 * 
+	 * Rolex SerialRequest Management
+	 * 
+	 *************************************/
+	public Result prepareRolexSerialRequest(Http.Request request) {
+		return ok(views.html.rolex_serial_form.render(formFactory.form(RolexSerialRequestData.class).withDirectFieldAccess(true), request, messagesApi.preferred(request)));
+	}
+	
+	public Result prepareRolexSerialRequest_en(Http.Request request) {
+		return ok(views.html.rolex_serial_form.render(formFactory.form(RolexSerialRequestData.class).withDirectFieldAccess(true), request, getMessagesForInEnglishPages(request)));
+	}
+	
+	public CompletionStage<Result> processRolexSerialRequest(Http.Request request) {
+		final Form<RolexSerialRequestData> boundForm = formFactory.form(RolexSerialRequestData.class).withDirectFieldAccess(true).bindFromRequest(request);
+		
+		if (boundForm.hasErrors()) {
+			return CompletableFuture.supplyAsync(() -> badRequest(views.html.rolex_serial_form.render(boundForm, request, messagesApi.preferred(request))));
+		} else {
+			CompletionStage<Optional<RolexYearFromSerialResult>> responsePromise = CompletableFuture.supplyAsync(() -> RolexSerial.tryToFindYears(boundForm.get().serial));
+			return responsePromise.handle((response, error) -> {
+				if (response.isPresent())
+					return ok(views.html.rolex_serial_success.render(boundForm.get().serial, response.get(), request, messagesApi.preferred(request)));
+				return badRequest(views.html.rolex_serial_form.render(boundForm, request, messagesApi.preferred(request)));
+			});
 		}
 	}
 	

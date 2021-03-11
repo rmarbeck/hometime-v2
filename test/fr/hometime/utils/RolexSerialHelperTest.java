@@ -19,9 +19,9 @@ public class RolexSerialHelperTest {
 		assertTrue((RolexSerialHelper.serialMandatoryTests(Optional.of("11SA0141"))));
 		assertTrue((RolexSerialHelper.serialMandatoryTests(Optional.of("1110141"))));
 		assertTrue((RolexSerialHelper.serialMandatoryTests(Optional.of("9110141"))));
+		assertTrue((RolexSerialHelper.serialMandatoryTests(Optional.of("12"))));
+		assertTrue((RolexSerialHelper.serialMandatoryTests(Optional.of("1"))));
 		
-		
-		assertFalse((RolexSerialHelper.serialMandatoryTests(Optional.of("12"))));
 		assertFalse((RolexSerialHelper.serialMandatoryTests(Optional.of("123456789"))));
 		assertFalse((RolexSerialHelper.serialMandatoryTests(Optional.of("12154#"))));
 		assertFalse((RolexSerialHelper.serialMandatoryTests(Optional.of("12dzpfdz@"))));

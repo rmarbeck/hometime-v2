@@ -33,12 +33,12 @@ public class RolexYearFromSerialResult {
 			return this;
 		}
 		
-		public Years add(Range range) {
-			if (range.isOpenRange()) {
+		public Years add(Range newRange) {
+			if (newRange.isOpenRange()) {
 				this.isOpenRange = true;
-				this.years.add(range.getStartYear().get());
+				this.years.add(newRange.getStartYear().get());
 			} else {
-				IntStream.range(range.getStartYear().get(), range.getEndYear().get()+1).forEach(this::addSingleYear);
+				IntStream.range(newRange.getStartYear().get(), newRange.getEndYear().get()+1).forEach(this::addSingleYear);
 			}
 			return this;
 		}
@@ -52,12 +52,24 @@ public class RolexYearFromSerialResult {
 			return years.parallelStream().mapToInt(Integer::intValue).distinct().sorted().boxed().collect(Collectors.toList());
 		}
 		
+		public String toString() {
+			return getYears().stream().map(Object::toString).collect(Collectors.joining(", ")) + (isOpenRange()?"+":"");
+		}
+		
 		public boolean isOpenRange() {
 			return isOpenRange;
 		}
 		
 		public boolean isSingleYear() {
 			return !isOpenRange && years.size() == 1; 
+		}
+		
+		public boolean containsTwoYearsExactly() {
+			return !isOpenRange && years.size() == 2;
+		}
+
+		public int getNumberOfYears() {
+			return years.size();
 		}
 		
 		public Optional<Integer> getSingleYear() {
@@ -134,15 +146,11 @@ public class RolexYearFromSerialResult {
 		
 		private List<Range> mergeFromOpenRange(Range toMergeWith) {
 			List<Range> result = new ArrayList<Range>();
-			if (toMergeWith.isOpenRange()) {
+			if (toMergeWith.isOpenRange() || this.doesOpenRangeOverlapWith(toMergeWith)) {
 				result.add(mergeOpenRangesAsOne(toMergeWith));
 			} else {
-				if (this.doesOpenRangeOverlapWith(toMergeWith)) {
-					result.add(new Range(minOf(this.startYear, toMergeWith.startYear)));
-				} else {
-					result.add(toMergeWith);
-					result.add(this);
-				}
+				result.add(toMergeWith);
+				result.add(this);
 			}
 			
 			return result;
@@ -200,8 +208,12 @@ public class RolexYearFromSerialResult {
 		this.ranges.add(range);
 	}
 	
-	public static RolexYearFromSerialResult newFromSingleYear(Integer year) {
+	public static RolexYearFromSerialResult newFromOpenRange(Integer year) {
 		return new RolexYearFromSerialResult(year);
+	}
+	
+	public static RolexYearFromSerialResult newFromSingleYear(Integer year) {
+		return new RolexYearFromSerialResult(year, year);
 	}
 	
 	public static RolexYearFromSerialResult newFromRange(Integer startYear, Integer endYear) {
@@ -217,12 +229,16 @@ public class RolexYearFromSerialResult {
 		return this;
 	}
 	
+	public RolexYearFromSerialResult addOpenRange(Integer startYear) {
+		return addRange(Range.of(startYear));
+	}
+	
 	public RolexYearFromSerialResult addRange(Integer startYear, Integer endYear) {
 		return addRange(Range.of(startYear, endYear));
 	}
 	
 	public RolexYearFromSerialResult addSingleYear(Integer year) {
-		return addRange(Range.of(year));
+		return addRange(Range.of(year, year));
 	}
 
 	public List<Range> getResults() {
@@ -237,8 +253,30 @@ public class RolexYearFromSerialResult {
 		return getYears().isSingleYear();
 	}
 	
+	public Optional<Integer> getSecondYearPossible() {
+		if (hasTwoPossibleYears())
+			return getYears().getYears().stream().sorted().reduce((first, second) -> second);
+		return Optional.empty();
+	}
+	
+	public Optional<Integer> getFirstYearPossible() {
+		if (hasTwoPossibleYears())
+			return getYears().getYears().stream().sorted().findFirst();
+		return Optional.empty();
+	}
+	
+	public boolean hasTwoPossibleYears() {
+		return getYears().containsTwoYearsExactly();
+	}
+	
 	public Optional<Integer> getSingleYear() {
 		return getYears().getSingleYear();
+	}
+	
+	public Optional<Integer> getStartingYearFromOpenRange() {
+		if (isOpenRange() && getYears().getNumberOfYears() == 1)
+			return Optional.of(getYears().getYears().get(0));
+		return Optional.empty();
 	}
 	
 	public boolean isOpenRange() {

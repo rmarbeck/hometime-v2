@@ -30,9 +30,9 @@ public class RolexSerialRequestData implements Validatable<List<ValidationError>
     public List<ValidationError> validate() {
     	List<ValidationError> errors = new ArrayList<ValidationError>();
     	if (!isValidSerial(Optional.ofNullable(serial)))
-    		errors.add(new ValidationError("number", "rolex.serial.request.validation.error.serial.not.recognised"));
+    		errors.add(new ValidationError("serial", "rolex.serial.request.validation.error.serial.not.recognised"));
     	if (isValidReference(Optional.ofNullable(reference)))
-    		errors.add(new ValidationError("number", "rolex.serial.request.validation.error.reference.not.recognised"));
+    		errors.add(new ValidationError("reference", "rolex.serial.request.validation.error.reference.not.recognised"));
     	return errors.isEmpty() ? null : errors;
     }
     

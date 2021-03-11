@@ -16,8 +16,8 @@ public class RolexSerial {
 	private static List<RolexYearFromSerialResolver> resolvers = Arrays.asList(
 			RolexYearFromSerialResolverDefault.of(doTest(RolexSerialYearHelper::startsWithAKnownLetter), doResolve(RolexSerialYearHelper::resolveStartingWithAKnownLetter)),
 			RolexYearFromSerialResolverDefault.of(doTest(RolexSerialYearHelper::isRandomNumber), doResolve(RolexSerialYearHelper::resolveRandomNumber)),
-			RolexYearFromSerialResolverDefault.of(doTest(RolexSerialYearHelper::isNumberOnlyWITHOverlapping), serialValue -> RolexYearFromSerialResolver.createSimpleYear(2000)),
-			RolexYearFromSerialResolverDefault.of(doTest(RolexSerialYearHelper::isNumberOnlyWITHOUTOverlapping), serialValue -> RolexYearFromSerialResolver.createSimpleYear(2000)));
+			RolexYearFromSerialResolverDefault.of(doTest(RolexSerialYearHelper::isNumberOnlyWITHOverlapping), doResolve(RolexSerialYearHelper::resolveNumberOnlyWITHOverlapping)),
+			RolexYearFromSerialResolverDefault.of(doTest(RolexSerialYearHelper::isNumberOnlyWITHOUTOverlapping), doResolve(RolexSerialYearHelper::resolveNumberOnlyWITHOUTOverlapping)));
 	
 	private RolexSerial(String serial) {
 		this.strSerialNumber = serial;
@@ -33,17 +33,26 @@ public class RolexSerial {
 		return of(Optional.ofNullable(serialCandidate));
 	}
 	
+	public static Optional<RolexYearFromSerialResult> tryToFindYears(String serialCandidate) {
+		return tryToFindYears(Optional.ofNullable(serialCandidate));
+	}
+	
+	public static Optional<RolexYearFromSerialResult> tryToFindYears(Optional<String> serialCandidate) {
+		return serialCandidate.flatMap(RolexSerial::of).map(RolexSerial::getYears).orElse(Optional.empty());
+	}
+	
 	public Optional<RolexYearFromSerialResult> getYears() {
 		return 	this.resolvers.stream().filter(resolver -> resolver.doFilter(Optional.of(this))).findFirst().map(resolver -> resolver.doResolveIfMatches(Optional.of(this))).orElse(Optional.empty());
 	}
 	
-	public static Predicate<RolexSerial> doTest(Predicate<String> serialTester) {
+	private static Predicate<RolexSerial> doTest(Predicate<String> serialTester) {
 		return (instance) -> serialTester.test(instance.strSerialNumber);
 	}
 	
-	public static Function<RolexSerial, RolexYearFromSerialResult> doResolve(Function<String, Optional<RolexYearFromSerialResult>> serialResolver) {
+	private static Function<RolexSerial, RolexYearFromSerialResult> doResolve(Function<String, Optional<RolexYearFromSerialResult>> serialResolver) {
 		return (instance) -> serialResolver.apply(instance.strSerialNumber).get();
 	}
+	
 	
 	public String getSerialAsString() {
 		return strSerialNumber;

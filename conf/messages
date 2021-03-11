@@ -203,6 +203,8 @@ main.menu.service.content=Tout savoir sur l''entretien des montres
 main.menu.service.service.test=Quand faire réviser ma montre ?
 main.menu.feedbacks=Avis clients
 main.menu.feedbacks.title=Quelques avis de nos clients
+main.menu.rolex.serial=Années production Rolex
+main.menu.rolex.serial.title=Déterminer l''année d''une Rolex
 main.menu.visit.us=Venir nous voir
 main.menu.visit.us.title=Comment venir à l''atelier&nbsp;?
 
@@ -6794,6 +6796,27 @@ check.certificate.explanation=Cette page certifie que les informations présent�
 check.certificate.watch=Montre : <b>{0} - {1}</b>
 check.certificate.ref=Numéros : <b>{0} - {1}</b>
 check.certificate.date=Date du certificat : <b>{0, date,d MMMM yyyy}</b>
+
+rolex.serial.form.html.title=Année de fabrication d''une montre Rolex par numéro de série
+rolex.serial.form.html.description=Trouver l''année de fabrication de votre Rolex à partir de son numéro de série
+rolex.serial.form.html.keywords=Année, Rolex, numéro de série, random
+rolex.serial.form.head=Année de fabrication d''une Rolex
+rolex.serial.form.head.subtitle=A partir de son numéro de série, vous pouvez déterminer l''année de fabrication d''une Rolex. En fonction de la période de fabrication, l''année est plus ou moins facile à déterminer.
+rolex.serial.form.head.intro=Entrez le numéro de série de votre Rolex
+rolex.serial.form.serial.label=Numéro de série
+rolex.serial.form.serial.placeholder=(chiffres et lettres uniquement)
+rolex.serial.form.submit=Déterminer l''année de fabrication
+rolex.serial.form.disclaimer=Dans certains cas, il est difficile de déterminer l''année de fabrication précisément. De plus, d''autres éléments de la montre peuvent permettre d''affiner l''information.
+
+rolex.serial.request.validation.error.serial.not.recognised=Le numéro de série n''est pas reconnu comme étant valide, veuillez le vérifier et réessayer s''il vous plait.
+
+rolex.serial.success.html.title=Année de fabrication d''une montre Rolex par numéro de série
+rolex.serial.success.html.description=Trouver l''année de fabrication de votre Rolex à partir de son numéro de série
+rolex.serial.success.html.keywords=Année, Rolex, numéro de série, random
+rolex.serial.success.head=Année de fabrication d''une Rolex
+rolex.serial.success.head.subtitle=Cette page vous indique le résultat de votre recherche
+rolex.serial.success.head.intro=D'après le numéro de série, nous estimons que votre monte date de 
+rolex.serial.success.disclaimer=Dans certains cas, il est difficile de déterminer l''année de fabrication précisément. De plus, d''autres éléments de la montre peuvent permettre d''affiner l''information.
 
 
 

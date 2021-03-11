@@ -26,7 +26,7 @@ public class RolexYearFromSerialResolverDefault implements RolexYearFromSerialRe
 	}
 
 	@Override
-	public Optional<RolexYearFromSerialResult> doResolveIfMatches(Optional<RolexSerial> serial) {
-		return serial.filter(filter).map(resolver);
+	public Optional<RolexYearFromSerialResult> doResolve(Optional<RolexSerial> serial) {
+		return serial.map(resolver);
 	}
 }
