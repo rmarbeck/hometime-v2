@@ -6805,7 +6805,7 @@ rolex.serial.form.head.subtitle=A partir de son numéro de série, vous pouvez d
 rolex.serial.form.head.intro=Entrez le numéro de série de votre Rolex
 rolex.serial.form.serial.label=Numéro de série
 rolex.serial.form.serial.placeholder=(chiffres et lettres uniquement)
-rolex.serial.form.submit=Déterminer l''année de fabrication
+rolex.serial.form.submit=Calculer <span class="d-none d-md-inline">l''année de fabrication</span>
 rolex.serial.form.disclaimer=Dans certains cas, il est difficile de déterminer l''année de fabrication précisément. De plus, d''autres éléments de la montre peuvent permettre d''affiner l''information.
 
 rolex.serial.request.validation.error.serial.not.recognised=Le numéro de série n''est pas reconnu comme étant valide, veuillez le vérifier et réessayer s''il vous plait.

@@ -70,7 +70,7 @@
 				@helper.CSRF.formField
 									<div class="form-process"></div>
 									
-									@inputBox(form("serial"), true, 'maxlength -> "8", 'pattern -> "[0-9a-zA-Z]{1,8}")
+									@inputBox(form("serial"), true, Symbol("maxlength") -> "8", Symbol("pattern") -> "[0-9a-zA-Z]{1,8}")
 									
 									<div class="col-12">
 										@form_btn("rolex-serial", Messages(formKey.toString+".submit"))

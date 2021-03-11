@@ -108,7 +108,7 @@ rolex.serial.form.head.subtitle=From its serial number, it is possible to guess 
 rolex.serial.form.head.intro=Your Rolex serial number
 rolex.serial.form.serial.label=serial number
 rolex.serial.form.serial.placeholder=(digits and letters only)
-rolex.serial.form.submit=Calculate year of production
+rolex.serial.form.submit=Calculate <span class="d-none d-md-inline">production year</span>
 rolex.serial.form.disclaimer=It can be difficult to find production year on old models. If so, other elements can help finding production period of the watch.
 
 rolex.serial.request.validation.error.serial.not.recognised=Serial number is not recognized as a valid Rolex serial number, please try again.
