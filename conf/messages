@@ -6815,18 +6815,21 @@ rolex.serial.success.html.description=Trouver l''année de fabrication de votre 
 rolex.serial.success.html.keywords=Année, Rolex, numéro de série, random
 rolex.serial.success.head=Année de fabrication d''une Rolex
 rolex.serial.success.head.subtitle=
-rolex.serial.success.head.intro=Cette page vous indique le résultat de votre recherche.<br />D''après le numéro de série, nous estimons que : 
+rolex.serial.success.head.intro=Cette page vous indique le résultat de votre recherche.<br />N''hésitez pas nous contacter si nécessaire !
 rolex.serial.success.disclaimer=Dans certains cas, il est difficile de déterminer l''année de fabrication précisément. De plus, d''autres éléments de la montre peuvent permettre d''affiner l''information. \
-** Rolex a réutilisé les mêmes numéros de série que ses premières montres entre 1954 et 1964, ainsi il n''est pas possible de connaitre l''année de production uniquement à partir du numéro de série pour les montres produites avant 1964.
+<br/>* A partir de 2010, les numéros de séries sont attribués aléatoirement par Rolex. Il devient impossible de déterminer l''année précise de fabrication de la montre uniquement à partir de son numéro de série .\
+<br/>** Rolex a réutilisé les mêmes numéros de série que ses premières montres entre 1954 et 1964, ainsi il n''est pas possible de connaitre l''année de production uniquement à partir du numéro de série pour les montres produites avant 1964.
 
 rolex.serial.success.action.quotation.request=Demander un devis
 rolex.serial.success.quotation.title=Demander un devis d''entretien de votre Rolex
 
-rolex.serial.success.type.0.value=Votre Rolex a été frabiquée en {0}
-rolex.serial.success.type.1.value=Votre Rolex a été frabiquée en {0}
-rolex.serial.success.type.2.value=Votre Rolex a été frabiquée entre {0} et {1}
-rolex.serial.success.type.3.value=Votre Rolex a été frabiquée après {0}
-rolex.serial.success.type.4.value=Votre Rolex a été frabiquée en {0} ou bien {1}**
+rolex.serial.success.result.header=D''après le numéro de série, nous estimons que<br />
+
+rolex.serial.success.type.0.value=votre Rolex a été frabiquée en&nbsp;{0}
+rolex.serial.success.type.1.value=votre Rolex a été frabiquée en&nbsp;{0}
+rolex.serial.success.type.2.value=votre Rolex a été frabiquée entre&nbsp;{0}&nbsp;et&nbsp;{1}
+rolex.serial.success.type.3.value=votre Rolex a été frabiquée après&nbsp;{0}*
+rolex.serial.success.type.4.value=votre Rolex a été frabiquée en&nbsp;{0}&nbsp;ou&nbsp;bien&nbsp;{1}**
 
 #end
 

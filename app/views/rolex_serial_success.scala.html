@@ -17,6 +17,7 @@
 @defining("rolex.serial.success") { case (key) =>
 	@layouts.main_helper_with_head_block(key, Symbol("_css_content_div_class") -> "action-result", Symbol("_in_head_script") -> in_head_script) {
 		<h3 class="action-successfull center topmargin-lg">
+			@Html(Messages(key+".result.header"))
 			@Html(Messages(key+".type."+result.typeOfResult+".value", result.getResultAsDisplayableValue.lift(0).orNull, result.getResultAsDisplayableValue.lift(1).orNull))
 		</h3>
 		<div class="center">
