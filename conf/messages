@@ -1148,7 +1148,7 @@ content.rolex.repairing.content.3.image.url=https://d3qxyg7adi2rw7.cloudfront.ne
 content.rolex.repairing.content.3.image.title=Masse automatique Rolex
 content.rolex.repairing.content.3.image.alt=Photo d''une masse automatique d''une montre Rolex
 content.rolex.repairing.content.3.default.to.action.text=Demander un devis
-content.rolex.repairing.content.3.default.to.action.perma=/perma/offre
+content.rolex.repairing.content.3.default.to.action.perma=/perma/devis/rolex
 
 content.rolex.repairing.content.2.head=Cas d''une montre Rolex rouillée
 content.rolex.repairing.content.2.body=<div class="sub-title">Pourquoi la montre est rouillée ?</div>L''étanchéité des montres en général, des Rolex en particulier, ne peut être garantie indéfiniment. Les joints s''usent et perdent leurs propriétés avec le temps. Par ailleurs, si la couronne n''est pas refermée après le réglage de la montre, l''eau a plus de chances de rentrer dans la montre. \
@@ -6801,9 +6801,9 @@ rolex.serial.form.html.title=Année de fabrication d''une montre Rolex par numé
 rolex.serial.form.html.description=Trouver l''année de fabrication de votre Rolex à partir de son numéro de série
 rolex.serial.form.html.keywords=Année, Rolex, numéro de série, random
 rolex.serial.form.head=Année de fabrication d''une Rolex
-rolex.serial.form.head.subtitle=A partir de son numéro de série, vous pouvez déterminer l''année de fabrication d''une Rolex. En fonction de la période de fabrication, l''année est plus ou moins facile à déterminer.
-rolex.serial.form.head.intro=Entrez le numéro de série de votre Rolex
-rolex.serial.form.serial.label=Numéro de série
+rolex.serial.form.head.subtitle=
+rolex.serial.form.head.intro=A partir de son numéro de série, vous pouvez déterminer l''année de fabrication d''une Rolex.<br />En fonction de la période de fabrication, l''année est plus ou moins facile à déterminer.
+rolex.serial.form.serial.label=Entrez le numéro de série de votre Rolex
 rolex.serial.form.serial.placeholder=(chiffres et lettres uniquement)
 rolex.serial.form.submit=Calculer <span class="d-none d-md-inline">l''année de fabrication</span>
 rolex.serial.form.disclaimer=Dans certains cas, il est difficile de déterminer l''année de fabrication précisément. De plus, d''autres éléments de la montre peuvent permettre d''affiner l''information.
@@ -6814,11 +6814,19 @@ rolex.serial.success.html.title=Année de fabrication d''une montre Rolex par nu
 rolex.serial.success.html.description=Trouver l''année de fabrication de votre Rolex à partir de son numéro de série
 rolex.serial.success.html.keywords=Année, Rolex, numéro de série, random
 rolex.serial.success.head=Année de fabrication d''une Rolex
-rolex.serial.success.head.subtitle=Cette page vous indique le résultat de votre recherche
-rolex.serial.success.head.intro=D'après le numéro de série, nous estimons que votre monte date de 
-rolex.serial.success.disclaimer=Dans certains cas, il est difficile de déterminer l''année de fabrication précisément. De plus, d''autres éléments de la montre peuvent permettre d''affiner l''information.
+rolex.serial.success.head.subtitle=
+rolex.serial.success.head.intro=Cette page vous indique le résultat de votre recherche.<br />D''après le numéro de série, nous estimons que : 
+rolex.serial.success.disclaimer=Dans certains cas, il est difficile de déterminer l''année de fabrication précisément. De plus, d''autres éléments de la montre peuvent permettre d''affiner l''information. \
+** Rolex a réutilisé les mêmes numéros de série que ses premières montres entre 1954 et 1964, ainsi il n''est pas possible de connaitre l''année de production uniquement à partir du numéro de série pour les montres produites avant 1964.
 
+rolex.serial.success.action.quotation.request=Demander un devis
+rolex.serial.success.quotation.title=Demander un devis d''entretien de votre Rolex
 
+rolex.serial.success.type.0.value=Votre Rolex a été frabiquée en {0}
+rolex.serial.success.type.1.value=Votre Rolex a été frabiquée en {0}
+rolex.serial.success.type.2.value=Votre Rolex a été frabiquée entre {0} et {1}
+rolex.serial.success.type.3.value=Votre Rolex a été frabiquée après {0}
+rolex.serial.success.type.4.value=Votre Rolex a été frabiquée en {0} ou bien {1}**
 
 #end
 

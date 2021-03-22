@@ -161,6 +161,7 @@ GET		/perma/selling/virtual												controllers.Default.redirect(to = "/nous-
 GET		/perma/selling/now													controllers.Default.redirect(to = "/nous-contacter?title=Je%20veux%20vous%20vendre%20ma%20montre")
 GET		/perma/estimate														controllers.Default.redirect(to = "/nous-contacter?title=Je%20souhaite%20faire%20estimer%20ma%20collection")
 
+GET		/perma/devis/rolex													controllers.Default.redirect(to = "/demande-de-devis/montre/reparation/revision/rolex")
 
 GET     /sitemap.xml														controllers.HomeController.sitemap(request: Request)
 GET     /plan-du-site														controllers.HomeController.siteplan(request: Request)

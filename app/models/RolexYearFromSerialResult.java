@@ -1,15 +1,23 @@
 package models;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collection;
+import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
 public class RolexYearFromSerialResult {
-	private static int MAX_YEAR = 9999;
-	private static int MIN_YEAR = 0;
+	private final static int MAX_YEAR = 9999;
+	private final static int MIN_YEAR = 0;
+	
+	public final static int RESULT_TYPE_SINGLE_YEAR = 1;
+	public final static int RESULT_TYPE_SINGLE_RANGE = 2;
+	public final static int RESULT_TYPE_OPEN_RANGE = 3;
+	public final static int RESULT_TYPE_TWO_SINGLE_YEARS = 4;
+	public final static int RESULT_TYPE_DEFAULT = 0;
 	
 	public static class Years {
 		private List<Integer> years;
@@ -240,6 +248,18 @@ public class RolexYearFromSerialResult {
 	public RolexYearFromSerialResult addSingleYear(Integer year) {
 		return addRange(Range.of(year, year));
 	}
+	
+	public Optional<RolexYearFromSerialResult> mergeWith(Optional<RolexYearFromSerialResult> toMergeWith) {
+		if (toMergeWith.isPresent())
+			return Optional.of(this.mergeWith(toMergeWith.get()));
+		return Optional.of(this);
+	}
+	
+	private RolexYearFromSerialResult mergeWith(RolexYearFromSerialResult toMergeWith) {
+		List<Range> mergedRanges = ranges.parallelStream().flatMap(range -> toMergeWith.ranges.parallelStream().map(innerRange -> range.merge(innerRange))).flatMap(Collection::stream).collect(Collectors.toList());
+		
+		return new RolexYearFromSerialResult(mergedRanges);
+	}
 
 	public List<Range> getResults() {
 		return ranges;
@@ -283,19 +303,56 @@ public class RolexYearFromSerialResult {
 		return getYears().isOpenRange();
 	}
 	
-	public Optional<RolexYearFromSerialResult> mergeWith(Optional<RolexYearFromSerialResult> toMergeWith) {
-		if (toMergeWith.isPresent())
-			return Optional.of(this.mergeWith(toMergeWith.get()));
-		return Optional.of(this);
+	public boolean isSingleRange() {
+		if (!isOpenRange() && !isSingleYear())
+			return getYears().getYears().stream().count() == (getLastYear() - getFirstYear() + 1);
+		return false;
 	}
 	
-	private RolexYearFromSerialResult mergeWith(RolexYearFromSerialResult toMergeWith) {
-		List<Range> mergedRanges = ranges.parallelStream().flatMap(range -> toMergeWith.ranges.parallelStream().map(innerRange -> range.merge(innerRange))).flatMap(Collection::stream).collect(Collectors.toList());
-		
-		return new RolexYearFromSerialResult(mergedRanges);
+	private Integer getFirstYear() {
+		return getYears().getYears().stream().findFirst().get();
+	}
+	
+	private Integer getLastYear() {
+		return getYears().getYears().stream().sorted(Collections.reverseOrder()).findFirst().get();
 	}
 	
 	public String toString() {
 		return this.getClass() + " : "+ getYears().years.stream().map(Object::toString).collect(Collectors.joining(", ")) + (isOpenRange()?"+":"");
+	}
+	
+	public int typeOfResult() {
+		if (isSingleYear())
+			return RESULT_TYPE_SINGLE_YEAR;
+		if (isOpenRange())
+			return RESULT_TYPE_OPEN_RANGE;
+		if (isSingleRange())
+			return RESULT_TYPE_SINGLE_RANGE;
+		if (hasTwoPossibleYears())
+			return RESULT_TYPE_TWO_SINGLE_YEARS;
+		
+		return RESULT_TYPE_DEFAULT;
+	}
+	
+	public List<String> getResultAsDisplayableValue() {
+		List<Integer> result = getYearsAsDisplayableValue();
+		if (result.size() > 2)
+			return Arrays.asList(result.stream().limit(result.size()-1).map(value -> value.toString()).collect(Collectors.joining(", ")).concat(" ou "+result.get(result.size()-1)));
+		return result.stream().map(value -> value.toString()).collect(Collectors.toList());
+	}
+	
+	private List<Integer> getYearsAsDisplayableValue() {
+		switch (typeOfResult()) {
+			case RESULT_TYPE_SINGLE_YEAR:
+				return Arrays.asList(getSingleYear().get());
+			case RESULT_TYPE_OPEN_RANGE:
+				return Arrays.asList(getFirstYear());
+			case RESULT_TYPE_SINGLE_RANGE:
+				return Arrays.asList(getFirstYear(), getLastYear());	
+			case RESULT_TYPE_TWO_SINGLE_YEARS:
+				return Arrays.asList(getFirstYearPossible().get(), getSecondYearPossible().get());
+			default:
+				return getYears().getYears();
+		}
 	}
 }
