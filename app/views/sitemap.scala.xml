@@ -66,6 +66,11 @@
       <priority>0.7</priority>
     </url>
     <url>
+      <loc>https://@{request.host()}@routes.FormProcessingController.prepareRolexSerialRequest()</loc>
+      <changefreq>monthly</changefreq>
+      <priority>1.0</priority>
+    </url>
+    <url>
       <loc>https://@{request.host()}@routes.FormProcessingController.prepareBuyRequest()</loc>
       <changefreq>monthly</changefreq>
       <priority>1.0</priority>
