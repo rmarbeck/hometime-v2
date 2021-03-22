@@ -138,6 +138,8 @@ POST	/abonnement															controllers.FormProcessingController.processRegis
 GET	    /a/v/:uniqueKey               										controllers.FormProcessingController.validateAppointment(request: Request, uniqueKey: String)
 GET	    /a/c/:uniqueKey               										controllers.FormProcessingController.cancelAppointment(request: Request, uniqueKey: String)
 
+GET		/maintenance														controllers.HomeController.maintenance(request: Request)
+
 
 GET		/perma/offre														controllers.Default.redirect(to = "/les-services/l-offre")
 GET		/perma/venir														controllers.Default.redirect(to = "/venir-nous-voir")

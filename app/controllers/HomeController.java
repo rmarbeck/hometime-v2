@@ -134,6 +134,10 @@ public class HomeController extends Controller {
         return ok(views.html.visit_us.render(Optional.empty(), request, getMessagesForInEnglishPages(request)));
     }
     
+    public Result maintenance(Http.Request request) {
+        return ok(views.html.maintenance.render(request, getDefaultMessages(request)));
+    }
+    
     private Messages getDefaultMessages(Http.Request request) {
     	return messagesApi.preferred(request);
     }

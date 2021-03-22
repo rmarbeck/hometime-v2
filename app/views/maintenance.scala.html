@@ -1,0 +1,31 @@
+@()(implicit request: Http.Request, messages: play.i18n.Messages)
+
+@import scala.collection.immutable._
+@import tags._
+
+@key={maintenance}
+
+@title = {@Messages(key.toString+".html.title")}
+@description = {@Messages(key.toString+".html.description")}
+@keywords = {@Messages(key.toString+".html.keywords")}
+
+@hm(value: String) = {@Html(Messages(key.toString+".page."+value))}
+
+@layouts.minimal(key.toString, title.toString, description.toString, keywords.toString){
+
+		<section id="content" class="with-page-title-pattern ">
+			<div class="content-wrap">
+				<div class="container clearfix">
+					<div class="heading-block center topmargin-lg nobottomborder">
+						<h1>@hm("title")</h1>
+						<span>@hm("header")</span>
+					</div>
+					<div class="center">
+						<div class="divider divider-center divider-short divider-margin"><i class="icon-wrench"></i></div>
+					</div>
+				</div>
+			</div>
+		</section>
+
+}
+		

@@ -6833,6 +6833,14 @@ rolex.serial.success.type.2.value=votre Rolex a été frabiquée entre&nbsp;<b>{
 rolex.serial.success.type.3.value=votre Rolex a été frabiquée après&nbsp;<b>{0}</b>*
 rolex.serial.success.type.4.value=votre Rolex a été frabiquée en&nbsp;<b>{0}</b>&nbsp;ou&nbsp;bien&nbsp;<b>{1}</b>**
 
+
+maintenance.html.title=Site en maintenance
+maintenance.html.description=page de maintenance
+maintenance.html.keywords=Maintenance Hometime.fr
+maintenance.page.title=Hometime.fr
+maintenance.page.header=Le site est actuellement en maintenance, veuillez nous en excuser&nbsp;! \
+<br /><br />N''hésitez pas à réessayer dans quelques instants.
+
 #end
 
 
