@@ -6825,11 +6825,11 @@ rolex.serial.success.quotation.title=Demander un devis d''entretien de votre Rol
 
 rolex.serial.success.result.header=D''après le numéro de série, nous estimons que<br />
 
-rolex.serial.success.type.0.value=votre Rolex a été frabiquée en&nbsp;{0}
-rolex.serial.success.type.1.value=votre Rolex a été frabiquée en&nbsp;{0}
-rolex.serial.success.type.2.value=votre Rolex a été frabiquée entre&nbsp;{0}&nbsp;et&nbsp;{1}
-rolex.serial.success.type.3.value=votre Rolex a été frabiquée après&nbsp;{0}*
-rolex.serial.success.type.4.value=votre Rolex a été frabiquée en&nbsp;{0}&nbsp;ou&nbsp;bien&nbsp;{1}**
+rolex.serial.success.type.0.value=votre Rolex a été frabiquée en&nbsp;<b>{0}</b>
+rolex.serial.success.type.1.value=votre Rolex a été frabiquée en&nbsp;<b>{0}</b>
+rolex.serial.success.type.2.value=votre Rolex a été frabiquée entre&nbsp;<b>{0}</b>&nbsp;et&nbsp;<b>{1}</b>
+rolex.serial.success.type.3.value=votre Rolex a été frabiquée après&nbsp;<b>{0}</b>*
+rolex.serial.success.type.4.value=votre Rolex a été frabiquée en&nbsp;<b>{0}</b>&nbsp;ou&nbsp;bien&nbsp;<b>{1}</b>**
 
 #end
 

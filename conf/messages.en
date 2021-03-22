@@ -117,8 +117,22 @@ rolex.serial.success.html.title=Build year of a Rolex watch by serial number
 rolex.serial.success.html.description=Finding build year of your Rolex watch from its serial number
 rolex.serial.success.html.keywords=Year, Rolex, serial number, random
 rolex.serial.success.head=Rolex watch production year
-rolex.serial.success.head.subtitle=Please find the result of your request
-rolex.serial.success.head.intro=Based upon serial number, your Rolex was produced in 
-rolex.serial.success.disclaimer=It can be difficult to find production year on old models. If so, other elements can help finding production period of the watch.
+rolex.serial.success.head.subtitle=
+rolex.serial.success.head.intro=Please find the result of your request
+rolex.serial.success.disclaimer=It can be difficult to find production year on old models. If so, other elements can help finding production period of the watch. \
+<br/>* From 2010, serial numbers are randomly allocated by Rolex. It is impossible to guess production year from serial number only.\
+<br/>** Rolex have been using already used serials numbers from 1954 to 1964, therefore, it is not possible to guess production year from serial number perspective before year 1964.
+
+rolex.serial.success.action.quotation.request=Ask for quotation
+rolex.serial.success.quotation.title=Ask for a quotation to repair your Rolex
+
+rolex.serial.success.result.header=Based upon serial number<br />
+
+rolex.serial.success.type.0.value=your Rolex was produced in&nbsp;<b>{0}</b>
+rolex.serial.success.type.1.value=your Rolex was produced in&nbsp;<b>{0}</b>
+rolex.serial.success.type.2.value=your Rolex was produced between&nbsp;<b>{0}</b>&nbsp;and&nbsp;<b>{1}</b>
+rolex.serial.success.type.3.value=your Rolex was produced after&nbsp;<b>{0}</b>*
+rolex.serial.success.type.4.value=your Rolex was produced in&nbsp;<b>{0}</b>&nbsp;or&nbsp;<b>{1}</b>**
+
 
 
