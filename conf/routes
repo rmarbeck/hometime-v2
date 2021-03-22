@@ -93,6 +93,7 @@ GET     /privacy                    										controllers.Default.redirect(to = 
 GET     /annee-numero-de-serie-rolex										controllers.FormProcessingController.prepareRolexSerialRequest(request: Request)
 GET     /rolex-serial-number-year			        						controllers.FormProcessingController.prepareRolexSerialRequest_en(request: Request)
 POST    /calcule-numero-de-serie-rolex										controllers.FormProcessingController.processRolexSerialRequest(request: Request)
+GET     /calcule-numero-de-serie-rolex										controllers.Default.redirect(to = "/annee-numero-de-serie-rolex")
 
 
 GET     /prise-en-charge-urgente-probleme-etancheite    					controllers.HomeController.content(request: Request, key = "content.water.repairing")
