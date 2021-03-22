@@ -10,7 +10,6 @@ import com.fasterxml.jackson.core.JsonParser;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.DeserializationContext;
 import com.fasterxml.jackson.databind.JsonNode;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.deser.std.StdDeserializer;
 
 import models.News;
@@ -44,7 +43,7 @@ public class NewsDeserializer extends StdDeserializer<News> {
 	        Optional<List<String>> previewAlt = Optional.empty();
 	        for (JsonNode current : node.get("previewAlt")) {
 	        	if (!previewAlt.isPresent())
-	        		previewAlt = Optional.of(new ArrayList());
+	        		previewAlt = Optional.of(new ArrayList<>());
 	        	previewAlt.get().add(current.textValue());
 	        }
 
@@ -54,7 +53,7 @@ public class NewsDeserializer extends StdDeserializer<News> {
 	    }
 	    
 	    private List<String> readValues(JsonNode node, String key) {
-	    	List<String> list = new ArrayList();
+	    	List<String> list = new ArrayList<>();
 	    	for (JsonNode current : node.get(key))
 	    		list.add(current.textValue());
 	        return list;
