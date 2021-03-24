@@ -6833,6 +6833,14 @@ rolex.serial.success.type.2.value=votre Rolex a été frabiquée entre&nbsp;<b>{
 rolex.serial.success.type.3.value=votre Rolex a été frabiquée après&nbsp;<b>{0}</b>*
 rolex.serial.success.type.4.value=votre Rolex a été frabiquée en&nbsp;<b>{0}</b>&nbsp;ou&nbsp;bien&nbsp;<b>{1}</b>**
 
+rolex.serial.form.helper.title=Où trouver le numéro de série&nbsp;?
+
+rolex.serial.form.text.old.why=Sur les modèles <b>ne disposant pas</b> des inscriptions "ROLEX ROLEX ROLEX" sur le réhaut (le pourtour en acier autour du cadran), le numéro de série est visible <b>uniquement après avoir retiré le bracelet</b>.
+rolex.serial.form.text.old.to.do=Il est alors visible <b>entre les cornes</b> de la partie basse de la montre (à 6h).
+
+rolex.serial.form.text.new.why=Sur les modèles <b>disposant</b> des inscriptions "ROLEX ROLEX ROLEX" sur le réhaut (le pourtour en acier autour du cadran), le numéro de série est visible <b>directement sur le réhaut gravé</b>.
+rolex.serial.form.text.new.to.do=<b>Proche de l''index des 6h</b>, à la place du mot "ROLEX", se trouve le numéro de série gravé au laser. Ici, inutile de retirer le bracelet.
+				
 
 maintenance.html.title=Site en maintenance
 maintenance.html.description=page de maintenance

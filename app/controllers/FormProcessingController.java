@@ -101,15 +101,19 @@ public class FormProcessingController extends Controller implements WSBodyReadab
 		return ok(views.html.action_error.render(contentKey, request, messagesApi.preferred(request)));
 	}
 	
-	public Result processRegister(Http.Request request) {
+	public CompletionStage<Result> processRegister(Http.Request request) {
 		final DynamicForm boundForm = formFactory.form().bindFromRequest(request);
 		
-		logger.error("....-------> "+boundForm.get("email"));
-		
-		ObjectNode resultAsJson = Json.newObject();
-		resultAsJson.put("message", messagesApi.preferred(request).at("register.message.ok"));
-		
-		return ok(resultAsJson);
+		if (boundForm.hasErrors()) {
+			return CompletableFuture.supplyAsync(() -> badRequest(Json.newObject().put("message", messagesApi.preferred(request).at("register.message.ko"))));
+		} else {
+			CompletionStage<? extends WSResponse> responsePromise = wsWithSecret("https://legacy.hometime.fr/new-email-to-register").setContentType("application/x-www-form-urlencoded").post(request.body().asFormUrlEncoded().entrySet().stream().map(entry -> flattenValues(entry.getKey(), entry.getValue(), "&")).collect( Collectors.joining( "&" )));
+			return responsePromise.handle((response, error) -> {
+				if(response != null && response.getStatus() < 400)
+					return ok(Json.newObject().put("message", messagesApi.preferred(request).at("register.message.ok")));
+				return badRequest(Json.newObject().put("message", messagesApi.preferred(request).at("register.message.ko")));
+			});
+		}
 	}
 	
 	/*************************************

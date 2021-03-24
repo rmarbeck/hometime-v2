@@ -63,6 +63,40 @@
  * End of Form Helpers
  *****************************************@
 
+@*****************************************
+ * Content Helpers
+ *****************************************@
+ @explanation(values: List[(String,String)]) = {
+		<div class="row text-justify">
+			@values.zipWithIndex.map { case (value,index) => 
+			<div class="col-lg-6">
+				<picture>
+					<source type="image/webp" data-srcset="@remote_assets(value._1.toString+".webp")">
+					<img src="@remote_assets(value._1+".jpg")" async alt="@Html(Messages(formKey.toString+".picture."+value._2.toString+".alt"))">
+				</picture>
+				<div class="d-lg-none d-xl-none">
+					<div class="divider divider-center"><i class="icon-line-eye"></i></div>
+					<p>@Html(Messages(formKey.toString+".text."+value._2.toString+".why"))<br /></p>
+					<p><i class="icon-arrow-right2"></i>&nbsp;@Html(Messages(formKey.toString+".text."+value._2.toString+".to.do"))</p>
+				</div>
+			</div>
+			}
+		</div>
+		<div class="row text-justify">
+			@values.zipWithIndex.map { case (value,index) =>
+			<div class="col-lg-6 d-none d-lg-block">
+					<div class="divider divider-center"><i class="icon-line-eye"></i></div>
+					<p>@Html(Messages(formKey.toString+".text."+value._2.toString+".why"))<br /></p>
+					<p><i class="icon-arrow-right2"></i>&nbsp;@Html(Messages(formKey.toString+".text."+value._2.toString+".to.do"))</p>
+			</div>
+			}
+		</div>
+}
+
+@*****************************************
+ * End of Content Helpers
+ *****************************************@
+
 
 @layouts.main_helper_with_head_block(formKey.toString){
 		
@@ -76,5 +110,11 @@
 										@form_btn("rolex-serial", Messages(formKey.toString+".submit"))
 									</div>
 
-			}
+		}
+		
+		<div class="fancy-title title-dotted-border title-center">
+			<h3>@Html(Messages(formKey.toString+".helper.title"))</h3>
+		</div>
+		@explanation(List(("images/serials/old-2000", "old"), ("images/serials/new-2000", "new")))
+		
 }
