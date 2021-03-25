@@ -105,13 +105,13 @@ public class FormProcessingController extends Controller implements WSBodyReadab
 		final DynamicForm boundForm = formFactory.form().bindFromRequest(request);
 		
 		if (boundForm.hasErrors()) {
-			return CompletableFuture.supplyAsync(() -> badRequest(Json.newObject().put("message", messagesApi.preferred(request).at("register.message.ko")).put("alert", "error")));
+			return CompletableFuture.supplyAsync(() -> ok(Json.newObject().put("message", messagesApi.preferred(request).at("register.message.ko")).put("alert", "error")));
 		} else {
 			CompletionStage<? extends WSResponse> responsePromise = wsWithSecret("https://legacy.hometime.fr/new-email-to-register").setContentType("application/x-www-form-urlencoded").post(request.body().asFormUrlEncoded().entrySet().stream().map(entry -> flattenValues(entry.getKey(), entry.getValue(), "&")).collect( Collectors.joining( "&" )));
 			return responsePromise.handle((response, error) -> {
 				if(response != null && response.getStatus() < 400)
 					return ok(Json.newObject().put("message", messagesApi.preferred(request).at("register.message.ok")));
-				return badRequest(Json.newObject().put("message", messagesApi.preferred(request).at("register.message.ko")).put("alert", "error"));
+				return ok(Json.newObject().put("message", messagesApi.preferred(request).at("register.message.ko")).put("alert", "error"));
 			});
 		}
 	}
