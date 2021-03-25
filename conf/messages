@@ -20,6 +20,7 @@ top.bar.address.zip=75001
 top.bar.address.city=Paris
 
 register.message.ok=Merci, nous avons bien enregistré votre adresse.
+register.message.ko=Une erreur s''est produite, veuillez réessayer plus tard.
 
 #------ Footer ------------------
 #------ footer
