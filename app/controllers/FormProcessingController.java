@@ -29,6 +29,7 @@ import fr.hometime.utils.WebserviceHelper;
 import play.data.DynamicForm;
 import play.data.Form;
 import play.data.FormFactory;
+import play.data.validation.ValidationError;
 import play.i18n.Lang;
 import play.i18n.Messages;
 import play.i18n.MessagesApi;
@@ -163,7 +164,7 @@ public class FormProcessingController extends Controller implements WSBodyReadab
 			return responsePromise.handle((response, error) -> {
 				if (response.isPresent())
 					return ok(views.html.rolex_serial_success.render(boundForm.get().serial, response.get(), request, messagesApi.preferred(request)));
-				return badRequest(views.html.rolex_serial_form.render(boundForm, request, messagesApi.preferred(request)));
+				return badRequest(views.html.rolex_serial_form.render(boundForm.withError(new ValidationError("serial", "rolex.serial.request.validation.error.serial.not.recognised")), request, messagesApi.preferred(request)));
 			});
 		}
 	}
