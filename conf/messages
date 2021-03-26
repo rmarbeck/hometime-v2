@@ -6835,6 +6835,9 @@ rolex.serial.success.type.2.value=votre Rolex a été frabiquée entre&nbsp;<b>{
 rolex.serial.success.type.3.value=votre Rolex a été frabiquée après&nbsp;<b>{0}</b>*
 rolex.serial.success.type.4.value=votre Rolex a été frabiquée en&nbsp;<b>{0}</b>&nbsp;ou&nbsp;bien&nbsp;<b>{1}</b>**
 
+rolex.serial.success.helper.title=Besoin d''entretenir votre Rolex
+rolex.serial.success.text.post.result=Si vous avez besoin d''un entretien ou bien d''authentifier votre montre Rolex, ou encore une autre raison, nous pouvons vous aider. N''hésitez pas à demander un devis ou bien à prendre contact avec nous!
+
 rolex.serial.form.helper.title=Où trouver le numéro de série&nbsp;?
 
 rolex.serial.form.text.old.why=Sur les modèles <b>ne disposant pas</b> des inscriptions "ROLEX ROLEX ROLEX" sur le réhaut (le pourtour en acier autour du cadran), le numéro de série est visible <b>uniquement après avoir retiré le bracelet</b>.

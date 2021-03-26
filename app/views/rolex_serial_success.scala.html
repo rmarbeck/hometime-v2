@@ -20,7 +20,14 @@
 			@Html(Messages(key+".result.header"))
 			@Html(Messages(key+".type."+result.typeOfResult+".value", result.getResultAsDisplayableValue.lift(0).orNull, result.getResultAsDisplayableValue.lift(1).orNull))
 		</h3>
+		<div class="fancy-title title-dotted-border title-center">
+			<h3>@Html(Messages(key.toString+".helper.title"))</h3>
+		</div>
+		<div class="text-justify">
+			<h4>@Html(Messages(key.toString+".text.post.result"))</h4>
+		</div>
 		<div class="center">
+			<a href="@routes.HomeController.visit()" title="@Html(Messages("global.visit.us.title"))"  class="button button-rounded button-reveal button-large button-dark"><i class="icon-map-marker2"></i><span>@Html(Messages("home.action.visit.us"))</span></a>
 			<a href="/perma/devis/rolex" title="@Html(Messages(key+".quotation.title"))" class="button button-3d button-reveal button-large"><i class="icon-line2-calculator"></i><span>@Html(Messages(key+".action.quotation.request"))</span></a>
 		</div>
 					

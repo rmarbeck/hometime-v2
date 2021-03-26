@@ -29,6 +29,7 @@ import fr.hometime.utils.WebserviceHelper;
 import play.data.DynamicForm;
 import play.data.Form;
 import play.data.FormFactory;
+import play.data.validation.ValidationError;
 import play.i18n.Lang;
 import play.i18n.Messages;
 import play.i18n.MessagesApi;
@@ -105,13 +106,13 @@ public class FormProcessingController extends Controller implements WSBodyReadab
 		final DynamicForm boundForm = formFactory.form().bindFromRequest(request);
 		
 		if (boundForm.hasErrors()) {
-			return CompletableFuture.supplyAsync(() -> badRequest(Json.newObject().put("message", messagesApi.preferred(request).at("register.message.ko"))));
+			return CompletableFuture.supplyAsync(() -> ok(Json.newObject().put("message", messagesApi.preferred(request).at("register.message.ko")).put("alert", "error")));
 		} else {
 			CompletionStage<? extends WSResponse> responsePromise = wsWithSecret("https://legacy.hometime.fr/new-email-to-register").setContentType("application/x-www-form-urlencoded").post(request.body().asFormUrlEncoded().entrySet().stream().map(entry -> flattenValues(entry.getKey(), entry.getValue(), "&")).collect( Collectors.joining( "&" )));
 			return responsePromise.handle((response, error) -> {
 				if(response != null && response.getStatus() < 400)
 					return ok(Json.newObject().put("message", messagesApi.preferred(request).at("register.message.ok")));
-				return badRequest(Json.newObject().put("message", messagesApi.preferred(request).at("register.message.ko")));
+				return ok(Json.newObject().put("message", messagesApi.preferred(request).at("register.message.ko")).put("alert", "error"));
 			});
 		}
 	}
@@ -163,7 +164,7 @@ public class FormProcessingController extends Controller implements WSBodyReadab
 			return responsePromise.handle((response, error) -> {
 				if (response.isPresent())
 					return ok(views.html.rolex_serial_success.render(boundForm.get().serial, response.get(), request, messagesApi.preferred(request)));
-				return badRequest(views.html.rolex_serial_form.render(boundForm, request, messagesApi.preferred(request)));
+				return badRequest(views.html.rolex_serial_form.render(boundForm.withError(new ValidationError("serial", "rolex.serial.request.validation.error.serial.not.recognised")), request, messagesApi.preferred(request)));
 			});
 		}
 	}
