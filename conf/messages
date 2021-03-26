@@ -20,6 +20,7 @@ top.bar.address.zip=75001
 top.bar.address.city=Paris
 
 register.message.ok=Merci, nous avons bien enregistré votre adresse.
+register.message.ko=Une erreur s''est produite, veuillez réessayer plus tard.
 
 #------ Footer ------------------
 #------ footer
@@ -623,6 +624,7 @@ global.text.appointment.validated=Votre rendez vous est validé pour le <b>{0}</
 global.text.appointment.cancel=Si vous souhaitez l''annuler, veuillez cliquer
 global.text.appointment.cancel.title=Annulation du rendez-vous
 global.text.cancel.action.text=sur ce lien
+global.appointment.title=Cliquer pour prendre rendez-vous
 
 
 #------ Appointment Success Page ------------------
