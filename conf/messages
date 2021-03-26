@@ -626,7 +626,6 @@ global.text.appointment.cancel.title=Annulation du rendez-vous
 global.text.cancel.action.text=sur ce lien
 global.appointment.title=Cliquer pour prendre rendez-vous
 
-
 #------ Appointment Success Page ------------------
 #------ appointment.success
 appointment.success.html.title=Prise de rendez-vous en cours
