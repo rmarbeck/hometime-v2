@@ -1,10 +1,10 @@
 package models;
 
-import java.util.Arrays;
 import java.util.Collections;
 import java.util.Date;
 import java.util.List;
 import java.util.Optional;
+import java.util.function.Consumer;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -70,15 +70,15 @@ public class News {
 	}
 	
 	public News addCategory(String newCategory) {
-		return addToList(newCategory, categories);
+		return addToList(newCategory, categories, (value) -> this.categories = value);
 	}
 	
 	public News addPreviewUrl(String newPreviewUrl) {
-		return addToList(newPreviewUrl, previewUrl);
+		return addToList(newPreviewUrl, previewUrl, (value) -> this.previewUrl = value);
 	}
 	
 	public News addPreviewAlt(String newPreviewAlt) {
-		return addToList(newPreviewAlt, previewAlt);
+		return addToList(newPreviewAlt, previewAlt, (value) -> this.previewAlt = value);
 	}
 	
 	public News setReadMoreUrl(String newReadMoreUrl) {
@@ -91,11 +91,11 @@ public class News {
 		return this;
 	}
 	
-	private News addToList(String toAdd, Optional<List<String>> innerField) {
-		innerField = Optional.of(Stream.concat(
+	private News addToList(String toAdd, Optional<List<String>> innerField, Consumer<Optional<List<String>>> setter) {
+		setter.accept(Optional.of(Stream.concat(
 										innerField.orElse(Collections.emptyList()).stream(),
 										Stream.of(toAdd))
-										.collect(Collectors.toList()));
+										.collect(Collectors.toList())));
 		return this;
 	}
 	
@@ -107,24 +107,6 @@ public class News {
 	public News unActivate() {
 		this.active = false;
 		return this;
-	}
-	
-	public void setCategories(String singleValue) {
-		categories = uniqueValueToOptionalArray(singleValue);
-	}
-	
-	public void setPreviewUrl(String singleValue) {
-		previewUrl = uniqueValueToOptionalArray(singleValue);
-	}
-	
-	public void setPreviewAlt(String singleValue) {
-		previewAlt = uniqueValueToOptionalArray(singleValue);
-	}
-	
-	private Optional<List<String>> uniqueValueToOptionalArray(String singleValue) {
-		if (singleValue == null)
-			return Optional.empty();
-		return Optional.of(Arrays.asList(singleValue));
 	}
 
 	public String getType() {

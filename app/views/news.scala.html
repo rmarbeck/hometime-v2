@@ -43,6 +43,7 @@
 
 					<div id="posts" class="small-thumbs">
 						@newsList.get.map{ news =>
+						@news
 							@news.getType match {
 								case "ONE_PICTURE" => {
 									@onePicturePost(news.title, news.body, news.previewUrl.map(list => list.stream.findFirst.get).orElse(""), news.previewAlt.map(list => list.stream.findFirst.get).orElse(""), news.date, news.categories.map(list => list.stream.findFirst.get).orElse(""), news.readMoreUrl.orElse(""))
