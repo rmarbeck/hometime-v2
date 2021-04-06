@@ -13,8 +13,6 @@ libraryDependencies ++= Seq(
   "org.webjars" % "bootstrap" % "4.3.1"
 )
 
-LessKeys.compress in Assets := true
-
 includeFilter in (Assets, LessKeys.less) := "merged.less" | "style.less" | "responsive-proxy.less" | "dark-proxy.less" | "custom.less"
 
 // Compile the project before generating Eclipse files, so that generated .scala or .class files for views and routes are present

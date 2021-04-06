@@ -1,10 +1,8 @@
 package fr.hometime.utils;
 
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
-import java.util.Optional;
+import java.util.function.Function;
 
 import com.fasterxml.jackson.core.JsonParser;
 import com.fasterxml.jackson.core.JsonProcessingException;
@@ -16,8 +14,9 @@ import models.News;
 import models.News.NewsType;
 
 public class NewsDeserializer extends StdDeserializer<News> {
-		 
-	    public NewsDeserializer() { 
+	private static final long serialVersionUID = -539926018451598923L;
+
+		public NewsDeserializer() { 
 	        this(null); 
 	    } 
 	 
@@ -29,33 +28,36 @@ public class NewsDeserializer extends StdDeserializer<News> {
 	    public News deserialize(JsonParser jp, DeserializationContext ctxt) 
 	      throws IOException, JsonProcessingException {
 	        JsonNode node = ctxt.readTree(jp);
+	        
 	        String title = node.get("title").textValue();
 	        String body = node.get("body").textValue();
 	        NewsType type = NewsType.fromString(node.get("type").textValue());
-	        Optional<String> readMoreUrl = Optional.empty();
-	        if (node.has("readMoreUrl"))
-	        	readMoreUrl = Optional.of(node.get("readMoreUrl").textValue());
-	        
 	        Date date = new Date(node.get("date").asLong());
-	        List<String> categories = readValues(node, "categories");
-	        List<String> previewUrl = readValues(node, "previewUrl");
-
-	        Optional<List<String>> previewAlt = Optional.empty();
-	        for (JsonNode current : node.get("previewAlt")) {
-	        	if (!previewAlt.isPresent())
-	        		previewAlt = Optional.of(new ArrayList<>());
-	        	previewAlt.get().add(current.textValue());
-	        }
-
-	        boolean active = node.get("active").booleanValue();
 	        
-	        return new News(title, body, type, date, categories, previewUrl, previewAlt, readMoreUrl, active);
+	        News toBuild = new News(title, body, type, date);
+	        
+	        if (node.has("readMoreUrl"))
+	        	toBuild.setReadMoreUrl(node.get("readMoreUrl").textValue());
+	        
+	        if (node.has("privateInfos"))
+	        	toBuild.setPrivateInfos(node.get("privateInfos").textValue());
+	        
+	        addValues(node, "categories", toBuild::addCategory);
+	        addValues(node, "previewUrl", toBuild::addPreviewUrl);
+	        addValues(node, "previewAlt", toBuild::addPreviewAlt);
+
+	        if (node.get("active").booleanValue()) {
+	        	toBuild.activate();
+	        } else {
+	        	toBuild.unActivate();
+	        }
+	        
+	        return toBuild;
 	    }
 	    
-	    private List<String> readValues(JsonNode node, String key) {
-	    	List<String> list = new ArrayList<>();
+	    
+	    private void addValues(JsonNode node, String key, Function<String, News> addingFunction) {
 	    	for (JsonNode current : node.get(key))
-	    		list.add(current.textValue());
-	        return list;
+	    		addingFunction.apply(current.textValue());
 	    }
 }

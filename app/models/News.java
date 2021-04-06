@@ -1,9 +1,12 @@
 package models;
 
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.Date;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 
@@ -47,44 +50,63 @@ public class News {
 	
 	public Date date;
 	
-	public Optional<List<String>> categories;
+	public Optional<List<String>> categories = Optional.empty();
 	
-	public Optional<List<String>> previewUrl;
+	public Optional<List<String>> previewUrl = Optional.empty();
 			
-	public Optional<List<String>> previewAlt;
+	public Optional<List<String>> previewAlt = Optional.empty();
 	
-	public Optional<String> readMoreUrl;
+	public Optional<String> readMoreUrl = Optional.empty();
 		
 	public boolean active = true;
 	
-	public Optional<String> privateInfos;
-		
-	private News() {
-		
-	}
+	public Optional<String> privateInfos = Optional.empty();
 	
-	public News(String title, String body, NewsType type, Date date, String category, String previewUrl, Optional<String> previewAlt, Optional<String> readMoreUrl, boolean active) {
+	public News(String title, String body, NewsType type, Date date) {
 		this.title = title;
 		this.body = body;
 		this.type = type;
 		this.date = date;
-		setCategories(category);
-		setPreviewUrl(previewUrl);
-		previewAlt.ifPresent(value -> setPreviewAlt(value));
-		this.readMoreUrl = readMoreUrl;
-		this.active = active;
 	}
 	
-	public News(String title, String body, NewsType type, Date date, List<String> category, List<String> previewUrl, Optional<List<String>> previewAlt, Optional<String> readMoreUrl, boolean active) {
-		this.title = title;
-		this.body = body;
-		this.type = type;
-		this.date = date;
-		setCategories(category);
-		setPreviewUrl(previewUrl);
-		previewAlt.ifPresent(value -> setPreviewAlt(value));
-		this.readMoreUrl = readMoreUrl;
-		this.active = active;
+	public News addCategory(String newCategory) {
+		return addToList(newCategory, categories);
+	}
+	
+	public News addPreviewUrl(String newPreviewUrl) {
+		return addToList(newPreviewUrl, previewUrl);
+	}
+	
+	public News addPreviewAlt(String newPreviewAlt) {
+		return addToList(newPreviewAlt, previewAlt);
+	}
+	
+	public News setReadMoreUrl(String newReadMoreUrl) {
+		this.readMoreUrl = Optional.ofNullable(newReadMoreUrl);
+		return this;
+	}
+	
+	public News setPrivateInfos(String newPrivateInfos) {
+		this.privateInfos = Optional.ofNullable(newPrivateInfos);
+		return this;
+	}
+	
+	private News addToList(String toAdd, Optional<List<String>> innerField) {
+		innerField = Optional.of(Stream.concat(
+										innerField.orElse(Collections.emptyList()).stream(),
+										Stream.of(toAdd))
+										.collect(Collectors.toList()));
+		return this;
+	}
+	
+	public News activate() {
+		this.active = true;
+		return this;
+	}
+	
+	public News unActivate() {
+		this.active = false;
+		return this;
 	}
 	
 	public void setCategories(String singleValue) {
@@ -100,6 +122,8 @@ public class News {
 	}
 	
 	private Optional<List<String>> uniqueValueToOptionalArray(String singleValue) {
+		if (singleValue == null)
+			return Optional.empty();
 		return Optional.of(Arrays.asList(singleValue));
 	}
 
@@ -109,39 +133,5 @@ public class News {
 
 	public boolean isActive() {
 		return active;
-	}
-	
-	public void setNewsType(String value) {
-		type = NewsType.fromString(value);
-	}
-	
-	public void setCategories(List<String> values) {
-		categories = Optional.empty();
-		if (values != null && values.size() != 0)
-			categories = Optional.of(values);
-	}
-	
-	public void setPreviewAlt(List<String> values) {
-		previewAlt = Optional.empty();
-		if (values != null && values.size() != 0)
-			previewAlt = Optional.of(values);
-	}
-	
-	public void setPreviewUrl(List<String> values) {
-		previewUrl = Optional.empty();
-		if (values != null && values.size() != 0)
-			previewUrl = Optional.of(values);
-	}
-	
-	public void setReadMoreUrl(String value) {
-		readMoreUrl = Optional.empty();
-		if (value != null)
-			readMoreUrl = Optional.of(value);
-	}
-	
-	public void setPrivateInfos(String value) {
-		readMoreUrl = Optional.empty();
-		if (value != null)
-			readMoreUrl = Optional.of(value);
 	}
 }
