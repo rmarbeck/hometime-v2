@@ -1890,7 +1890,7 @@ auto.order.emergency.level.value.high=L''entretien est urgent (environ 1 semaine
 auto.order.emergency.level.value.very.high=L''entretien est très urgent (moins de 48h)
 auto.order.emergency.level.value.low=L''entretien peut prendre du temps (plus d''un mois)
 
-auto.order.action.submit=Demander un devis<span class="d-none d-md-inline">personnalisé</span>
+auto.order.action.submit=Demander un devis<span class="d-none d-md-inline"> personnalisé</span>
 
 auto.order.quartz.header.service.prices=<b>Pour les montres <span class="resultbrand"></span>, le tarif d''entretien partiel est le suivant :</b>
 auto.order.quartz.body.service.prices=<strong><span id="battery">{0}</span>€</strong> pour changement de pile, <strong><span id="water">{1}</span>€</strong> avec étanchéité garantie 2 ans
