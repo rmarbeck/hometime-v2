@@ -12,7 +12,7 @@ global.visit.us.title=Comment venir à l''atelier&nbsp;?
 global.quotation.title=Demander un devis d''entretien
 
 global.action.text.appointment.action=Prendre RDV
-global.text.covid.reasons=Rendez-vous obligatoire pendant le confinement
+global.text.covid.reasons=Rendez-vous obligatoire pour vous garantir un confort optimal
 global.text.covid.footer=Prenez rendez-vous en ligne, ou appelez-nous si nécessaire pour que nous nous déplacions&nbsp;:
 
 top.bar.address.street=322 rue Saint Honoré,
@@ -603,11 +603,11 @@ page.visit.us.body.2=Appelez-nous pour prendre rendez-vous ou pour plus de préc
 #------ Appointment page ------------------
 #------ appointment
 appointment.html.title=Prendre un rendez-vous
-appointment.html.description=Prise de rendez vous type click and collect pendant le confinement pour déposer ou venir chercher une montre. Laissez-vous guider. 
-appointment.html.keywords=Rendez-vous, confinement, covid, click and collect, livraison, locaux Hometime Paris, révision complète montre, démagnétisation, changement de pile, changement de batterie, horloger agréé, étanchéité, horloger indépendant, réparation, montre, paris
+appointment.html.description=Prise de rendez-vous pour déposer ou venir chercher une montre. Laissez-vous guider. 
+appointment.html.keywords=Rendez-vous, livraison, locaux Hometime Paris, révision complète montre, démagnétisation, changement de pile, changement de batterie, horloger agréé, étanchéité, horloger indépendant, réparation, montre, paris
 appointment.head=Prendre un rendez-vous
 appointment.head.subtitle=Choisissez un créneau de 30 minutes pour venir chercher ou déposer une montre&nbsp;!
-appointment.head.intro=Pendant le confinement, nous vous recevons uniquement sur rendez-vous pour déposer ou venir chercher une montre.<br/>Laissez-vous guider pour choisir votre créneau&nbsp;!
+appointment.head.intro=Pour garantir des conditions de confort et de sécurité optimales, nous vous recevons uniquement sur rendez-vous pour déposer ou venir chercher une montre.<br/>Laissez-vous guider pour choisir votre créneau&nbsp;!
 appointment.disclaimer=N''hésitez pas à prendre contact avec nous pour plus de précisions&nbsp;!
 
 
@@ -618,7 +618,7 @@ appointment.title.1=Indiquez le motif
 appointment.body.1=Indiquez nous le <strong>motif de votre venue</strong> ainsi que <strong>vos coordonnées</strong>.
 
 appointment.title.2=Confirmez
-appointment.body.2=Vous recevrez un sms vous permettant de confirmer votre rendez-vous puis de l''annuler si nécessaire.<br /><strong>Munissez-vous de votre attestation&nbsp;!</strong>
+appointment.body.2=Vous recevrez un sms vous permettant de confirmer votre rendez-vous puis de l''annuler si nécessaire.
 
 global.text.appointment.validated=Votre rendez vous est validé pour le <b>{0}</b>
 global.text.appointment.cancel=Si vous souhaitez l''annuler, veuillez cliquer
@@ -635,8 +635,7 @@ appointment.success.head=Prendre un rendez-vous
 appointment.success.head.subtitle=Demande de rendez-vous en cours de validation
 
 appointment.success.head.intro=Votre demande a bien été enregistrée, vous allez recevoir par SMS un lien vous permettant de valider votre venue. <br>ATTENTION il est obligatoire de cliquer sur ce lien pour valider définitivement votre rendez vous&nbsp;!<br><br>\
-Une fois le rendez-vous confirmé, vous pourrez l''annuler si nécessaire.<br><br>\
-Munissez vous de votre <strong>attestation de déplacement dérogatoire</strong> dûment remplie. Il vous faut remplir la mention faisant référence à un déplacement pour un <strong>"RETRAIT DE COMMANDE"</strong>.
+Une fois le rendez-vous confirmé, vous pourrez l''annuler si nécessaire.
 
 appointment.success.disclaimer=N''hésitez pas à nous contacter si vous avez la moindre question&nbsp;!
 
@@ -760,7 +759,7 @@ appointment.form.action.alternative.separator=Vous préférez que nous vous rapp
 appointment.form.process.step.1=Créneau
 appointment.form.process.step.2=Motif
 appointment.form.process.step.3=Coordonnées
-appointment.form.process.step.4=Attestation
+appointment.form.process.step.4=Confirmation
 
 appointment.form.action.alternative=Etre rappelé
 
