@@ -15,6 +15,9 @@ global.action.text.appointment.action=Prendre RDV
 global.text.covid.reasons=Rendez-vous obligatoire pour vous garantir un confort optimal
 global.text.covid.footer=Prenez rendez-vous en ligne, ou appelez-nous si nécessaire pour que nous nous déplacions&nbsp;:
 
+global.text.temporary.main=Nos horaires pendant la période estivale
+global.text.temporary.explain=Nous serons <b>totalement fermès du 9 au 13 Août puis le 27 Août</b>.<br>Il ne sera <b>pas possible de restituer de montres entre le 9 et 30 Août</b>.<br><b>Du 16 au 20 Août</b>, nous pourrons uniquement effectuer des changements de pile. 
+
 top.bar.address.street=322 rue Saint Honoré,
 top.bar.address.zip=75001
 top.bar.address.city=Paris
